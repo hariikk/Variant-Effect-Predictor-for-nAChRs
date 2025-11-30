@@ -1,0 +1,4 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.json filter=lfs diff=lfs merge=lfs -text
+entire_nachrdb.json filter=lfs diff=lfs merge=lfs -text
+fireprotdb_20251015-164116.csv filter=lfs diff=lfs merge=lfs -text
