@@ -1,0 +1,13 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+1135	CHRNA2	NM_000742.4	4037	NP_000733.2	529	neuronal acetylcholine receptor subunit alpha-2	isoform 1 precursor
+1135	CHRNA2	NM_001282455.2	3992	NP_001269384.1	514	neuronal acetylcholine receptor subunit alpha-2	isoform 2 precursor
+1135	CHRNA2	NM_001347705.2	3987	NP_001334634.1	370	neuronal acetylcholine receptor subunit alpha-2	isoform 3
+1135	CHRNA2	NM_001347706.2	4032	NP_001334635.1	370	neuronal acetylcholine receptor subunit alpha-2	isoform 3
+1135	CHRNA2	NM_001347707.2	3916	NP_001334636.1	331	neuronal acetylcholine receptor subunit alpha-2	isoform 4
+1135	CHRNA2	NM_001347708.2	3904	NP_001334637.1	331	neuronal acetylcholine receptor subunit alpha-2	isoform 4
+1135	CHRNA2	XM_047421311.1	4097	XP_047277267.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1
+1135	CHRNA2	XM_047421312.1	4188	XP_047277268.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1
+1135	CHRNA2	XM_047421313.1	3841	XP_047277269.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1
+1135	CHRNA2	XM_054359683.1	4097	XP_054215658.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1
+1135	CHRNA2	XM_054359684.1	4188	XP_054215659.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1
+1135	CHRNA2	XM_054359685.1	4044	XP_054215660.1	529	neuronal acetylcholine receptor subunit alpha-2	isoform X1

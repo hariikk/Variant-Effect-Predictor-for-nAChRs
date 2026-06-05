@@ -1,0 +1,5 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+1142	CHRNB3	NM_000749.5	2347	NP_000740.1	458	neuronal acetylcholine receptor subunit beta-3	isoform 1 precursor
+1142	CHRNB3	NM_001347717.2	2480	NP_001334646.1	384	neuronal acetylcholine receptor subunit beta-3	isoform 2
+1142	CHRNB3	XM_011544390.3	2117	XP_011542692.1	329	neuronal acetylcholine receptor subunit beta-3	isoform X1
+1142	CHRNB3	XM_054359692.1	2119	XP_054215667.1	329	neuronal acetylcholine receptor subunit beta-3	isoform X1

@@ -1,0 +1,10 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+1134	CHRNA1	NM_000079.4	1984	NP_000070.1	457	acetylcholine receptor subunit alpha	isoform b precursor
+1134	CHRNA1	NM_001039523.3	2059	NP_001034612.1	482	acetylcholine receptor subunit alpha	isoform a precursor
+1134	CHRNA1	NM_001445681.1	1969	NP_001432610.1	452	acetylcholine receptor subunit alpha	isoform c precursor
+1134	CHRNA1	NM_001445683.1	1744	NP_001432612.1	377	acetylcholine receptor subunit alpha	isoform e precursor
+1134	CHRNA1	NM_001445684.1	1738	NP_001432613.1	375	acetylcholine receptor subunit alpha	isoform f precursor
+1134	CHRNA1	XM_017003256.2	2210	XP_016858745.1	489	acetylcholine receptor subunit alpha	isoform X1
+1134	CHRNA1	XM_017003257.2	2134	XP_016858746.1	464	acetylcholine receptor subunit alpha	isoform X2
+1134	CHRNA1	XM_054340331.1	2203	XP_054196306.1	489	acetylcholine receptor subunit alpha	isoform X1
+1134	CHRNA1	XM_054340332.1	2128	XP_054196307.1	464	acetylcholine receptor subunit alpha	isoform X2
