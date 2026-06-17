@@ -1,0 +1,2115 @@
+{
+  "papers": {
+    "22315221": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:43:27.015749"
+    },
+    "11502891": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:43:27.172287"
+    },
+    "20650284": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:43:51.044319"
+    },
+    "25957813": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:43:57.168965"
+    },
+    "37239959": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:44:04.743675"
+    },
+    "39798871": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:47:19.778434"
+    },
+    "10800961": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.286950"
+    },
+    "14705933": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.413419"
+    },
+    "15199190": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.549001"
+    },
+    "20463059": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:24.438619"
+    },
+    "22222765": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:25.718614"
+    },
+    "22556416": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:26.994910"
+    },
+    "23585571": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:28.224393"
+    },
+    "24478678": {
+      "status": "processed",
+      "entries_found": 14,
+      "timestamp": "2026-06-14T16:48:04.505466"
+    },
+    "9425007": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:48:24.156184"
+    },
+    "19650873": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:48:35.367927"
+    },
+    "21436053": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:48:35.832545"
+    },
+    "30414940": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:48:52.795766"
+    },
+    "10350488": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:52.948154"
+    },
+    "11434511": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:53.081387"
+    },
+    "15044624": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:53.211971"
+    },
+    "18664588": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:49:02.013587"
+    },
+    "11854451": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:02.141804"
+    },
+    "11893908": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:02.282967"
+    },
+    "12562926": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:49:17.796485"
+    },
+    "12684443": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:49:38.209913"
+    },
+    "12766617": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:50.063227"
+    },
+    "16339034": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:50:37.690973"
+    },
+    "17146052": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:50:38.270913"
+    },
+    "18184794": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:51:04.227882"
+    },
+    "18323456": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:05.820693"
+    },
+    "19166271": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:51:19.574056"
+    },
+    "20492354": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:51:33.068866"
+    },
+    "21289604": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:51:46.795775"
+    },
+    "21486776": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:48.069855"
+    },
+    "21832048": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:49.387000"
+    },
+    "21949802": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:52:00.700194"
+    },
+    "24637639": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:52:07.707507"
+    },
+    "25028511": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:52:08.961965"
+    },
+    "25035086": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:52:19.661481"
+    },
+    "25998276": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:52:40.848624"
+    },
+    "27170121": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:53:06.974167"
+    },
+    "28069778": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:53:17.418143"
+    },
+    "28507032": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:53:46.344664"
+    },
+    "31901135": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:53:49.073211"
+    },
+    "33143372": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:54:17.905756"
+    },
+    "35431807": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:54:46.669200"
+    },
+    "41096936": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:55:14.071610"
+    },
+    "12237258": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:55:17.320783"
+    },
+    "15213309": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:55:17.468086"
+    },
+    "21555077": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:55:19.911924"
+    },
+    "22820273": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:55:49.380942"
+    },
+    "41890755": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:56:18.426043"
+    },
+    "DOI:10.1101/2025.10.31.685856": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.654862"
+    },
+    "11509192": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.808094"
+    },
+    "11684149": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.951299"
+    },
+    "12871652": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:21.094075"
+    },
+    "14691373": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:21.235928"
+    },
+    "17662697": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:56:51.996609"
+    },
+    "17881519": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:57:27.081289"
+    },
+    "18321647": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:57:27.232264"
+    },
+    "19671882": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:57:28.597665"
+    },
+    "19720621": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:57:30.045539"
+    },
+    "19790106": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:57:58.992222"
+    },
+    "21430644": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:58:29.989346"
+    },
+    "23688922": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:58:58.861972"
+    },
+    "24750355": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:58:59.952570"
+    },
+    "26041923": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T16:59:33.719938"
+    },
+    "27233215": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:00:02.704008"
+    },
+    "27327258": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:00:31.666815"
+    },
+    "29597332": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:01:00.477509"
+    },
+    "41278990": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:01:29.203491"
+    },
+    "41841200": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:01:58.028662"
+    },
+    "DOI:10.21203/rs.3.rs-1493296/v1": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:02:33.248460"
+    },
+    "9508836": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:02:34.678062"
+    },
+    "10235262": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:34.825273"
+    },
+    "11439930": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:36.709046"
+    },
+    "12970351": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:37.731545"
+    },
+    "14579512": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:02:37.793476"
+    },
+    "15738419": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:02:39.216782"
+    },
+    "16319313": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:03:13.326527"
+    },
+    "17019409": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:03:43.838461"
+    },
+    "18523135": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:03:44.236921"
+    },
+    "18940593": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:04:13.160475"
+    },
+    "19147685": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:04:41.879048"
+    },
+    "19644040": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:04:44.123397"
+    },
+    "21062106": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:04:44.280595"
+    },
+    "21444659": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:05:13.311682"
+    },
+    "22169946": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:05:42.155341"
+    },
+    "22836257": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:06:18.876483"
+    },
+    "22885704": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:06:19.314418"
+    },
+    "23123803": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:06:48.454683"
+    },
+    "23594044": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:07:17.444902"
+    },
+    "23724059": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:07:46.447734"
+    },
+    "23811312": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:08:15.281491"
+    },
+    "24266758": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:08:44.183972"
+    },
+    "24296975": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:09:12.974310"
+    },
+    "24349346": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:09:31.360849"
+    },
+    "25002271": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:09:34.349844"
+    },
+    "25911614": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:09:35.033490"
+    },
+    "28045487": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:10:03.943546"
+    },
+    "28290528": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:10:32.816930"
+    },
+    "28797116": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:11:01.956389"
+    },
+    "29033834": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:11:30.929245"
+    },
+    "29206881": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:11:59.795534"
+    },
+    "29572431": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:12:35.636598"
+    },
+    "29661886": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:13:08.370971"
+    },
+    "29779223": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:13:37.285443"
+    },
+    "31158924": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:14:06.198076"
+    },
+    "31217330": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:15:02.839410"
+    },
+    "32222974": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:15:05.430738"
+    },
+    "32472188": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:15:07.772275"
+    },
+    "32708537": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:15:36.740338"
+    },
+    "34631692": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:16:05.885740"
+    },
+    "35578169": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:16:34.793837"
+    },
+    "35973602": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:17:03.592828"
+    },
+    "36292948": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:17:32.559711"
+    },
+    "36969210": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:18:01.485685"
+    },
+    "37116611": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:18:30.424052"
+    },
+    "41106540": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:18:59.138025"
+    },
+    "41226195": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:19:28.156433"
+    },
+    "41390005": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:19:57.083413"
+    },
+    "DOI:10.1101/2023.01.03.522562": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:00.470750"
+    },
+    "DOI:10.1101/2024.04.12.589167": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:02.092892"
+    },
+    "8987816": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:20:36.567048"
+    },
+    "9504393": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:20:38.623105"
+    },
+    "10942032": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:38.812273"
+    },
+    "11743948": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:38.998909"
+    },
+    "17016503": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:20:40.850668"
+    },
+    "17401441": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:21:11.250012"
+    },
+    "18199426": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:21:41.718109"
+    },
+    "18272879": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:21:42.348500"
+    },
+    "18791069": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:22:13.202474"
+    },
+    "19020039": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:22:45.907525"
+    },
+    "19339660": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:22:48.247220"
+    },
+    "19452222": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:23:20.713728"
+    },
+    "20061993": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:23:49.422866"
+    },
+    "20203212": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:24:24.627690"
+    },
+    "20603624": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:24:53.592084"
+    },
+    "21049012": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:25:22.544325"
+    },
+    "21501254": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:25:51.372377"
+    },
+    "21514327": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:26:20.346493"
+    },
+    "21609715": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:26:49.107463"
+    },
+    "21716264": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:27:20.497972"
+    },
+    "22314319": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:27:49.418596"
+    },
+    "22649244": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:28:24.180641"
+    },
+    "22848433": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:28:53.058352"
+    },
+    "23144922": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:29:21.873871"
+    },
+    "23318559": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:29:50.819023"
+    },
+    "23742319": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:29:53.564831"
+    },
+    "23788655": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:29:54.915355"
+    },
+    "23948929": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:30:23.781115"
+    },
+    "24036108": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:30:52.683969"
+    },
+    "24089398": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:30:55.876361"
+    },
+    "24161916": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:31:24.799988"
+    },
+    "24190916": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:31:26.274555"
+    },
+    "24360204": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:31:55.205124"
+    },
+    "24381273": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:32:29.874989"
+    },
+    "24879866": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:32:31.601887"
+    },
+    "25492812": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:32:32.698735"
+    },
+    "25516597": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:33:01.515592"
+    },
+    "25553616": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:33:30.480379"
+    },
+    "25797465": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:33:31.535774"
+    },
+    "25813704": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:34:00.524958"
+    },
+    "26088141": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:34:01.883534"
+    },
+    "26585290": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:34:32.970567"
+    },
+    "26921769": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:35:01.759712"
+    },
+    "27385416": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:35:32.314416"
+    },
+    "27466334": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:36:06.458529"
+    },
+    "27596561": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:36:35.290513"
+    },
+    "28759616": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:37:04.289825"
+    },
+    "29339457": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:37:06.669123"
+    },
+    "29355641": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:37:35.745608"
+    },
+    "29573323": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:38:04.906188"
+    },
+    "30009834": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:38:33.700430"
+    },
+    "30089021": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:38:37.427982"
+    },
+    "30551685": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:39:06.224454"
+    },
+    "31394567": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:39:36.112820"
+    },
+    "32248535": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:39:36.320542"
+    },
+    "32293776": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:40:05.257222"
+    },
+    "33380469": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:40:39.940693"
+    },
+    "33447242": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:41:08.959792"
+    },
+    "34298871": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:41:37.926790"
+    },
+    "34443380": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:42:06.678490"
+    },
+    "35752273": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:42:35.562564"
+    },
+    "37231269": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:43:04.531634"
+    },
+    "38613458": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:43:33.622811"
+    },
+    "39120784": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:44:02.496938"
+    },
+    "39553292": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:44:31.449135"
+    },
+    "40106369": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:45:00.292917"
+    },
+    "40299711": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:45:29.213300"
+    },
+    "40560726": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:45:58.134939"
+    },
+    "41304470": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:46:27.126304"
+    },
+    "DOI:10.1101/301051": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:46:30.599127"
+    },
+    "DOI:10.1101/2023.03.21.533690": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:46:32.236520"
+    },
+    "DOI:10.64898/2026.04.03.716330": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:47:01.747277"
+    },
+    "8327511": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:03.776030"
+    },
+    "9808692": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:03.956455"
+    },
+    "10215692": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:47:04.039852"
+    },
+    "10531434": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:47:37.724383"
+    },
+    "10771005": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:37.941999"
+    },
+    "10803206": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:47:38.025128"
+    },
+    "11226318": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:39.858670"
+    },
+    "11834293": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:40.068361"
+    },
+    "11927835": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:40.263359"
+    },
+    "12228730": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:44.015336"
+    },
+    "12562921": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:48:14.549579"
+    },
+    "12713636": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:48:16.172780"
+    },
+    "12824448": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:48:46.442046"
+    },
+    "14534234": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:49:21.579330"
+    },
+    "14975691": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:49:21.780763"
+    },
+    "15555774": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:49:21.987169"
+    },
+    "15601939": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:50:15.476036"
+    },
+    "15833891": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:15.755137"
+    },
+    "15925141": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:15.959743"
+    },
+    "16146341": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:50:47.020871"
+    },
+    "16364316": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:48.854217"
+    },
+    "16481438": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:51:22.320668"
+    },
+    "17156372": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:51:22.607733"
+    },
+    "17433376": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:51:22.843469"
+    },
+    "17512560": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:52:03.583040"
+    },
+    "17613539": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:52:05.276372"
+    },
+    "17643119": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:52:05.474901"
+    },
+    "17721553": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:52:07.287187"
+    },
+    "18077337": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:52:43.227045"
+    },
+    "18583454": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:53:14.471716"
+    },
+    "18619948": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:53:14.669399"
+    },
+    "18753377": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:53:57.402878"
+    },
+    "18945902": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:54:31.281975"
+    },
+    "19057014": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:33.213559"
+    },
+    "19097990": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:34.817199"
+    },
+    "19139153": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:38.694842"
+    },
+    "19443489": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:40.592478"
+    },
+    "19705574": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:55:09.364129"
+    },
+    "20100906": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:55:10.998685"
+    },
+    "20114055": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:55:40.337302"
+    },
+    "20128845": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:56:09.145307"
+    },
+    "21278726": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:56:38.192608"
+    },
+    "21718690": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:57:07.302683"
+    },
+    "22101982": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:57:08.391672"
+    },
+    "22234243": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:57:37.282338"
+    },
+    "22239849": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:58:06.432766"
+    },
+    "22241831": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:58:09.276620"
+    },
+    "22375104": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:58:38.239625"
+    },
+    "22506481": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:59:07.182499"
+    },
+    "22613724": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T17:59:35.956265"
+    },
+    "22957729": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:59:38.769116"
+    },
+    "23637165": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:00:15.946444"
+    },
+    "23747348": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:00:44.973399"
+    },
+    "23954803": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:01:14.066206"
+    },
+    "24082085": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:16.917977"
+    },
+    "24122766": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:01:45.775491"
+    },
+    "24687992": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:46.544508"
+    },
+    "24695730": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:49.031418"
+    },
+    "25031416": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:02:26.031994"
+    },
+    "25034405": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:02:27.513159"
+    },
+    "25107281": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:02:56.646489"
+    },
+    "25625469": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:02:58.654480"
+    },
+    "25661700": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:03:27.514891"
+    },
+    "25744161": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:03:56.420311"
+    },
+    "25972004": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:04:25.278226"
+    },
+    "26210579": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:04:54.155188"
+    },
+    "26276349": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:04:56.923215"
+    },
+    "26276394": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:04:58.348089"
+    },
+    "27020042": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:05:27.337908"
+    },
+    "27228072": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:05:56.092171"
+    },
+    "27336596": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:06:25.035451"
+    },
+    "27385587": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:27.149642"
+    },
+    "27655963": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:29.262573"
+    },
+    "28100642": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:30.902192"
+    },
+    "28187857": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:06:59.786292"
+    },
+    "29588343": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:07:01.283399"
+    },
+    "29706890": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:07:30.213489"
+    },
+    "29954848": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:08:07.772465"
+    },
+    "30378732": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:08:36.774626"
+    },
+    "30627659": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:09:05.896722"
+    },
+    "30870432": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:09:35.446828"
+    },
+    "31505240": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:09:36.510227"
+    },
+    "31545995": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:10:05.564619"
+    },
+    "31817275": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:10:34.658293"
+    },
+    "32184221": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:11:17.682985"
+    },
+    "32568759": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:11:46.570264"
+    },
+    "32783947": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:11:47.931807"
+    },
+    "34820636": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:12:16.881801"
+    },
+    "35323499": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:12:46.053048"
+    },
+    "35859025": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:13:14.939604"
+    },
+    "36029955": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:13:43.807697"
+    },
+    "36603528": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:14:12.652026"
+    },
+    "37264005": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:14:41.695728"
+    },
+    "37308787": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:15:10.535663"
+    },
+    "37549771": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:15:39.406989"
+    },
+    "37721175": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:15:42.080984"
+    },
+    "37792955": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:16:11.127292"
+    },
+    "38006565": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:16:39.963292"
+    },
+    "38472514": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:17:08.766898"
+    },
+    "38560293": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:17:37.744725"
+    },
+    "40195322": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:18:06.856452"
+    },
+    "41130801": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:18:37.524097"
+    },
+    "41309559": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:19:06.671766"
+    },
+    "41993412": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:19:08.378363"
+    },
+    "DOI:10.1101/2020.05.10.087569": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:19:11.247101"
+    },
+    "8987780": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:19:45.454039"
+    },
+    "10602325": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:19:47.457731"
+    },
+    "11027228": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:20:21.696053"
+    },
+    "11222635": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:20:56.367581"
+    },
+    "11309235": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:20:58.150808"
+    },
+    "11403678": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:20:58.359935"
+    },
+    "11498056": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:21:01.712824"
+    },
+    "12716925": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:21:35.454097"
+    },
+    "15464087": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:21:35.681481"
+    },
+    "15611037": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:21:37.019383"
+    },
+    "15670336": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:22:05.842809"
+    },
+    "15723228": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:06.057750"
+    },
+    "16118362": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.116335"
+    },
+    "16987213": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.354677"
+    },
+    "17016705": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.572841"
+    },
+    "17112574": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:22:38.471617"
+    },
+    "17135278": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:22:40.649666"
+    },
+    "17192649": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:40.853153"
+    },
+    "17192651": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:41.085682"
+    },
+    "17419810": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:41.289776"
+    },
+    "17431097": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:23:11.979596"
+    },
+    "17603025": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:23:42.379264"
+    },
+    "17631923": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:23:44.069657"
+    },
+    "17670967": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:24:23.395226"
+    },
+    "17825262": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:23.921020"
+    },
+    "18179903": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:25.328683"
+    },
+    "18337473": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:24:25.530660"
+    },
+    "18519524": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:27.085682"
+    },
+    "18582447": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:28.524305"
+    },
+    "18836298": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:29.819308"
+    },
+    "18842832": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:30.228491"
+    },
+    "18931833": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:24:30.456834"
+    },
+    "19138730": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:24:59.336523"
+    },
+    "19176801": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:25:45.379112"
+    },
+    "19252947": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:26:18.070000"
+    },
+    "19404242": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:26:46.865312"
+    },
+    "19481067": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:27:15.920161"
+    },
+    "19498423": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:27:47.531923"
+    },
+    "19587288": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:28:22.935809"
+    },
+    "19812319": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:28:59.280912"
+    },
+    "19845675": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:29:01.391784"
+    },
+    "20072781": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:29:30.629884"
+    },
+    "20336058": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:30:00.509570"
+    },
+    "20511332": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:30:02.671211"
+    },
+    "20592195": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:30:42.516929"
+    },
+    "20599770": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:31:11.467384"
+    },
+    "20610759": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:31:47.342435"
+    },
+    "20736992": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:32:16.317456"
+    },
+    "20801929": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:32:19.806732"
+    },
+    "20826678": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:32:56.622737"
+    },
+    "20943921": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:33:29.365181"
+    },
+    "20974225": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:33:29.619899"
+    },
+    "21056666": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:33:58.971706"
+    },
+    "21172344": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:34:27.699228"
+    },
+    "21232042": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:34:30.700331"
+    },
+    "21305050": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:34:59.757690"
+    },
+    "21325521": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:35:38.954951"
+    },
+    "21368748": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:36:09.716947"
+    },
+    "21485013": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:36:38.623095"
+    },
+    "21502378": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:36:41.876358"
+    },
+    "21795541": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:37:20.302374"
+    },
+    "21816108": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:37:49.213075"
+    },
+    "21949864": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:38:18.062870"
+    },
+    "21966399": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:38:46.943058"
+    },
+    "22506660": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:38:48.247582"
+    },
+    "22526534": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:39:17.120177"
+    },
+    "22580377": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:39:46.031347"
+    },
+    "22624500": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:40:14.833336"
+    },
+    "22699919": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:40:49.693821"
+    },
+    "22751014": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:40:50.290637"
+    },
+    "23486955": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:41:24.677884"
+    },
+    "23524566": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:41:55.021602"
+    },
+    "23545467": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:42:23.835138"
+    },
+    "23583932": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:42:53.011707"
+    },
+    "23739962": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:43:27.491267"
+    },
+    "23776240": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:43:29.371713"
+    },
+    "23958943": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:43:58.310757"
+    },
+    "24052501": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:00.023663"
+    },
+    "24055499": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:00.950531"
+    },
+    "24118019": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:44:01.155432"
+    },
+    "24133259": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:44:36.903698"
+    },
+    "24194515": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:38.400186"
+    },
+    "24223920": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:45:07.366956"
+    },
+    "24227714": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:45:42.721592"
+    },
+    "24326163": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:46:11.796555"
+    },
+    "24376846": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:46:40.564055"
+    },
+    "24381265": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:47:15.904744"
+    },
+    "24429348": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:47:16.711788"
+    },
+    "24661093": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:47:45.502222"
+    },
+    "24686559": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:48:14.608614"
+    },
+    "24769321": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:48:15.546622"
+    },
+    "24833065": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:48:15.768310"
+    },
+    "25046735": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:48:46.029727"
+    },
+    "25056953": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:48:46.759074"
+    },
+    "25128387": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:49:15.557402"
+    },
+    "25426579": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:49:44.578948"
+    },
+    "25476971": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:50:13.497378"
+    },
+    "25484253": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:50:42.445787"
+    },
+    "25497451": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:51:11.177823"
+    },
+    "25505580": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:51:40.375825"
+    },
+    "25617631": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:52:09.330491"
+    },
+    "25740413": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:52:11.401423"
+    },
+    "25891987": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:52:40.246140"
+    },
+    "25959067": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:52:40.461670"
+    },
+    "26086615": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:53:09.362538"
+    },
+    "26103136": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:53:11.078289"
+    },
+    "26528153": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:53:39.927548"
+    },
+    "26644472": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:53:41.431136"
+    },
+    "26707847": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:54:10.269034"
+    },
+    "26740650": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:54:45.070175"
+    },
+    "26961950": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:55:22.239228"
+    },
+    "26983414": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:55:51.119273"
+    },
+    "27098031": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:55:54.605403"
+    },
+    "27238974": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:56:23.451411"
+    },
+    "27467081": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:56:52.734635"
+    },
+    "27489367": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:56:55.220203"
+    },
+    "27563924": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:57:24.223402"
+    },
+    "27576061": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:57:24.448424"
+    },
+    "27698409": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:57:53.481638"
+    },
+    "27793544": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:58:22.466899"
+    },
+    "27793780": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T18:58:51.250599"
+    }
+  },
+  "search_results": {}
+}

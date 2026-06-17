@@ -1,0 +1,9 @@
+# secrets — never commit
+.env
+
+# generated outputs and caches
+output/
+__pycache__/
+*.pyc
+run_stdout.txt
+run_stderr.txt

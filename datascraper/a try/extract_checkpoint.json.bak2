@@ -1,0 +1,1180 @@
+{
+  "papers": {
+    "22315221": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:43:27.015749"
+    },
+    "11502891": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:43:27.172287"
+    },
+    "10800961": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.286950"
+    },
+    "14705933": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.413419"
+    },
+    "15199190": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:47:22.549001"
+    },
+    "20463059": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:24.438619"
+    },
+    "22222765": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:25.718614"
+    },
+    "22556416": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:26.994910"
+    },
+    "23585571": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:47:28.224393"
+    },
+    "24478678": {
+      "status": "processed",
+      "entries_found": 14,
+      "timestamp": "2026-06-14T16:48:04.505466"
+    },
+    "21436053": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:48:35.832545"
+    },
+    "10350488": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:52.948154"
+    },
+    "11434511": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:53.081387"
+    },
+    "15044624": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:48:53.211971"
+    },
+    "11854451": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:02.141804"
+    },
+    "11893908": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:02.282967"
+    },
+    "12684443": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:49:38.209913"
+    },
+    "12766617": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:49:50.063227"
+    },
+    "17146052": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:50:38.270913"
+    },
+    "18184794": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:51:04.227882"
+    },
+    "18323456": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:05.820693"
+    },
+    "19166271": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:51:19.574056"
+    },
+    "21486776": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:48.069855"
+    },
+    "21832048": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:51:49.387000"
+    },
+    "25028511": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:52:08.961965"
+    },
+    "31901135": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:53:49.073211"
+    },
+    "41096936": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T16:55:14.071610"
+    },
+    "12237258": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:55:17.320783"
+    },
+    "15213309": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:55:17.468086"
+    },
+    "21555077": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:55:19.911924"
+    },
+    "DOI:10.1101/2025.10.31.685856": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.654862"
+    },
+    "11509192": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.808094"
+    },
+    "11684149": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:20.951299"
+    },
+    "12871652": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:21.094075"
+    },
+    "14691373": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:56:21.235928"
+    },
+    "18321647": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:57:27.232264"
+    },
+    "19671882": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:57:28.597665"
+    },
+    "19720621": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T16:57:30.045539"
+    },
+    "24750355": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T16:58:59.952570"
+    },
+    "9508836": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:02:34.678062"
+    },
+    "10235262": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:34.825273"
+    },
+    "11439930": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:36.709046"
+    },
+    "12970351": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:02:37.731545"
+    },
+    "14579512": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:02:37.793476"
+    },
+    "15738419": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:02:39.216782"
+    },
+    "18523135": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:03:44.236921"
+    },
+    "19644040": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:04:44.123397"
+    },
+    "21062106": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:04:44.280595"
+    },
+    "22885704": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:06:19.314418"
+    },
+    "25002271": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:09:34.349844"
+    },
+    "25911614": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:09:35.033490"
+    },
+    "32222974": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:15:05.430738"
+    },
+    "32472188": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:15:07.772275"
+    },
+    "DOI:10.1101/2023.01.03.522562": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:00.470750"
+    },
+    "DOI:10.1101/2024.04.12.589167": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:02.092892"
+    },
+    "9504393": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:20:38.623105"
+    },
+    "10942032": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:38.812273"
+    },
+    "11743948": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:20:38.998909"
+    },
+    "17016503": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:20:40.850668"
+    },
+    "18272879": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:21:42.348500"
+    },
+    "19339660": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:22:48.247220"
+    },
+    "23742319": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:29:53.564831"
+    },
+    "23788655": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:29:54.915355"
+    },
+    "24089398": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:30:55.876361"
+    },
+    "24190916": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:31:26.274555"
+    },
+    "24879866": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:32:31.601887"
+    },
+    "25492812": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:32:32.698735"
+    },
+    "25797465": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:33:31.535774"
+    },
+    "26088141": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:34:01.883534"
+    },
+    "29339457": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:37:06.669123"
+    },
+    "30089021": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:38:37.427982"
+    },
+    "32248535": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:39:36.320542"
+    },
+    "DOI:10.1101/301051": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:46:30.599127"
+    },
+    "DOI:10.1101/2023.03.21.533690": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:46:32.236520"
+    },
+    "8327511": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:03.776030"
+    },
+    "9808692": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:03.956455"
+    },
+    "10215692": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:47:04.039852"
+    },
+    "10771005": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:37.941999"
+    },
+    "10803206": {
+      "status": "inaccessible",
+      "reason": "No PMCID or DOI available",
+      "timestamp": "2026-06-14T17:47:38.025128"
+    },
+    "11226318": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:39.858670"
+    },
+    "11834293": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:40.068361"
+    },
+    "11927835": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:47:40.263359"
+    },
+    "12228730": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:47:44.015336"
+    },
+    "12713636": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:48:16.172780"
+    },
+    "14975691": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:49:21.780763"
+    },
+    "15555774": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:49:21.987169"
+    },
+    "15833891": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:15.755137"
+    },
+    "15925141": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:15.959743"
+    },
+    "16364316": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:50:48.854217"
+    },
+    "17156372": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:51:22.607733"
+    },
+    "17433376": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:51:22.843469"
+    },
+    "17613539": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:52:05.276372"
+    },
+    "17643119": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:52:05.474901"
+    },
+    "17721553": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:52:07.287187"
+    },
+    "18619948": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:53:14.669399"
+    },
+    "19057014": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:33.213559"
+    },
+    "19097990": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:34.817199"
+    },
+    "19139153": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:38.694842"
+    },
+    "19443489": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:54:40.592478"
+    },
+    "20100906": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:55:10.998685"
+    },
+    "22101982": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T17:57:08.391672"
+    },
+    "22241831": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:58:09.276620"
+    },
+    "22957729": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T17:59:38.769116"
+    },
+    "24082085": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:16.917977"
+    },
+    "24687992": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:46.544508"
+    },
+    "24695730": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:01:49.031418"
+    },
+    "25034405": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:02:27.513159"
+    },
+    "25625469": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:02:58.654480"
+    },
+    "26276349": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:04:56.923215"
+    },
+    "26276394": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:04:58.348089"
+    },
+    "27385587": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:27.149642"
+    },
+    "27655963": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:29.262573"
+    },
+    "28100642": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:06:30.902192"
+    },
+    "29588343": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:07:01.283399"
+    },
+    "31505240": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:09:36.510227"
+    },
+    "32783947": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:11:47.931807"
+    },
+    "37721175": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:15:42.080984"
+    },
+    "41993412": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:19:08.378363"
+    },
+    "DOI:10.1101/2020.05.10.087569": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:19:11.247101"
+    },
+    "10602325": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:19:47.457731"
+    },
+    "11309235": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:20:58.150808"
+    },
+    "11403678": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:20:58.359935"
+    },
+    "11498056": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:21:01.712824"
+    },
+    "15464087": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:21:35.681481"
+    },
+    "15611037": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:21:37.019383"
+    },
+    "15723228": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:06.057750"
+    },
+    "16118362": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.116335"
+    },
+    "16987213": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.354677"
+    },
+    "17016705": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:07.572841"
+    },
+    "17135278": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:22:40.649666"
+    },
+    "17192649": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:40.853153"
+    },
+    "17192651": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:41.085682"
+    },
+    "17419810": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:22:41.289776"
+    },
+    "17631923": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:23:44.069657"
+    },
+    "17825262": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:23.921020"
+    },
+    "18179903": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:25.328683"
+    },
+    "18337473": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:24:25.530660"
+    },
+    "18519524": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:27.085682"
+    },
+    "18582447": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:28.524305"
+    },
+    "18836298": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:29.819308"
+    },
+    "18842832": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:24:30.228491"
+    },
+    "18931833": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:24:30.456834"
+    },
+    "19845675": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:29:01.391784"
+    },
+    "20511332": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:30:02.671211"
+    },
+    "20801929": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:32:19.806732"
+    },
+    "20974225": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:33:29.619899"
+    },
+    "21232042": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:34:30.700331"
+    },
+    "21502378": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:36:41.876358"
+    },
+    "22506660": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:38:48.247582"
+    },
+    "22751014": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:40:50.290637"
+    },
+    "23776240": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:43:29.371713"
+    },
+    "24052501": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:00.023663"
+    },
+    "24055499": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:00.950531"
+    },
+    "24118019": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:44:01.155432"
+    },
+    "24194515": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:44:38.400186"
+    },
+    "24429348": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:47:16.711788"
+    },
+    "24769321": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:48:15.546622"
+    },
+    "24833065": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:48:15.768310"
+    },
+    "25056953": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:48:46.759074"
+    },
+    "25740413": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:52:11.401423"
+    },
+    "25959067": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:52:40.461670"
+    },
+    "26103136": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:53:11.078289"
+    },
+    "26644472": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:53:41.431136"
+    },
+    "27098031": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:55:54.605403"
+    },
+    "27489367": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T18:56:55.220203"
+    },
+    "27576061": {
+      "status": "inaccessible",
+      "reason": "No PMCID; Unpaywall had no open-access version",
+      "timestamp": "2026-06-14T18:57:24.448424"
+    },
+    "20650284": {
+      "status": "processed",
+      "entries_found": 9,
+      "timestamp": "2026-06-14T19:54:40.317974"
+    },
+    "25957813": {
+      "status": "processed",
+      "entries_found": 25,
+      "timestamp": "2026-06-14T19:54:52.449878"
+    },
+    "37239959": {
+      "status": "processed",
+      "entries_found": 24,
+      "timestamp": "2026-06-14T19:55:03.708993"
+    },
+    "39798871": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T19:55:10.848352"
+    },
+    "9425007": {
+      "status": "processed",
+      "entries_found": 10,
+      "timestamp": "2026-06-14T19:55:26.939647"
+    },
+    "19650873": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T19:55:34.383824"
+    },
+    "30414940": {
+      "status": "processed",
+      "entries_found": 3,
+      "timestamp": "2026-06-14T19:55:42.028785"
+    },
+    "18664588": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:55:49.172599"
+    },
+    "12562926": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T19:55:51.782409"
+    },
+    "16339034": {
+      "status": "processed",
+      "entries_found": 4,
+      "timestamp": "2026-06-14T19:56:06.784908"
+    },
+    "20492354": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:56:13.864733"
+    },
+    "21289604": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T19:56:21.328448"
+    },
+    "21949802": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T19:56:29.179961"
+    },
+    "24637639": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T19:56:36.616245"
+    },
+    "25035086": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:56:47.152701"
+    },
+    "25998276": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T19:56:54.660136"
+    },
+    "27170121": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:57:08.754083"
+    },
+    "28069778": {
+      "status": "processed",
+      "entries_found": 15,
+      "timestamp": "2026-06-14T19:57:19.079443"
+    },
+    "28507032": {
+      "status": "processed",
+      "entries_found": 3,
+      "timestamp": "2026-06-14T19:57:27.021952"
+    },
+    "33143372": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T19:57:34.374865"
+    },
+    "35431807": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:57:43.173316"
+    },
+    "22820273": {
+      "status": "processed",
+      "entries_found": 1,
+      "timestamp": "2026-06-14T19:57:50.626571"
+    },
+    "41890755": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T19:58:59.454112"
+    },
+    "17662697": {
+      "status": "inaccessible",
+      "reason": "No open-access full text available",
+      "timestamp": "2026-06-14T19:59:02.472233"
+    },
+    "17881519": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:57:56.889476"
+    },
+    "19790106": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:58:10.302655"
+    },
+    "21430644": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:58:25.193295"
+    },
+    "23688922": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:58:39.453983"
+    },
+    "26041923": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:58:59.768064"
+    },
+    "27233215": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:59:07.602907"
+    },
+    "27327258": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:59:19.197697"
+    },
+    "29597332": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:59:28.849916"
+    },
+    "41278990": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:59:38.139581"
+    },
+    "41841200": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-15T02:59:49.511444"
+    },
+    "DOI:10.21203/rs.3.rs-1493296/v1": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID DOI:10.21203/rs.3.rs-1493296/v1 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 56.167966971s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}",
+      "timestamp": "2026-06-14T20:44:06.217701"
+    },
+    "16319313": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 16319313 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 45.708517599s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}",
+      "timestamp": "2026-06-14T20:48:16.669918"
+    },
+    "17019409": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 17019409 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 38.495102445s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38s'}]}}",
+      "timestamp": "2026-06-14T20:52:23.887446"
+    },
+    "18940593": {
+      "status": "processed",
+      "entries_found": 5,
+      "timestamp": "2026-06-14T20:55:35.151208"
+    },
+    "19147685": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 19147685 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 23.678772478s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}",
+      "timestamp": "2026-06-14T20:59:38.716304"
+    },
+    "21444659": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 21444659 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 18.361163167s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}",
+      "timestamp": "2026-06-14T21:03:44.040197"
+    },
+    "22169946": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 22169946 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 14.827536382s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '14s'}]}}",
+      "timestamp": "2026-06-14T21:07:47.579443"
+    },
+    "22836257": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 22836257 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 2.43925629s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}",
+      "timestamp": "2026-06-14T21:11:59.974751"
+    },
+    "23123803": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 23123803 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 58.445438872s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '58s'}]}}",
+      "timestamp": "2026-06-14T21:16:03.970443"
+    },
+    "23594044": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 23594044 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 54.619738011s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}",
+      "timestamp": "2026-06-14T21:20:07.808292"
+    },
+    "23724059": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 23724059 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 50.671199446s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '50s'}]}}",
+      "timestamp": "2026-06-14T21:24:11.757725"
+    },
+    "23811312": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 23811312 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 47.137917145s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '47s'}]}}",
+      "timestamp": "2026-06-14T21:28:15.295487"
+    },
+    "24266758": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 24266758 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 43.551265861s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}",
+      "timestamp": "2026-06-14T21:32:18.890952"
+    },
+    "24296975": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 24296975 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 39.837037062s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}",
+      "timestamp": "2026-06-14T21:36:22.633034"
+    },
+    "24349346": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 24349346 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 35.7739722s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '35s'}]}}",
+      "timestamp": "2026-06-14T21:40:26.678755"
+    },
+    "28045487": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 28045487 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 32.055560988s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}}",
+      "timestamp": "2026-06-14T21:44:30.402238"
+    },
+    "28290528": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 28290528 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 28.255494349s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}}",
+      "timestamp": "2026-06-14T21:48:34.206209"
+    },
+    "28797116": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 28797116 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 24.246297457s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}",
+      "timestamp": "2026-06-14T21:52:38.233832"
+    },
+    "29033834": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T21:52:47.935277"
+    },
+    "29206881": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 29206881 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 10.64079248s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '10s'}]}}",
+      "timestamp": "2026-06-14T21:56:51.836401"
+    },
+    "29572431": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 29572431 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 58.743889286s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '58s'}]}}",
+      "timestamp": "2026-06-14T22:01:03.737176"
+    },
+    "29661886": {
+      "status": "processed",
+      "entries_found": 0,
+      "timestamp": "2026-06-14T22:02:47.172204"
+    },
+    "29779223": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 29779223 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 9.958367168s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}",
+      "timestamp": "2026-06-14T22:06:52.530511"
+    },
+    "31158924": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 31158924 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 6.124249421s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}",
+      "timestamp": "2026-06-14T22:10:56.368223"
+    },
+    "31217330": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 31217330 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 33.993035247s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}",
+      "timestamp": "2026-06-14T22:15:28.508797"
+    },
+    "32708537": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 32708537 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 30.158366171s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}}",
+      "timestamp": "2026-06-14T22:19:32.349016"
+    },
+    "34631692": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 34631692 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 26.250831249s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}",
+      "timestamp": "2026-06-14T22:23:36.312687"
+    },
+    "35578169": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 35578169 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 19.973762697s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}",
+      "timestamp": "2026-06-14T22:27:42.543487"
+    },
+    "35973602": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 35973602 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 15.652755708s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}",
+      "timestamp": "2026-06-14T22:31:46.876832"
+    },
+    "36292948": {
+      "status": "processed",
+      "entries_found": 2,
+      "timestamp": "2026-06-14T22:33:25.837326"
+    },
+    "36969210": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 36969210 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 32.999130493s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}}",
+      "timestamp": "2026-06-14T22:37:29.533624"
+    },
+    "37116611": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 37116611 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 29.118881474s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}",
+      "timestamp": "2026-06-14T22:41:33.418095"
+    },
+    "41106540": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 41106540 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 25.404873556s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}",
+      "timestamp": "2026-06-14T22:45:37.136704"
+    },
+    "41226195": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 41226195 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 21.867689407s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}",
+      "timestamp": "2026-06-14T22:49:40.681517"
+    },
+    "41390005": {
+      "status": "error",
+      "error": "Gemini extraction failed for PMID 41390005 after 6 attempts: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 17.969984415s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}",
+      "timestamp": "2026-06-14T22:53:44.584356"
+    }
+  },
+  "search_results": {}
+}
