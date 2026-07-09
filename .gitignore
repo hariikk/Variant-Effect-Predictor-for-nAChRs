@@ -1,2 +1,6 @@
 VEP-Enac/
 Data_Scraper/.env
+__pycache__/
+*.pyc
+*.pdf
+~$*
