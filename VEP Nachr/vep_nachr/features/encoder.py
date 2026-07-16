@@ -4,10 +4,10 @@ Feature encoder: combines all feature groups into a single feature matrix.
 Implements an sklearn-compatible transformer that extracts:
 - Physicochemical features (24)
 - Substitution scores (3: BLOSUM62 + Grantham)
-- Positional features (1 normalized position + 15 subunit one-hot)
-- Structural features (6, from PDB or imputed)
+- Positional features (1 normalized position + 16 subunit one-hot)
+- Structural features (8, from PDB or imputed)
 
-Total: 49 features (without structural) or 55 features (with structural).
+Total: 44 features (without structural) or 52 features (with structural).
 """
 
 import numpy as np

@@ -98,13 +98,21 @@ PDB_MAPPING = {
     "CHRNB2": {"pdb_id": "6CNJ", "chain": "B"},
     "CHRNA3": {"pdb_id": "6PV7", "chain": "A"},
     "CHRNB4": {"pdb_id": "6PV7", "chain": "B"},
-    # Subunits needing AlphaFold (no experimental structure)
-    "CHRNA2":  {"pdb_id": None, "chain": None},   # UniProt: Q15822
-    "CHRNA5":  {"pdb_id": None, "chain": None},   # UniProt: P30532
-    "CHRNA6":  {"pdb_id": None, "chain": None},   # UniProt: Q15825
-    "CHRNA9":  {"pdb_id": None, "chain": None},   # UniProt: Q9UGM1
-    "CHRNA10": {"pdb_id": None, "chain": None},   # UniProt: Q13002
-    "CHRNB3":  {"pdb_id": None, "chain": None},   # UniProt: Q05901
+    # AlphaFold-predicted structures (monomeric, single chain A).
+    # pLDDT confidence is stored in B-factor field.
+    # RSA/C-beta/HSE reflect monomer context (not pentamer assembly).
+    # UniProt: Q15822, CIF: AF-Q15822.cif
+    "CHRNA2":  {"pdb_id": "AF-Q15822", "chain": "A", "source": "alphafold"},
+    # UniProt: P30532, CIF: AF-P30532.cif
+    "CHRNA5":  {"pdb_id": "AF-P30532", "chain": "A", "source": "alphafold"},
+    # UniProt: Q15825, CIF: AF-Q15825.cif
+    "CHRNA6":  {"pdb_id": "AF-Q15825", "chain": "A", "source": "alphafold"},
+    # UniProt: Q9UGM1, CIF: AF-Q9UGM1.cif
+    "CHRNA9":  {"pdb_id": "AF-Q9UGM1", "chain": "A", "source": "alphafold"},
+    # UniProt: Q13002, CIF: AF-Q13002.cif
+    "CHRNA10": {"pdb_id": "AF-Q13002", "chain": "A", "source": "alphafold"},
+    # UniProt: Q05901, CIF: AF-Q05901.cif
+    "CHRNB3":  {"pdb_id": "AF-Q05901", "chain": "A", "source": "alphafold"},
 }
 
 # Label mapping: binary classification (LOF vs GOF)
@@ -155,8 +163,8 @@ FEATURE_GROUPS = {
         "n_features": 17,  # 1 norm_position + 16 subunit one-hot (15 subunits)
     },
     "structural": {
-        "desc": "PDB-derived structural features (RSA, B-factor, DSSP, C-beta density)",
-        "n_features": 6,  # rsa, bfactor, dssp_helix, dssp_sheet, dssp_coil, cbeta_density
+        "desc": "PDB-derived structural features (RSA, B-factor, DSSP, C-beta density, half-sphere exposure)",
+        "n_features": 8,  # rsa, bfactor, dssp_helix, dssp_sheet, dssp_coil, cbeta_density, hse_up, hse_down
     },
 }
 

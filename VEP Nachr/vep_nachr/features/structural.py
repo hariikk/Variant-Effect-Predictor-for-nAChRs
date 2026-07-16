@@ -24,6 +24,8 @@ import pandas as pd
 from Bio import Align, SeqIO
 from Bio.PDB import MMCIFParser
 from Bio.PDB.Polypeptide import is_aa, protein_letters_3to1
+from Bio.PDB.SASA import ShrakeRupley
+from Bio.PDB.HSExposure import HSExposureCB
 from scipy.spatial import cKDTree
 
 from vep_nachr.config import (
@@ -285,6 +287,66 @@ def _compute_cbeta_density(residue, kdtree, radius: float = 10.0) -> float:
 
 
 # ============================================================================
+# SOLVENT ACCESSIBILITY (Shrake-Rupley) AND HALF-SPHERE EXPOSURE
+# ============================================================================
+#
+# These run directly on the CIF coordinates with no external binary (mkdssp,
+# msms), so they work on Windows. SASA is computed over the FULL pentamer so
+# that residues buried at subunit-subunit interfaces are scored as buried,
+# which is the biologically correct context for a nAChR assembly.
+
+def _annotate_sasa_and_hse(structure) -> None:
+    """
+    Compute per-residue SASA (Shrake-Rupley) and half-sphere exposure (HSE-CB)
+    for the whole structure, in place. After this call each residue carries:
+      - residue.sasa                        (absolute SASA in A^2)
+      - residue.xtra['EXP_HSE_B_U' / '_D']  (upper/lower half-sphere counts)
+
+    Idempotent: a flag on the structure prevents recomputation when the
+    structure object is reused from the cache.
+    """
+    if getattr(structure, "_sasa_hse_done", False):
+        return
+
+    model = structure[0]
+
+    # Shrake-Rupley SASA, summed to the residue level.
+    try:
+        ShrakeRupley().compute(model, level="R")
+    except Exception as e:  # pragma: no cover - defensive
+        warnings.warn(f"SASA computation failed: {e}")
+
+    # Half-sphere exposure populates residue.xtra in place.
+    try:
+        HSExposureCB(model)
+    except Exception as e:  # pragma: no cover - defensive
+        warnings.warn(f"HSExposure computation failed: {e}")
+
+    structure._sasa_hse_done = True
+
+
+def _rsa_from_sasa(residue) -> float:
+    """Relative solvent accessibility = SASA / max-ASA for the residue type."""
+    sasa = getattr(residue, "sasa", None)
+    if sasa is None:
+        return np.nan
+    aa_code = protein_letters_3to1.get(residue.resname, "X")
+    if not isinstance(aa_code, str) or len(aa_code) != 1 or aa_code == "X":
+        return np.nan
+    max_asa = MAX_ASA.get(aa_code.upper())
+    if not max_asa:
+        return np.nan
+    return float(sasa) / max_asa
+
+
+def _hse_from_residue(residue) -> tuple[float, float]:
+    """Read (upper, lower) half-sphere exposure counts from a residue."""
+    up = residue.xtra.get("EXP_HSE_B_U", np.nan)
+    down = residue.xtra.get("EXP_HSE_B_D", np.nan)
+    return float(up), float(down)
+
+
+# ============================================================================
 # DSSP COMPUTATION
 # ============================================================================
 
@@ -402,7 +464,7 @@ def extract_structural_features(
     _chain_median_bf = {}    # (pdb_id, chain) -> median bfactor
     _chain_residue_list = {} # (pdb_id, chain) -> [(res_id, bfactor), ...]
 
-    features = np.zeros((len(df), 6))
+    features = np.zeros((len(df), N_STRUCTURAL_FEATURES))
     n_mapped = 0
     n_imputed = 0
 
@@ -429,6 +491,9 @@ def extract_structural_features(
                 continue
 
         structure = _structure_cache[pdb_id]
+
+        # Annotate SASA + half-sphere exposure once per structure (in place)
+        _annotate_sasa_and_hse(structure)
 
         # Build alignment map (cached per subunit)
         if subunit not in _alignment_cache:
@@ -474,6 +539,8 @@ def extract_structural_features(
             continue
 
         # --- RSA ---
+        # Prefer mkdssp ASA if available; otherwise use Shrake-Rupley SASA
+        # (computed above on the full assembly), which needs no external binary.
         rsa = np.nan
         dssp_entry = dssp_data.get(pdb_res_id, {})
         asa = dssp_entry.get("asa")
@@ -485,7 +552,9 @@ def extract_structural_features(
             if max_asa and max_asa > 0:
                 rsa = float(asa) / max_asa
         if np.isnan(rsa):
-            rsa = 1.0  # impute as fully exposed
+            rsa = _rsa_from_sasa(residue)
+        if np.isnan(rsa):
+            rsa = 1.0  # last-resort impute as fully exposed
 
         # --- B-factor (with fallback) ---
         if dssp_key not in _bfactor_cache:
@@ -541,7 +610,14 @@ def extract_structural_features(
         if np.isnan(cbeta):
             cbeta = 0.0
 
-        features[i] = [rsa, bfactor, helix, sheet, coil, cbeta]
+        # --- Half-sphere exposure (burial proxy, complementary to RSA) ---
+        hse_up, hse_down = _hse_from_residue(residue)
+        if np.isnan(hse_up):
+            hse_up = 0.0
+        if np.isnan(hse_down):
+            hse_down = 0.0
+
+        features[i] = [rsa, bfactor, helix, sheet, coil, cbeta, hse_up, hse_down]
         n_mapped += 1
 
     total = len(df)
@@ -556,12 +632,13 @@ def extract_structural_features(
 
 def _imputed_row() -> np.ndarray:
     """Default values for a single unmappable residue."""
-    return np.array([1.0, 0.0, 0.0, 0.0, 1.0, 0.0])
+    # rsa=exposed, bfactor=0, helix=0, sheet=0, coil=1, cbeta=0, hse_up=0, hse_down=0
+    return np.array([1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0])
 
 
 def _imputed_structural_features(n_samples: int) -> np.ndarray:
     """Return imputed structural features when PDB data is unavailable."""
-    features = np.zeros((n_samples, 6))
+    features = np.zeros((n_samples, N_STRUCTURAL_FEATURES))
     features[:, 0] = 1.0  # RSA = fully exposed
     features[:, 4] = 1.0  # coil = 1
     return features
@@ -576,4 +653,9 @@ def get_structural_feature_names() -> list[str]:
         "dssp_sheet",
         "dssp_coil",
         "cbeta_density",
+        "hse_up",
+        "hse_down",
     ]
+
+
+N_STRUCTURAL_FEATURES = len(get_structural_feature_names())

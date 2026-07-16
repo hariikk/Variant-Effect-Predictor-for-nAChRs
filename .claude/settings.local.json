@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:39a3723441892ce1cf987508fb448b6a656b65c8d194d1640c1915cd9098d3c6
-size 72
+{
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "TodoRead(*)",
+      "TodoWrite(*)",
+      "Skill(claude-api)",
+      "PowerShell(python -m pip install \"google-genai>=0.3\" 2>&1 | Select-Object -Last 5)",
+      "PowerShell(python \"C:\\\\Users\\\\harik\\\\Downloads\\\\Computational Chemistry\\\\Variant-Effect-Predictor-for-nAChRs\\\\Data_Scraper\\\\_introspect.py\")",
+      "PowerShell($env:PYTHONIOENCODING=\"utf-8\"; python \"C:\\\\Users\\\\harik\\\\Downloads\\\\Computational Chemistry\\\\Variant-Effect-Predictor-for-nAChRs\\\\Data_Scraper\\\\_verify.py\")",
+      "PowerShell(cmd /c \"`\"C:\\\\Users\\\\harik\\\\Downloads\\\\Computational Chemistry\\\\Variant-Effect-Predictor-for-nAChRs\\\\Data_Scraper\\\\run_triage.cmd`\"\")"
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+%==============================================================
+% Advanced Scientific Writing -- Assignment 3
+% Position-paper OUTLINE, typeset with the official PSB / World
+% Scientific author kit (ws-procs11x85 document class).
+%
+% Build:  pdflatex twice  (or: latexmk -pdf -cd)
+%
+% OUTLINE: each section gives its heading plus short bullets
+% describing the content that section will contain.
+%==============================================================
+
+\documentclass{ws-procs11x85}
+\usepackage{ws-procs-thm}   % comment out if amsthm/theorem/ntheorem is used
+
+\begin{document}
+
+\title{Nicotinic Acetylcholine Receptor Prediction using VEP for Humans}
+
+\author{Hari Krishna Mohan Raj}
+
+\address{Department of Computational Chemistry,\\
+Hochschule Bonn Rhein Sieg, Sankt Augustin, Germany\\
+E-mail: harikrishnam0711@gmail.com}
+
+\begin{abstract}
+Variants in human nicotinic acetylcholine receptor (nAChR) genes cause
+a range of neurological and neuromuscular disorders, yet most newly
+observed variants are of unknown consequence. Existing predictors
+report only whether a variant is damaging, not whether it causes
+loss of function (LOF) or gain of function (GOF) a distinction that
+is decisive for therapy. We argue that variant effect prediction for
+nAChRs must move beyond binary pathogenicity toward receptor-specific,
+direction-aware prediction, and we outline the case, the gap in
+current tools, and what such a predictor would require.
+\end{abstract}
+
+\keywords{Variant effect prediction; nicotinic acetylcholine receptor;
+gain of function; loss of function; ion channel; machine learning.}
+
+% required, do-not-remove
+\copyrightinfo{\copyright\ 2026 Hari Krishna Mohan Raj, Karl Kirschner. Open Access chapter
+published by World Scientific Publishing Company and distributed under
+the terms of the Creative Commons Attribution Non-Commercial (CC
+BY-NC) 4.0 License.}
+
+%==============================================================
+\section{Introduction}\label{sec:intro}
+%==============================================================
+\begin{itemlist}
+\item nAChR variants cause myasthenic syndromes and epilepsy.
+\item sequencing outpaces functional assays; most variants are VUS.
+\item Core point: ``pathogenic'' is not equal to ``directional'' LOF and GOF need opposite therapies.
+\item nAChR prediction must become direction-aware and receptor-specific.
+% \item Roadmap of the paper.
+\end{itemlist}
+
+%==============================================================
+\section{Background: nAChRs and the Weight of Direction}\label{sec:background}
+%==============================================================
+\begin{itemlist}
+\item Brief nAChR primer, pentameric ligand gated channels, muscle vs neuronal types.
+\item Genotype to phenotype, which subunit genes map to which disorders.
+% \item Why direction, not just pathogenicity, drives treatment.
+\item LOF/GOF is measurable experimentally, but slow and costly.
+\end{itemlist}
+
+%==============================================================
+\section{The Current Landscape of Variant Effect Prediction}\label{sec:landscape}
+%==============================================================
+\begin{itemlist}
+\item Talk about what current tools can do and cant. 
+\end{itemlist}
+
+
+%==============================================================
+\section{The Gap: Why Existing Tools Fall Short for nAChRs}\label{sec:gap}
+%==============================================================
+\begin{itemlist}
+\item No nAChR specialized predictor; subunit identity ignored.
+\item Direction tools target other channels Na/Ca, thin nAChR coverage.
+\item nAChR structural determinants (binding interface, pore, gating) unused.
+\item Data scarce
+\end{itemlist}
+
+
+%==============================================================
+\section{Challenges and Open Questions}\label{sec:challenges}
+%==============================================================
+\begin{itemlist}
+\item Data scarcity and curation burden.
+\item LOF/GOF as a spectrum, mixed effect variants.
+\item Generalization across subunits and to novel variants.
+\item Interpretability and the risk of overclaiming.
+\item No shared nAChR direction of effect benchmark.
+\end{itemlist}
+
+%==============================================================
+\section{Conclusion and Call to Action}\label{sec:conclusion}
+%==============================================================
+\begin{itemlist}
+\item Conclude the results
+\item talk about faster, cheaper triage of nAChR VUS.
+\end{itemlist}
+
+
+%==============================================================
+% References
+%==============================================================
+\begin{thebibliography}{9}
+
+\bibitem{sift} P.~C. Ng and S.~Henikoff, SIFT: predicting amino acid
+changes that affect protein function, {\em Nucleic Acids Res.}
+{\bf 31}, 3812 (2003).
+
+\bibitem{polyphen2} I.~A. Adzhubei {\em et al.}, A method and server
+for predicting damaging missense mutations, {\em Nat. Methods}
+{\bf 7}, 248 (2010).
+
+\bibitem{cadd} M.~Kircher {\em et al.}, A general framework for
+estimating the relative pathogenicity of human genetic variants,
+{\em Nat. Genet.} {\bf 46}, 310 (2014).
+
+\bibitem{alphamissense} J.~Cheng {\em et al.}, Accurate proteome-wide
+missense variant effect prediction with AlphaMissense, {\em Science}
+{\bf 381}, eadg7492 (2023).
+
+\bibitem{esm1b} N.~Brandes {\em et al.}, Genome-wide prediction of
+disease variant effects with a deep protein language model,
+{\em Nat. Genet.} {\bf 55}, 1512 (2023).
+
+\bibitem{funncion} A.~Brunklaus {\em et al.}, Gene variant effects
+across sodium channelopathies predict function and guide precision
+therapy, {\em Brain} {\bf 145}, 4275 (2022).
+
+\bibitem{logofunc} D.~Stein {\em et al.}, Genome-wide prediction of
+pathogenic gain- and loss-of-function variants from ensemble learning
+of a diverse feature set, {\em Genome Med.} {\bf 15}, 103 (2023).
+
+\bibitem{premode} G.~Zhang {\em et al.}, Predicting the mode of action
+of missense variants (PreMode), bioRxiv (2024).
+
+\bibitem{mohanraj2026} H.~K. Mohan Raj, {\em Variant Effect Predictor
+in Human nAChR Proteins: Abstract and Publishable Results}, Advanced
+Scientific Writing, Assignment~2 (2026).
+
+
+\end{thebibliography}
+
+\end{document}

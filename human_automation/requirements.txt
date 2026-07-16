@@ -1,0 +1,12 @@
+# worklist builder (main.py)
+biopython>=1.81
+openpyxl>=3.1
+python-dotenv>=1.0
+requests>=2.28
+tqdm>=4.65
+
+# extraction pipeline (extract_main.py)
+pdfplumber>=0.10.0
+pandas>=2.0
+# only needed if EXTRACT_BACKEND=gemini:
+google-genai>=1.0

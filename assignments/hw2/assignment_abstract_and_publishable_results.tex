@@ -1,0 +1,234 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Advanced Scientific Writing}
+\lhead{\small Assignment 2}
+\cfoot{\thepage}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+% ---- TITLE PAGE ----
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\LARGE\bfseries Advanced Scientific Writing\\[0.3cm]
+Assignment 2\\[0.3cm]
+Abstract and Publishable Results\par}
+\vspace{2cm}
+{\Large Variant Effect Predictor in Human nAChR Proteins\par}
+\vspace{2.5cm}
+{\large Hari Krishna Mohan Raj\par}
+\vspace{1cm}
+{\large \today\par}
+\vfill
+\end{titlepage}
+
+% ============================================================
+% (a) TITLE AND ABSTRACT
+% ============================================================
+\section*{(a) Title and Abstract}
+
+\textbf{Title:} Variant Effect Predictor in Human nAChR Proteins
+
+\vspace{0.5em}
+\textbf{Abstract Template:}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|L{3.5cm}|X|}
+\hline
+\textbf{One sentence for each item} & \textbf{Example} \\
+\hline
+Introduction (area of study) &
+Nicotinic acetylcholine receptors (nAChRs) are ion channels that play a key role in nerve and muscle signaling, and mutations in their genes have been linked to conditions like epilepsy and congenital myasthenic syndromes. \\
+\hline
+The problem (that I tackle) &
+When a new mutation is found, it's hard to tell if it causes loss-of-function (LOF) or gain-of-function (GOF) without running expensive and time-consuming lab experiments. \\
+\hline
+What the literature says about this problem &
+Existing tools like PolyPhen-2 and SIFT can flag a variant as damaging, but they can't tell you whether it's LOF or GOF, and there's no predictor built specifically for nAChRs. \\
+\hline
+How I tackle this problem &
+I'm building a machine learning model trained on experimentally tested nAChR mutations to classify them as LOF or GOF based on their sequence and structural features. \\
+\hline
+How I implement my solution &
+Each mutation is described using features like amino acid property changes, substitution scores (BLOSUM62, Grantham distance), and structural information from cryo-EM structures, and multiple ML models are compared using cross-validation. \\
+\hline
+The result &
+The model is expected to perform meaningfully above random guessing for GOF detection and provide a useful starting point for computational screening of new nAChR variants before experimental testing. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\textbf{Abstract:}
+
+Nicotinic acetylcholine receptors (nAChRs) are ion channels that play a key role in nerve and muscle signaling, and mutations in their genes have been linked to conditions like epilepsy and congenital myasthenic syndromes. When a new mutation is found, it's hard to tell if it causes loss-of-function (LOF) or gain-of-function (GOF) without running expensive and time-consuming lab experiments. Existing tools like PolyPhen-2 and SIFT can flag a variant as damaging, but they can't tell you whether it's LOF or GOF, and there's no predictor built specifically for nAChRs. I'm building a machine learning model trained on experimentally tested nAChR mutations to classify them as LOF or GOF based on their sequence and structural features. Each mutation is described using features like amino acid property changes, substitution scores (BLOSUM62, Grantham distance), and structural information from cryo-EM structures, and multiple ML models are compared using cross-validation. The model is expected to perform meaningfully above random guessing for GOF detection and provide a useful starting point for computational screening of new nAChR variants before experimental testing.
+
+\newpage
+
+% ============================================================
+% (b) PUBLISHABLE RESULTS
+% ============================================================
+\section*{(b) Publishable Results}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|L{3.5cm}|X|}
+\hline
+\textbf{One sentence for each item} & \textbf{Example} \\
+\hline
+Introduction (area of study) &
+nAChR mutations cause various neurological and neuromuscular disorders, and knowing whether a mutation is LOF or GOF matters for treatment decisions. \\
+\hline
+The problem (that I tackle) &
+There's no computational tool that predicts LOF vs.\ GOF specifically for nAChR variants. \\
+\hline
+What the literature says about this problem &
+Current predictors only classify variants as pathogenic or benign without distinguishing the direction of functional change. \\
+\hline
+How I tackle this problem &
+A curated dataset of experimentally characterized nAChR mutations was compiled, and a feature set combining physicochemical, evolutionary, and structural descriptors was engineered for ML-based classification. \\
+\hline
+How I implement my solution &
+Features include amino acid property changes, BLOSUM62 and Grantham substitution scores, structural context from cryo-EM structures (B-factor, secondary structure, packing density), and subunit identity. Multiple classifiers were trained and evaluated with cross-validation. \\
+\hline
+The result &
+Gradient boosting models showed the best performance for LOF/GOF classification, and structural features from cryo-EM data contributed to improved predictions. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+
+% ============================================================
+% (c) CONFERENCES AND DEADLINES
+% ============================================================
+\section*{(c) Relevant Conferences and Deadlines}
+
+\begin{itemize}
+
+    \item \textbf{PSB 2027 (Pacific Symposium on Biocomputing)}\\
+    January 3 to 7, 2027, Hawaii, USA\\
+    Paper deadline: August 3, 2026 | Abstract deadline: December 1, 2026\\
+    \url{https://psb.stanford.edu/}
+
+    \vspace{0.5em}
+    \item \textbf{RECOMB 2027 (Research in Computational Molecular Biology)}\\
+    2027, Toronto, Canada\\
+    Paper deadline: $\sim$November 2026 (expected)\\
+    \url{https://recomb.org/}
+
+    \vspace{0.5em}
+    \item \textbf{ISMB/ECCB 2027 (Intelligent Systems for Molecular Biology)}\\
+    July 2027, Copenhagen, Denmark\\
+    Paper deadline: $\sim$January 2027 (expected)\\
+    \url{https://www.iscb.org/}
+
+\end{itemize}
+
+\newpage
+
+% ============================================================
+% (d) REVISED ABSTRACT
+% ============================================================
+\section*{(d) Revised Abstract}
+
+This revision reflects where the project currently stands, with results now available from the model training and evaluation.
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|L{3.5cm}|X|}
+\hline
+\textbf{One sentence for each item} & \textbf{Example} \\
+\hline
+Introduction (area of study) &
+Mutations in nAChR genes cause conditions ranging from muscle weakness to epilepsy, but for most newly found variants we don't know what they actually do to the protein. \\
+\hline
+The problem (that I tackle) &
+Classifying a variant as LOF or GOF needs lab experiments that can't keep up with the rate new variants are being found through sequencing. \\
+\hline
+What the literature says about this problem &
+Tools like PolyPhen-2, SIFT, and CADD only predict whether a variant is pathogenic but they don't say if the protein loses or gains function. No predictor exists for nAChRs specifically. \\
+\hline
+How I tackle this problem &
+I built VEP-nAChR, a classifier trained on 351 nAChR mutations that have been experimentally tested and labeled as LOF or GOF. \\
+\hline
+How I implement my solution &
+Each mutation is represented by 50 features covering amino acid property changes, BLOSUM62 and Grantham scores, structural info from cryo-EM structures, and subunit identity. Seven ML models were benchmarked using nested cross-validation with Optuna hyperparameter tuning. \\
+\hline
+The result &
+XGBoost and LightGBM achieved F1 = 0.67 for GOF detection at 75\% accuracy, well above random baseline, and structural features from cryo-EM data provided a consistent improvement. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+
+% ============================================================
+% (e) PAPERS FROM PREVIOUS PROCEEDINGS
+% ============================================================
+\section*{(e) Papers from Previous Proceedings}
+
+I went through a few papers from PSB proceedings and related computational biology venues (Bhatt et al., PLOS Comp Bio 2023; Heyne et al., bioRxiv 2021). Here are my overall observations:
+
+\begin{itemize}
+    \item The papers follow a single-column layout with Times New Roman font, unlike the two-column format you'd see in IEEE venues.
+    \item PSB has a 12-page limit for main content, with no restriction on references and cover page.
+    \item Most papers had a pipeline or system overview diagram within the first two pages showing inputs, methods, and outputs.
+    \item Supplementary/appendix material was common and authors used it to elaborate on their methods without cluttering the main paper.
+    \item The reference style used is numbered square brackets (e.g.\ [1], [2]), standard BibTeX plain or unsrt style.
+    \item Result figures were mostly confusion matrices, ROC curves, and feature importance plots, which is pretty standard for ML papers in this space.
+    \item Color figures are accepted and used freely.
+\end{itemize}
+
+\newpage
+
+% ============================================================
+% (f) AUTHOR KIT
+% ============================================================
+\section*{(f) Author Kit}
+
+Author kits and templates for the three identified venues:
+
+\begin{itemize}
+
+    \item \textbf{PSB 2027:}\\
+    Templates (LaTeX and Word) available at:\\
+    \url{https://psb.stanford.edu/psb-online/psb-submit/}\\
+    (Includes \texttt{psb11x85\_2e.zip} for LaTeX and \texttt{psb2024-template.docx} for Word)
+
+    \vspace{0.5em}
+    \item \textbf{RECOMB 2027:}\\
+    Uses Springer LNBI (Lecture Notes in Bioinformatics) template:\\
+    \url{https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines}\\
+    Overleaf template: \url{https://www.overleaf.com/latex/templates/springer-lecture-notes-in-computer-science/kzwwpvhwnvfj}
+
+    \vspace{0.5em}
+    \item \textbf{ISMB/ECCB 2027:}\\
+    Uses Oxford University Press (OUP) Bioinformatics journal template:\\
+    \url{https://academic.oup.com/bioinformatics/pages/submission_online}
+
+\end{itemize}
+
+\end{document}

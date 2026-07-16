@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Title and Abstract}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Title}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Abstract (Structured via Template)}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Abstract (Paragraph Form)}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Publishable Results}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Result 1: LOF vs.\ GOF Classification Performance}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Result 2: Feature Engineering Framework}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Result 3: Structural Features Impact}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Result 4: Curated nAChR Mutation Database}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Result 5: Multi-Model Benchmarking}{4}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Result 6: Cross-Protein Transferability}{4}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Relevant Conferences and Deadlines}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Primary Recommended Venues}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Secondary / Workshop Venues}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Actionable Timeline}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Revised Abstract via Template}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Revised Abstract Template}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Key Revisions from Initial Version}{7}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Papers from Previous Proceedings to Review}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Paper 1: Ion Channel Variant Prediction with Phenotypic ML}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Paper 2: Potassium Channel Variants with Multi-Task Learning}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Paper 3: PSB Proceedings for Formatting Reference}{9}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Review Checklist}{9}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Author Kit for Publication Venue}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Submission Requirements}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Key Deadlines}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}How to Obtain the Author Kit}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Publication Details}{10}{subsection.6.4}%

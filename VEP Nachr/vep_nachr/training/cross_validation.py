@@ -11,6 +11,7 @@ Adapted from VEP-ENaC for binary classification (LOF vs GOF).
 
 import gc
 import json
+import os
 import warnings
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -310,18 +311,32 @@ def _optimize_hyperparameters(
     n_jobs: int = 1,
     verbose: bool = False,
 ) -> dict:
-    """Run Optuna optimization for hyperparameters."""
+    """Run Optuna optimization for hyperparameters.
+
+    Parallelism strategy for small tabular data: run many Optuna trials
+    concurrently (one per core), each trial single-threaded. This fills all
+    cores with independent work, whereas parallelizing the inner 5-fold CV
+    can only ever use ~5 cores and leaves the rest idle.
+    """
     n_feats = X.shape[1]
+
+    # Resolve how many trials to run in parallel.
+    if n_jobs is None or n_jobs <= 0:
+        optuna_jobs = os.cpu_count() or 1
+    else:
+        optuna_jobs = n_jobs
+    optuna_jobs = max(1, min(optuna_jobs, n_trials))
 
     def objective(trial):
         params = get_hyperparameter_space(model_name, trial, n_features=n_feats)
+        # Single-threaded model + CV; concurrency comes from parallel trials.
         model = get_model(model_name, params=params, random_state=seed, n_jobs=1)
         cv = StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=seed)
 
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             scores = cross_val_score(
-                model, X, y, cv=cv, scoring="f1", n_jobs=min(n_jobs, n_folds)
+                model, X, y, cv=cv, scoring="f1", n_jobs=1
             )
         return np.mean(scores)
 
@@ -329,7 +344,9 @@ def _optimize_hyperparameters(
     study = optuna.create_study(direction="maximize", sampler=sampler)
 
     optuna.logging.set_verbosity(optuna.logging.WARNING)
-    study.optimize(objective, n_trials=n_trials, n_jobs=1, show_progress_bar=verbose)
+    study.optimize(
+        objective, n_trials=n_trials, n_jobs=optuna_jobs, show_progress_bar=verbose
+    )
 
     best_params = get_hyperparameter_space(model_name, study.best_trial, n_features=n_feats)
 

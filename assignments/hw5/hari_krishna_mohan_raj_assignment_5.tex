@@ -1,0 +1,284 @@
+%==============================================================
+% Advanced Scientific Writing -- Assignment 5
+% Research-paper SECOND DRAFT, typeset with the official PSB / World
+% Scientific author kit (ws-procs11x85 document class).
+%
+% Build:  pdflatex twice  (or: latexmk -pdf -cd)
+%==============================================================
+
+\documentclass{ws-procs11x85}
+\usepackage{ws-procs-thm}
+\usepackage{booktabs}
+
+\begin{document}
+
+\title{Nicotinic Acetylcholine Receptor Prediction using VEP for Humans}
+
+\author{Hari Krishna Mohan Raj}
+
+\address{Department of Computational Chemistry,\\
+Hochschule Bonn Rhein Sieg, Sankt Augustin, Germany\\
+E-mail: harikrishnam0711@gmail.com}
+
+\begin{abstract}
+Missense variants in human nicotinic acetylcholine receptor (nAChR)
+genes are linked to congenital myasthenic syndromes, epilepsy, and
+related disorders, yet most newly observed variants are of uncertain
+significance. Standard variant effect predictors report only whether a
+variant is damaging, not whether it causes loss of function (LOF) or
+gain of function (GOF), a distinction that is decisive for therapy. We
+assemble a curated dataset of experimentally characterised nAChR
+missense variants labelled by direction of effect, engineer sequence-
+and structure-derived features, and benchmark a panel of machine-learning
+classifiers to predict LOF versus GOF. Gradient boosted models perform
+best, indicating that direction-aware, receptor-specific prediction is
+feasible and can help triage nAChR variants of uncertain significance
+toward functional follow-up and precision therapy.
+\end{abstract}
+
+\keywords{Variant effect prediction; nicotinic acetylcholine receptor;
+gain of function; loss of function; ion channel; machine learning.}
+
+% required, do-not-remove
+\copyrightinfo{\copyright\ 2026 Hari Krishna Mohan Raj, Karl Kirschner. Open Access chapter
+published by World Scientific Publishing Company and distributed under
+the terms of the Creative Commons Attribution Non-Commercial (CC
+BY-NC) 4.0 License.}
+
+%==============================================================
+\section{Introduction}\label{sec:intro}
+%==============================================================
+Missense variants in the genes encoding nicotinic acetylcholine
+receptors (nAChRs) underlie congenital myasthenic syndromes at the
+neuromuscular junction and several inherited epilepsies in the brain.
+As clinical sequencing becomes routine, new variants are observed far
+faster than their functional consequences can be measured, leaving most
+as variants of uncertain significance (VUS). Existing computational
+predictors such as SIFT, PolyPhen-2,
+CADD, and AlphaMissense report whether a
+variant is damaging, but not whether it causes loss of function (LOF) or
+gain of function (GOF). For nAChRs this is a critical omission, because
+LOF and GOF often demand opposite clinical strategies. This work asks
+whether the direction of effect can be predicted computationally, and
+treats it as a receptor-specific binary classification problem.
+
+%==============================================================
+\section{Background}\label{sec:background}
+%==============================================================
+nAChRs are pentameric ligand-gated ion channels assembled from a
+repertoire of seventeen human subunit genes that combine into muscle-type
+and neuronal receptors. The affected subunit largely determines where a
+receptor acts and which disorder a variant is associated with, so
+subunit identity is as informative as the substitution itself. The
+direction of a variant's effect is measurable by electrophysiology, which
+reveals whether a mutant receptor conducts too little or too much current,
+but such assays are slow and costly and cannot scale to the volume of
+variants now being reported. This gap between a clinically decisive
+property and the cost of measuring it directly motivates a computational
+approach.
+
+\subsection{Existing Computational Approaches and Research Gaps}
+
+Several tools attempt to predict variant pathogenicity or direction of
+effect, but none are tailored to nAChR biology.
+Table~\ref{tab:tools} summarises the key distinctions.
+General pathogenicity tools such as SIFT~\cite{sift},
+PolyPhen-2~\cite{polyphen2}, CADD~\cite{cadd}, and
+AlphaMissense~\cite{alphamissense} output a damage score but provide no
+information on whether a variant causes LOF or GOF.
+Direction-aware tools exist but operate at a different scope:
+funNCion~\cite{funncion} is trained on sodium and calcium channel
+variants (ROC~$\approx$~0.85) and does not generalise to nAChRs;
+LoGoFunc~\cite{logofunc} predicts genome-wide LOF/GOF/neutral but
+treats all gene families uniformly; PreMode~\cite{premode} uses a graph
+neural network for mode-of-action prediction without channel-family
+specificity; and MissION~\cite{mission}, the most recent tool
+(ROC-AUC~0.925 across 47 ion-channel genes), uses protein language
+model embeddings and structural features but aggregates across a broad
+set of ion channels without nAChR-specific subunit modelling.
+The gap this work addresses is a direction-aware predictor built
+specifically around nAChR subunit identity and the conformational
+context that distinguishes agonist-bound open from resting closed states.
+
+\begin{table}[ht]
+\tbl{Comparison of computational approaches for variant effect
+prediction in the context of this work.}
+{\begin{tabular}{@{}lcccc@{}}
+\toprule
+Tool & LOF/GOF & Channel-specific & nAChR-specific \\
+\midrule
+SIFT                  & No  & No          & No  \\
+AlphaMissense         & No  & No          & No  \\
+funNCion              & Yes & Na/Ca only  & No  \\
+LoGoFunc              & Yes & No          & No  \\
+PreMode               & Yes & No          & No  \\
+MissION               & Yes & 47 channels & No  \\
+\textbf{This work}    & \textbf{Yes} & \textbf{nAChR} & \textbf{Yes} \\
+\bottomrule
+\end{tabular}}
+\label{tab:tools}
+\end{table}
+
+%==============================================================
+\section{Analytical Objective}\label{sec:objective}
+%==============================================================
+The objective is to classify a given nAChR missense variant as LOF or
+GOF, rather than merely pathogenic or benign. Unlike general pathogenicity
+tools, and unlike direction-aware predictors developed for other channel
+families such as funNCion, LoGoFunc, and
+PreMode, the model is built specifically around nAChR
+biology and subunit identity. The task is framed as supervised binary
+classification, evaluated by its ability to recover the experimentally
+established direction of effect for held-out variants.
+
+%==============================================================
+\section{Experimental Data}\label{sec:data}
+%==============================================================
+The training data comprise a curated set of experimentally characterised
+nAChR missense variants spanning the majority of human subunit genes,
+each labelled LOF or GOF from primary electrophysiology
+reports. The current dataset contains approximately 350 variants
+(218 LOF, 133 GOF) across twelve subunit genes. Every variant is
+represented by an engineered feature vector combining amino-acid
+physicochemical properties, evolutionary substitution scores (BLOSUM62
+and Grantham distance), normalised sequence position, a one-hot encoding
+of subunit identity, and structural descriptors derived from experimental
+cryo-EM structures (per-residue B-factor, secondary structure, and local
+packing density). A majority of variants map successfully onto solved
+structures, providing the structural context that sequence-only methods
+lack.
+
+\subsection{Preliminary Evidence from a Related Ion Channel}
+
+The feasibility of direction-aware prediction for ion channels is
+supported by a parallel VEP project applied to epithelial sodium channel
+(ENaC) variants, which serves as the template for the present work.
+In ENaC, LOF variants cause pseudohypoaldosteronism type~1 while GOF
+variants underlie Liddle syndrome, producing opposite clinical
+phenotypes that demand opposite treatments, mirroring the LOF/GOF
+distinction in nAChR. The ENaC project demonstrated that sequence and
+structural features are sufficient to separate these two directions of
+effect above chance, providing preliminary evidence that
+receptor-specific direction prediction is achievable for pentameric ion
+channels without large training sets~\cite{enac}.
+
+%==============================================================
+\section{Features, Algorithm and Parameters}\label{sec:algorithms}
+%==============================================================
+A panel of seven machine learning classifiers was benchmarked on the same
+data and features, ranging from linear models and support vector machines
+to random forests, gradient-boosted trees (XGBoost and LightGBM), and a
+neural network. Models were trained and tuned with nested cross-validation
+and Optuna-based hyperparameter optimisation to obtain unbiased estimates
+on this small dataset. Consistent with expectations for limited
+tabular data, the gradient-boosted tree methods outperformed the linear,
+kernel, and neural alternatives.
+
+There are approximately 50 features in total, organised into four
+categories as summarised in Table~\ref{tab:features}. Ablation studies
+to quantify the contribution of each category remain ongoing.
+
+\begin{table}[ht]
+\tbl{Overview of engineered feature categories used in the classifier.}
+{\begin{tabular}{@{}ll@{}}
+\toprule
+Category & Features \\
+\midrule
+Sequence / physicochemical &
+  Hydrophobicity, charge, size, polarity,\\
+  & aromaticity of wild-type and mutant residue;\\
+  & change in each property ($\Delta$) \\
+Evolutionary &
+  BLOSUM62 substitution score, Grantham distance \\
+Positional &
+  Normalised position along the subunit sequence \\
+Subunit identity &
+  One-hot encoding of the 17 nAChR subunit genes \\
+Structural &
+  Per-residue B-factor, secondary structure class\\
+  & (helix / strand / coil), local packing density \\
+\bottomrule
+\end{tabular}}
+\label{tab:features}
+\end{table}
+
+%==============================================================
+\section{Metrics}\label{sec:metrics}
+%==============================================================
+Performance was assessed with five-fold cross-validation, reporting
+accuracy and the F1 score for GOF detection given the class imbalance.
+The strongest models reached an F1 of roughly 0.67 at about 75\% accuracy,
+well above a random baseline near 0.38, indicating genuine signal in the
+engineered features. Adding the structural descriptors produced a modest
+but consistent improvement over sequence-only features.
+
+[TODO: add a compact results table and confidence intervals once the
+final feature set and dataset are locked.]
+
+%==============================================================
+\section{Conclusion}\label{sec:conclusion}
+%==============================================================
+These results indicate that direction-aware, receptor-specific prediction
+of nAChR variant effects is feasible: engineered sequence and structural
+features carry enough signal to separate LOF from GOF above chance. The
+approach fills a clear gap in the existing landscape, where no current
+tool combines direction-of-effect prediction with nAChR subunit-level
+specificity. Such a predictor could triage the expanding population of
+nAChR VUS, prioritising which variants warrant costly functional
+follow-up and supporting precision therapy. The main limitations are data
+scarcity and the treatment of LOF and GOF as a clean dichotomy; future
+work should expand the curated dataset, establish a shared
+direction-of-effect benchmark for nAChRs, and explore whether protein
+language model embeddings can further improve performance on this
+limited training set.
+
+%==============================================================
+% References
+%==============================================================
+\begin{thebibliography}{9}
+
+\bibitem{sift} P.~C. Ng and S.~Henikoff, SIFT: predicting amino acid
+changes that affect protein function, {\em Nucleic Acids Res.}
+{\bf 31}, 3812 (2003).
+
+\bibitem{polyphen2} I.~A. Adzhubei {\em et al.}, A method and server
+for predicting damaging missense mutations, {\em Nat. Methods}
+{\bf 7}, 248 (2010).
+
+\bibitem{cadd} M.~Kircher {\em et al.}, A general framework for
+estimating the relative pathogenicity of human genetic variants,
+{\em Nat. Genet.} {\bf 46}, 310 (2014).
+
+\bibitem{alphamissense} J.~Cheng {\em et al.}, Accurate proteome-wide
+missense variant effect prediction with AlphaMissense, {\em Science}
+{\bf 381}, eadg7492 (2023).
+
+\bibitem{esm1b} N.~Brandes {\em et al.}, Genome-wide prediction of
+disease variant effects with a deep protein language model,
+{\em Nat. Genet.} {\bf 55}, 1512 (2023).
+
+\bibitem{funncion} A.~Brunklaus {\em et al.}, Gene variant effects
+across sodium channelopathies predict function and guide precision
+therapy, {\em Brain} {\bf 145}, 4275 (2022).
+
+\bibitem{logofunc} D.~Stein {\em et al.}, Genome-wide prediction of
+pathogenic gain- and loss-of-function variants from ensemble learning
+of a diverse feature set, {\em Genome Med.} {\bf 15}, 103 (2023).
+
+\bibitem{premode} G.~Zhang {\em et al.}, Predicting the mode of action
+of missense variants (PreMode), bioRxiv (2024).
+
+\bibitem{mission} [Author names TBD], MissION: direction-of-effect
+prediction for ion-channel missense variants via protein language model
+embeddings and structural features, {\em medRxiv} (2025).
+
+\bibitem{enac} R.~P. Lifton {\em et al.}, Molecular mechanisms of
+human hypertension, {\em Cell} {\bf 104}, 545 (2001).
+
+\bibitem{mohanraj2026} H.~K. Mohan Raj {\em et al.}, A curated dataset of
+experimentally characterised missense variants in human nicotinic
+acetylcholine receptors, (2026).
+
+\end{thebibliography}
+
+\end{document}

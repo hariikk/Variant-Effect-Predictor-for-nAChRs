@@ -1,0 +1,71 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{eurosym}
+\usepackage{enumerate}
+\setlength{\parskip}{4pt}
+
+\begin{document}
+\pagestyle{empty}
+
+{\large\textbf{RDC\_Peer\_Review 27.06.2026}}
+
+Peer Review by Hari Krishna Mohan Raj
+
+\bigskip
+
+\textbf{\large Paper Title: Data-Driven Makeup Detection via TOF Cameras in Biometrics}
+
+\textbf{\large Author: Aidin Masroor, Sebastian Houben, Ralph Breithaupt, Markus Rohde}
+
+\bigskip
+
+\textbf{Intended Conference: IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI) 2027}
+
+\bigskip
+
+Rating: (Exceptional $|$ Major $|$ Good $|$ Minor $|$ Questionable $|$ None $|$ Previously Published)
+
+\begin{enumerate}[(i)]
+
+\item \textbf{Relevance of the use of AI in the application/context: Major}
+
+The idea of using a deep learning model to figure out what a face should look like
+from a depth image makes sense here, since you cannot really write a simple rule for
+that. The authors tried three different model types and picked the one that worked
+best, which shows they thought it through rather than just going with the first option.
+
+\item \textbf{Significance of contribution: Good}
+
+Using a ToF camera to catch people wearing makeup to fool face recognition is a
+fresh idea and the paper says no one else has done it this way before. It also seems
+cheaper than the setups used in other work, which is a practical plus. The results
+look promising even if the study is still at an early stage.
+
+\item \textbf{Technical quality of the intelligent solution: Good}
+
+The model seems to work reasonably well based on the images shown and the similarity
+score plots. The authors also tested a few different model architectures before
+settling on U-Net, which adds some confidence to the choice. There is a missing
+reference marked as \texttt{??} in the text which should be fixed before submitting.
+
+\item \textbf{Clarity and quality: Good}
+
+The paper is easy enough to follow and the figures help a lot in understanding what
+is going on. Some parts of the writing are a bit rough and there are a few spelling
+mistakes here and there. A quick proofread would clean things up and make it read
+more polished overall.
+
+\end{enumerate}
+
+\medskip
+
+\textit{Reviewer's confidence: 4 / 5}
+
+\textbf{Overall Evaluation:} Overall, I would rate this as an accept. The idea is
+interesting and the approach seems to work based on what is shown. It is a fairly
+new way of tackling the problem and the paper is understandable. Some small things
+like spelling mistakes and a missing reference should be fixed.
+
+\end{document}
