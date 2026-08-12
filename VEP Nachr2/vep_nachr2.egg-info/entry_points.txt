@@ -1,0 +1,2 @@
+[console_scripts]
+vep-nachr2 = vep_nachr2.training.runner:main

@@ -9,6 +9,7 @@ import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
+import yaml
 
 
 # =============================================================================
@@ -170,12 +171,66 @@ FEATURE_GROUPS = {
 
 
 # =============================================================================
+# SPECIES CONFIGURATION
+# =============================================================================
+
+# Supported species and their encoding
+SPECIES_LIST = ["human", "mouse", "rat"]
+SPECIES_MAPPING = {"human": 0, "mouse": 1, "rat": 2}
+
+# Mouse/rat subunit name mapping (same letters as human for nAChR)
+# Subunit names are identical across species for nAChR
+SPECIES_TO_FASTA_DIR = {
+    "human": "protein_scequences",  # Path relative to SOURCE_DATA_DIR
+    "mouse": "protein_scequences_mouse",
+    "rat": "protein_scequences_rat",
+}
+
+
+# =============================================================================
+# ENCODING CONFIGURATION
+# =============================================================================
+
+# Encoding strategies for domain-driven vs data-driven comparison
+ENCODING_STRATEGIES = {
+    "ordinal": "Ordinal encoding (position + integer-encoded AAs + species)",
+    "onehot": "One-hot encoding (position + one-hot AAs + species + subunit)",
+    "fullseq": "Full sequence encoding (complete mutant sequence)",
+    "engineered": "Engineered features (52 features: AAIndex + structural + substitution + positional)",
+    "combined": "Deduplicated concatenation of engineered + Noah's original features",
+}
+
+# Which encodings need wildtype sequences
+ENCODINGS_REQUIRING_SEQUENCES = {"fullseq", "fullsequence", "full_sequence"}
+
+# Which encodings are domain-driven (use structural/physicochemical knowledge)
+DOMAIN_DRIVEN_ENCODINGS = {"engineered", "noah_original", "combined"}
+
+# Which encodings are data-driven (purely from sequence/position)
+DATA_DRIVEN_ENCODINGS = {"ordinal", "onehot", "fullseq"}
+
+
+# =============================================================================
 # MODEL CONFIGURATION
 # =============================================================================
 
 CORE_MODELS = ["logistic_regression", "svm_rbf", "random_forest", "lightgbm"]
 EXTENDED_MODELS = ["svm_linear", "knn", "xgboost", "catboost", "mlp", "gaussian_nb"]
 ALL_MODELS = CORE_MODELS + EXTENDED_MODELS
+
+# Model display names
+MODEL_DISPLAY_NAMES = {
+    "logistic_regression": "Logistic Regression",
+    "svm_rbf": "SVM (RBF)",
+    "svm_linear": "SVM (Linear)",
+    "random_forest": "Random Forest",
+    "lightgbm": "LightGBM",
+    "knn": "KNN",
+    "gaussian_nb": "Gaussian Naïve Bayes",
+    "mlp": "Multilayer Perceptron",
+    "xgboost": "XGBoost",
+    "catboost": "CatBoost",
+}
 
 
 # =============================================================================
@@ -193,3 +248,138 @@ class CVConfig:
     @property
     def n_seeds(self) -> int:
         return len(self.seeds)
+
+
+# =============================================================================
+# FEATURE CACHE
+# =============================================================================
+
+FEATURE_CACHE_DIR = RESULTS_DIR / ".cache"
+FEATURE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# =============================================================================
+# EXPERIMENT CONFIGURATION (YAML-SUPPORTED)
+# =============================================================================
+
+@dataclass
+class Config:
+    """Main configuration class for nAChR VEP experiments.
+
+    Supports YAML serialization for reproducible experiment tracking.
+    """
+
+    # Experiment identification
+    experiment_name: str = "default"
+    approach: str = "both"  # 'domain_driven', 'data_driven', 'both'
+
+    # Data configuration
+    species: list[str] = field(default_factory=lambda: ["human"])
+    subunits: list[str] = field(default_factory=lambda: NACHR_SUBUNITS.copy())
+
+    # Model configuration
+    models: list[str] = field(default_factory=lambda: CORE_MODELS.copy())
+    encodings: list[str] = field(default_factory=lambda: ["engineered"])
+
+    # CV configuration
+    cv: CVConfig = field(default_factory=CVConfig)
+
+    # Execution environment
+    n_jobs: int = -1
+    verbose: int = 1
+    use_hpc: bool = False
+
+    # Output
+    results_dir: Path = field(default_factory=lambda: RESULTS_DIR)
+    save_predictions: bool = True
+    save_models: bool = False
+    compute_feature_importance: bool = False
+
+    # Feature flags
+    include_structural: bool = True
+    include_species: bool = True
+
+    # Cache
+    use_feature_cache: bool = True
+    feature_cache_dir: Path = field(default_factory=lambda: FEATURE_CACHE_DIR)
+
+    @classmethod
+    def from_yaml(cls, path: str | Path) -> "Config":
+        """Load configuration from YAML file."""
+        with open(path, "r") as f:
+            data = yaml.safe_load(f)
+
+        # Handle nested dataclasses
+        if "cv" in data and isinstance(data["cv"], dict):
+            data["cv"] = CVConfig(**data["cv"])
+        if "results_dir" in data and isinstance(data["results_dir"], str):
+            data["results_dir"] = Path(data["results_dir"])
+        if "feature_cache_dir" in data and isinstance(data["feature_cache_dir"], str):
+            data["feature_cache_dir"] = Path(data["feature_cache_dir"])
+
+        return cls(**data)
+
+    def to_yaml(self, path: str | Path) -> None:
+        """Save configuration to YAML file."""
+        data = self.to_dict()
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w") as f:
+            yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+
+    def to_dict(self) -> dict:
+        """Convert config to plain dictionary."""
+        return {
+            "experiment_name": self.experiment_name,
+            "approach": self.approach,
+            "species": self.species,
+            "subunits": self.subunits,
+            "models": self.models,
+            "encodings": self.encodings,
+            "cv": {
+                "n_outer_folds": self.cv.n_outer_folds,
+                "n_inner_folds": self.cv.n_inner_folds,
+                "seeds": self.cv.seeds,
+                "n_trials": self.cv.n_trials,
+            },
+            "n_jobs": self.n_jobs,
+            "verbose": self.verbose,
+            "use_hpc": self.use_hpc,
+            "results_dir": str(self.results_dir),
+            "save_predictions": self.save_predictions,
+            "save_models": self.save_models,
+            "compute_feature_importance": self.compute_feature_importance,
+            "include_structural": self.include_structural,
+            "include_species": self.include_species,
+            "use_feature_cache": self.use_feature_cache,
+        }
+
+
+# Global config instance
+_config: Optional[Config] = None
+
+
+def get_config() -> Config:
+    """Get the global configuration instance (lazy init)."""
+    global _config
+    if _config is None:
+        _config = Config()
+    return _config
+
+
+def set_config(config: Config) -> None:
+    """Set the global configuration instance."""
+    global _config
+    _config = config
+
+
+def load_config(path: str | Path) -> Config:
+    """Load and set global configuration from a YAML file."""
+    config = Config.from_yaml(path)
+    set_config(config)
+    return config
+
+
+def save_config(path: str | Path) -> None:
+    """Save current global configuration to YAML."""
+    get_config().to_yaml(path)

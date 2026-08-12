@@ -1,0 +1,47 @@
+Metadata-Version: 2.4
+Name: vep-nachr2
+Version: 0.1.0
+Summary: Variant Effect Predictor for Nicotinic Acetylcholine Receptors — GOF/LOF/No-net-effect classification
+Author-email: Hari Krishnan <hari@example.com>
+License: MIT
+Project-URL: Repository, https://github.com/harikrishnan/vep-nachr2
+Keywords: bioinformatics,machine-learning,variant-effect-prediction,nAChR,ion-channel,GOF,LOF
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: scikit-learn>=1.3.0
+Requires-Dist: scipy>=1.11.0
+Requires-Dist: biopython>=1.81
+Requires-Dist: optuna>=3.3.0
+Requires-Dist: lightgbm>=4.0.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: tqdm>=4.65.0
+Requires-Dist: joblib>=1.3.0
+Requires-Dist: openpyxl>=3.1.0
+Requires-Dist: aaindex>=1.1.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.1.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: ruff>=0.1.0; extra == "dev"
+Provides-Extra: notebook
+Requires-Dist: jupyter>=1.0.0; extra == "notebook"
+Requires-Dist: matplotlib>=3.7.0; extra == "notebook"
+Requires-Dist: seaborn>=0.12.0; extra == "notebook"
+Requires-Dist: plotly>=5.15.0; extra == "notebook"
+Provides-Extra: tree
+Requires-Dist: xgboost>=2.0.0; extra == "tree"
+Requires-Dist: catboost>=1.2.0; extra == "tree"
+Provides-Extra: imbalance
+Requires-Dist: imbalanced-learn>=0.12.0; extra == "imbalance"
+Provides-Extra: all
+Requires-Dist: vep-nachr2[dev,imbalance,notebook,tree]; extra == "all"

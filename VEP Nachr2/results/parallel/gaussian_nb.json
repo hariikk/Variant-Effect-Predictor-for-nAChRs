@@ -1,0 +1,9 @@
+{
+  "model": "gaussian_nb",
+  "macro_f1": null,
+  "macro_f1_std": 0.038606049513357665,
+  "mcc": null,
+  "mcc_std": 0.036559982912965666,
+  "bal_acc": null,
+  "time_s": 30.563777685165405
+}

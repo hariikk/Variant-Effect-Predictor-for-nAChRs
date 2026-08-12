@@ -1,0 +1,9 @@
+{
+  "model": "random_forest",
+  "macro_f1": null,
+  "macro_f1_std": 0.03135462126155347,
+  "mcc": null,
+  "mcc_std": 0.047099894585636466,
+  "bal_acc": null,
+  "time_s": 3205.7232642173767
+}

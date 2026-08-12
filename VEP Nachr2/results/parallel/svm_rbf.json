@@ -1,0 +1,9 @@
+{
+  "model": "svm_rbf",
+  "macro_f1": null,
+  "macro_f1_std": 0.00803004417739904,
+  "mcc": null,
+  "mcc_std": 0.013983459918904985,
+  "bal_acc": null,
+  "time_s": 708.8335647583008
+}

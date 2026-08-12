@@ -255,3 +255,162 @@ def load_dataset(
     print(f"  Loaded {len(sequences)} wildtype sequences")
 
     return clean_df, labels, sequences
+
+
+# =============================================================================
+# MULTI-SPECIES LOADING
+# =============================================================================
+
+def load_multi_species_dataset(
+    combined_path: Optional[str | Path] = None,
+    human_path: Optional[str | Path] = None,
+    mouse_path: Optional[str | Path] = None,
+    rat_path: Optional[str | Path] = None,
+    fasta_dir: Optional[str | Path] = None,
+    species_filter: Optional[list[str]] = None,
+) -> tuple[pd.DataFrame, np.ndarray, dict[str, str]]:
+    """
+    Load and combine mutation data from multiple species.
+
+    Two modes:
+    1. **Combined file** (recommended): Single Excel/CSV with a 'Species' column.
+       Pass ``combined_path``.
+    2. **Separate files**: One file per species. Pass ``human_path``, ``mouse_path``,
+       and/or ``rat_path``.
+
+    Parameters
+    ----------
+    combined_path : str or Path, optional
+        Single file containing all species with a 'Species' column.
+    human_path : str or Path, optional
+        Human-only file. Defaults to nachr_db_cleaned.xlsx
+    mouse_path : str or Path, optional
+        Mouse-only file.
+    rat_path : str or Path, optional
+        Rat-only file.
+    fasta_dir : str or Path, optional
+        Path to FASTA sequence directory.
+    species_filter : list[str], optional
+        If provided, only keep these species (e.g. ['human', 'mouse']).
+
+    Returns
+    -------
+    tuple[pd.DataFrame, np.ndarray, dict[str, str]]
+        - Combined cleaned DataFrame with 'species' column
+        - Integer-encoded labels (0=LOF, 1=GOF)
+        - Dict of wildtype sequences per subunit
+    """
+    dfs = []
+
+    # ── Mode 1: Combined file (single file with Species column) ──────
+    if combined_path is not None:
+        combined_path = Path(combined_path)
+        if not combined_path.exists():
+            raise FileNotFoundError(f"Combined data file not found: {combined_path}")
+
+        if combined_path.suffix.lower() in (".csv",):
+            raw_df = pd.read_csv(combined_path)
+        else:
+            raw_df = pd.read_excel(combined_path)
+
+        # Detect and normalize species column
+        species_col = None
+        for col in raw_df.columns:
+            if col.lower() == "species":
+                species_col = col
+                break
+
+        if species_col is None:
+            raise ValueError(
+                "Combined file must have a 'Species' column. "
+                f"Found columns: {list(raw_df.columns)}"
+            )
+
+        # Normalize species names: "Human" → "human", "Mouse" → "mouse", "Rat" → "rat"
+        raw_df["species"] = raw_df[species_col].str.strip().str.lower()
+
+        # Drop rows with missing species
+        raw_df = raw_df.dropna(subset=["species"])
+
+        # Clean (the COLUMN_MAPPING handles subunit/position/AA/effect renaming)
+        clean_df = clean_data(raw_df)
+        # species column was added after COLUMN_MAPPING rename; ensure it's kept
+        if "species" not in clean_df.columns:
+            clean_df["species"] = raw_df.loc[clean_df.index, "species"]
+        dfs.append(clean_df)
+        print(f"  Combined file: {len(clean_df)} mutations after cleaning")
+        for sp in sorted(clean_df["species"].unique()):
+            print(f"    {sp}: {(clean_df['species'] == sp).sum()}")
+
+    # ── Mode 2: Separate files per species ────────────────────────────
+    else:
+        if human_path is None:
+            human_path = SOURCE_DATA_DIR / "nachr_db_cleaned.xlsx"
+
+        for species, path in [("human", human_path), ("mouse", mouse_path), ("rat", rat_path)]:
+            if path is None:
+                continue
+            path = Path(path)
+            if not path.exists():
+                print(f"Warning: {species} data not found at {path} — skipping")
+                continue
+
+            if path.suffix.lower() in (".csv",):
+                raw_df = pd.read_csv(path)
+            else:
+                raw_df = pd.read_excel(path)
+
+            clean_df = clean_data(raw_df)
+            clean_df["species"] = species
+            dfs.append(clean_df)
+            print(f"  {species}: {len(clean_df)} mutations")
+
+    if not dfs:
+        raise FileNotFoundError("No species data files found. Provide at least one valid path.")
+
+    # Combine all species
+    combined = pd.concat(dfs, ignore_index=True)
+
+    # Filter species if requested
+    if species_filter:
+        combined = combined[combined["species"].str.lower().isin(
+            [s.lower() for s in species_filter]
+        )].reset_index(drop=True)
+
+    # Encode labels
+    labels = encode_labels(combined)
+
+    # Load sequences (human sequences shared across species for position lookup)
+    sequences = load_wildtype_sequences(fasta_dir)
+
+    # Print summary
+    print(f"\nTotal: {len(combined)} mutations across {combined['subunit'].nunique()} subunits")
+    print(f"  LOF: {(labels == 0).sum()}, GOF: {(labels == 1).sum()}")
+    if "species" in combined.columns:
+        for sp in combined["species"].unique():
+            sp_count = (combined["species"] == sp).sum()
+            print(f"  {sp}: {sp_count}")
+    print(f"  Loaded {len(sequences)} wildtype sequences")
+
+    return combined, labels, sequences
+
+
+def add_species_column(df: pd.DataFrame, species: str) -> pd.DataFrame:
+    """
+    Utility: add a 'species' column to an existing DataFrame.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Cleaned mutation data
+    species : str
+        Species label to assign (e.g. 'human', 'mouse', 'rat')
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with new 'species' column
+    """
+    df = df.copy()
+    df["species"] = species.lower()
+    return df

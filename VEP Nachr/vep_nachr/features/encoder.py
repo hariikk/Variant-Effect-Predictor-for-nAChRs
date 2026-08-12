@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
-from vep_nachr.config import NACHR_SUBUNITS
+from vep_nachr.config import NACHR_SUBUNITS, SPECIES_LIST
 from vep_nachr.features.physicochemical import (
     extract_physicochemical_features,
     get_physicochemical_feature_names,
@@ -45,6 +45,9 @@ class NachrFeatureEncoder(BaseEstimator, TransformerMixin):
         Whether to include BLOSUM62 + Grantham features.
     include_positional : bool
         Whether to include position + subunit encoding.
+    include_species : bool
+        Whether to include species one-hot features (auto-detected if 'species'
+        column is present in the DataFrame).
     """
 
     def __init__(
@@ -52,16 +55,20 @@ class NachrFeatureEncoder(BaseEstimator, TransformerMixin):
         include_structural: bool = True,
         include_substitution: bool = True,
         include_positional: bool = True,
+        include_species: bool = True,
     ):
         self.include_structural = include_structural
         self.include_substitution = include_substitution
         self.include_positional = include_positional
+        self.include_species = include_species
 
         # Set during fit
         self.max_position_ = 700
         self.feature_names_ = None
         self.n_features_ = None
         self.subunit_list_ = NACHR_SUBUNITS
+        self._has_species: bool = False
+        self._species_list: list[str] = SPECIES_LIST
 
     def fit(self, X: pd.DataFrame, y=None) -> "NachrFeatureEncoder":
         """
@@ -71,9 +78,20 @@ class NachrFeatureEncoder(BaseEstimator, TransformerMixin):
         ----------
         X : pd.DataFrame
             Must have columns: wildtype_aa, variant_aa, position, subunit.
+            Optional: species (auto-detected if present).
         """
         if "position" in X.columns:
             self.max_position_ = X["position"].max()
+
+        # Auto-detect species column
+        self._has_species = (
+            self.include_species
+            and "species" in X.columns
+            and X["species"].nunique() > 0
+        )
+        if self._has_species:
+            # Build species list from data
+            self._species_list = sorted(X["species"].str.lower().unique())
 
         self._compute_feature_names()
         return self
@@ -130,6 +148,15 @@ class NachrFeatureEncoder(BaseEstimator, TransformerMixin):
             struct = extract_structural_features(X)
             features_list.append(struct)
 
+        # --- Species one-hot ---
+        if self._has_species:
+            species_oh = np.zeros((len(X), len(self._species_list)))
+            for i, (_, row) in enumerate(X.iterrows()):
+                sp = str(row["species"]).lower()
+                if sp in self._species_list:
+                    species_oh[i, self._species_list.index(sp)] = 1.0
+            features_list.append(species_oh)
+
         return np.hstack(features_list)
 
     def fit_transform(self, X: pd.DataFrame, y=None) -> np.ndarray:
@@ -148,6 +175,9 @@ class NachrFeatureEncoder(BaseEstimator, TransformerMixin):
 
         if self.include_structural:
             names.extend(get_structural_feature_names())
+
+        if self._has_species:
+            names.extend([f"species_{s}" for s in self._species_list])
 
         self.feature_names_ = names
         self.n_features_ = len(names)

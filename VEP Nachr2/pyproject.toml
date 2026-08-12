@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vep-nachr2"
+version = "0.1.0"
+description = "Variant Effect Predictor for Nicotinic Acetylcholine Receptors — GOF/LOF/No-net-effect classification"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Hari Krishnan", email = "hari@example.com"},
+]
+keywords = ["bioinformatics", "machine-learning", "variant-effect-prediction", "nAChR", "ion-channel", "GOF", "LOF"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.11.0",
+    "biopython>=1.81",
+    "optuna>=3.3.0",
+    "lightgbm>=4.0.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+    "joblib>=1.3.0",
+    "openpyxl>=3.1.0",
+    "aaindex>=1.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+notebook = [
+    "jupyter>=1.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+]
+tree = [
+    "xgboost>=2.0.0",
+    "catboost>=1.2.0",
+]
+imbalance = [
+    "imbalanced-learn>=0.12.0",
+]
+all = [
+    "vep-nachr2[dev,notebook,tree,imbalance]",
+]
+
+[project.scripts]
+vep-nachr2 = "vep_nachr2.training.runner:main"
+
+[project.urls]
+Repository = "https://github.com/harikrishnan/vep-nachr2"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vep_nachr2*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

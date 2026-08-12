@@ -1,0 +1,9 @@
+{
+  "model": "logistic_regression",
+  "macro_f1": null,
+  "macro_f1_std": 0.009963993229069016,
+  "mcc": null,
+  "mcc_std": 0.018289722423956805,
+  "bal_acc": null,
+  "time_s": 435.6109766960144
+}

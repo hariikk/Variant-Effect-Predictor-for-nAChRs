@@ -1,0 +1,1812 @@
+{
+  "model": "gaussian_nb",
+  "cv_mode": "subunit",
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1011
+  ],
+  "per_seed": [
+    {
+      "seed": 42,
+      "folds": [
+        {
+          "seed": 42,
+          "fold": 0,
+          "train_size": 696,
+          "test_size": 101,
+          "best_params": {
+            "var_smoothing": 8.9844610837701e-08
+          },
+          "best_inner_f1": 0.44394648837758205,
+          "test_genes": [
+            "CHRNA5",
+            "CHRNB1",
+            "CHRNE"
+          ],
+          "metrics": {
+            "accuracy": 0.3465346534653465,
+            "balanced_accuracy": 0.36951698242020825,
+            "macro_f1": 0.268486046256289,
+            "weighted_f1": 0.29968925958105097,
+            "mcc": 0.11793845005050477,
+            "precision_macro": 0.4063492063492064,
+            "recall_macro": 0.36951698242020825,
+            "precision_LOF": 0.8,
+            "recall_LOF": 0.12698412698412698,
+            "f1_LOF": 0.2191780821917808,
+            "support_LOF": 63,
+            "precision_No net effect": 0.047619047619047616,
+            "recall_No net effect": 0.14285714285714285,
+            "f1_No net effect": 0.07142857142857142,
+            "support_No net effect": 7,
+            "precision_GOF": 0.37142857142857144,
+            "recall_GOF": 0.8387096774193549,
+            "f1_GOF": 0.5148514851485149,
+            "support_GOF": 31,
+            "confusion_matrix": [
+              [
+                8,
+                16,
+                39
+              ],
+              [
+                1,
+                1,
+                5
+              ],
+              [
+                1,
+                4,
+                26
+              ]
+            ],
+            "accuracy_LOF": 0.12698412698412698,
+            "accuracy_No net effect": 0.14285714285714285,
+            "accuracy_GOF": 0.8387096774193549,
+            "roc_auc_macro": 0.6749081007253893
+          }
+        },
+        {
+          "seed": 42,
+          "fold": 1,
+          "train_size": 420,
+          "test_size": 377,
+          "best_params": {
+            "var_smoothing": 9.950134795644063e-08
+          },
+          "best_inner_f1": 0.46441015695551063,
+          "test_genes": [
+            "CHRNA1",
+            "CHRNA7",
+            "CHRND"
+          ],
+          "metrics": {
+            "accuracy": 0.32360742705570295,
+            "balanced_accuracy": 0.4450052197370731,
+            "macro_f1": 0.3195575388869429,
+            "weighted_f1": 0.26225138141536397,
+            "mcc": 0.12842697482004206,
+            "precision_macro": 0.39327105662620704,
+            "recall_macro": 0.4450052197370731,
+            "precision_LOF": 0.5806451612903226,
+            "recall_LOF": 0.08530805687203792,
+            "f1_LOF": 0.1487603305785124,
+            "support_LOF": 211,
+            "precision_No net effect": 0.2839506172839506,
+            "recall_No net effect": 0.6052631578947368,
+            "f1_No net effect": 0.3865546218487395,
+            "support_No net effect": 76,
+            "precision_GOF": 0.31521739130434784,
+            "recall_GOF": 0.6444444444444445,
+            "f1_GOF": 0.4233576642335766,
+            "support_GOF": 90,
+            "confusion_matrix": [
+              [
+                18,
+                95,
+                98
+              ],
+              [
+                2,
+                46,
+                28
+              ],
+              [
+                11,
+                21,
+                58
+              ]
+            ],
+            "accuracy_LOF": 0.08530805687203792,
+            "accuracy_No net effect": 0.6052631578947368,
+            "accuracy_GOF": 0.6444444444444445,
+            "roc_auc_macro": 0.6253667280967625
+          }
+        },
+        {
+          "seed": 42,
+          "fold": 2,
+          "train_size": 648,
+          "test_size": 149,
+          "best_params": {
+            "var_smoothing": 9.889584909354306e-08
+          },
+          "best_inner_f1": 0.5182436037675118,
+          "test_genes": [
+            "CHRNA4",
+            "CHRNB2",
+            "CHRNG"
+          ],
+          "metrics": {
+            "accuracy": 0.31543624161073824,
+            "balanced_accuracy": 0.30402023868448547,
+            "macro_f1": 0.2926514598733119,
+            "weighted_f1": 0.33343106300284736,
+            "mcc": 0.01948834969644435,
+            "precision_macro": 0.3641707717569787,
+            "recall_macro": 0.30402023868448547,
+            "precision_LOF": 0.6896551724137931,
+            "recall_LOF": 0.2631578947368421,
+            "f1_LOF": 0.38095238095238093,
+            "support_LOF": 76,
+            "precision_No net effect": 0.06,
+            "recall_No net effect": 0.10344827586206896,
+            "f1_No net effect": 0.0759493670886076,
+            "support_No net effect": 29,
+            "precision_GOF": 0.34285714285714286,
+            "recall_GOF": 0.5454545454545454,
+            "f1_GOF": 0.42105263157894735,
+            "support_GOF": 44,
+            "confusion_matrix": [
+              [
+                20,
+                33,
+                23
+              ],
+              [
+                3,
+                3,
+                23
+              ],
+              [
+                6,
+                14,
+                24
+              ]
+            ],
+            "accuracy_LOF": 0.2631578947368421,
+            "accuracy_No net effect": 0.10344827586206896,
+            "accuracy_GOF": 0.5454545454545454,
+            "roc_auc_macro": 0.5603565013218693
+          }
+        },
+        {
+          "seed": 42,
+          "fold": 3,
+          "train_size": 770,
+          "test_size": 27,
+          "best_params": {
+            "var_smoothing": 9.47074635704851e-08
+          },
+          "best_inner_f1": 0.43169072151876636,
+          "test_genes": [
+            "CHRNA9"
+          ],
+          "metrics": {
+            "accuracy": 0.5185185185185185,
+            "balanced_accuracy": 0.3272727272727273,
+            "macro_f1": 0.3376623376623377,
+            "weighted_f1": 0.5204425204425205,
+            "mcc": 0.18606563048603988,
+            "precision_macro": 0.4444444444444444,
+            "recall_macro": 0.3272727272727273,
+            "precision_LOF": 0.6666666666666666,
+            "recall_LOF": 0.18181818181818182,
+            "f1_LOF": 0.2857142857142857,
+            "support_LOF": 11,
+            "precision_No net effect": 0.6666666666666666,
+            "recall_No net effect": 0.8,
+            "f1_No net effect": 0.7272727272727273,
+            "support_No net effect": 15,
+            "precision_GOF": 0.0,
+            "recall_GOF": 0.0,
+            "f1_GOF": 0.0,
+            "support_GOF": 1,
+            "confusion_matrix": [
+              [
+                2,
+                5,
+                4
+              ],
+              [
+                1,
+                12,
+                2
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "accuracy_LOF": 0.18181818181818182,
+            "accuracy_No net effect": 0.8,
+            "accuracy_GOF": 0.0,
+            "roc_auc_macro": 0.7897694897694899
+          }
+        },
+        {
+          "seed": 42,
+          "fold": 4,
+          "train_size": 654,
+          "test_size": 143,
+          "best_params": {
+            "var_smoothing": 9.926264580153794e-08
+          },
+          "best_inner_f1": 0.39721751610736866,
+          "test_genes": [
+            "CHRNA10",
+            "CHRNA2",
+            "CHRNA3",
+            "CHRNA6",
+            "CHRNB3",
+            "CHRNB4"
+          ],
+          "metrics": {
+            "accuracy": 0.5034965034965035,
+            "balanced_accuracy": 0.42882996632996634,
+            "macro_f1": 0.4242685166159496,
+            "weighted_f1": 0.4750921723358392,
+            "mcc": 0.18840669811110697,
+            "precision_macro": 0.4809163802978236,
+            "recall_macro": 0.42882996632996634,
+            "precision_LOF": 0.24,
+            "recall_LOF": 0.1875,
+            "f1_LOF": 0.21052631578947367,
+            "support_LOF": 32,
+            "precision_No net effect": 0.5360824742268041,
+            "recall_No net effect": 0.7878787878787878,
+            "f1_No net effect": 0.6380368098159509,
+            "support_No net effect": 66,
+            "precision_GOF": 0.6666666666666666,
+            "recall_GOF": 0.3111111111111111,
+            "f1_GOF": 0.42424242424242425,
+            "support_GOF": 45,
+            "confusion_matrix": [
+              [
+                6,
+                22,
+                4
+              ],
+              [
+                11,
+                52,
+                3
+              ],
+              [
+                8,
+                23,
+                14
+              ]
+            ],
+            "accuracy_LOF": 0.1875,
+            "accuracy_No net effect": 0.7878787878787878,
+            "accuracy_GOF": 0.3111111111111111,
+            "roc_auc_macro": 0.6329305144240209
+          }
+        }
+      ],
+      "aggregate": {
+        "accuracy_mean": 0.40151866882936194,
+        "accuracy_std": 0.1007373210468662,
+        "balanced_accuracy_mean": 0.3749290268888921,
+        "balanced_accuracy_std": 0.06153140141379009,
+        "macro_f1_mean": 0.32852517985896623,
+        "macro_f1_std": 0.05962867204637633,
+        "weighted_f1_mean": 0.3781812793555244,
+        "weighted_f1_std": 0.1131738730473582,
+        "mcc_mean": 0.1280652206328276,
+        "mcc_std": 0.06873274455864777,
+        "precision_macro_mean": 0.417830371894932,
+        "precision_macro_std": 0.04555898135824164,
+        "recall_macro_mean": 0.3749290268888921,
+        "recall_macro_std": 0.06153140141379009,
+        "precision_LOF_mean": 0.5953934000741565,
+        "precision_LOF_std": 0.21351288037966537,
+        "recall_LOF_mean": 0.16895365208223775,
+        "recall_LOF_std": 0.06734598933041745,
+        "f1_LOF_mean": 0.24902627904528668,
+        "f1_LOF_std": 0.08828494866877361,
+        "support_LOF_mean": 78.6,
+        "support_LOF_std": 78.29623234868967,
+        "precision_No net effect_mean": 0.3188637611592938,
+        "precision_No net effect_std": 0.2783675176212207,
+        "recall_No net effect_mean": 0.48788947289854734,
+        "recall_No net effect_std": 0.34206194428498127,
+        "f1_No net effect_mean": 0.3798484194909193,
+        "f1_No net effect_std": 0.3061402066113614,
+        "support_No net effect_mean": 38.6,
+        "support_No net effect_std": 30.81071242279217,
+        "precision_GOF_mean": 0.33923395445134574,
+        "precision_GOF_std": 0.2366000174573677,
+        "recall_GOF_mean": 0.46794395568589114,
+        "recall_GOF_std": 0.3233402315175168,
+        "f1_GOF_mean": 0.3567008410406926,
+        "f1_GOF_std": 0.20334285499858346,
+        "support_GOF_mean": 42.2,
+        "support_GOF_std": 32.088938904239264,
+        "accuracy_LOF_mean": 0.16895365208223775,
+        "accuracy_LOF_std": 0.06734598933041745,
+        "accuracy_No net effect_mean": 0.48788947289854734,
+        "accuracy_No net effect_std": 0.34206194428498127,
+        "accuracy_GOF_mean": 0.46794395568589114,
+        "accuracy_GOF_std": 0.3233402315175168,
+        "roc_auc_macro_mean": 0.6566662668675065,
+        "roc_auc_macro_std": 0.08495270810893703,
+        "confusion_matrix_sum": [
+          [
+            54,
+            171,
+            168
+          ],
+          [
+            18,
+            114,
+            61
+          ],
+          [
+            26,
+            63,
+            122
+          ]
+        ],
+        "seed": 42
+      }
+    },
+    {
+      "seed": 123,
+      "folds": [
+        {
+          "seed": 123,
+          "fold": 0,
+          "train_size": 676,
+          "test_size": 121,
+          "best_params": {
+            "var_smoothing": 9.423880591299543e-08
+          },
+          "best_inner_f1": 0.4074059024981015,
+          "test_genes": [
+            "CHRNA6",
+            "CHRNA9",
+            "CHRNB2"
+          ],
+          "metrics": {
+            "accuracy": 0.5619834710743802,
+            "balanced_accuracy": 0.5317229962160303,
+            "macro_f1": 0.526795362027371,
+            "weighted_f1": 0.5455461796364571,
+            "mcc": 0.32342595147325937,
+            "precision_macro": 0.5487010948064724,
+            "recall_macro": 0.5317229962160303,
+            "precision_LOF": 0.5652173913043478,
+            "recall_LOF": 0.34210526315789475,
+            "f1_LOF": 0.4262295081967213,
+            "support_LOF": 38,
+            "precision_No net effect": 0.5970149253731343,
+            "recall_No net effect": 0.7843137254901961,
+            "f1_No net effect": 0.6779661016949152,
+            "support_No net effect": 51,
+            "precision_GOF": 0.4838709677419355,
+            "recall_GOF": 0.46875,
+            "f1_GOF": 0.47619047619047616,
+            "support_GOF": 32,
+            "confusion_matrix": [
+              [
+                13,
+                16,
+                9
+              ],
+              [
+                4,
+                40,
+                7
+              ],
+              [
+                6,
+                11,
+                15
+              ]
+            ],
+            "accuracy_LOF": 0.34210526315789475,
+            "accuracy_No net effect": 0.7843137254901961,
+            "accuracy_GOF": 0.46875,
+            "roc_auc_macro": 0.7199319385022943
+          }
+        },
+        {
+          "seed": 123,
+          "fold": 1,
+          "train_size": 767,
+          "test_size": 30,
+          "best_params": {
+            "var_smoothing": 9.405182661570284e-08
+          },
+          "best_inner_f1": 0.44231990699255574,
+          "test_genes": [
+            "CHRNA2",
+            "CHRNA3",
+            "CHRNA5"
+          ],
+          "metrics": {
+            "accuracy": 0.36666666666666664,
+            "balanced_accuracy": 0.40277777777777785,
+            "macro_f1": 0.34088713219148,
+            "weighted_f1": 0.3194729907773386,
+            "mcc": 0.09318577429788989,
+            "precision_macro": 0.35836385836385837,
+            "recall_macro": 0.40277777777777785,
+            "precision_LOF": 0.3333333333333333,
+            "recall_LOF": 0.08333333333333333,
+            "f1_LOF": 0.13333333333333333,
+            "support_LOF": 12,
+            "precision_No net effect": 0.35714285714285715,
+            "recall_No net effect": 0.625,
+            "f1_No net effect": 0.45454545454545453,
+            "support_No net effect": 8,
+            "precision_GOF": 0.38461538461538464,
+            "recall_GOF": 0.5,
+            "f1_GOF": 0.43478260869565216,
+            "support_GOF": 10,
+            "confusion_matrix": [
+              [
+                1,
+                5,
+                6
+              ],
+              [
+                1,
+                5,
+                2
+              ],
+              [
+                1,
+                4,
+                5
+              ]
+            ],
+            "accuracy_LOF": 0.08333333333333333,
+            "accuracy_No net effect": 0.625,
+            "accuracy_GOF": 0.5,
+            "roc_auc_macro": 0.5868546576879909
+          }
+        },
+        {
+          "seed": 123,
+          "fold": 2,
+          "train_size": 507,
+          "test_size": 290,
+          "best_params": {
+            "var_smoothing": 4.642697778625659e-08
+          },
+          "best_inner_f1": 0.4646168654828394,
+          "test_genes": [
+            "CHRNA7",
+            "CHRNB3",
+            "CHRNE"
+          ],
+          "metrics": {
+            "accuracy": 0.32068965517241377,
+            "balanced_accuracy": 0.41584700662735247,
+            "macro_f1": 0.30857482869866776,
+            "weighted_f1": 0.26097618917091536,
+            "mcc": 0.10872494420178895,
+            "precision_macro": 0.4081532473568026,
+            "recall_macro": 0.41584700662735247,
+            "precision_LOF": 0.631578947368421,
+            "recall_LOF": 0.07894736842105263,
+            "f1_LOF": 0.14035087719298245,
+            "support_LOF": 152,
+            "precision_No net effect": 0.275,
+            "recall_No net effect": 0.4925373134328358,
+            "f1_No net effect": 0.35294117647058826,
+            "support_No net effect": 67,
+            "precision_GOF": 0.31788079470198677,
+            "recall_GOF": 0.676056338028169,
+            "f1_GOF": 0.43243243243243246,
+            "support_GOF": 71,
+            "confusion_matrix": [
+              [
+                12,
+                67,
+                73
+              ],
+              [
+                4,
+                33,
+                30
+              ],
+              [
+                3,
+                20,
+                48
+              ]
+            ],
+            "accuracy_LOF": 0.07894736842105263,
+            "accuracy_No net effect": 0.4925373134328358,
+            "accuracy_GOF": 0.676056338028169,
+            "roc_auc_macro": 0.5886431323491196
+          }
+        },
+        {
+          "seed": 123,
+          "fold": 3,
+          "train_size": 744,
+          "test_size": 53,
+          "best_params": {
+            "var_smoothing": 7.647057437341179e-08
+          },
+          "best_inner_f1": 0.4139468050367565,
+          "test_genes": [
+            "CHRNB4"
+          ],
+          "metrics": {
+            "accuracy": 0.5283018867924528,
+            "balanced_accuracy": 0.4953703703703704,
+            "macro_f1": 0.4861329147043432,
+            "weighted_f1": 0.5363782668364878,
+            "mcc": 0.24864867107185404,
+            "precision_macro": 0.48600288600288594,
+            "recall_macro": 0.4953703703703704,
+            "precision_LOF": 0.3,
+            "recall_LOF": 0.375,
+            "f1_LOF": 0.3333333333333333,
+            "support_LOF": 8,
+            "precision_No net effect": 0.6818181818181818,
+            "recall_No net effect": 0.5555555555555556,
+            "f1_No net effect": 0.6122448979591837,
+            "support_No net effect": 27,
+            "precision_GOF": 0.47619047619047616,
+            "recall_GOF": 0.5555555555555556,
+            "f1_GOF": 0.5128205128205128,
+            "support_GOF": 18,
+            "confusion_matrix": [
+              [
+                3,
+                3,
+                2
+              ],
+              [
+                3,
+                15,
+                9
+              ],
+              [
+                4,
+                4,
+                10
+              ]
+            ],
+            "accuracy_LOF": 0.375,
+            "accuracy_No net effect": 0.5555555555555556,
+            "accuracy_GOF": 0.5555555555555556,
+            "roc_auc_macro": 0.6512040428707095
+          }
+        },
+        {
+          "seed": 123,
+          "fold": 4,
+          "train_size": 494,
+          "test_size": 303,
+          "best_params": {
+            "var_smoothing": 8.383095460712746e-08
+          },
+          "best_inner_f1": 0.553000265436311,
+          "test_genes": [
+            "CHRNA1",
+            "CHRNA10",
+            "CHRNA4",
+            "CHRNB1",
+            "CHRND",
+            "CHRNG"
+          ],
+          "metrics": {
+            "accuracy": 0.47194719471947194,
+            "balanced_accuracy": 0.5113387978142078,
+            "macro_f1": 0.45061331150883394,
+            "weighted_f1": 0.5084718279930338,
+            "mcc": 0.2366220231593804,
+            "precision_macro": 0.5098115659519168,
+            "recall_macro": 0.5113387978142078,
+            "precision_LOF": 0.7368421052631579,
+            "recall_LOF": 0.45901639344262296,
+            "f1_LOF": 0.5656565656565656,
+            "support_LOF": 183,
+            "precision_No net effect": 0.2,
+            "recall_No net effect": 0.675,
+            "f1_No net effect": 0.30857142857142855,
+            "support_No net effect": 40,
+            "precision_GOF": 0.5925925925925926,
+            "recall_GOF": 0.4,
+            "f1_GOF": 0.47761194029850745,
+            "support_GOF": 80,
+            "confusion_matrix": [
+              [
+                84,
+                81,
+                18
+              ],
+              [
+                9,
+                27,
+                4
+              ],
+              [
+                21,
+                27,
+                32
+              ]
+            ],
+            "accuracy_LOF": 0.45901639344262296,
+            "accuracy_No net effect": 0.675,
+            "accuracy_GOF": 0.4,
+            "roc_auc_macro": 0.6548139009984822
+          }
+        }
+      ],
+      "aggregate": {
+        "accuracy_mean": 0.449917774885077,
+        "accuracy_std": 0.10346344589298814,
+        "balanced_accuracy_mean": 0.47141138976114777,
+        "balanced_accuracy_std": 0.05831743715596619,
+        "macro_f1_mean": 0.4226007098261392,
+        "macro_f1_std": 0.09401673094961181,
+        "weighted_f1_mean": 0.4341690908828465,
+        "weighted_f1_std": 0.1337193374882902,
+        "mcc_mean": 0.20212147284083454,
+        "mcc_std": 0.09831040466636642,
+        "precision_macro_mean": 0.4622065304963872,
+        "precision_macro_std": 0.07749011802336049,
+        "recall_macro_mean": 0.47141138976114777,
+        "recall_macro_std": 0.05831743715596619,
+        "precision_LOF_mean": 0.513394355453852,
+        "precision_LOF_std": 0.19009290119062047,
+        "recall_LOF_mean": 0.26768047167098075,
+        "recall_LOF_std": 0.1755491507986193,
+        "f1_LOF_mean": 0.3197807235425872,
+        "f1_LOF_std": 0.18636499523691744,
+        "support_LOF_mean": 78.6,
+        "support_LOF_std": 82.69703743182097,
+        "precision_No net effect_mean": 0.42219519286683466,
+        "precision_No net effect_std": 0.20810752640461194,
+        "recall_No net effect_mean": 0.6264813188957173,
+        "recall_No net effect_std": 0.11207005152805076,
+        "f1_No net effect_mean": 0.4812538118483142,
+        "f1_No net effect_std": 0.16035200642553407,
+        "support_No net effect_mean": 38.6,
+        "support_No net effect_std": 22.54550953072474,
+        "precision_GOF_mean": 0.4510300431684751,
+        "precision_GOF_std": 0.10475108394912228,
+        "recall_GOF_mean": 0.5200723787167448,
+        "recall_GOF_std": 0.10373561885417316,
+        "f1_GOF_mean": 0.46676759408751617,
+        "f1_GOF_std": 0.033649682361415384,
+        "support_GOF_mean": 42.2,
+        "support_GOF_std": 31.562636138320258,
+        "accuracy_LOF_mean": 0.26768047167098075,
+        "accuracy_LOF_std": 0.1755491507986193,
+        "accuracy_No net effect_mean": 0.6264813188957173,
+        "accuracy_No net effect_std": 0.11207005152805076,
+        "accuracy_GOF_mean": 0.5200723787167448,
+        "accuracy_GOF_std": 0.10373561885417316,
+        "roc_auc_macro_mean": 0.6402895344817193,
+        "roc_auc_macro_std": 0.055216920290492105,
+        "confusion_matrix_sum": [
+          [
+            113,
+            172,
+            108
+          ],
+          [
+            21,
+            120,
+            52
+          ],
+          [
+            35,
+            66,
+            110
+          ]
+        ],
+        "seed": 123
+      }
+    },
+    {
+      "seed": 456,
+      "folds": [
+        {
+          "seed": 456,
+          "fold": 0,
+          "train_size": 690,
+          "test_size": 107,
+          "best_params": {
+            "var_smoothing": 8.758913427603235e-08
+          },
+          "best_inner_f1": 0.3951816901368018,
+          "test_genes": [
+            "CHRNA3",
+            "CHRNB2",
+            "CHRND"
+          ],
+          "metrics": {
+            "accuracy": 0.4953271028037383,
+            "balanced_accuracy": 0.5372896340500773,
+            "macro_f1": 0.46753086419753087,
+            "weighted_f1": 0.4370854967116649,
+            "mcc": 0.3287423787405215,
+            "precision_macro": 0.5803760282021152,
+            "recall_macro": 0.5372896340500773,
+            "precision_LOF": 0.7,
+            "recall_LOF": 0.15217391304347827,
+            "f1_LOF": 0.25,
+            "support_LOF": 46,
+            "precision_No net effect": 0.43243243243243246,
+            "recall_No net effect": 0.9411764705882353,
+            "f1_No net effect": 0.5925925925925926,
+            "support_No net effect": 34,
+            "precision_GOF": 0.6086956521739131,
+            "recall_GOF": 0.5185185185185185,
+            "f1_GOF": 0.56,
+            "support_GOF": 27,
+            "confusion_matrix": [
+              [
+                7,
+                31,
+                8
+              ],
+              [
+                1,
+                32,
+                1
+              ],
+              [
+                2,
+                11,
+                14
+              ]
+            ],
+            "accuracy_LOF": 0.15217391304347827,
+            "accuracy_No net effect": 0.9411764705882353,
+            "accuracy_GOF": 0.5185185185185185,
+            "roc_auc_macro": 0.7170598116280323
+          }
+        },
+        {
+          "seed": 456,
+          "fold": 1,
+          "train_size": 572,
+          "test_size": 225,
+          "best_params": {
+            "var_smoothing": 9.879172094582822e-08
+          },
+          "best_inner_f1": 0.5432537644306411,
+          "test_genes": [
+            "CHRNA1",
+            "CHRNA4",
+            "CHRNG"
+          ],
+          "metrics": {
+            "accuracy": 0.38666666666666666,
+            "balanced_accuracy": 0.47890916713885723,
+            "macro_f1": 0.36298964030056463,
+            "weighted_f1": 0.416761667630015,
+            "mcc": 0.1334576449011095,
+            "precision_macro": 0.41085301329203766,
+            "recall_macro": 0.47890916713885723,
+            "precision_LOF": 0.6984126984126984,
+            "recall_LOF": 0.3120567375886525,
+            "f1_LOF": 0.43137254901960786,
+            "support_LOF": 141,
+            "precision_No net effect": 0.13414634146341464,
+            "recall_No net effect": 0.6470588235294118,
+            "f1_No net effect": 0.2222222222222222,
+            "support_No net effect": 17,
+            "precision_GOF": 0.4,
+            "recall_GOF": 0.47761194029850745,
+            "f1_GOF": 0.43537414965986393,
+            "support_GOF": 67,
+            "confusion_matrix": [
+              [
+                44,
+                52,
+                45
+              ],
+              [
+                3,
+                11,
+                3
+              ],
+              [
+                16,
+                19,
+                32
+              ]
+            ],
+            "accuracy_LOF": 0.3120567375886525,
+            "accuracy_No net effect": 0.6470588235294118,
+            "accuracy_GOF": 0.47761194029850745,
+            "roc_auc_macro": 0.6105092837194466
+          }
+        },
+        {
+          "seed": 456,
+          "fold": 2,
+          "train_size": 723,
+          "test_size": 74,
+          "best_params": {
+            "var_smoothing": 9.929219427791793e-08
+          },
+          "best_inner_f1": 0.42231846959403685,
+          "test_genes": [
+            "CHRNA5",
+            "CHRNA6",
+            "CHRNB1"
+          ],
+          "metrics": {
+            "accuracy": 0.581081081081081,
+            "balanced_accuracy": 0.5800456253354804,
+            "macro_f1": 0.5777063783489732,
+            "weighted_f1": 0.5778288233153593,
+            "mcc": 0.3708613567862411,
+            "precision_macro": 0.5818713450292398,
+            "recall_macro": 0.5800456253354804,
+            "precision_LOF": 0.5789473684210527,
+            "recall_LOF": 0.4583333333333333,
+            "f1_LOF": 0.5116279069767442,
+            "support_LOF": 24,
+            "precision_No net effect": 0.5666666666666667,
+            "recall_No net effect": 0.6296296296296297,
+            "f1_No net effect": 0.5964912280701754,
+            "support_No net effect": 27,
+            "precision_GOF": 0.6,
+            "recall_GOF": 0.6521739130434783,
+            "f1_GOF": 0.625,
+            "support_GOF": 23,
+            "confusion_matrix": [
+              [
+                11,
+                7,
+                6
+              ],
+              [
+                6,
+                17,
+                4
+              ],
+              [
+                2,
+                6,
+                15
+              ]
+            ],
+            "accuracy_LOF": 0.4583333333333333,
+            "accuracy_No net effect": 0.6296296296296297,
+            "accuracy_GOF": 0.6521739130434783,
+            "roc_auc_macro": 0.7311408046961546
+          }
+        },
+        {
+          "seed": 456,
+          "fold": 3,
+          "train_size": 726,
+          "test_size": 71,
+          "best_params": {
+            "var_smoothing": 9.882871053165661e-08
+          },
+          "best_inner_f1": 0.4355003988878461,
+          "test_genes": [
+            "CHRNE"
+          ],
+          "metrics": {
+            "accuracy": 0.30985915492957744,
+            "balanced_accuracy": 0.4093211752786221,
+            "macro_f1": 0.24825174825174826,
+            "weighted_f1": 0.25357037328868315,
+            "mcc": 0.1172431101489764,
+            "precision_macro": 0.4047779022023143,
+            "recall_macro": 0.4093211752786221,
+            "precision_LOF": 0.8,
+            "recall_LOF": 0.0851063829787234,
+            "f1_LOF": 0.15384615384615385,
+            "support_LOF": 47,
+            "precision_No net effect": 0.05263157894736842,
+            "recall_No net effect": 0.3333333333333333,
+            "f1_No net effect": 0.09090909090909091,
+            "support_No net effect": 3,
+            "precision_GOF": 0.3617021276595745,
+            "recall_GOF": 0.8095238095238095,
+            "f1_GOF": 0.5,
+            "support_GOF": 21,
+            "confusion_matrix": [
+              [
+                4,
+                15,
+                28
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                1,
+                3,
+                17
+              ]
+            ],
+            "accuracy_LOF": 0.0851063829787234,
+            "accuracy_No net effect": 0.3333333333333333,
+            "accuracy_GOF": 0.8095238095238095,
+            "roc_auc_macro": 0.7594943083616426
+          }
+        },
+        {
+          "seed": 456,
+          "fold": 4,
+          "train_size": 477,
+          "test_size": 320,
+          "best_params": {
+            "var_smoothing": 9.777029020380861e-08
+          },
+          "best_inner_f1": 0.4585585853734969,
+          "test_genes": [
+            "CHRNA10",
+            "CHRNA2",
+            "CHRNA7",
+            "CHRNA9",
+            "CHRNB3",
+            "CHRNB4"
+          ],
+          "metrics": {
+            "accuracy": 0.396875,
+            "balanced_accuracy": 0.42876289531540673,
+            "macro_f1": 0.37607427869858806,
+            "weighted_f1": 0.35967618170656845,
+            "mcc": 0.13144922905236142,
+            "precision_macro": 0.4257856341189674,
+            "recall_macro": 0.42876289531540673,
+            "precision_LOF": 0.5277777777777778,
+            "recall_LOF": 0.14074074074074075,
+            "f1_LOF": 0.2222222222222222,
+            "support_LOF": 135,
+            "precision_No net effect": 0.3977272727272727,
+            "recall_No net effect": 0.625,
+            "f1_No net effect": 0.4861111111111111,
+            "support_No net effect": 112,
+            "precision_GOF": 0.35185185185185186,
+            "recall_GOF": 0.5205479452054794,
+            "f1_GOF": 0.4198895027624309,
+            "support_GOF": 73,
+            "confusion_matrix": [
+              [
+                19,
+                80,
+                36
+              ],
+              [
+                8,
+                70,
+                34
+              ],
+              [
+                9,
+                26,
+                38
+              ]
+            ],
+            "accuracy_LOF": 0.14074074074074075,
+            "accuracy_No net effect": 0.625,
+            "accuracy_GOF": 0.5205479452054794,
+            "roc_auc_macro": 0.5893321776912711
+          }
+        }
+      ],
+      "aggregate": {
+        "accuracy_mean": 0.4339618010962127,
+        "accuracy_std": 0.10538442738225329,
+        "balanced_accuracy_mean": 0.48686569942368874,
+        "balanced_accuracy_std": 0.07189830883314134,
+        "macro_f1_mean": 0.4065105819594811,
+        "macro_f1_std": 0.12338737264347939,
+        "weighted_f1_mean": 0.40898450853045815,
+        "weighted_f1_std": 0.11826180374779001,
+        "mcc_mean": 0.216350743925842,
+        "mcc_std": 0.12288944750201058,
+        "precision_macro_mean": 0.48073278456893487,
+        "precision_macro_std": 0.09196371614029915,
+        "recall_macro_mean": 0.48686569942368874,
+        "recall_macro_std": 0.07189830883314134,
+        "precision_LOF_mean": 0.6610275689223057,
+        "precision_LOF_std": 0.10807694139494993,
+        "recall_LOF_mean": 0.22968222153698564,
+        "recall_LOF_std": 0.15320508298277052,
+        "f1_LOF_mean": 0.31381376641294567,
+        "f1_LOF_std": 0.15083214710094228,
+        "support_LOF_mean": 78.6,
+        "support_LOF_std": 55.039077027145,
+        "precision_No net effect_mean": 0.3167208584474309,
+        "precision_No net effect_std": 0.21534897048380555,
+        "recall_No net effect_mean": 0.635239651416122,
+        "recall_No net effect_std": 0.21507020822191325,
+        "f1_No net effect_mean": 0.39766524898103844,
+        "f1_No net effect_std": 0.22925461060221833,
+        "support_No net effect_mean": 38.6,
+        "support_No net effect_std": 42.653253099851604,
+        "precision_GOF_mean": 0.4644499263370679,
+        "precision_GOF_std": 0.12900569891280683,
+        "recall_GOF_mean": 0.5956752253179587,
+        "recall_GOF_std": 0.1364363620633907,
+        "f1_GOF_mean": 0.508052730484459,
+        "f1_GOF_std": 0.08587048380928042,
+        "support_GOF_mean": 42.2,
+        "support_GOF_std": 25.55777768116782,
+        "accuracy_LOF_mean": 0.22968222153698564,
+        "accuracy_LOF_std": 0.15320508298277052,
+        "accuracy_No net effect_mean": 0.635239651416122,
+        "accuracy_No net effect_std": 0.21507020822191325,
+        "accuracy_GOF_mean": 0.5956752253179587,
+        "accuracy_GOF_std": 0.1364363620633907,
+        "roc_auc_macro_mean": 0.6815072772193094,
+        "roc_auc_macro_std": 0.0763976616675598,
+        "confusion_matrix_sum": [
+          [
+            85,
+            185,
+            123
+          ],
+          [
+            18,
+            131,
+            44
+          ],
+          [
+            30,
+            65,
+            116
+          ]
+        ],
+        "seed": 456
+      }
+    },
+    {
+      "seed": 789,
+      "folds": [
+        {
+          "seed": 789,
+          "fold": 0,
+          "train_size": 609,
+          "test_size": 188,
+          "best_params": {
+            "var_smoothing": 9.909482097236281e-08
+          },
+          "best_inner_f1": 0.4693116471118369,
+          "test_genes": [
+            "CHRNA1",
+            "CHRNA5",
+            "CHRNB4"
+          ],
+          "metrics": {
+            "accuracy": 0.39893617021276595,
+            "balanced_accuracy": 0.4584680675267121,
+            "macro_f1": 0.37586775701529795,
+            "weighted_f1": 0.35376624160631837,
+            "mcc": 0.15921570477503444,
+            "precision_macro": 0.4305555555555555,
+            "recall_macro": 0.4584680675267121,
+            "precision_LOF": 0.6,
+            "recall_LOF": 0.15463917525773196,
+            "f1_LOF": 0.2459016393442623,
+            "support_LOF": 97,
+            "precision_No net effect": 0.2916666666666667,
+            "recall_No net effect": 0.4666666666666667,
+            "f1_No net effect": 0.358974358974359,
+            "support_No net effect": 30,
+            "precision_GOF": 0.4,
+            "recall_GOF": 0.7540983606557377,
+            "f1_GOF": 0.5227272727272727,
+            "support_GOF": 61,
+            "confusion_matrix": [
+              [
+                15,
+                27,
+                55
+              ],
+              [
+                2,
+                14,
+                14
+              ],
+              [
+                8,
+                7,
+                46
+              ]
+            ],
+            "accuracy_LOF": 0.15463917525773196,
+            "accuracy_No net effect": 0.4666666666666667,
+            "accuracy_GOF": 0.7540983606557377,
+            "roc_auc_macro": 0.633128316957316
+          }
+        },
+        {
+          "seed": 789,
+          "fold": 1,
+          "train_size": 685,
+          "test_size": 112,
+          "best_params": {
+            "var_smoothing": 9.603153642083278e-08
+          },
+          "best_inner_f1": 0.4928908724131092,
+          "test_genes": [
+            "CHRNA3",
+            "CHRNA4",
+            "CHRNG"
+          ],
+          "metrics": {
+            "accuracy": 0.30357142857142855,
+            "balanced_accuracy": 0.402020202020202,
+            "macro_f1": 0.30804843304843305,
+            "weighted_f1": 0.2837110805860806,
+            "mcc": 0.1169644775861966,
+            "precision_macro": 0.45799457994579945,
+            "recall_macro": 0.402020202020202,
+            "precision_LOF": 0.6666666666666666,
+            "recall_LOF": 0.13333333333333333,
+            "f1_LOF": 0.2222222222222222,
+            "support_LOF": 60,
+            "precision_No net effect": 0.2073170731707317,
+            "recall_No net effect": 0.7727272727272727,
+            "f1_No net effect": 0.3269230769230769,
+            "support_No net effect": 22,
+            "precision_GOF": 0.5,
+            "recall_GOF": 0.3,
+            "f1_GOF": 0.375,
+            "support_GOF": 30,
+            "confusion_matrix": [
+              [
+                8,
+                46,
+                6
+              ],
+              [
+                2,
+                17,
+                3
+              ],
+              [
+                2,
+                19,
+                9
+              ]
+            ],
+            "accuracy_LOF": 0.13333333333333333,
+            "accuracy_No net effect": 0.7727272727272727,
+            "accuracy_GOF": 0.3,
+            "roc_auc_macro": 0.5259604329726281
+          }
+        },
+        {
+          "seed": 789,
+          "fold": 2,
+          "train_size": 534,
+          "test_size": 263,
+          "best_params": {
+            "var_smoothing": 9.338199825984875e-08
+          },
+          "best_inner_f1": 0.42871871181935806,
+          "test_genes": [
+            "CHRNA6",
+            "CHRNA7",
+            "CHRNB3"
+          ],
+          "metrics": {
+            "accuracy": 0.34600760456273766,
+            "balanced_accuracy": 0.397099876806926,
+            "macro_f1": 0.30154824388133267,
+            "weighted_f1": 0.26761312765235007,
+            "mcc": 0.0912476244783869,
+            "precision_macro": 0.4744744744744745,
+            "recall_macro": 0.397099876806926,
+            "precision_LOF": 0.75,
+            "recall_LOF": 0.02654867256637168,
+            "f1_LOF": 0.05128205128205128,
+            "support_LOF": 113,
+            "precision_No net effect": 0.3581081081081081,
+            "recall_No net effect": 0.6091954022988506,
+            "f1_No net effect": 0.451063829787234,
+            "support_No net effect": 87,
+            "precision_GOF": 0.3153153153153153,
+            "recall_GOF": 0.5555555555555556,
+            "f1_GOF": 0.40229885057471265,
+            "support_GOF": 63,
+            "confusion_matrix": [
+              [
+                3,
+                68,
+                42
+              ],
+              [
+                0,
+                53,
+                34
+              ],
+              [
+                1,
+                27,
+                35
+              ]
+            ],
+            "accuracy_LOF": 0.02654867256637168,
+            "accuracy_No net effect": 0.6091954022988506,
+            "accuracy_GOF": 0.5555555555555556,
+            "roc_auc_macro": 0.6068764633122278
+          }
+        },
+        {
+          "seed": 789,
+          "fold": 3,
+          "train_size": 726,
+          "test_size": 71,
+          "best_params": {
+            "var_smoothing": 9.309415263445828e-08
+          },
+          "best_inner_f1": 0.42117862350539614,
+          "test_genes": [
+            "CHRNE"
+          ],
+          "metrics": {
+            "accuracy": 0.30985915492957744,
+            "balanced_accuracy": 0.4093211752786221,
+            "macro_f1": 0.24825174825174826,
+            "weighted_f1": 0.25357037328868315,
+            "mcc": 0.1172431101489764,
+            "precision_macro": 0.4047779022023143,
+            "recall_macro": 0.4093211752786221,
+            "precision_LOF": 0.8,
+            "recall_LOF": 0.0851063829787234,
+            "f1_LOF": 0.15384615384615385,
+            "support_LOF": 47,
+            "precision_No net effect": 0.05263157894736842,
+            "recall_No net effect": 0.3333333333333333,
+            "f1_No net effect": 0.09090909090909091,
+            "support_No net effect": 3,
+            "precision_GOF": 0.3617021276595745,
+            "recall_GOF": 0.8095238095238095,
+            "f1_GOF": 0.5,
+            "support_GOF": 21,
+            "confusion_matrix": [
+              [
+                4,
+                15,
+                28
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                1,
+                3,
+                17
+              ]
+            ],
+            "accuracy_LOF": 0.0851063829787234,
+            "accuracy_No net effect": 0.3333333333333333,
+            "accuracy_GOF": 0.8095238095238095,
+            "roc_auc_macro": 0.7588593877267219
+          }
+        },
+        {
+          "seed": 789,
+          "fold": 4,
+          "train_size": 634,
+          "test_size": 163,
+          "best_params": {
+            "var_smoothing": 9.469419560601449e-08
+          },
+          "best_inner_f1": 0.47360800846417483,
+          "test_genes": [
+            "CHRNA10",
+            "CHRNA2",
+            "CHRNA9",
+            "CHRNB1",
+            "CHRNB2",
+            "CHRND"
+          ],
+          "metrics": {
+            "accuracy": 0.49693251533742333,
+            "balanced_accuracy": 0.4844054580896686,
+            "macro_f1": 0.47326096258674255,
+            "weighted_f1": 0.4970301023362327,
+            "mcc": 0.228034525135898,
+            "precision_macro": 0.49325935807260085,
+            "recall_macro": 0.4844054580896686,
+            "precision_LOF": 0.5921052631578947,
+            "recall_LOF": 0.5921052631578947,
+            "f1_LOF": 0.5921052631578947,
+            "support_LOF": 76,
+            "precision_No net effect": 0.5483870967741935,
+            "recall_No net effect": 0.3333333333333333,
+            "f1_No net effect": 0.4146341463414634,
+            "support_No net effect": 51,
+            "precision_GOF": 0.3392857142857143,
+            "recall_GOF": 0.5277777777777778,
+            "f1_GOF": 0.41304347826086957,
+            "support_GOF": 36,
+            "confusion_matrix": [
+              [
+                45,
+                7,
+                24
+              ],
+              [
+                21,
+                17,
+                13
+              ],
+              [
+                10,
+                7,
+                19
+              ]
+            ],
+            "accuracy_LOF": 0.5921052631578947,
+            "accuracy_No net effect": 0.3333333333333333,
+            "accuracy_GOF": 0.5277777777777778,
+            "roc_auc_macro": 0.673285858350657
+          }
+        }
+      ],
+      "aggregate": {
+        "accuracy_mean": 0.37106137472278655,
+        "accuracy_std": 0.0799200290940886,
+        "balanced_accuracy_mean": 0.4302629559444261,
+        "balanced_accuracy_std": 0.03893244149316803,
+        "macro_f1_mean": 0.3413954289567109,
+        "macro_f1_std": 0.08653384585108596,
+        "weighted_f1_mean": 0.33113818509393295,
+        "weighted_f1_std": 0.10041624089392057,
+        "mcc_mean": 0.14254108842489846,
+        "mcc_std": 0.05364778821525966,
+        "precision_macro_mean": 0.4522123740501489,
+        "precision_macro_std": 0.035117434503579036,
+        "recall_macro_mean": 0.4302629559444261,
+        "recall_macro_std": 0.03893244149316803,
+        "precision_LOF_mean": 0.6817543859649122,
+        "precision_LOF_std": 0.09163497311582425,
+        "recall_LOF_mean": 0.19834656545881102,
+        "recall_LOF_std": 0.22556641109309394,
+        "f1_LOF_mean": 0.25307146597051683,
+        "f1_LOF_std": 0.2040291819418702,
+        "support_LOF_mean": 78.6,
+        "support_LOF_std": 26.801119379608007,
+        "precision_No net effect_mean": 0.29162210473341366,
+        "precision_No net effect_std": 0.18342059694216642,
+        "recall_No net effect_mean": 0.5030512016718913,
+        "recall_No net effect_std": 0.18902639940026758,
+        "f1_No net effect_mean": 0.32850090058704484,
+        "f1_No net effect_std": 0.14126358063737154,
+        "support_No net effect_mean": 38.6,
+        "support_No net effect_std": 32.06711711395335,
+        "precision_GOF_mean": 0.38326063145212086,
+        "precision_GOF_std": 0.07232464144196514,
+        "recall_GOF_mean": 0.589391100702576,
+        "recall_GOF_std": 0.2026543521721976,
+        "f1_GOF_mean": 0.442613920312571,
+        "f1_GOF_std": 0.06477397140856476,
+        "support_GOF_mean": 42.2,
+        "support_GOF_std": 18.86001060445089,
+        "accuracy_LOF_mean": 0.19834656545881102,
+        "accuracy_LOF_std": 0.22556641109309394,
+        "accuracy_No net effect_mean": 0.5030512016718913,
+        "accuracy_No net effect_std": 0.18902639940026758,
+        "accuracy_GOF_mean": 0.589391100702576,
+        "accuracy_GOF_std": 0.2026543521721976,
+        "roc_auc_macro_mean": 0.6396220918639102,
+        "roc_auc_macro_std": 0.08570910089140236,
+        "confusion_matrix_sum": [
+          [
+            75,
+            163,
+            155
+          ],
+          [
+            25,
+            102,
+            66
+          ],
+          [
+            22,
+            63,
+            126
+          ]
+        ],
+        "seed": 789
+      }
+    },
+    {
+      "seed": 1011,
+      "folds": [
+        {
+          "seed": 1011,
+          "fold": 0,
+          "train_size": 723,
+          "test_size": 74,
+          "best_params": {
+            "var_smoothing": 9.160872691278917e-08
+          },
+          "best_inner_f1": 0.46503709728461085,
+          "test_genes": [
+            "CHRNB3",
+            "CHRNB4",
+            "CHRNG"
+          ],
+          "metrics": {
+            "accuracy": 0.4864864864864865,
+            "balanced_accuracy": 0.4748868138087154,
+            "macro_f1": 0.46963162623539983,
+            "weighted_f1": 0.4810701537116631,
+            "mcc": 0.21501182861203896,
+            "precision_macro": 0.4698275862068966,
+            "recall_macro": 0.4748868138087154,
+            "precision_LOF": 0.375,
+            "recall_LOF": 0.3157894736842105,
+            "f1_LOF": 0.34285714285714286,
+            "support_LOF": 19,
+            "precision_No net effect": 0.5172413793103449,
+            "recall_No net effect": 0.4838709677419355,
+            "f1_No net effect": 0.5,
+            "support_No net effect": 31,
+            "precision_GOF": 0.5172413793103449,
+            "recall_GOF": 0.625,
+            "f1_GOF": 0.5660377358490566,
+            "support_GOF": 24,
+            "confusion_matrix": [
+              [
+                6,
+                10,
+                3
+              ],
+              [
+                5,
+                15,
+                11
+              ],
+              [
+                5,
+                4,
+                15
+              ]
+            ],
+            "accuracy_LOF": 0.3157894736842105,
+            "accuracy_No net effect": 0.4838709677419355,
+            "accuracy_GOF": 0.625,
+            "roc_auc_macro": 0.5985564004637524
+          }
+        },
+        {
+          "seed": 1011,
+          "fold": 1,
+          "train_size": 677,
+          "test_size": 120,
+          "best_params": {
+            "var_smoothing": 9.950103935821876e-08
+          },
+          "best_inner_f1": 0.46154709921048676,
+          "test_genes": [
+            "CHRNA4",
+            "CHRNA5",
+            "CHRNB1"
+          ],
+          "metrics": {
+            "accuracy": 0.3416666666666667,
+            "balanced_accuracy": 0.4010416666666667,
+            "macro_f1": 0.3428705440900563,
+            "weighted_f1": 0.3492338961851157,
+            "mcc": 0.12194215216993848,
+            "precision_macro": 0.43915343915343913,
+            "recall_macro": 0.4010416666666667,
+            "precision_LOF": 0.7222222222222222,
+            "recall_LOF": 0.203125,
+            "f1_LOF": 0.3170731707317073,
+            "support_LOF": 64,
+            "precision_No net effect": 0.16666666666666666,
+            "recall_No net effect": 0.5,
+            "f1_No net effect": 0.25,
+            "support_No net effect": 20,
+            "precision_GOF": 0.42857142857142855,
+            "recall_GOF": 0.5,
+            "f1_GOF": 0.46153846153846156,
+            "support_GOF": 36,
+            "confusion_matrix": [
+              [
+                13,
+                34,
+                17
+              ],
+              [
+                3,
+                10,
+                7
+              ],
+              [
+                2,
+                16,
+                18
+              ]
+            ],
+            "accuracy_LOF": 0.203125,
+            "accuracy_No net effect": 0.5,
+            "accuracy_GOF": 0.5,
+            "roc_auc_macro": 0.5706733355379189
+          }
+        },
+        {
+          "seed": 1011,
+          "fold": 2,
+          "train_size": 594,
+          "test_size": 203,
+          "best_params": {
+            "var_smoothing": 9.109099631612719e-08
+          },
+          "best_inner_f1": 0.46485180042379326,
+          "test_genes": [
+            "CHRNA1",
+            "CHRNA9",
+            "CHRNB2"
+          ],
+          "metrics": {
+            "accuracy": 0.3497536945812808,
+            "balanced_accuracy": 0.41435773341399473,
+            "macro_f1": 0.3194133500543876,
+            "weighted_f1": 0.309324653884553,
+            "mcc": 0.12896539059192755,
+            "precision_macro": 0.4023992788294848,
+            "recall_macro": 0.41435773341399473,
+            "precision_LOF": 0.6521739130434783,
+            "recall_LOF": 0.13157894736842105,
+            "f1_LOF": 0.21897810218978103,
+            "support_LOF": 114,
+            "precision_No net effect": 0.15151515151515152,
+            "recall_No net effect": 0.3448275862068966,
+            "f1_No net effect": 0.21052631578947367,
+            "support_No net effect": 29,
+            "precision_GOF": 0.40350877192982454,
+            "recall_GOF": 0.7666666666666667,
+            "f1_GOF": 0.5287356321839081,
+            "support_GOF": 60,
+            "confusion_matrix": [
+              [
+                15,
+                49,
+                50
+              ],
+              [
+                1,
+                10,
+                18
+              ],
+              [
+                7,
+                7,
+                46
+              ]
+            ],
+            "accuracy_LOF": 0.13157894736842105,
+            "accuracy_No net effect": 0.3448275862068966,
+            "accuracy_GOF": 0.7666666666666667,
+            "roc_auc_macro": 0.6605742389080914
+          }
+        },
+        {
+          "seed": 1011,
+          "fold": 3,
+          "train_size": 726,
+          "test_size": 71,
+          "best_params": {
+            "var_smoothing": 9.950405662692145e-08
+          },
+          "best_inner_f1": 0.43687142066107115,
+          "test_genes": [
+            "CHRNE"
+          ],
+          "metrics": {
+            "accuracy": 0.30985915492957744,
+            "balanced_accuracy": 0.4093211752786221,
+            "macro_f1": 0.24825174825174826,
+            "weighted_f1": 0.25357037328868315,
+            "mcc": 0.1172431101489764,
+            "precision_macro": 0.4047779022023143,
+            "recall_macro": 0.4093211752786221,
+            "precision_LOF": 0.8,
+            "recall_LOF": 0.0851063829787234,
+            "f1_LOF": 0.15384615384615385,
+            "support_LOF": 47,
+            "precision_No net effect": 0.05263157894736842,
+            "recall_No net effect": 0.3333333333333333,
+            "f1_No net effect": 0.09090909090909091,
+            "support_No net effect": 3,
+            "precision_GOF": 0.3617021276595745,
+            "recall_GOF": 0.8095238095238095,
+            "f1_GOF": 0.5,
+            "support_GOF": 21,
+            "confusion_matrix": [
+              [
+                4,
+                15,
+                28
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                1,
+                3,
+                17
+              ]
+            ],
+            "accuracy_LOF": 0.0851063829787234,
+            "accuracy_No net effect": 0.3333333333333333,
+            "accuracy_GOF": 0.8095238095238095,
+            "roc_auc_macro": 0.7594943083616426
+          }
+        },
+        {
+          "seed": 1011,
+          "fold": 4,
+          "train_size": 468,
+          "test_size": 329,
+          "best_params": {
+            "var_smoothing": 9.927287653295273e-08
+          },
+          "best_inner_f1": 0.4462206004800797,
+          "test_genes": [
+            "CHRNA10",
+            "CHRNA2",
+            "CHRNA3",
+            "CHRNA6",
+            "CHRNA7",
+            "CHRND"
+          ],
+          "metrics": {
+            "accuracy": 0.364741641337386,
+            "balanced_accuracy": 0.4008716116098667,
+            "macro_f1": 0.32550349516661264,
+            "weighted_f1": 0.30051651950634406,
+            "mcc": 0.10043333440861972,
+            "precision_macro": 0.43790278200676575,
+            "recall_macro": 0.4008716116098667,
+            "precision_LOF": 0.631578947368421,
+            "recall_LOF": 0.08053691275167785,
+            "f1_LOF": 0.14285714285714285,
+            "support_LOF": 149,
+            "precision_No net effect": 0.3568281938325991,
+            "recall_No net effect": 0.7363636363636363,
+            "f1_No net effect": 0.4807121661721068,
+            "support_No net effect": 110,
+            "precision_GOF": 0.3253012048192771,
+            "recall_GOF": 0.38571428571428573,
+            "f1_GOF": 0.35294117647058826,
+            "support_GOF": 70,
+            "confusion_matrix": [
+              [
+                12,
+                106,
+                31
+              ],
+              [
+                4,
+                81,
+                25
+              ],
+              [
+                3,
+                40,
+                27
+              ]
+            ],
+            "accuracy_LOF": 0.08053691275167785,
+            "accuracy_No net effect": 0.7363636363636363,
+            "accuracy_GOF": 0.38571428571428573,
+            "roc_auc_macro": 0.6037997329142472
+          }
+        }
+      ],
+      "aggregate": {
+        "accuracy_mean": 0.3705015288002795,
+        "accuracy_std": 0.0678695552526572,
+        "balanced_accuracy_mean": 0.42009580015557313,
+        "balanced_accuracy_std": 0.03115967970215106,
+        "macro_f1_mean": 0.34113415275964093,
+        "macro_f1_std": 0.08040190846401679,
+        "weighted_f1_mean": 0.3387431193152718,
+        "weighted_f1_std": 0.08652767884666226,
+        "mcc_mean": 0.13671916318630023,
+        "mcc_std": 0.04501166658624568,
+        "precision_macro_mean": 0.4308121976797801,
+        "precision_macro_std": 0.02796038150644273,
+        "recall_macro_mean": 0.42009580015557313,
+        "recall_macro_std": 0.03115967970215106,
+        "precision_LOF_mean": 0.6361950165268244,
+        "precision_LOF_std": 0.16025933874287857,
+        "recall_LOF_mean": 0.16322734335660655,
+        "recall_LOF_std": 0.09850030374108912,
+        "f1_LOF_mean": 0.23512234249638553,
+        "f1_LOF_std": 0.09179058755978496,
+        "support_LOF_mean": 78.6,
+        "support_LOF_std": 52.376521457614956,
+        "precision_No net effect_mean": 0.24897659405442613,
+        "precision_No net effect_std": 0.18602619739496418,
+        "recall_No net effect_mean": 0.4796791047291603,
+        "recall_No net effect_std": 0.16272636244147468,
+        "f1_No net effect_mean": 0.30642951457413425,
+        "f1_No net effect_std": 0.17795697664392643,
+        "support_No net effect_mean": 38.6,
+        "support_No net effect_std": 41.416180412973866,
+        "precision_GOF_mean": 0.4072649824580899,
+        "precision_GOF_std": 0.07307002841509862,
+        "recall_GOF_mean": 0.6173809523809524,
+        "recall_GOF_std": 0.17798236173406448,
+        "f1_GOF_mean": 0.4818506012084029,
+        "f1_GOF_std": 0.08161694561988882,
+        "support_GOF_mean": 42.2,
+        "support_GOF_std": 21.84490787346104,
+        "accuracy_LOF_mean": 0.16322734335660655,
+        "accuracy_LOF_std": 0.09850030374108912,
+        "accuracy_No net effect_mean": 0.4796791047291603,
+        "accuracy_No net effect_std": 0.16272636244147468,
+        "accuracy_GOF_mean": 0.6173809523809524,
+        "accuracy_GOF_std": 0.17798236173406448,
+        "roc_auc_macro_mean": 0.6386196032371305,
+        "roc_auc_macro_std": 0.07504478537246696,
+        "confusion_matrix_sum": [
+          [
+            50,
+            214,
+            129
+          ],
+          [
+            13,
+            117,
+            63
+          ],
+          [
+            18,
+            70,
+            123
+          ]
+        ],
+        "seed": 1011
+      }
+    }
+  ],
+  "final": {
+    "macro_f1_mean": 0.3680332106721877,
+    "macro_f1_std": 0.038606049513357665,
+    "mcc_mean": 0.16515953780214057,
+    "mcc_std": 0.036559982912965666,
+    "balanced_accuracy_mean": 0.4367129744347456,
+    "balanced_accuracy_std": 0.03963398855497309,
+    "accuracy_mean": 0.40539222966674354,
+    "accuracy_std": 0.0322791501447928,
+    "precision_macro_mean": 0.44875885173803665,
+    "precision_macro_std": 0.02233272271047536,
+    "recall_macro_mean": 0.4367129744347456,
+    "recall_macro_std": 0.03963398855497309
+  }
+}

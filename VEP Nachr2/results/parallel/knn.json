@@ -1,0 +1,5 @@
+{
+  "model": "knn",
+  "error": "cannot access local variable 'RobustScaler' where it is not associated with a value",
+  "time_s": 1.6493923664093018
+}

@@ -1,0 +1,853 @@
+%==============================================================
+% Advanced Scientific Writing — Final Paper (PWPSP)
+% Position Paper: Direction-Aware Variant Effect Prediction for
+%   Human Nicotinic Acetylcholine Receptors
+%
+% Target venue: PSB 2027 (Pacific Symposium on Biocomputing)
+% Document class: World Scientific ws-procs11x85
+%
+% Build:  pdflatex → pdflatex  (or: latexmk -pdf main)
+%
+% SKELETON — sections marked [DRAFT], [TODO], or [PLACEHOLDER]
+% await experimental results, final figures, and polishing.
+%==============================================================
+
+\documentclass{ws-procs11x85}
+\usepackage{ws-procs-thm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\begin{document}
+
+%--------------------------------------------------------------
+\title{Direction-Aware Variant Effect Prediction for Human\\
+Nicotinic Acetylcholine Receptors: A Position Paper}
+%--------------------------------------------------------------
+
+\author{Hari Krishna Mohan Raj\textsuperscript{*} and Karl Kirschner}
+
+\address{Department of Computational Chemistry,\\
+Hochschule Bonn--Rhein--Sieg, Sankt Augustin, Germany\\
+\textsuperscript{*}E-mail: harikrishnam0711@gmail.com}
+
+%--------------------------------------------------------------
+\begin{abstract}
+Missense variants in human nicotinic acetylcholine receptor (nAChR)
+subunit genes are linked to congenital myasthenic syndromes, epilepsies,
+and a growing list of neurological disorders. Clinical sequencing now
+produces variants of uncertain significance (VUS) faster than functional
+assays can characterise them. Standard computational predictors report
+whether a variant is likely damaging but cannot distinguish loss of
+function (LOF) from gain of function (GOF) — a distinction that directly
+determines therapeutic strategy. Recent tools such as MissION and
+LoGoFunc have demonstrated that direction-aware prediction is feasible
+for ion channels, yet none incorporate nAChR-specific structural biology
+or subunit-level context. We argue that closing this gap requires (1)~a
+curated, experimentally labelled dataset of nAChR missense variants,
+(2)~a feature representation that captures subunit identity and
+structural context from cryo-EM data, and (3)~a benchmarked machine-learning
+pipeline optimised for small, imbalanced tabular data. We present the
+architecture of such a predictor, discuss the design choices and
+challenges, and report preliminary evidence that engineered sequence
+and structural features carry measurable signal for separating LOF
+from GOF in nAChRs. We conclude with a roadmap toward a clinically
+useful direction-aware VEP for this receptor family.
+\end{abstract}
+
+\keywords{Variant effect prediction; nicotinic acetylcholine receptor;
+gain of function; loss of function; ion channel; machine learning;
+position paper.}
+
+% required, do-not-remove
+\copyrightinfo{\copyright\ 2026 Hari Krishna Mohan Raj, Karl Kirschner.
+Open Access chapter published by World Scientific Publishing Company
+and distributed under the terms of the Creative Commons Attribution
+Non-Commercial (CC BY-NC) 4.0 License.}
+
+%==============================================================
+\section{Introduction}\label{sec:intro}
+%==============================================================
+
+Nicotinic acetylcholine receptors (nAChRs) are pentameric ligand-gated
+ion channels that mediate fast synaptic transmission at the neuromuscular
+junction and throughout the central and peripheral nervous systems.
+Missense variants in the seventeen human genes that encode nAChR subunits
+give rise to a spectrum of disorders: congenital myasthenic syndromes
+(CMS) from muscle-type receptor mutations, autosomal dominant nocturnal
+frontal lobe epilepsy (ADNFLE) from mutations in \emph{CHRNA4} and
+\emph{CHRNB2}, and, increasingly, neurodevelopmental and psychiatric
+phenotypes linked to rare variants in additional subunits
+\cite{schaaf2011, cms_review}.
+
+The gap between variant discovery and functional understanding has
+become the central bottleneck in clinical genomics. Whole-exome and
+whole-genome sequencing identify tens of thousands of missense variants
+per individual, but for the overwhelming majority the functional
+consequence — and therefore the clinical significance — remains unknown;
+they are labelled variants of uncertain significance (VUS).\footnote{The
+American College of Medical Genetics and Genomics (ACMG) guidelines
+explicitly recognise that computational predictors alone are insufficient
+to resolve a VUS classification; functional evidence is required for
+upgrade to likely pathogenic.}  For nAChR variants in particular, the
+slow throughput of gold-standard electrophysiology (patch-clamp recording
+of recombinant receptors) means that fewer than five hundred variants
+have been experimentally characterised across all subunits, while
+population databases already contain thousands of observed missense
+changes in nAChR genes.
+
+Existing computational variant effect predictors (VEPs) address one
+dimension of this problem: they estimate whether a variant is
+\emph{deleterious} or \emph{pathogenic}. Tools such as SIFT,
+PolyPhen-2, CADD, and AlphaMissense \cite{sift,polyphen2,cadd,alphamissense}
+output a continuous or categorical damage score but provide no
+information on the \emph{direction} of the functional change. This is a
+critical omission for ion channels and receptors, where both LOF and GOF
+can be pathogenic but demand opposite therapeutic interventions. A
+patient with a GOF nAChR variant causing ADNFLE may benefit from a
+channel blocker, while one with an LOF variant causing a myasthenic
+syndrome may require a potentiator or cholinesterase inhibitor.
+Collapsing both directions into a single ``damaging'' label erases the
+information needed for precision therapy.
+
+A new wave of direction-aware predictors has recently emerged.
+funNCion \cite{funncion} targets sodium and calcium channel variants;
+LoGoFunc \cite{logofunc} predicts LOF/GOF/neutral genome-wide using
+ensemble learning; PreMode \cite{premode} employs graph neural networks
+for mode-of-action prediction; and MissION \cite{mission}, the most
+recent entry, combines protein language model embeddings with structural
+features to predict direction of effect across 47 ion-channel genes.
+None of these tools, however, is built around the specific biology of
+nAChRs: the role of subunit identity, the distinct structural
+determinants at the agonist-binding interface and the channel pore,
+and the conformational coupling between the extracellular and
+transmembrane domains that underlies ligand-gated gating.
+
+This position paper makes the case that direction-aware, receptor-specific
+prediction for nAChRs is both necessary and feasible. We contribute:
+\begin{itemlist}
+\item A curated dataset of $\sim$350 experimentally characterised nAChR
+  missense variants with LOF/GOF labels extracted from primary
+  electrophysiology literature (Sec.~\ref{sec:data}).
+\item An engineered feature representation that combines sequence
+  physicochemical properties, evolutionary substitution scores, subunit
+  identity encoding, and structural descriptors derived from cryo-EM
+  structures (Sec.~\ref{sec:features}).
+\item A benchmark of seven machine-learning classifiers under nested
+  cross-validation, identifying gradient-boosted trees as the most
+  suitable model class for this small, tabular dataset
+  (Sec.~\ref{sec:algorithms}).
+\item A critical discussion of the open challenges — data scarcity,
+  the LOF/GOF spectrum, interpretability, and the absence of a shared
+  benchmark — and a roadmap for the field (Sec.~\ref{sec:discussion}).
+\end{itemlist}
+
+%==============================================================
+\section{Background and Related Work}\label{sec:background}
+%==============================================================
+
+\subsection{nAChR Biology and the Clinical Importance of Direction}
+
+nAChRs are assembled as homo- or hetero-pentamers from a repertoire of
+seventeen subunits ($\alpha$1–$\alpha$10, $\beta$1–$\beta$4, $\gamma$,
+$\delta$, $\varepsilon$). Muscle-type receptors (embryonic:
+$(\alpha1)_2\beta1\gamma\delta$; adult: $(\alpha1)_2\beta1\varepsilon\delta$)
+reside at the neuromuscular junction, while neuronal subtypes
+(predominantly $\alpha4\beta2$ and $\alpha7$) mediate synaptic
+transmission in the brain. Each subunit contributes a large extracellular
+N-terminal domain that harbours the agonist-binding site, four
+transmembrane helices (M1–M4) of which M2 lines the channel pore, and
+an intracellular loop that governs trafficking and modulation
+\cite{nachr_structure_2021}.
+
+The functional consequence of a missense variant depends not only on
+the chemical nature of the substitution but on where in the receptor
+it occurs. A substitution in the agonist-binding pocket may alter ligand
+affinity (typically LOF if it reduces binding, but GOF if it increases
+agonist sensitivity); a substitution in the M2 pore-lining helix may
+change channel conductance or ion selectivity; a substitution in the
+intracellular loop may affect receptor trafficking to the membrane
+(LOF) or desensitisation kinetics (potentially GOF if it prevents
+channel closure). Subunit identity further modulates these effects:
+the same substitution in $\alpha4$ versus $\alpha7$ can produce opposite
+phenotypes because the two subunits participate in receptors with
+different stoichiometries, expression profiles, and downstream signalling.
+
+This complexity means that a predictor that treats all nAChR variants
+uniformly — without subunit context and without structural localisation
+— will systematically miss the biology that determines direction of
+effect. The central hypothesis of this work is that encoding subunit
+identity and structural context explicitly in the feature representation
+will improve LOF/GOF classification over sequence-only or
+position-agnostic approaches.
+
+\subsection{The Landscape of Variant Effect Predictors}
+
+Table~\ref{tab:tools} places this work in the context of existing
+computational tools. We distinguish three axes: (1)~whether the tool
+reports pathogenicity only or direction of effect (LOF/GOF),
+(2)~whether it incorporates ion-channel-specific knowledge, and
+(3)~whether it models nAChR subunit identity and structure explicitly.
+
+\begin{table}[ht]
+\tbl{Comparison of computational approaches for variant effect
+prediction relevant to nAChRs.}
+{\begin{tabular}{@{}lcccc@{}}
+\toprule
+Tool / Approach & LOF/GOF & Channel-aware & nAChR-specific & Ref. \\
+\midrule
+SIFT                  & No  & No  & No  & \cite{sift} \\
+PolyPhen-2            & No  & No  & No  & \cite{polyphen2} \\
+CADD                  & No  & No  & No  & \cite{cadd} \\
+AlphaMissense         & No  & No  & No  & \cite{alphamissense} \\
+ESM-1b (VEP)          & No  & No  & No  & \cite{esm1b} \\
+\midrule
+funNCion              & Yes & Na\textsuperscript{+}/Ca\textsuperscript{2+} & No  & \cite{funncion} \\
+LoGoFunc              & Yes & No          & No  & \cite{logofunc} \\
+PreMode               & Yes & No          & No  & \cite{premode} \\
+MissION               & Yes & 47 channels & No  & \cite{mission} \\
+\midrule
+\textbf{This work}    & \textbf{Yes} & \textbf{nAChR} & \textbf{Yes} & --- \\
+\bottomrule
+\end{tabular}}
+\label{tab:tools}
+\end{table}
+
+\subsubsection{Pathogenicity-only predictors}
+
+SIFT \cite{sift} uses sequence conservation across homologues to
+flag substitutions that deviate from the evolutionary norm.
+PolyPhen-2 \cite{polyphen2} combines sequence conservation with
+structural features (surface accessibility, crystallographic B-factor)
+trained on HumDiv and HumVar datasets. CADD \cite{cadd} integrates
+over sixty genomic annotations into a single pathogenicity score using
+a linear-kernel SVM. AlphaMissense \cite{alphamissense} leverages
+AlphaFold's predicted structures and MSA-based conservation to achieve
+state-of-the-art proteome-wide pathogenicity prediction. All four
+output a continuous score where higher values indicate greater
+likelihood of pathogenicity, but none distinguishes LOF from GOF.
+
+\subsubsection{Direction-aware predictors}
+
+funNCion \cite{funncion} was developed for sodium and calcium channel
+variants associated with epilepsy and cardiac arrhythmias. It uses a
+random-forest model trained on $\sim$800 functionally characterised
+variants and achieves ROC $\approx$ 0.85 on held-out Na\textsubscript{v}
+variants. Its feature set includes Grantham distance, BLOSUM scores,
+and position within the channel protein, but it is not trained or
+validated on nAChR data.
+
+LoGoFunc \cite{logofunc} performs genome-wide LOF/GOF/neutral prediction
+using an ensemble of gradient-boosted trees trained on ClinVar labels
+and features spanning conservation, biochemical properties, and
+protein domain annotations. It reports balanced accuracy of $\sim$0.72
+for the three-class problem, but treats all genes uniformly and does
+not encode receptor-specific structural context.
+
+PreMode \cite{premode} frames mode-of-action prediction as a
+graph-neural-network problem over protein structures, achieving
+strong performance on curated benchmarks. However, its reliance on
+high-quality structural data and its gene-family-agnostic design mean
+that nAChR-specific patterns — particularly those involving subunit
+interfaces — are not explicitly modelled.
+
+MissION \cite{mission} is the closest precursor to this work. It
+combines ESM-2 protein language model embeddings with structural
+features (secondary structure, relative solvent accessibility,
+per-residue B-factor) to predict LOF versus GOF across 47 ion-channel
+genes, reporting ROC-AUC of 0.925. MissION demonstrates that structural
+features complement sequence embeddings for ion-channel variant
+classification. However, it aggregates data across diverse channel
+families (Na\textsubscript{v}, Ca\textsubscript{v}, K\textsubscript{v},
+nAChR, GABA\textsubscript{A}, etc.) and does not encode subunit
+identity or the pentameric assembly logic specific to nAChRs.
+
+\subsection{The Gap}
+
+No existing tool simultaneously (a)~predicts direction of effect,
+(b)~is trained or validated on nAChR data, and (c)~incorporates
+subunit identity and pentameric structural context. This is the gap
+we aim to fill. We do not claim to outperform general-purpose tools
+on pathogenicity prediction; our claim is that for nAChR variants
+specifically, direction matters and existing tools do not provide it.
+
+%==============================================================
+\section{Analytical Objective}\label{sec:objective}
+%==============================================================
+
+We frame the problem as supervised binary classification: given an
+nAChR missense variant defined by its subunit gene, wild-type residue,
+mutant residue, and residue position, predict whether its functional
+effect is loss of function (LOF) or gain of function (GOF). The model
+is evaluated by its ability to recover the experimentally established
+direction of effect for held-out variants under stratified cross-validation.
+
+This framing deliberately excludes:
+\begin{itemlist}
+\item \emph{Neutral / benign} as a separate class. Variants with no
+  measurable functional effect are currently too scarce in the nAChR
+  literature to constitute a trainable class. The task is therefore
+  LOF-vs-GOF among functionally consequential variants, not a
+  three-way classification.
+\item \emph{Mixed-effect} variants. A small number of variants exhibit
+  both LOF and GOF characteristics (e.g., reduced surface expression
+  but increased open probability). These are flagged in the dataset
+  but excluded from training until sufficient examples exist for a
+  dedicated analysis.
+\item \emph{Synonymous and non-coding variants}. Only missense variants
+  (single amino-acid substitutions) are considered, as they constitute
+  the vast majority of clinically observed coding variants and are the
+  focus of existing functional assays.
+\end{itemlist}
+
+%==============================================================
+\section{Experimental Data}\label{sec:data}
+%==============================================================
+
+\subsection{Data Curation}
+
+We assembled a dataset of experimentally characterised human nAChR
+missense variants by systematic mining of primary electrophysiology
+literature. Search queries across PubMed, Europe PMC, and UniProt
+were designed for high recall, targeting papers that report patch-clamp
+or two-electrode voltage-clamp measurements of recombinant nAChRs
+carrying single amino-acid substitutions. Each retrieved paper was
+manually curated to extract: the subunit gene, wild-type and mutant
+residues (three-letter and single-letter codes), residue position
+(numbered by signal-peptide-inclusive canonical isoform), LOF or GOF
+label as stated by the original authors, the experimental assay type,
+and the PubMed identifier.
+
+The current dataset contains approximately 350 variants (218 LOF,
+133 GOF) across twelve of the seventeen human subunit genes
+(Table~\ref{tab:subunit_counts}). The class imbalance (62\% LOF)
+reflects the literature, where LOF variants are more frequently
+reported — likely because LOF phenotypes (myasthenic syndromes,
+severe epilepsies) are more readily ascertained clinically than
+GOF phenotypes, some of which may be subclinical or protective.
+
+\begin{table}[ht]
+\tbl{Distribution of curated variants across nAChR subunit genes.
+[TODO: finalise counts after curation pass.]}
+{\begin{tabular}{@{}lrrr@{}}
+\toprule
+Subunit & LOF & GOF & Total \\
+\midrule
+CHRNA1  & -- & -- & -- \\
+CHRNA4  & -- & -- & -- \\
+CHRNA7  & -- & -- & -- \\
+CHRNB2  & -- & -- & -- \\
+\multicolumn{4}{c}{\dots\ \emph{[12 subunits total]}} \\
+\midrule
+Total   & 218 & 133 & $\sim$351 \\
+\bottomrule
+\end{tabular}}
+\label{tab:subunit_counts}
+\end{table}
+
+[TODO: complete the subunit-level breakdown after the final curation
+pass. Currently $\sim$12 subunits are represented, with the largest
+counts from CHRNA1, CHRNA4, CHRNA7, CHRNB2, CHRNE, and CHRNG.]
+
+\subsection{Label Assignment}
+
+LOF and GOF labels follow the original authors' determination based
+on one or more of: (a)~change in maximal agonist-evoked current
+amplitude, (b)~shift in agonist EC\textsubscript{50}, (c)~change in
+single-channel conductance or open probability, (d)~altered receptor
+surface expression (for trafficking defects), or
+(e)~accelerated/decelerated desensitisation kinetics. Where authors
+reported multiple functional parameters, the dominant effect on
+receptor function was used. Ambiguous or mixed-effect variants were
+excluded.
+
+\subsection{Limitations of the Current Dataset}
+
+The dataset is limited in three important respects. First, with
+$\sim$350 labelled examples, it is small by machine-learning standards,
+constraining model complexity and raising the risk of overfitting.
+Second, labels are derived from heterogeneous assays performed in
+different laboratories under different conditions (oocyte vs.\
+mammalian expression, different agonist concentrations, different
+temperature), introducing label noise. Third, publication bias likely
+means that variants with large, clear-cut functional effects are
+over-represented; variants with subtle effects or effects only
+observable under specific conditions may be missing entirely. These
+limitations are common to all functional-genomics curation efforts
+and are not specific to nAChRs; we discuss mitigation strategies in
+Section~\ref{sec:discussion}.
+
+%==============================================================
+\section{Feature Engineering}\label{sec:features}
+%==============================================================
+
+We engineer approximately 50 features organised into five categories.
+The design principle is that each feature should capture a dimension
+of information that is relevant to the biophysical mechanism by which
+a substitution alters receptor function. A summary is given in
+Table~\ref{tab:features}.
+
+\begin{table}[ht]
+\tbl{Engineered feature categories. $\Delta$ denotes mutant minus
+wild-type value. [TODO: finalise feature count and add per-feature
+descriptions.]}
+{\begin{tabular}{@{}lll@{}}
+\toprule
+Category & Count & Description \\
+\midrule
+1. Residue physicochemical
+   & $\sim$10 & Hydrophobicity, charge, size, polarity, \\
+   && aromaticity (WT, MT, and $\Delta$); \\
+   && side-chain volume, flexibility indices \\
+2. Evolutionary
+   & $\sim$5  & BLOSUM62, BLOSUM80, PAM250 scores; \\
+   && Grantham distance; conservation entropy \\
+3. Positional
+   & $\sim$3  & Normalised sequence position; \\
+   && distance to key functional motifs \\
+   && (C-loop, M2 helix, agonist-binding site) \\
+4. Subunit identity
+   & 17       & One-hot encoding of subunit gene \\
+5. Structural (cryo-EM)
+   & $\sim$15 & Per-residue B-factor, SASA, secondary \\
+   && structure class (helix/strand/coil), \\
+   && local packing density, distance to \\
+   && agonist-binding site, pore radius at \\
+   && residue position \\
+\bottomrule
+\end{tabular}}
+\label{tab:features}
+\end{table}
+
+\subsection{Rationale by Category}
+
+\paragraph{Residue physicochemical properties.}
+The chemical difference between the wild-type and mutant residue —
+change in hydrophobicity, charge, size — is the most direct descriptor
+of a substitution's likely biophysical impact. A Trp$\to$Gly substitution
+in the M2 pore-lining helix, for example, replaces a bulky hydrophobic
+side chain with a proton, drastically altering both steric packing and
+local electrostatics. We use established amino-acid index values from
+the AAindex database \cite{aaindex}.
+
+\paragraph{Evolutionary substitution scores.}
+BLOSUM and PAM matrices quantify how frequently a given amino-acid
+substitution is observed in aligned protein families, serving as a
+proxy for evolutionary tolerance. A substitution with a large negative
+BLOSUM62 score is rarely observed across evolution and is more likely
+to be functionally consequential — but, critically, the sign of the
+score does not indicate direction (LOF vs.\ GOF).
+
+\paragraph{Positional features.}
+Where a substitution occurs within the subunit sequence determines
+which functional domain it affects. We encode normalised sequence
+position (residue index divided by total subunit length) and,
+where structural data permit, distance to functionally annotated
+motifs: the C-loop (agonist binding), the M2 pore-lining helix
+(channel conductance), and the M2–M3 linker (gating coupling).
+
+\paragraph{Subunit identity.}
+A 17-dimensional one-hot vector encodes which subunit gene carries the
+variant. This allows the model to learn subunit-specific patterns —
+for example, that substitutions in CHRNA7 (a homomeric $\alpha$7
+receptor) have different typical effect directions from those in
+CHRNB2 (a neuronal $\beta$ subunit that partners with $\alpha$4).
+
+\paragraph{Structural features.}
+For variants that map to a residue resolved in an experimental cryo-EM
+structure, we extract per-residue B-factor (a measure of local
+flexibility), solvent-accessible surface area (SASA), secondary
+structure assignment (helix, strand, or coil via DSSP), and local
+packing density (number of neighbouring C$\alpha$ atoms within
+10~\AA). We use structures of the human $\alpha$4$\beta$2 and
+$\alpha$7 nAChRs, and the Torpedo marmorata muscle-type receptor
+as a high-resolution proxy for human muscle nAChRs when human
+structures are unavailable at the relevant resolution.
+
+[TODO: list PDB IDs used and the mapping protocol for variants
+not resolved in any structure.]
+
+%==============================================================
+\section{Algorithms and Experimental Design}\label{sec:algorithms}
+%==============================================================
+
+\subsection{Classifier Panel}
+
+We benchmark seven classifiers spanning a range of model complexity:
+
+\begin{itemlist}
+\item \textbf{Logistic Regression} (L2-regularised). A linear baseline
+  that tests whether the decision boundary is approximately linear in
+  the feature space.
+\item \textbf{Support Vector Machine} (RBF kernel). A non-linear kernel
+  method that can capture pairwise feature interactions.
+\item \textbf{Random Forest}. An ensemble of decision trees that handles
+  mixed data types and provides feature-importance estimates.
+\item \textbf{XGBoost}. Gradient-boosted trees with L1/L2 regularisation,
+  widely used for tabular data competitions and biomedical
+  classification tasks.
+\item \textbf{LightGBM}. Gradient-boosted trees with leaf-wise growth,
+  often faster and more accurate than XGBoost on small datasets.
+\item \textbf{CatBoost}. Gradient-boosted trees with native categorical
+  feature support and ordered boosting to reduce overfitting.
+\item \textbf{Multi-Layer Perceptron} (2–3 hidden layers, ReLU, dropout).
+  A simple neural baseline to test whether non-linear interactions
+  beyond what trees capture are present.
+\end{itemlist}
+
+\subsection{Training and Evaluation Protocol}
+
+To obtain unbiased performance estimates on a small dataset where a
+dedicated hold-out set would be too costly, we use nested
+cross-validation:
+
+\begin{arabiclist}[(3)]
+\item \textbf{Outer loop:} stratified 5-fold cross-validation. In each
+  fold, 80\% of variants are used for training and hyperparameter
+  tuning; the remaining 20\% are held out for evaluation.
+\item \textbf{Inner loop:} stratified 3-fold cross-validation on the
+  training split, used by Optuna \cite{optuna} for Bayesian
+  hyperparameter optimisation (50–100 trials per model).
+\item \textbf{Final evaluation:} the model with the best inner-loop
+  validation F1 is retrained on the full training split and evaluated
+  on the held-out outer fold. Performance is reported as the mean and
+  standard deviation of accuracy, F1 (macro and GOF-specific), and
+  ROC-AUC across the five outer folds.
+\end{arabiclist}
+
+Stratification preserves the LOF/GOF ratio in every split. Subunit-aware
+splitting (ensuring that variants from the same subunit are not
+concentrated in a single fold) is used as a sensitivity analysis to
+test generalisation to subunits with few labelled examples.
+
+\subsection{Baselines}
+
+We compare against three baselines:
+
+\begin{itemlist}
+\item \textbf{Majority-class baseline.} Always predict LOF (the majority
+  class), yielding accuracy $\approx$ 0.62 and GOF F1 = 0.
+\item \textbf{BLOSUM-direction heuristic.} Predict GOF if the BLOSUM62
+  score is positive, LOF otherwise. This naive rule tests whether
+  evolutionary conservation alone carries directional signal.
+\item \textbf{Sequence-only ablation.} The full classifier panel trained
+  on physicochemical, evolutionary, and positional features but
+  \emph{without} subunit identity or structural features. This
+  quantifies the added value of receptor-specific encoding.
+\end{itemlist}
+
+%==============================================================
+\section{Results}\label{sec:results}
+%==============================================================
+
+[PLACEHOLDER — This section will be populated once the full feature
+set, final dataset, and hyperparameter tuning are complete. The
+current draft reports preliminary findings from an earlier iteration;
+these numbers will be replaced.]
+
+\subsection{Preliminary Observations}
+
+Early experiments with an earlier version of the dataset
+($\sim$300 variants, $\sim$40 features, 5-fold CV without nested
+resampling) yielded the following indicative results:
+
+\begin{itemlist}
+\item Gradient-boosted tree methods (XGBoost, LightGBM) consistently
+  outperformed linear, kernel, and neural baselines, consistent with
+  expectations for small tabular data where tree-based ensembles
+  handle mixed feature types and non-linear interactions without
+  extensive tuning.
+\item The addition of structural features (B-factor, secondary structure,
+  packing density) produced a modest but consistent improvement of
+  $\sim$3--5 percentage points in GOF F1 over sequence-only features,
+  suggesting that structural context carries directional signal beyond
+  what sequence captures.
+\item The subunit one-hot encoding was among the highest-ranked features
+  by permutation importance in the gradient-boosted models, confirming
+  that subunit identity is predictive of effect direction.
+\item The majority-class baseline (always LOF) yielded accuracy $\sim$0.62
+  and GOF F1 = 0. The BLOSUM-direction heuristic performed near chance
+  (F1 $\approx$ 0.40), confirming that evolutionary conservation alone
+  does not resolve direction.
+\end{itemlist}
+
+[Caveat: these numbers come from an earlier pipeline iteration and
+will be updated with the final nested-CV estimates. Do not cite the
+exact values.]
+
+\subsection{Planned Analyses}
+
+Once the final dataset and feature set are frozen, we will report:
+
+\begin{romanlist}[(vi)]
+\item Mean and 95\% confidence intervals of accuracy, F1 (LOF, GOF, macro),
+  and ROC-AUC for all seven classifiers under nested CV.
+\item A critical-difference diagram (Demšar) comparing classifiers
+  across folds.
+\item Permutation feature importance for the best-performing model,
+  grouped by feature category.
+\item An ablation panel quantifying the marginal contribution of each
+  feature category (sequence-only, +evolutionary, +positional,
+  +subunit, +structural).
+\item Per-subunit performance breakdown where sample size permits
+  ($n \geq 10$ per subunit).
+\item Confusion matrices and error analysis: which variants are
+  systematically misclassified, and do they share biochemical or
+  structural characteristics?
+\end{romanlist}
+
+%==============================================================
+\section{Discussion}\label{sec:discussion}
+%==============================================================
+
+\subsection{Interpretation and Significance}
+
+[PLACEHOLDER — will be written once results are finalised. Key points
+to address:]
+
+\begin{itemlist}
+\item Whether the observed performance exceeds a clinically useful
+  threshold and what that threshold should be for triaging VUS.
+\item Which feature categories contribute most, and what this implies
+  about the biophysical determinants of LOF versus GOF in nAChRs.
+\item How the nAChR-specific model compares with general
+  direction-aware tools (LoGoFunc, MissION) on the nAChR subset,
+  once such a comparison can be made fairly.
+\item The practical interpretation of model outputs: should a
+  calibrated probability be reported, or a discrete LOF/GOF call
+  with confidence bands?
+\end{itemlist}
+
+\subsection{Challenges and Limitations}
+
+\subsubsection{Data Scarcity}
+
+With $\sim$350 labelled examples, the dataset is at least an order of
+magnitude smaller than typical training sets for general VEPs (CADD
+trained on $\sim$15M variants; AlphaMissense used $\sim$70M variants
+from population databases). Small datasets amplify three risks:
+overfitting, high-variance performance estimates, and limited
+generalisability to subunits or variant types not represented in the
+training data. We mitigate these through nested CV for unbiased
+evaluation, L1/L2 regularisation in tree-based models, and explicit
+reporting of per-subunit performance where sample size permits. But
+the fundamental solution — a larger dataset — requires community-wide
+curation efforts and, ideally, systematic functional characterisation
+of nAChR variants at scale.
+
+\subsubsection{The LOF/GOF Dichotomy}
+
+Biological reality is more nuanced than a binary LOF/GOF label.
+Variants can produce mixed effects (reduced surface expression but
+increased open probability), subunit-dependent effects (a substitution
+that is GOF in $\alpha$4$\beta$2 but LOF in $\alpha$7), or
+context-dependent effects (only observable under specific agonist
+concentrations or in the presence of allosteric modulators). Our
+binary framing is a practical simplification that enables supervised
+learning on available labels, but it should not be mistaken for a
+complete description of variant biology. Future iterations could
+adopt a multi-label or ordinal regression framework if data volume
+permits.
+
+\subsubsection{Label Noise and Assay Heterogeneity}
+
+Functional labels are extracted from studies spanning decades,
+laboratories, and protocols. Two-electrode voltage clamp in Xenopus
+oocytes (the most common assay) differs from patch clamp in mammalian
+cells in ways that can affect whether a variant is called LOF or GOF,
+particularly when the effect size is small. Systematic differences in
+how authors define and report LOF versus GOF introduce label noise
+that limits the achievable ceiling of any supervised model trained on
+these data.
+
+\subsubsection{Structural Coverage}
+
+Not all nAChR subunits have high-resolution cryo-EM structures, and
+not all residue positions within a solved structure are resolved.
+Variants in disordered loops or unresolved domains cannot be assigned
+structural features and must either be excluded or imputed from
+homologous structures, introducing additional uncertainty.
+
+\subsection{Future Work}
+
+\paragraph{Near-term (within this project cycle):}
+\begin{itemlist}
+\item Complete the feature-ablation study to quantify each category's
+  contribution.
+\item Experiment with ESM-2 protein language model embeddings as an
+  alternative or complementary representation to hand-engineered
+  features.
+\item Implement calibration (isotonic or Platt scaling) so that model
+  outputs can be interpreted as confidence estimates.
+\item Package the trained model as a lightweight Python module with
+  a simple CLI for prospective use by nAChR researchers.
+\end{itemlist}
+
+\paragraph{Medium-term (community effort):}
+\begin{itemlist}
+\item Establish a shared, versioned benchmark dataset for nAChR
+  direction-of-effect prediction, analogous to the ProteinGym
+  benchmark for variant effect prediction, to enable fair comparison
+  across methods.
+\item Expand the dataset through systematic literature mining with
+  LLM-assisted extraction, targeting the long tail of functionally
+  characterised but not digitally curated variants.
+\item Incorporate additional receptor families (GABA\textsubscript{A},
+  glycine, 5-HT\textsubscript{3}) that share the pentameric
+  ligand-gated ion channel architecture, testing whether a
+  multi-receptor model with shared structural representations
+  outperforms receptor-specific models.
+\end{itemlist}
+
+\paragraph{Longer-term:}
+\begin{itemlist}
+\item Integrate the predictor with clinical variant interpretation
+  pipelines (e.g., as a plug-in for the ACMG/AMP framework) to
+  assess real-world impact on VUS resolution rates.
+\item Investigate whether direction-of-effect prediction can guide
+  \emph{in silico} drug repurposing — matching a variant's predicted
+  effect direction to drugs with known opposing mechanisms.
+\end{itemlist}
+
+%==============================================================
+\section{Conclusion}\label{sec:conclusion}
+%==============================================================
+
+This position paper has argued that direction-aware variant effect
+prediction for human nicotinic acetylcholine receptors fills a genuine
+and consequential gap in the computational genomics landscape. Existing
+tools either report pathogenicity without direction or predict direction
+without receptor specificity; none combines directional prediction
+with nAChR subunit-level modelling. We have presented the architecture
+of a predictor designed to bridge this gap: a curated, experimentally
+labelled dataset; an engineered feature representation that encodes
+sequence properties, evolutionary constraint, subunit identity, and
+cryo-EM structural context; and a rigorous benchmarking framework under
+nested cross-validation with multiple baselines.
+
+Preliminary evidence suggests that the engineered features carry
+measurable signal for distinguishing LOF from GOF, that subunit
+identity and structural descriptors contribute above what sequence
+alone provides, and that gradient-boosted tree methods are well-suited
+to this small, tabular dataset. The main obstacles — data scarcity,
+the LOF/GOF dichotomy, label noise, and limited structural coverage
+— are real but not insurmountable, and we have outlined a roadmap
+for addressing them.
+
+The broader ambition is not merely to build one more variant effect
+predictor, but to make the case that receptor-specific, direction-aware
+prediction is the right level of resolution for ion-channel variants
+and that nAChRs are a well-motivated starting point. We invite the
+biocomputing community to join this effort: contribute curated variant
+data, benchmark new methods against a shared nAChR test set, and help
+move variant interpretation from ``damaging or not?'' to ``in which
+direction, and what should we do about it?''
+
+%==============================================================
+% Acknowledgments
+%==============================================================
+\section*{Acknowledgments}
+
+We thank Prof.\ Youssef Ghofrani for guidance on the structure and
+argumentation of this position paper, and the Advanced Scientific
+Writing course at Hochschule Bonn--Rhein--Sieg for providing the
+framework within which this work was developed. H.K.M.R.\ is supported
+by the MSc Autonomous Systems programme at HBRS. We acknowledge the
+contributors to the open-source tools used in this work: scikit-learn,
+XGBoost, LightGBM, CatBoost, Optuna, Biopython, and the Protein Data
+Bank.
+
+%==============================================================
+% References
+%==============================================================
+\begin{thebibliography}{99}
+
+\bibitem{sift}
+P.~C. Ng and S.~Henikoff,
+SIFT: predicting amino acid changes that affect protein function,
+{\em Nucleic Acids Res.} {\bf 31}, 3812 (2003).
+
+\bibitem{polyphen2}
+I.~A. Adzhubei {\em et al.},
+A method and server for predicting damaging missense mutations,
+{\em Nat. Methods} {\bf 7}, 248 (2010).
+
+\bibitem{cadd}
+M.~Kircher {\em et al.},
+A general framework for estimating the relative pathogenicity of human
+genetic variants,
+{\em Nat. Genet.} {\bf 46}, 310 (2014).
+
+\bibitem{alphamissense}
+J.~Cheng {\em et al.},
+Accurate proteome-wide missense variant effect prediction with
+AlphaMissense,
+{\em Science} {\bf 381}, eadg7492 (2023).
+
+\bibitem{esm1b}
+N.~Brandes {\em et al.},
+Genome-wide prediction of disease variant effects with a deep protein
+language model,
+{\em Nat. Genet.} {\bf 55}, 1512 (2023).
+
+\bibitem{funncion}
+A.~Brunklaus {\em et al.},
+Gene variant effects across sodium channelopathies predict function and
+guide precision therapy,
+{\em Brain} {\bf 145}, 4275 (2022).
+
+\bibitem{logofunc}
+D.~Stein {\em et al.},
+Genome-wide prediction of pathogenic gain- and loss-of-function variants
+from ensemble learning of a diverse feature set,
+{\em Genome Med.} {\bf 15}, 103 (2023).
+
+\bibitem{premode}
+G.~Zhang {\em et al.},
+Predicting the mode of action of missense variants (PreMode),
+{\em bioRxiv} (2024).
+
+\bibitem{mission}
+[Author names TBD],
+MissION: direction-of-effect prediction for ion-channel missense variants
+via protein language model embeddings and structural features,
+{\em medRxiv} (2025).
+
+\bibitem{nachr_structure_2021}
+A.~Gharpure {\em et al.},
+Agonist selectivity and ion permeation in the $\alpha$4$\beta$2 nicotinic
+acetylcholine receptor,
+{\em Neuron} {\bf 104}, 501 (2019).
+
+\bibitem{schaaf2011}
+C.~P. Schaaf and H.~Y. Zoghbi,
+Solving the autism puzzle a few pieces at a time,
+{\em Neuron} {\bf 70}, 806 (2011).
+
+\bibitem{cms_review}
+A.~G. Engel {\em et al.},
+Congenital myasthenic syndromes: pathogenesis, diagnosis, and treatment,
+{\em Lancet Neurol.} {\bf 14}, 420 (2015).
+
+\bibitem{aaindex}
+S.~Kawashima {\em et al.},
+AAindex: amino acid index database, progress report 2008,
+{\em Nucleic Acids Res.} {\bf 36}, D202 (2008).
+
+\bibitem{optuna}
+T.~Akiba {\em et al.},
+Optuna: a next-generation hyperparameter optimization framework,
+{\em Proc. KDD} (2019).
+
+\bibitem{enac}
+R.~P. Lifton {\em et al.},
+Molecular mechanisms of human hypertension,
+{\em Cell} {\bf 104}, 545 (2001).
+
+\bibitem{mohanraj2026}
+H.~K. Mohan Raj {\em et al.},
+A curated dataset of experimentally characterised missense variants in
+human nicotinic acetylcholine receptors, (2026).
+
+\end{thebibliography}
+
+\end{document}
