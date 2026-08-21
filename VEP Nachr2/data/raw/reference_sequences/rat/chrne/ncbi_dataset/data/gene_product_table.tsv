@@ -1,0 +1,10 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+29422	Chrne	NM_017194.1	1624	NP_058890.1	494	acetylcholine receptor subunit epsilon precursor	
+29422	Chrne	XM_017597171.3	2569	XP_017452660.1	547	acetylcholine receptor subunit epsilon	isoform X1
+29422	Chrne	XM_017597172.3	2627	XP_017452661.1	546	acetylcholine receptor subunit epsilon	isoform X2
+29422	Chrne	XM_017597173.3	1790	XP_017452662.1	494	acetylcholine receptor subunit epsilon	isoform X3
+29422	Chrne	XM_017597174.3	1676	XP_017452663.1	493	acetylcholine receptor subunit epsilon	isoform X4
+29422	Chrne	XM_039085740.2	1782	XP_038941668.1	494	acetylcholine receptor subunit epsilon	isoform X3
+29422	Chrne	XM_063268811.1	2463	XP_063124881.1	334	acetylcholine receptor subunit epsilon	isoform X5
+29422	Chrne	XM_063268812.1	2387	XP_063124882.1	272	acetylcholine receptor subunit epsilon	isoform X6
+29422	Chrne	XR_010055162.1	2531				

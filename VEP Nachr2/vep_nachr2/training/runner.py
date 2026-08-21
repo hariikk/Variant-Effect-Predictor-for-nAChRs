@@ -23,7 +23,7 @@ import pandas as pd
 from vep_nachr2.config import (
     ALL_MODELS, CORE_MODELS, MODEL_DISPLAY_NAMES,
     FEATURE_GROUPS, RESULTS_DIR, DEFAULT_SEEDS, PROJECT_ROOT,
-    Config, CVConfig, HyperoptConfig, get_config,
+    LABEL_NAMES, Config, CVConfig, HyperoptConfig, get_config,
 )
 from vep_nachr2.data.loader import load_mutation_data
 from vep_nachr2.data.reference import load_all_reference_sequences
@@ -116,6 +116,10 @@ def run_compare(
     cv_mode: str = "subunit",
     n_trials: int = 50,
     verbose: bool = True,
+    binary: bool = False,
+    data_file: Optional[str] = None,
+    remap_nonhuman: bool = True,
+    output_suffix: str = "",
 ) -> dict[str, dict]:
     """
     Run multiple models and compare results.
@@ -139,8 +143,16 @@ def run_compare(
     # Load data once
     if verbose:
         print("Loading data...")
-    df = load_mutation_data()
-    y = df["effect"].map({"LOF": 0, "No net effect": 1, "GOF": 2}).values.astype(np.int64)
+    if binary:
+        df = load_mutation_data(effects=["GOF", "LOF"], data_file=data_file, remap_nonhuman=remap_nonhuman)
+        y = df["effect"].map({"LOF": 0, "GOF": 1}).values.astype(np.int64)
+        n_classes = 2
+        label_names = {0: "LOF", 1: "GOF"}
+    else:
+        df = load_mutation_data(data_file=data_file, remap_nonhuman=remap_nonhuman)
+        y = df["effect"].map({"LOF": 0, "No net effect": 1, "GOF": 2}).values.astype(np.int64)
+        n_classes = 3
+        label_names = LABEL_NAMES
 
     if verbose:
         print("Extracting features...")
@@ -165,6 +177,8 @@ def run_compare(
             seeds=DEFAULT_SEEDS[:3],  # Fewer seeds for speed
             cv_mode=cv_mode,
             verbose=verbose,
+            n_classes=n_classes,
+            label_names=label_names,
         )
 
         all_results[model_name] = results
@@ -177,7 +191,8 @@ def run_compare(
     comparison_df = pd.DataFrame(comparison_rows)
     output_dir = RESULTS_DIR / "comparison"
     output_dir.mkdir(parents=True, exist_ok=True)
-    comparison_df.to_csv(output_dir / f"comparison_{cv_mode}.csv", index=False)
+    suffix = "_binary" if binary else ""
+    comparison_df.to_csv(output_dir / f"comparison_{cv_mode}{suffix}{output_suffix}.csv", index=False)
 
     if verbose:
         print(f"\n{'='*60}")
@@ -473,7 +488,7 @@ def build_parser() -> argparse.ArgumentParser:
     single_parser.add_argument("--model", type=str, default="random_forest",
                                choices=ALL_MODELS, help="Model name")
     single_parser.add_argument("--cv-mode", type=str, default="subunit",
-                               choices=["subunit", "standard"], help="CV mode")
+                               choices=["subunit", "standard", "holdout"], help="CV mode")
     single_parser.add_argument("--n-folds", type=int, default=5, help="Outer CV folds")
     single_parser.add_argument("--n-trials", type=int, default=50, help="Optuna trials")
     single_parser.add_argument("--drop", nargs="*", default=None,
@@ -485,6 +500,14 @@ def build_parser() -> argparse.ArgumentParser:
                                 choices=ALL_MODELS, help="Models to compare")
     compare_parser.add_argument("--cv-mode", type=str, default="subunit")
     compare_parser.add_argument("--n-trials", type=int, default=30)
+    compare_parser.add_argument("--binary", action="store_true", default=False,
+                                help="Binary GOF/LOF prediction (drop 'No net effect')")
+    compare_parser.add_argument("--data-file", type=str, default=None,
+                                help="Override data file (e.g. final_mapped.xlsx) in data/raw/")
+    compare_parser.add_argument("--no-remap", action="store_true", default=False,
+                                help="Disable ortholog remapping of mouse/rat positions")
+    compare_parser.add_argument("--output-suffix", type=str, default="",
+                                help="Suffix appended to the comparison CSV filename")
 
     # ablation
     ablation_parser = subparsers.add_parser("ablation", help="Feature ablation study")
@@ -547,6 +570,10 @@ def main():
             models=args.models,
             cv_mode=args.cv_mode,
             n_trials=args.n_trials,
+            binary=args.binary,
+            data_file=args.data_file,
+            remap_nonhuman=not args.no_remap,
+            output_suffix=args.output_suffix,
         )
 
     elif args.command == "ablation":

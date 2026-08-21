@@ -43,6 +43,7 @@ def _inner_objective(
     inner_cv: StratifiedKFold,
     groups: Optional[np.ndarray] = None,
     use_scaling: bool = True,
+    n_classes: int = 3,
 ) -> float:
     """
     Optuna objective: macro F1 on inner CV.
@@ -77,7 +78,7 @@ def _inner_objective(
         y_val = y_train[val_idx]
 
         # Build model with suggested hyperparameters
-        model = suggest_and_build(trial, model_name, X_tr, y_tr)
+        model = suggest_and_build(trial, model_name, X_tr, y_tr, n_classes=n_classes)
 
         # Apply scaling if needed
         needs_scaling = get_model_config(model_name)["needs_scaling"]
@@ -133,6 +134,8 @@ def nested_cross_validation(
     seeds: Optional[list[int]] = None,
     cv_mode: str = "subunit",
     verbose: bool = True,
+    n_classes: int = 3,
+    label_names: Optional[dict] = None,
 ) -> dict:
     """
     Run nested cross-validation with Optuna HP tuning.
@@ -167,6 +170,8 @@ def nested_cross_validation(
     """
     if seeds is None:
         seeds = DEFAULT_SEEDS
+    if label_names is None:
+        label_names = LABEL_NAMES
 
     if verbose:
         print(f"\n{'='*60}")
@@ -184,23 +189,35 @@ def nested_cross_validation(
             print(f"--- Seed {seed} ({seed_idx + 1}/{len(seeds)}) ---")
 
         # Build outer CV splitter
-        if cv_mode == "subunit":
+        if cv_mode == "holdout":
+            # Single stratified 80/20 train/test split per seed.
+            # No gene grouping — variants from the same gene can appear in
+            # both train and test (gene leakage). This measures the ceiling
+            # when the model has seen every subunit, NOT generalization to
+            # unseen genes.
+            from sklearn.model_selection import train_test_split
+            groups = None
+            train_idx, test_idx = train_test_split(
+                np.arange(len(y)), test_size=0.2, stratify=y, random_state=seed
+            )
+            split_pairs = [(train_idx, test_idx)]
+        elif cv_mode == "subunit":
             from vep_nachr2.data.loader import make_subunit_group_key
             groups = make_subunit_group_key(df)
             outer_cv = StratifiedGroupKFold(
                 n_splits=n_outer_folds, shuffle=True, random_state=seed
             )
+            split_pairs = list(outer_cv.split(X, y, groups))
         else:
             groups = None
             outer_cv = StratifiedKFold(
                 n_splits=n_outer_folds, shuffle=True, random_state=seed
             )
+            split_pairs = list(outer_cv.split(X, y, groups))
 
         fold_results = []
 
-        for fold_idx, (train_idx, test_idx) in enumerate(
-            outer_cv.split(X, y, groups)
-        ):
+        for fold_idx, (train_idx, test_idx) in enumerate(split_pairs):
             X_train, X_test = X[train_idx], X[test_idx]
             y_train, y_test = y[train_idx], y[test_idx]
             df_test = df.iloc[test_idx]
@@ -229,6 +246,7 @@ def nested_cross_validation(
                     trial, model_name, X_train, y_train, inner_cv,
                     groups=None,
                     use_scaling=get_model_config(model_name)["needs_scaling"],
+                    n_classes=n_classes,
                 ),
                 n_trials=n_trials,
                 show_progress_bar=False,
@@ -241,7 +259,7 @@ def nested_cross_validation(
                 print(f"    Best inner F1: {best_inner_f1:.4f}")
 
             # Build best model and fit on full outer train
-            model = build_model(model_name, best_params)
+            model = build_model(model_name, best_params, n_classes=n_classes)
 
             # Apply imbalance strategy
             model = apply_strategy(model, model_name, X_train, y_train)
@@ -277,7 +295,10 @@ def nested_cross_validation(
                 y_proba = None
 
             # Compute metrics
-            metrics = compute_metrics(y_test, y_pred, y_proba, labels=[0, 1, 2])
+            metrics = compute_metrics(
+                y_test, y_pred, y_proba,
+                labels=list(range(n_classes)), label_names=label_names,
+            )
 
             fold_result = {
                 "seed": seed,

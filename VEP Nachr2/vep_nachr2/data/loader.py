@@ -44,6 +44,8 @@ def load_mutation_data(
     effects: Optional[list[str]] = None,
     drop_ambiguous: bool = True,
     substitutions_only: bool = True,
+    data_file: Optional[str] = None,
+    remap_nonhuman: bool = True,
 ) -> pd.DataFrame:
     """
     Load nAChR mutation data from final.xlsx.
@@ -74,9 +76,10 @@ def load_mutation_data(
     >>> df = load_mutation_data(species=['human'], subunits=['CHRNA7'])
     >>> df = load_mutation_data(effects=['GOF', 'LOF'])  # binary subset
     """
-    if not FINAL_XLSX.exists():
+    data_path = RAW_DATA_DIR / data_file if data_file else FINAL_XLSX
+    if not data_path.exists():
         raise FileNotFoundError(
-            f"Data file not found: {FINAL_XLSX}\n"
+            f"Data file not found: {data_path}\n"
             "Copy merging_data/final.xlsx to VEP Nachr2/data/raw/final.xlsx"
         )
 
@@ -86,7 +89,7 @@ def load_mutation_data(
     else:
         sheet = "all_variants"
 
-    df = pd.read_excel(FINAL_XLSX, sheet_name=sheet)
+    df = pd.read_excel(data_path, sheet_name=sheet)
     initial_n = len(df)
 
     # Standardize column names
@@ -110,6 +113,9 @@ def load_mutation_data(
 
     # ── Clean species names ──
     df["species"] = df["species"].astype(str).str.strip().str.lower()
+    # .astype(str) turns a true NaN into the literal string "nan"; restore it to
+    # NaN so dropna(subset=["species"]) below actually removes the phantom row.
+    df.loc[df["species"].isin(["nan", "none", "null", ""]), "species"] = np.nan
 
     # ── Clean subunit names (uppercase, strip whitespace) ──
     df["subunit"] = df["subunit"].astype(str).str.strip().str.upper()
@@ -169,6 +175,49 @@ def load_mutation_data(
     # ── Convert position to int ──
     df["position"] = df["position"].astype(int)
 
+    # ── Remap mouse/rat positions onto the human canonical sequence ──
+    # Cross-species rows are recorded in native (mouse/rat) numbering. Map each
+    # non-human position to its human-homologous position so positional and
+    # structural features share one reference frame with the human data.
+    df["native_position"] = df["position"]
+    _non_human = df["species"] != "human"
+    if remap_nonhuman and _non_human.any():
+        try:
+            from vep_nachr2.data.reference import load_ortholog_position_mapping
+
+            for _sp in ("mouse", "rat"):
+                _mask = df["species"] == _sp
+                if not _mask.any():
+                    continue
+                _mapping = load_ortholog_position_mapping(_sp)
+                if not _mapping:
+                    warnings.warn(
+                        f"No ortholog position mapping for '{_sp}'; "
+                        f"positions left in native numbering"
+                    )
+                    continue
+
+                def _remap(row, _mapping=_mapping):
+                    gene = str(row["subunit"]).upper()
+                    return _mapping.get(gene, {}).get(int(row["position"]), np.nan)
+
+                df.loc[_mask, "position"] = df.loc[_mask].apply(_remap, axis=1)
+
+            _before = len(df)
+            df = df.dropna(subset=["position"])
+            _unmappable = _before - len(df)
+            if _unmappable:
+                warnings.warn(
+                    f"Dropped {_unmappable} non-human rows at insertions with "
+                    f"no human-equivalent residue"
+                )
+            df["position"] = df["position"].astype(int)
+        except Exception:
+            warnings.warn(
+                "Cross-species position mapping failed; "
+                "positions left in native numbering"
+            )
+
     # ── Validate amino acid codes ──
     valid_aa = set(AMINO_ACIDS)
 
@@ -183,6 +232,30 @@ def load_mutation_data(
     dropped = before - len(df)
     if dropped:
         warnings.warn(f"Dropped {dropped} rows with invalid amino acid codes")
+
+    # ── Drop variants with position outside the human reference length ──
+    # Some rows carry data-entry errors (e.g. CHRNA1 p=1314, CHRNE p=-8) that
+    # yield garbage normalized-position values and unmappable structural features.
+    # Positions are now all in human numbering (non-human rows were remapped
+    # above), so this check applies uniformly to every species.
+    try:
+        from vep_nachr2.data.reference import load_all_reference_sequences
+        _human_ref = load_all_reference_sequences("human")
+
+        def _position_in_range(row) -> bool:
+            gene = str(row["subunit"]).upper()
+            ref_len = len(_human_ref.get(gene, ""))
+            if ref_len == 0:
+                return True  # no reference available; leave the row alone
+            return 1 <= int(row["position"]) <= ref_len
+
+        before = len(df)
+        df = df[df.apply(_position_in_range, axis=1)]
+        dropped = before - len(df)
+        if dropped:
+            warnings.warn(f"Dropped {dropped} rows with position outside human reference length")
+    except Exception:
+        pass
 
     # ── Apply user filters ──
     if species is not None:

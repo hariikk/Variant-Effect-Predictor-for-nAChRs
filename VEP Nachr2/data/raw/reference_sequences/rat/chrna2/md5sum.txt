@@ -1,0 +1,8 @@
+006bd41dd894b6d532b086661e81c59a  ncbi_dataset/data/rna.fna
+7c108059efa9867265ddf098c83052a7  ncbi_dataset/data/protein.faa
+94c2ff8a34c2bd87fa488e4a64363a2e  ncbi_dataset/data/cds.fna
+0227129b38cd51314e7695f9cac8e1ba  ncbi_dataset/data/data_report.jsonl
+8aeb5d215b6b36491977f1410368fc79  ncbi_dataset/data/gene_data_table.tsv
+dd1792cc2269f275e905388c9f4ff4a1  ncbi_dataset/data/product_report.jsonl
+8899806b25a91f8b5e1b9efcbda9cd17  ncbi_dataset/data/gene_product_table.tsv
+5aaf0b2c7eac865abf740af47d435435  ncbi_dataset/data/dataset_catalog.json

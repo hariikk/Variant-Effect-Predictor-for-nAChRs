@@ -66,12 +66,14 @@ class FeatureOrchestrator:
         from vep_nachr2.features.structural import StructuralExtractor
         from vep_nachr2.features.structural_nachr import StructuralNachrExtractor
         from vep_nachr2.features.conformational import ConformationalExtractor
+        from vep_nachr2.features.conservation import ConservationExtractor
         from vep_nachr2.features.embeddings import EmbeddingExtractor
 
         return [
             PhysicochemicalExtractor(),
             SubstitutionExtractor(),
             PositionalExtractor(),
+            ConservationExtractor(),
             StructuralExtractor(),
             StructuralNachrExtractor(),
             ConformationalExtractor(),

@@ -284,7 +284,7 @@ def get_model_config(model_name: str) -> dict:
     return MODEL_REGISTRY[model_name]
 
 
-def build_model(model_name: str, params: Optional[dict] = None) -> Any:
+def build_model(model_name: str, params: Optional[dict] = None, n_classes: int = 3) -> Any:
     """Build a model instance with given (or default) parameters.
 
     Parameters
@@ -305,7 +305,7 @@ def build_model(model_name: str, params: Optional[dict] = None) -> Any:
         import lightgbm as lgb
         defaults = {
             "objective": "multiclass",
-            "num_class": 3,
+            "num_class": n_classes,
             "verbosity": -1,
             "random_state": 42,
             "n_jobs": -1,
@@ -315,28 +315,49 @@ def build_model(model_name: str, params: Optional[dict] = None) -> Any:
 
     elif model_name == "xgboost":
         import xgboost as xgb
-        defaults = {
-            "objective": "multi:softprob",
-            "num_class": 3,
-            "eval_metric": "mlogloss",
-            "verbosity": 0,
-            "random_state": 42,
-            "n_jobs": 1,
-            "tree_method": "hist",  # CPU — gpu_hist broke with multi:softprob
-        }
+        if n_classes == 2:
+            # binary:logistic returns 0/1 labels from predict(); multi:softprob
+            # with num_class=2 wrongly returns the (n,2) probability matrix.
+            defaults = {
+                "objective": "binary:logistic",
+                "eval_metric": "logloss",
+                "verbosity": 0,
+                "random_state": 42,
+                "n_jobs": 1,
+                "tree_method": "hist",
+            }
+        else:
+            defaults = {
+                "objective": "multi:softprob",
+                "num_class": n_classes,
+                "eval_metric": "mlogloss",
+                "verbosity": 0,
+                "random_state": 42,
+                "n_jobs": 1,
+                "tree_method": "hist",  # CPU — gpu_hist broke with multi:softprob
+            }
         defaults.update(params)
         return xgb.XGBClassifier(**defaults)
 
     elif model_name == "catboost":
         from catboost import CatBoostClassifier
-        defaults = {
-            "loss_function": "MultiClass",
-            "classes_count": 3,
-            "verbose": 0,
-            "random_seed": 42,
-            "thread_count": -1,
-            "allow_writing_files": False,
-        }
+        if n_classes == 2:
+            defaults = {
+                "loss_function": "Logloss",
+                "verbose": 0,
+                "random_seed": 42,
+                "thread_count": -1,
+                "allow_writing_files": False,
+            }
+        else:
+            defaults = {
+                "loss_function": "MultiClass",
+                "classes_count": n_classes,
+                "verbose": 0,
+                "random_seed": 42,
+                "thread_count": -1,
+                "allow_writing_files": False,
+            }
         if _gpu_available():
             defaults["task_type"] = "GPU"
             defaults["devices"] = "0"
@@ -356,7 +377,7 @@ def build_model(model_name: str, params: Optional[dict] = None) -> Any:
             return factory(**params)
 
 
-def suggest_and_build(trial, model_name: str, X_train=None, y_train=None) -> Any:
+def suggest_and_build(trial, model_name: str, X_train=None, y_train=None, n_classes: int = 3) -> Any:
     """Suggest hyperparameters via Optuna trial and build model.
 
     Parameters
@@ -397,4 +418,4 @@ def suggest_and_build(trial, model_name: str, X_train=None, y_train=None) -> Any
                     min(u, max_units) for u in params["hidden_layer_sizes"]
                 )
 
-    return build_model(model_name, params)
+    return build_model(model_name, params, n_classes=n_classes)

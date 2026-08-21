@@ -75,7 +75,7 @@ CANONICAL_ACCESSIONS = {
     "CHRNA6":  "NP_004189.1",
     "CHRNA7":  "NP_000737.1",
     "CHRNA9":  "NP_060051.2",
-    "CHRNA10": "NP_001289963.1",
+    "CHRNA10": "NP_065135.2",  # full-length (450 aa); NP_001289963.1 is a truncated splice isoform
     "CHRNB1":  "NP_000738.2",
     "CHRNB2":  "NP_000739.1",
     "CHRNB3":  "NP_000740.1",
@@ -224,6 +224,12 @@ FEATURE_GROUPS = {
         description="Normalized position + subunit one-hot encoding (16 subunits) + species one-hot (3 species)",
         extractor_class="PositionalExtractor",
         n_features_expected=20,  # 1 position + 16 subunit OH + 3 species OH
+    ),
+    "conservation": FeatureGroup(
+        name="conservation",
+        description="Position-specific ortholog conservation (conservation_wt/mt/delta)",
+        extractor_class="ConservationExtractor",
+        n_features_expected=3,
     ),
     "structural_core": FeatureGroup(
         name="structural_core",

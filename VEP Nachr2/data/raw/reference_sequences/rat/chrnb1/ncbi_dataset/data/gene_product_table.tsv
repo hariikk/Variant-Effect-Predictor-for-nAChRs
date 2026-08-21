@@ -1,0 +1,8 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+24261	Chrnb1	NM_001395118.3	2264	NP_001382047.1	504	acetylcholine receptor subunit beta	isoform 1 precursor
+24261	Chrnb1	NM_001429878.1	1001	NP_001416807.1	304	acetylcholine receptor subunit beta	isoform 3 precursor
+24261	Chrnb1	NM_001429879.1	992	NP_001416808.1	301	acetylcholine receptor subunit beta	isoform 4 precursor
+24261	Chrnb1	NM_012528.4	2255	NP_036660.1	501	acetylcholine receptor subunit beta	isoform 2 precursor
+24261	Chrnb1	XM_039085172.2	2714	XP_038941100.1	504	acetylcholine receptor subunit beta	isoform X1
+24261	Chrnb1	XM_039085173.2	1065	XP_038941101.1	304	isoform X2	isoform X2
+24261	Chrnb1	XM_039085174.2	1056	XP_038941102.1	301	isoform X3	isoform X3

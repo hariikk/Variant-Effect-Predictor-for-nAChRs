@@ -1,0 +1,5 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+110835	Chrna5	NM_001373901.1	6377	NP_001360830.1	467	neuronal acetylcholine receptor subunit alpha-5	isoform 1 precursor
+110835	Chrna5	NM_001373902.1	6065	NP_001360831.1	363	neuronal acetylcholine receptor subunit alpha-5	isoform 3 precursor
+110835	Chrna5	NM_176844.5	6379	NP_789814.2	438	neuronal acetylcholine receptor subunit alpha-5	isoform 2
+110835	Chrna5	XM_030244017.2	4374	XP_030099877.1	375	neuronal acetylcholine receptor subunit alpha-5	isoform X1

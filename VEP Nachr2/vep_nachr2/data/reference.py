@@ -10,7 +10,12 @@ from typing import Optional
 
 from Bio import SeqIO
 
-from vep_nachr2.config import REFERENCE_SEQ_DIR, NACHR_GENES, SPECIES_LIST
+from vep_nachr2.config import (
+    REFERENCE_SEQ_DIR,
+    NACHR_GENES,
+    SPECIES_LIST,
+    CANONICAL_ACCESSIONS,
+)
 
 
 def load_reference_sequence(
@@ -49,6 +54,14 @@ def load_reference_sequence(
     if not records:
         raise ValueError(f"Empty FASTA file: {fasta_path}")
 
+    # Prefer the declared canonical accession (config.CANONICAL_ACCESSIONS);
+    # the first record in a multi-isoform FASTA is not always the canonical.
+    canonical = CANONICAL_ACCESSIONS.get(gene)
+    if canonical is not None:
+        for rec in records:
+            if rec.id == canonical:
+                return str(rec.seq)
+
     return str(records[0].seq)
 
 
@@ -85,14 +98,9 @@ def load_all_reference_sequences(
     missing = []
 
     for gene in NACHR_GENES:
-        fasta_path = species_dir / f"{gene}.fasta"
-        if fasta_path.exists():
-            records = list(SeqIO.parse(str(fasta_path), "fasta"))
-            if records:
-                sequences[gene] = str(records[0].seq)
-            else:
-                missing.append(gene)
-        else:
+        try:
+            sequences[gene] = load_reference_sequence(gene, species)
+        except (FileNotFoundError, ValueError):
             missing.append(gene)
 
     if missing:
@@ -100,6 +108,34 @@ def load_all_reference_sequences(
         warnings.warn(f"Missing reference sequences for: {missing}")
 
     return sequences
+
+
+def load_ortholog_position_mapping(species: str) -> dict[str, dict[int, int]]:
+    """
+    Load the precomputed cross-species position mapping.
+
+    Reads {species}_to_human.csv produced by scripts/map_ortholog_positions.py
+    and returns {gene: {source_pos: human_pos}}. Residues that are insertions
+    relative to the human reference (no human equivalent) are excluded.
+
+    Returns an empty dict if the mapping file is absent, so callers can fall
+    back gracefully (e.g. leave positions in native numbering).
+    """
+    import csv
+
+    path = REFERENCE_SEQ_DIR / "mapping" / f"{species}_to_human.csv"
+    if not path.exists():
+        return {}
+
+    mapping: dict[str, dict[int, int]] = {}
+    with open(path, newline="") as fh:
+        for row in csv.DictReader(fh):
+            if not row["human_pos"]:
+                continue
+            mapping.setdefault(row["gene"], {})[int(row["source_pos"])] = int(
+                row["human_pos"]
+            )
+    return mapping
 
 
 def validate_variant_against_reference(

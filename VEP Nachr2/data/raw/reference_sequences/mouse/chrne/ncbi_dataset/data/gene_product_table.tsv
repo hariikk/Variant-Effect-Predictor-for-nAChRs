@@ -1,0 +1,7 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+11448	Chrne	NM_009603.1	1599	NP_033733.1	493	acetylcholine receptor subunit epsilon precursor	
+11448	Chrne	XM_006532006.5	1618	XP_006532069.1	494	acetylcholine receptor subunit epsilon	isoform X1
+11448	Chrne	XM_006532007.5	1508	XP_006532070.1	447	acetylcholine receptor subunit epsilon	isoform X2
+11448	Chrne	XM_036156232.1	1462	XP_036012125.1	442	acetylcholine receptor subunit epsilon	isoform X3
+11448	Chrne	XM_036156233.1	1004	XP_036012126.1	281	acetylcholine receptor subunit epsilon	isoform X4
+11448	Chrne	XR_004936687.1	1529				

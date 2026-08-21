@@ -1,0 +1,7 @@
+NCBI GeneID	Symbol	Transcript Accession	Transcript Length	Transcript Protein Accession	Transcript Protein Length	Transcript Protein Name	Transcript Protein Isoform
+231252	Chrna9	NM_001081104.2	1596	NP_001074573.1	479	neuronal acetylcholine receptor subunit alpha-9	isoform a
+231252	Chrna9	NM_001403681.1	1516	NP_001390610.1	475	neuronal acetylcholine receptor subunit alpha-9	isoform b
+231252	Chrna9	NM_001403682.1	2005	NP_001390611.1	471	neuronal acetylcholine receptor subunit alpha-9	isoform c
+231252	Chrna9	NM_001403683.1	1611	NP_001390612.1	410	neuronal acetylcholine receptor subunit alpha-9	isoform d
+231252	Chrna9	NM_001403684.1	1617	NP_001390613.1	410	neuronal acetylcholine receptor subunit alpha-9	isoform d
+231252	Chrna9	XM_030254389.1	1765	XP_030110249.1	410	neuronal acetylcholine receptor subunit alpha-9	isoform X3

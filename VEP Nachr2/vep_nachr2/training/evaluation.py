@@ -33,6 +33,7 @@ def compute_metrics(
     y_pred: np.ndarray,
     y_proba: np.ndarray | None = None,
     labels: list[int] | None = None,
+    label_names: dict | None = None,
 ) -> dict:
     """
     Compute comprehensive classification metrics.
@@ -54,6 +55,8 @@ def compute_metrics(
     """
     if labels is None:
         labels = [0, 1, 2]
+    if label_names is None:
+        label_names = LABEL_NAMES
 
     metrics = {}
 
@@ -72,7 +75,7 @@ def compute_metrics(
     metrics["recall_macro"] = float(np.mean(recall))
 
     for i, lbl in enumerate(labels):
-        name = LABEL_NAMES.get(lbl, f"class_{lbl}")
+        name = label_names.get(lbl, f"class_{lbl}")
         metrics[f"precision_{name}"] = float(precision[i])
         metrics[f"recall_{name}"] = float(recall[i])
         metrics[f"f1_{name}"] = float(f1[i])
@@ -84,7 +87,7 @@ def compute_metrics(
 
     # Per-class accuracy (recall)
     for i, lbl in enumerate(labels):
-        name = LABEL_NAMES.get(lbl, f"class_{lbl}")
+        name = label_names.get(lbl, f"class_{lbl}")
         class_mask = y_true == lbl
         if class_mask.any():
             metrics[f"accuracy_{name}"] = float(
