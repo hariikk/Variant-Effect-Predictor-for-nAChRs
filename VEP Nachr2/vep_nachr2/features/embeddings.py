@@ -25,8 +25,9 @@ import pandas as pd
 from vep_nachr2.features.base import FeatureExtractor
 
 
-# ESM-2 checkpoint. 150M is the CPU-friendly sweet spot; swap for
-# esm2_t33_650M_UR50D if more RAM/time is available.
+# ESM-2 checkpoint. Run IX (650M vs 150M A/B) showed the two are equal on the honest
+# gene-grouped subunit CV (3-class Δ −0.006, binary Δ −0.000) — the zero-shot score
+# saturates at 150M. Keep the 150M model: equally good, ~4x faster to extract.
 ESM2_MODEL_NAME = "esm2_t30_150M_UR50D"
 
 # Module-level lazy cache: {loaded, model, alphabet, error}.

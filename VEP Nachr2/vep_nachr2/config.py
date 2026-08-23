@@ -28,11 +28,15 @@ REFERENCE_SEQ_DIR = RAW_DATA_DIR / "reference_sequences"
 RESULTS_DIR = PROJECT_ROOT / "results"
 CACHE_DIR = PROCESSED_DATA_DIR
 
+# AlphaMissense per-variant pathogenicity scores (filtered to the 16 nAChR genes)
+ALPHAMISSENSE_DIR = RAW_DATA_DIR / "alphamissense"
+ALPHAMISSENSE_TSV = ALPHAMISSENSE_DIR / "nachr_16_genes.tsv"
+
 # Source data — relative to repo root (VEP Nachr2 is one level down)
 SOURCE_DATA_DIR = PROJECT_ROOT.parent / "merging_data"
 
 for _dir in [DATA_DIR, RAW_DATA_DIR, PROCESSED_DATA_DIR, STRUCTURE_DIR,
-             REFERENCE_SEQ_DIR, RESULTS_DIR, CACHE_DIR]:
+             REFERENCE_SEQ_DIR, RESULTS_DIR, CACHE_DIR, ALPHAMISSENSE_DIR]:
     _dir.mkdir(parents=True, exist_ok=True)
 
 
@@ -83,6 +87,30 @@ CANONICAL_ACCESSIONS = {
     "CHRND":   "NP_000742.1",
     "CHRNE":   "NP_000071.1",
     "CHRNG":   "NP_005190.4",
+}
+
+# Canonical UniProt accessions (reviewed/Swiss-Prot entry per gene) — what
+# AlphaMissense keys its per-variant scores on. Mapped via the UniProt search API
+# (gene:{X} AND organism_id:9606 AND reviewed:true), NOT hand-written.
+# Note CHRNA10's canonical entry is Q9GZZ6; AF-Q13002 in PDB_MAPPING is the
+# AlphaFold model id, a different identifier for the same subunit.
+UNIPROT_ACCESSIONS = {
+    "CHRNA1":  "P02708",
+    "CHRNA2":  "Q15822",
+    "CHRNA3":  "P32297",
+    "CHRNA4":  "P43681",
+    "CHRNA5":  "P30532",
+    "CHRNA6":  "Q15825",
+    "CHRNA7":  "P36544",
+    "CHRNA9":  "Q9UGM1",
+    "CHRNA10": "Q9GZZ6",
+    "CHRNB1":  "P11230",
+    "CHRNB2":  "P17787",
+    "CHRNB3":  "Q05901",
+    "CHRNB4":  "P30926",
+    "CHRND":   "Q07001",
+    "CHRNE":   "Q04844",
+    "CHRNG":   "P07510",
 }
 
 # =============================================================================
@@ -257,6 +285,12 @@ FEATURE_GROUPS = {
         description="ESM-2 protein language model embeddings (future)",
         extractor_class="EmbeddingExtractor",
         n_features_expected=0,  # placeholder
+    ),
+    "alphamissense": FeatureGroup(
+        name="alphamissense",
+        description="AlphaMissense pathogenicity score (0-1) for the specific substitution",
+        extractor_class="AlphamissenseExtractor",
+        n_features_expected=1,
     ),
 }
 

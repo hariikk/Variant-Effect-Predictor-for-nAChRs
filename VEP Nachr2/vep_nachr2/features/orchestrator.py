@@ -68,6 +68,7 @@ class FeatureOrchestrator:
         from vep_nachr2.features.conformational import ConformationalExtractor
         from vep_nachr2.features.conservation import ConservationExtractor
         from vep_nachr2.features.embeddings import EmbeddingExtractor
+        from vep_nachr2.features.alphamissense import AlphamissenseExtractor
 
         return [
             PhysicochemicalExtractor(),
@@ -78,6 +79,7 @@ class FeatureOrchestrator:
             StructuralNachrExtractor(),
             ConformationalExtractor(),
             EmbeddingExtractor(),
+            AlphamissenseExtractor(),
         ]
 
     def get_extractor_names(self) -> list[str]:
