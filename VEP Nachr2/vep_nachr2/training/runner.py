@@ -118,7 +118,6 @@ def run_compare(
     verbose: bool = True,
     binary: bool = False,
     data_file: Optional[str] = None,
-    remap_nonhuman: bool = True,
     output_suffix: str = "",
 ) -> dict[str, dict]:
     """
@@ -144,12 +143,12 @@ def run_compare(
     if verbose:
         print("Loading data...")
     if binary:
-        df = load_mutation_data(effects=["GOF", "LOF"], data_file=data_file, remap_nonhuman=remap_nonhuman)
+        df = load_mutation_data(effects=["GOF", "LOF"], data_file=data_file)
         y = df["effect"].map({"LOF": 0, "GOF": 1}).values.astype(np.int64)
         n_classes = 2
         label_names = {0: "LOF", 1: "GOF"}
     else:
-        df = load_mutation_data(data_file=data_file, remap_nonhuman=remap_nonhuman)
+        df = load_mutation_data(data_file=data_file)
         y = df["effect"].map({"LOF": 0, "No net effect": 1, "GOF": 2}).values.astype(np.int64)
         n_classes = 3
         label_names = LABEL_NAMES
@@ -503,9 +502,7 @@ def build_parser() -> argparse.ArgumentParser:
     compare_parser.add_argument("--binary", action="store_true", default=False,
                                 help="Binary GOF/LOF prediction (drop 'No net effect')")
     compare_parser.add_argument("--data-file", type=str, default=None,
-                                help="Override data file (e.g. final_mapped.xlsx) in data/raw/")
-    compare_parser.add_argument("--no-remap", action="store_true", default=False,
-                                help="Disable ortholog remapping of mouse/rat positions")
+                                help="Override data file in data/raw/ (default: final_mapped.xlsx)")
     compare_parser.add_argument("--output-suffix", type=str, default="",
                                 help="Suffix appended to the comparison CSV filename")
 
@@ -572,7 +569,6 @@ def main():
             n_trials=args.n_trials,
             binary=args.binary,
             data_file=args.data_file,
-            remap_nonhuman=not args.no_remap,
             output_suffix=args.output_suffix,
         )
 

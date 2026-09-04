@@ -107,6 +107,47 @@ def _extract_ss_from_cif(cif_dict: dict) -> dict:
     return ss_map
 
 
+def _compute_dssp_dict_from_structure(structure, cif_dict: dict) -> dict:
+    """Build a DSSP-like dict with REAL solvent accessibility (SASA) + SS codes.
+
+    For AlphaFold models that have no precomputed .dssp file, computes per-residue
+    solvent-accessible surface area via Shrake-Rupley (probe radius 1.4 Å, matching
+    DSSP's "acc" field) and reads secondary structure from mmCIF _struct_conf /
+    _struct_sheet_range annotations. Returns the same {(chainid, res_id):
+    (aa, ss, acc, phi, psi, dssp_index, ...)} 14-tuple shape as
+    Bio.PDB.DSSP.make_dssp_dict so downstream RSA/SS code is unchanged.
+    """
+    from Bio.PDB.SASA import ShrakeRupley
+
+    ss_map = _extract_ss_from_cif(cif_dict)  # {(chainid, res_id): (..., ss, ...)}
+
+    sr = ShrakeRupley()
+    sr.compute(structure, level="R")
+
+    dssp_dict = {}
+    index = 1
+    for model in structure:
+        for chain in model:
+            for residue in chain:
+                if not is_aa(residue) or residue.resname not in protein_letters_3to1:
+                    continue
+                key = (chain.id, residue.id)
+                aa = protein_letters_3to1[residue.resname]
+                ss = ss_map[key][1] if key in ss_map else "-"
+                acc = float(getattr(residue, "sasa", 0.0))
+                dssp_dict[key] = (
+                    aa,       # [0] amino acid
+                    ss,       # [1] secondary structure
+                    acc,      # [2] accessible surface area (Å²)
+                    360.0,    # [3] phi (placeholder)
+                    360.0,    # [4] psi (placeholder)
+                    index,    # [5] dssp index
+                    0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0,  # [6..13] H-bond placeholders
+                )
+                index += 1
+    return dssp_dict
+
+
 def _load_pdb_resources(pdb_id: str) -> Optional[dict]:
     """Load PDB structure + DSSP for a single PDB ID.
 
@@ -141,15 +182,11 @@ def _load_pdb_resources(pdb_id: str) -> Optional[dict]:
                 pass
 
         if not dssp_loaded:
-            # Fallback: extract SS from CIF annotations
+            # Fallback: compute SASA (Shrake-Rupley) + SS (CIF annotations)
             try:
-                from Bio.PDB import MMCIF2Dict
                 cif_dict = MMCIF2Dict.MMCIF2Dict(str(cif_path))
-                ss_dict = _extract_ss_from_cif(cif_dict)
-                if ss_dict:
-                    resources["dssp_dict"] = ss_dict
-                else:
-                    resources["dssp_dict"] = None
+                ss_dict = _compute_dssp_dict_from_structure(structure, cif_dict)
+                resources["dssp_dict"] = ss_dict if ss_dict else None
             except Exception:
                 resources["dssp_dict"] = None
 
@@ -165,14 +202,22 @@ def _build_alignment_map(
     pdb_chain,
     chain_id: str,
 ) -> dict[int, tuple]:
-    """
-    Align reference sequence to PDB chain, returning 1-based position → PDB residue ID mapping.
+    """Map 1-based precursor positions → PDB residue IDs via gapped alignment.
 
-    Uses BioPython PairwiseAligner with BLOSUM62, global mode.
+    The reference is the full precursor (signal peptide included); the PDB chain
+    is the mature protein (experimental) or full-length (AlphaFold). A global
+    Needleman-Wunsch alignment makes signal-peptide trimming, M3-M4 loop
+    deletions (common in crystallised constructs), and terminal truncations into
+    explicit gaps — rather than shifting the whole mapping — so positions aligned
+    to a gap are simply left unmapped.
+
+    If the aligned (non-gap) identity is below 80%, the chain is a *different*
+    subunit/isoform (homology-mapped or wrong accession); an empty map is
+    returned so the gene falls back to fill values instead of silently emitting
+    wrong-residue features. Returns {precursor_pos: residue.id}.
     """
     from Bio import Align
 
-    # Extract PDB chain sequence
     pdb_residues = []
     pdb_res_ids = []
     for residue in pdb_chain:
@@ -183,14 +228,14 @@ def _build_alignment_map(
                 pdb_res_ids.append(residue.id)
 
     pdb_sequence = "".join(pdb_residues)
-
     if not pdb_sequence:
         return {}
 
-    # Align
     aligner = Align.PairwiseAligner()
     aligner.mode = "global"
     aligner.substitution_matrix = Align.substitution_matrices.load("BLOSUM62")
+    aligner.open_gap_score = -10.0
+    aligner.extend_gap_score = -0.5
 
     try:
         alignments = aligner.align(ref_seq, pdb_sequence)
@@ -198,55 +243,29 @@ def _build_alignment_map(
             return {}
         best = next(iter(alignments))
     except (OverflowError, ValueError, MemoryError):
-        # BioPython C overflow on long sequences — fall back to direct
-        # position mapping (assumes PDB uses mature protein numbering)
-        best = None
+        return {}
+
+    # Identity over aligned (non-gap) columns; reject different subunits/isoforms.
+    aligned_ref, aligned_pdb = best[0], best[1]
+    cols = [(a, b) for a, b in zip(aligned_ref, aligned_pdb) if a != "-" and b != "-"]
+    if not cols:
+        return {}
+    identity = sum(1 for a, b in cols if a == b) / len(cols)
+    if identity < 0.80:
+        warnings.warn(
+            f"Low-identity mapping ({identity:.1%}) for chain {chain_id}; "
+            f"gene is homology-mapped to a different subunit or uses a wrong isoform."
+        )
+        return {}
 
     alignment_map = {}
-
-    if best is not None:
-        for uniprot_block, pdb_block in zip(best.aligned[0], best.aligned[1]):
-            uniprot_start, uniprot_end = uniprot_block
-            pdb_start, pdb_end = pdb_block
-
-            if pdb_start == pdb_end:
-                for pos in range(uniprot_start, uniprot_end):
-                    alignment_map[pos + 1] = None  # gap
-            else:
-                for i, pos in enumerate(range(uniprot_start, uniprot_end)):
-                    pdb_idx = pdb_start + i
-                    if pdb_idx < len(pdb_res_ids):
-                        alignment_map[pos + 1] = pdb_res_ids[pdb_idx]
-                    else:
-                        alignment_map[pos + 1] = None
-    else:
-        # Fallback: direct position mapping
-        # PDB chains typically use mature protein numbering (UniProt pos - signal_peptide_len)
-        # Try to find the offset by matching the first few residues
-        pdb_sequence_fb = ""
-        pdb_positions_fb = []
-        for r in pdb_chain:
-            if is_aa(r) and r.resname in protein_letters_3to1:
-                pdb_sequence_fb += protein_letters_3to1[r.resname]
-                pdb_positions_fb.append(r.id[1])
-
-        # Find best offset by matching a window from both sequences
-        best_offset = 0
-        best_matches = 0
-        for offset in range(max(1, len(ref_seq) - len(pdb_sequence_fb) + 1)):
-            matches = sum(1 for j in range(min(30, len(pdb_sequence_fb)))
-                         if offset + j < len(ref_seq)
-                         and ref_seq[offset + j] == pdb_sequence_fb[j])
-            if matches > best_matches:
-                best_matches = matches
-                best_offset = offset
-            if best_matches > 25:
-                break
-
-        for pdb_idx, res_id in enumerate(pdb_positions_fb):
-            uniprot_pos = best_offset + pdb_idx + 1
-            alignment_map[uniprot_pos] = (" ", res_id, " ")
-
+    for uniprot_block, pdb_block in zip(best.aligned[0], best.aligned[1]):
+        uniprot_start, uniprot_end = uniprot_block
+        pdb_start, pdb_end = pdb_block
+        for i, pos in enumerate(range(uniprot_start, uniprot_end)):
+            pdb_idx = pdb_start + i
+            if pdb_idx < len(pdb_res_ids):
+                alignment_map[pos + 1] = pdb_res_ids[pdb_idx]
     return alignment_map
 
 

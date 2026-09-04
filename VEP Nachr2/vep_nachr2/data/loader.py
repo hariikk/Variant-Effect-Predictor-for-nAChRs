@@ -1,8 +1,9 @@
 """
 Unified data loading for VEP-nAChR2 experiments.
 
-Loads from merging_data/final.xlsx (unique_variants sheet), standardizes columns,
-filters to substitutions only, and provides label encoding for 3-class prediction.
+Loads from merging_data/final_mapped.xlsx (unique_variants sheet), standardizes
+columns, filters to substitutions only, and provides label encoding for 3-class
+prediction. Positions are in human numbering (see scripts/normalize_positions.py).
 """
 
 import warnings
@@ -30,7 +31,10 @@ from vep_nachr2.config import (
 # DATA FILE PATHS
 # =============================================================================
 
-FINAL_XLSX = RAW_DATA_DIR / "final.xlsx"
+# Canonical, position-normalized source. Produced by scripts/normalize_positions.py,
+# which resolves each row's native mature/precursor numbering and maps mouse/rat
+# residues to their human-homologous position. Every row is human-numbered here.
+FINAL_XLSX = RAW_DATA_DIR / "final_mapped.xlsx"
 
 
 # =============================================================================
@@ -45,10 +49,9 @@ def load_mutation_data(
     drop_ambiguous: bool = True,
     substitutions_only: bool = True,
     data_file: Optional[str] = None,
-    remap_nonhuman: bool = True,
 ) -> pd.DataFrame:
     """
-    Load nAChR mutation data from final.xlsx.
+    Load nAChR mutation data from final_mapped.xlsx (human-numbered positions).
 
     Parameters
     ----------
@@ -80,7 +83,7 @@ def load_mutation_data(
     if not data_path.exists():
         raise FileNotFoundError(
             f"Data file not found: {data_path}\n"
-            "Copy merging_data/final.xlsx to VEP Nachr2/data/raw/final.xlsx"
+            "Run scripts/normalize_positions.py to produce data/raw/final_mapped.xlsx"
         )
 
     # Select sheet
@@ -175,48 +178,13 @@ def load_mutation_data(
     # ── Convert position to int ──
     df["position"] = df["position"].astype(int)
 
-    # ── Remap mouse/rat positions onto the human canonical sequence ──
-    # Cross-species rows are recorded in native (mouse/rat) numbering. Map each
-    # non-human position to its human-homologous position so positional and
-    # structural features share one reference frame with the human data.
-    df["native_position"] = df["position"]
-    _non_human = df["species"] != "human"
-    if remap_nonhuman and _non_human.any():
-        try:
-            from vep_nachr2.data.reference import load_ortholog_position_mapping
-
-            for _sp in ("mouse", "rat"):
-                _mask = df["species"] == _sp
-                if not _mask.any():
-                    continue
-                _mapping = load_ortholog_position_mapping(_sp)
-                if not _mapping:
-                    warnings.warn(
-                        f"No ortholog position mapping for '{_sp}'; "
-                        f"positions left in native numbering"
-                    )
-                    continue
-
-                def _remap(row, _mapping=_mapping):
-                    gene = str(row["subunit"]).upper()
-                    return _mapping.get(gene, {}).get(int(row["position"]), np.nan)
-
-                df.loc[_mask, "position"] = df.loc[_mask].apply(_remap, axis=1)
-
-            _before = len(df)
-            df = df.dropna(subset=["position"])
-            _unmappable = _before - len(df)
-            if _unmappable:
-                warnings.warn(
-                    f"Dropped {_unmappable} non-human rows at insertions with "
-                    f"no human-equivalent residue"
-                )
-            df["position"] = df["position"].astype(int)
-        except Exception:
-            warnings.warn(
-                "Cross-species position mapping failed; "
-                "positions left in native numbering"
-            )
+    # ── Cross-species positions are already human-numbered ──
+    # `final_mapped.xlsx` (scripts/normalize_positions.py) resolves each row's
+    # native mature/precursor numbering and maps mouse/rat residues to their human
+    # homolog BEFORE this loader runs. Do not re-map here: the old in-loader
+    # ortholog remap looked mature-numbered positions up directly against a
+    # precursor-based mapping and landed ~75% of non-human rows on the wrong human
+    # residue. There is a single mapping path now, upstream of this function.
 
     # ── Validate amino acid codes ──
     valid_aa = set(AMINO_ACIDS)

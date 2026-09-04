@@ -88,6 +88,14 @@ def make_gaussian_nb(**params) -> GaussianNB:
     return GaussianNB(**defaults)
 
 
+def make_ordinal(**params):
+    """Cumulative-link ordinal classifier (LOF < NNE < GOF)."""
+    from vep_nachr2.models.ordinal import OrdinalClassifier
+    defaults = {"C": 1.0, "max_iter": 1000, "random_state": 42}
+    defaults.update(params)
+    return OrdinalClassifier(**defaults)
+
+
 # =============================================================================
 # HYPERPARAMETER SEARCH SPACES
 # =============================================================================
@@ -155,6 +163,9 @@ HP_SPACES = {
     },
     "gaussian_nb": {
         "var_smoothing": ("log_float", 1e-12, 1e-7),
+    },
+    "ordinal": {
+        "C": ("log_float", 1e-3, 1e2),
     },
     "xgboost": {
         "n_estimators": ("int", 50, 300),
@@ -272,6 +283,13 @@ MODEL_REGISTRY: dict[str, dict[str, Any]] = {
         "hp_space": HP_SPACES["catboost"],
         "supports_sample_weight": True,
     },
+    "ordinal": {
+        "factory": make_ordinal,
+        "needs_scaling": True,
+        "display_name": MODEL_DISPLAY_NAMES["ordinal"],
+        "hp_space": HP_SPACES["ordinal"],
+        "supports_sample_weight": False,
+    },
 }
 
 
@@ -358,11 +376,10 @@ def build_model(model_name: str, params: Optional[dict] = None, n_classes: int =
                 "thread_count": -1,
                 "allow_writing_files": False,
             }
-        if _gpu_available():
-            defaults["task_type"] = "GPU"
-            defaults["devices"] = "0"
-        else:
-            defaults["task_type"] = "CPU"
+        # CatBoost GPU is *slower* than CPU on this dataset (~760 samples): the
+        # per-fit GPU transfer overhead dominates and there is little parallelism
+        # to exploit. Force CPU — same model quality, much faster wall-clock.
+        defaults["task_type"] = "CPU"
         defaults.update(params)
         return CatBoostClassifier(**defaults)
 

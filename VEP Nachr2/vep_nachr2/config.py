@@ -127,8 +127,6 @@ PDB_MAPPING = {
     "CHRNB1": {"pdb_id": "9DMG", "chain": "E", "source": "experimental"},
     "CHRND":  {"pdb_id": "9DMG", "chain": "D", "source": "experimental"},
     "CHRNE":  {"pdb_id": "9DMG", "chain": "B", "source": "experimental"},
-    "CHRNG":  {"pdb_id": "9DMG", "chain": "B", "source": "experimental",
-               "homology_parent": "CHRNE"},  # fetal γ ≈ adult ε chain
 
     # ── α7 homopentamer (7EKT: closed/antagonist, 3.20 Å) ──
     "CHRNA7": {"pdb_id": "7EKT", "chain": "A", "source": "experimental"},
@@ -136,22 +134,22 @@ PDB_MAPPING = {
     # ── α4β2 neuronal (6CNJ: 3.30 Å) ──
     "CHRNA4": {"pdb_id": "6CNJ", "chain": "A", "source": "experimental"},
     "CHRNB2": {"pdb_id": "6CNJ", "chain": "B", "source": "experimental"},
-    "CHRNA2": {"pdb_id": "6CNJ", "chain": "A", "source": "experimental",
-               "homology_parent": "CHRNA4"},  # α2 ≈ α4
-    "CHRNA6": {"pdb_id": "6CNJ", "chain": "A", "source": "experimental",
-               "homology_parent": "CHRNA4"},  # α6 ≈ α4
 
     # ── α3β4 neuronal (6PV7: 2.80 Å) ──
     "CHRNA3": {"pdb_id": "6PV7", "chain": "A", "source": "experimental"},
     "CHRNB4": {"pdb_id": "6PV7", "chain": "B", "source": "experimental"},
-    "CHRNA5": {"pdb_id": "6PV7", "chain": "A", "source": "experimental",
-               "homology_parent": "CHRNA3"},  # α5 ≈ α3
-    "CHRNB3": {"pdb_id": "6PV7", "chain": "B", "source": "experimental",
-               "homology_parent": "CHRNB4"},  # β3 ≈ β4
 
-    # ── α9α10 (AlphaFold fallback — no high-res experimental structure) ──
+    # ── α9α10 + subunits without a dedicated high-res structure ──
+    # These 7 genes use their own full-length AlphaFold model (offset 0, direct
+    # mapping) instead of being homology-mapped onto a different subunit's chain
+    # (~47% identity, which produced wrong-residue structural features).
     "CHRNA9":  {"pdb_id": "AF-Q9UGM1", "chain": "A", "source": "alphafold"},
-    "CHRNA10": {"pdb_id": "AF-Q13002", "chain": "A", "source": "alphafold"},
+    "CHRNA10": {"pdb_id": "AF-Q9GZZ6", "chain": "A", "source": "alphafold"},
+    "CHRNA2":  {"pdb_id": "AF-Q15822", "chain": "A", "source": "alphafold"},
+    "CHRNA5":  {"pdb_id": "AF-P30532", "chain": "A", "source": "alphafold"},
+    "CHRNA6":  {"pdb_id": "AF-Q15825", "chain": "A", "source": "alphafold"},
+    "CHRNB3":  {"pdb_id": "AF-Q05901", "chain": "A", "source": "alphafold"},
+    "CHRNG":   {"pdb_id": "AF-P07510", "chain": "A", "source": "alphafold"},
 }
 
 # Conformational state pairs (closed/resting → open/activated)
@@ -263,7 +261,7 @@ FEATURE_GROUPS = {
         name="structural_core",
         description="Core PDB structural features (RSA, Cβ-density, B-factor, DSSP, is_unmappable)",
         extractor_class="StructuralExtractor",
-        n_features_expected=5,
+        n_features_expected=7,
         requires_pdb=True,
     ),
     "structural_nachr": FeatureGroup(
@@ -275,9 +273,9 @@ FEATURE_GROUPS = {
     ),
     "conformational": FeatureGroup(
         name="conformational",
-        description="Open/closed conformational delta features (α7 only initially)",
+        description="Open/closed conformational delta features (α7 only)",
         extractor_class="ConformationalExtractor",
-        n_features_expected=0,  # 0 for non-α7, up to 5 for α7
+        n_features_expected=5,
         requires_pdb=True,
     ),
     "embeddings": FeatureGroup(
@@ -288,7 +286,7 @@ FEATURE_GROUPS = {
     ),
     "alphamissense": FeatureGroup(
         name="alphamissense",
-        description="AlphaMissense pathogenicity score (0-1) for the specific substitution",
+        description="AlphaMissense pathogenicity score (0-1) — NOT in default set (Run X null)",
         extractor_class="AlphamissenseExtractor",
         n_features_expected=1,
     ),
@@ -360,7 +358,7 @@ DATA_DRIVEN_ENCODINGS = {"ordinal", "onehot"}
 # =============================================================================
 
 CORE_MODELS = ["logistic_regression", "svm_rbf", "random_forest", "lightgbm"]
-EXTENDED_MODELS = ["svm_linear", "knn", "xgboost", "catboost", "mlp", "gaussian_nb"]
+EXTENDED_MODELS = ["svm_linear", "knn", "xgboost", "catboost", "mlp", "gaussian_nb", "ordinal"]
 ALL_MODELS = CORE_MODELS + EXTENDED_MODELS
 
 MODEL_DISPLAY_NAMES = {
@@ -374,6 +372,7 @@ MODEL_DISPLAY_NAMES = {
     "mlp": "Multi-Layer Perceptron",
     "xgboost": "XGBoost",
     "catboost": "CatBoost",
+    "ordinal": "Ordinal (cumulative link)",
 }
 
 

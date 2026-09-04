@@ -51,6 +51,11 @@ def _load_esm2():
             )
         model, alphabet = load_fn()
         model.eval()
+        # Move to GPU once if available — the masked-marginal forward passes are
+        # ~50x faster on CUDA than on CPU. Both esm2 (this module) and
+        # esm_embeddings share this instance, so a single .cuda() covers both.
+        if torch.cuda.is_available():
+            model = model.cuda()
         _model_state["model"] = model
         _model_state["alphabet"] = alphabet
     except Exception as e:  # noqa: BLE001
@@ -122,6 +127,10 @@ class EmbeddingExtractor(FeatureExtractor):
                 continue
 
             _, _, batch_tokens = batch_converter(data)
+            # The model is shared module-wide with esm_embeddings.py, which may
+            # have moved it to CUDA in place. Always send tokens to the model's
+            # current device so this works regardless of which extractor ran last.
+            batch_tokens = batch_tokens.to(next(model.parameters()).device)
 
             with torch.no_grad():
                 out = model(batch_tokens)

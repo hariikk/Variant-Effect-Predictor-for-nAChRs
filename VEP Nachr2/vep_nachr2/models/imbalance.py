@@ -28,6 +28,7 @@ IMBALANCE_STRATEGIES = {
     "gaussian_nb": "ros",
     "xgboost": "cost_sensitive",  # sample_weight strategy was broken, use class balancing
     "catboost": "cost_sensitive",
+    "ordinal": "none",  # OrdinalClassifier balances its binary sub-estimators internally
 }
 
 
@@ -57,6 +58,9 @@ def apply_strategy(model, model_name: str, X_train=None, y_train=None) -> object
         Model with imbalance strategy applied.
     """
     strategy = get_strategy(model_name)
+
+    if strategy == "none":
+        return model
 
     if strategy == "cost_sensitive":
         # For tree-based models with class_weight, set it here

@@ -12,7 +12,12 @@ Usage:
 
 Structures needed:
     AF-Q9UGM1  — CHRNA9  (UniProt: Q9UGM1)
-    AF-Q13002  — CHRNA10 (UniProt: Q13002)
+    AF-Q9GZZ6  — CHRNA10 (UniProt: Q9GZZ6)  [correct canonical accession]
+    AF-Q15822  — CHRNA2  (UniProt: Q15822)  [was homology-mapped to CHRNA4]
+    AF-P30532  — CHRNA5  (UniProt: P30532)  [was homology-mapped to CHRNA3]
+    AF-Q15825  — CHRNA6  (UniProt: Q15825)  [was homology-mapped to CHRNA4]
+    AF-Q05901  — CHRNB3  (UniProt: Q05901)  [was homology-mapped to CHRNB4]
+    AF-P07510  — CHRNG   (UniProt: P07510)  [was homology-mapped to CHRNE]
 """
 
 import argparse
@@ -29,11 +34,41 @@ ALPHAFOLD_STRUCTURES = {
         "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q9UGM1-F1-model_v6.pdb",
         "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q9UGM1-F1-model_v6.cif",
     },
-    "AF-Q13002": {
+    "AF-Q9GZZ6": {
         "gene": "CHRNA10",
-        "uniprot": "Q13002",
-        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q13002-F1-model_v6.pdb",
-        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q13002-F1-model_v6.cif",
+        "uniprot": "Q9GZZ6",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q9GZZ6-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q9GZZ6-F1-model_v6.cif",
+    },
+    "AF-Q15822": {
+        "gene": "CHRNA2",
+        "uniprot": "Q15822",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q15822-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q15822-F1-model_v6.cif",
+    },
+    "AF-P30532": {
+        "gene": "CHRNA5",
+        "uniprot": "P30532",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-P30532-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-P30532-F1-model_v6.cif",
+    },
+    "AF-Q15825": {
+        "gene": "CHRNA6",
+        "uniprot": "Q15825",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q15825-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q15825-F1-model_v6.cif",
+    },
+    "AF-Q05901": {
+        "gene": "CHRNB3",
+        "uniprot": "Q05901",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-Q05901-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-Q05901-F1-model_v6.cif",
+    },
+    "AF-P07510": {
+        "gene": "CHRNG",
+        "uniprot": "P07510",
+        "url_pdb": "https://alphafold.ebi.ac.uk/files/AF-P07510-F1-model_v6.pdb",
+        "url_cif": "https://alphafold.ebi.ac.uk/files/AF-P07510-F1-model_v6.cif",
     },
 }
 

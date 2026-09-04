@@ -29,18 +29,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="random_forest")
     parser.add_argument("--n-trials", type=int, default=30)
+    parser.add_argument("--n-seeds", type=int, default=1,
+                        help="Number of CV seeds (1 = quick, 5 = confirmation)")
     parser.add_argument("--binary", action="store_true")
     args = parser.parse_args()
 
     print("Loading mapped data (final_mapped.xlsx, no re-remap)...", flush=True)
     if args.binary:
         df = load_mutation_data(
-            effects=["GOF", "LOF"], data_file="final_mapped.xlsx", remap_nonhuman=False
+            effects=["GOF", "LOF"], data_file="final_mapped.xlsx"
         )
         y = df["effect"].map({"LOF": 0, "GOF": 1}).values.astype(np.int64)
         n_classes, label_names = 2, {0: "LOF", 1: "GOF"}
     else:
-        df = load_mutation_data(data_file="final_mapped.xlsx", remap_nonhuman=False)
+        df = load_mutation_data(data_file="final_mapped.xlsx")
         y = df["effect"].map({"LOF": 0, "No net effect": 1, "GOF": 2}).values.astype(np.int64)
         n_classes, label_names = 3, LABEL_NAMES
 
@@ -70,7 +72,7 @@ def main():
             model_name=args.model,
             n_outer_folds=5,
             n_trials=args.n_trials,
-            seeds=DEFAULT_SEEDS[:1],
+            seeds=DEFAULT_SEEDS[:args.n_seeds],
             cv_mode="subunit",
             verbose=False,
             n_classes=n_classes,

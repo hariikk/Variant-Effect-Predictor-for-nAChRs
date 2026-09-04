@@ -53,6 +53,7 @@ from vep_nachr2.config import RAW_DATA_DIR, NACHR_GENES
 from vep_nachr2.data.reference import (
     load_reference_sequence,
     load_ortholog_position_mapping,
+    load_all_reference_sequences,
 )
 
 
@@ -125,6 +126,69 @@ def resolve_native_position(
     return None, "no_match"
 
 
+def _human_matches(human_ref: str, human_pos: int, wildtype: str) -> bool:
+    """True if the human reference AA at `human_pos` equals the reported wildtype."""
+    return 1 <= human_pos <= len(human_ref) and human_ref[human_pos - 1].upper() == wildtype
+
+
+def resolve_nonhuman_position(
+    native_ref: str,
+    human_ref: str,
+    position: int,
+    wildtype: str,
+    sigpep: int,
+    ortholog_map: dict[int, int],
+) -> tuple[int | None, str]:
+    """Jointly resolve a non-human row the native-frame pass left ambiguous.
+
+    FIX 1 for cross-species mapping. The native WT-AA anchor alone is ambiguous
+    when the same AA repeats near the reported position. Here the ortholog
+    alignment is a second, independent signal: every candidate native position is
+    mapped to human, and candidates whose HUMAN AA at the mapped position also
+    equals the reported wildtype (true for conserved residues, the common case)
+    are preferred. Returns (human_pos, status); human_pos is None if still
+    unresolvable.
+    """
+    n = len(native_ref)
+
+    def native_matches(q: int) -> bool:
+        return 1 <= q <= n and native_ref[q - 1].upper() == wildtype
+
+    # Frame hypotheses in priority order (precursor, mature, typo, isoform),
+    # deduplicated.
+    hyps = [position, position + sigpep]
+    hyps += [q for d in range(-5, 6) for q in (position + d,) if q != position]
+    hyps += [q for d in range(15, 41) for q in (position + d,)]
+
+    hypotheses: list[int] = []
+    seen: set[int] = set()
+    for q in hyps:
+        if q not in seen:
+            seen.add(q)
+            hypotheses.append(q)
+
+    # score 2 = human AA also matches (conserved); score 1 = native-only.
+    candidates: list[tuple[int, int, int]] = []  # (score, native_pos, human_pos)
+    for c in hypotheses:
+        if not native_matches(c):
+            continue
+        h = ortholog_map.get(c)
+        if h is None:
+            continue
+        human_matches = _human_matches(human_ref, h, wildtype)
+        candidates.append((2 if human_matches else 1, c, h))
+
+    if not candidates:
+        return None, "no_match"
+
+    # Prefer human-conserved candidates; among ties, nearest the reported position.
+    best_score = max(c[0] for c in candidates)
+    best = [c for c in candidates if c[0] == best_score]
+    best.sort(key=lambda c: abs(c[1] - position))
+    _, _, human_pos = best[0]
+    return human_pos, "joint+ortholog"
+
+
 def main() -> None:
     src = RAW_DATA_DIR / "final.xlsx"
     dst = RAW_DATA_DIR / "final_mapped.xlsx"
@@ -138,6 +202,7 @@ def main() -> None:
     ortholog = {
         sp: load_ortholog_position_mapping(sp) for sp in ("mouse", "rat")
     }
+    human_refs = load_all_reference_sequences("human")
 
     statuses: list[str] = []
     final_positions: list[float] = []
@@ -167,28 +232,52 @@ def main() -> None:
         if sigpep is None:
             sigpep = SIGNAL_PEPTIDE_LENGTHS["human"].get(gene, 0)
 
-        native_pos, status = resolve_native_position(
-            native_ref, position, wildtype, sigpep
-        )
-        if native_pos is None:
-            statuses.append(status)
-            final_positions.append(np.nan)
-            continue
+        human_ref = human_refs.get(gene, "")
 
-        # Map non-human rows onto the human reference.
         if species != "human":
-            human_pos = ortholog[species].get(gene, {}).get(native_pos)
-            if human_pos is None:
-                statuses.append("unmapped_ortholog")
+            # 1) resolve the native numbering frame (WT-AA anchor), then map via
+            #    the ortholog alignment.
+            native_pos, status = resolve_native_position(
+                native_ref, position, wildtype, sigpep
+            )
+            if native_pos is None:
+                # Fix 1: joint disambiguation (ortholog + human AA) for rows the
+                # native-only anchor left ambiguous.
+                human_pos, status = resolve_nonhuman_position(
+                    native_ref, human_ref, position, wildtype, sigpep,
+                    ortholog[species].get(gene, {}),
+                )
+                if human_pos is None:
+                    statuses.append(status)
+                    final_positions.append(np.nan)
+                    continue
+            else:
+                human_pos = ortholog[species].get(gene, {}).get(native_pos)
+                if human_pos is None:
+                    statuses.append("unmapped_ortholog")
+                    final_positions.append(np.nan)
+                    continue
+                status = f"{status}+ortholog"
+
+            # Fix 2: flag non-equivalent variants (species AA differs from human
+            # at the mapped position) — these have no well-defined human wildtype.
+            if not _human_matches(human_ref, human_pos, wildtype):
+                status += "+wt_mismatch"
+
+            final_positions.append(human_pos)
+            statuses.append(status)
+            resolved += 1
+        else:
+            native_pos, status = resolve_native_position(
+                native_ref, position, wildtype, sigpep
+            )
+            if native_pos is None:
+                statuses.append(status)
                 final_positions.append(np.nan)
                 continue
-            status = f"{status}+ortholog"
-            final_positions.append(human_pos)
-        else:
             final_positions.append(native_pos)
-
-        statuses.append(status)
-        resolved += 1
+            statuses.append(status)
+            resolved += 1
 
     df["mapping_status"] = statuses
     df[_POSITION] = [np.nan if pd.isna(p) else int(p) for p in final_positions]

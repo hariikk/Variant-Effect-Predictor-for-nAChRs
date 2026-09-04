@@ -64,22 +64,50 @@ class FeatureOrchestrator:
         from vep_nachr2.features.substitution import SubstitutionExtractor
         from vep_nachr2.features.positional import PositionalExtractor
         from vep_nachr2.features.structural import StructuralExtractor
-        from vep_nachr2.features.structural_nachr import StructuralNachrExtractor
-        from vep_nachr2.features.conformational import ConformationalExtractor
         from vep_nachr2.features.conservation import ConservationExtractor
         from vep_nachr2.features.embeddings import EmbeddingExtractor
-        from vep_nachr2.features.alphamissense import AlphamissenseExtractor
+        from vep_nachr2.features.esm_embeddings import PerResidueEmbeddingExtractor
 
+        # NOTE: AlphamissenseExtractor is deliberately NOT in the default set.
+        # Run X showed AlphaMissense (pathogenicity) is a null on the honest
+        # metric — it is orthogonal to GOF/LOF direction (see results.ipynb).
+        # The extractor module is kept for the thesis ablation section.
+        # NOTE: ConformationalExtractor is also NOT in the default set.
+        # Run XII (5-seed ablation) confirmed it earns no F1: drop_conformational
+        # = +0.007 (removing it helps) and it is CHRNA7-only — 5 columns that are
+        # 0.0 for the other 15 genes (~93% of variants). The module is kept for
+        # the thesis ablation section.
+        # NOTE: StructuralNachrExtractor is also NOT in the default set.
+        # Run XII rebuilt it on mechanism.py + the shared alignment maps (5 dead
+        # features → neutral, −0.002 ± 0.026 over 5 seeds). It is still ~72% zeros
+        # after the mapping fix: interface/burial are 0 for the 7 AlphaFold-monomer
+        # genes (single chain → no interface) and ligand is α-only. Removing it
+        # simplifies 82 → 75 features without losing signal. Module kept for the
+        # thesis ablation section.
+        # Run XV (structural overhaul) — NEGATIVE, reverted to the 75-feat baseline.
+        # To fix the 5 diagnosed reasons structural features were weak, I wired three
+        # MUTATION-AWARE extractors (StabilityExtractor = burial×Δhydrophobicity/Δvolume,
+        # FunctionalMotifExtractor = in_tm/in_tm2/in_gate_ring/in_cys_loop/in_binding_site,
+        # ChargeContextExtractor = Δcharge×location) and expanded structural_core with
+        # pLDDT + contact_number + z-scored b-factor.
+        #
+        # Measured outcome (1-seed, macro F1): every variant REGRESSED vs the 75-feat
+        # baseline (RF 0.4715 / catboost 0.490):
+        #   88-feat full  → RF 0.4581 / catboost 0.4672
+        #   82-feat (drop charge_context + revert structural_core) → RF 0.4577 / catboost 0.4468
+        # Ablation deltas were ~±0.02 noise; stability/functional_motif flipped sign
+        # between runs. Conclusion: single-residue structural context — WT-side OR
+        # mutation-aware — carries no direction-of-effect signal for nAChR GOF/LOF.
+        # All three modules (stability.py, functional_motif.py, charge_context.py) are
+        # kept on disk for the thesis ablation section but are NOT in the default set.
         return [
             PhysicochemicalExtractor(),
             SubstitutionExtractor(),
             PositionalExtractor(),
             ConservationExtractor(),
             StructuralExtractor(),
-            StructuralNachrExtractor(),
-            ConformationalExtractor(),
             EmbeddingExtractor(),
-            AlphamissenseExtractor(),
+            PerResidueEmbeddingExtractor(),
         ]
 
     def get_extractor_names(self) -> list[str]:
