@@ -28,6 +28,11 @@ REFERENCE_SEQ_DIR = RAW_DATA_DIR / "reference_sequences"
 RESULTS_DIR = PROJECT_ROOT / "results"
 CACHE_DIR = PROCESSED_DATA_DIR
 
+# Feature-pipeline version. Bump this whenever any extractor's output changes so
+# the disk cache (features/orchestrator.py) invalidates and features are recomputed
+# instead of silently returning stale matrices.
+FEATURE_VERSION = 1
+
 # AlphaMissense per-variant pathogenicity scores (filtered to the 16 nAChR genes)
 ALPHAMISSENSE_DIR = RAW_DATA_DIR / "alphamissense"
 ALPHAMISSENSE_TSV = ALPHAMISSENSE_DIR / "nachr_16_genes.tsv"
@@ -223,10 +228,10 @@ MAX_ASA = {
 
 @dataclass
 class FeatureGroup:
-    """Definition of a feature group for ablation tracking."""
+    """Definition of a feature group (documentation/ablation-tracking metadata)."""
     name: str
     description: str
-    extractor_class: str  # module path for dynamic import
+    extractor_class: str  # class name label only — never dynamically imported
     n_features_expected: int
     requires_pdb: bool = False
     requires_reference: bool = False
@@ -264,33 +269,29 @@ FEATURE_GROUPS = {
         n_features_expected=7,
         requires_pdb=True,
     ),
-    "structural_nachr": FeatureGroup(
-        name="structural_nachr",
-        description="nAChR-specific structural features (TMD helix, ligand proximity, interface proximity, pore distance)",
-        extractor_class="StructuralNachrExtractor",
-        n_features_expected=7,
-        requires_pdb=True,
-    ),
-    "conformational": FeatureGroup(
-        name="conformational",
-        description="Open/closed conformational delta features (α7 only)",
-        extractor_class="ConformationalExtractor",
-        n_features_expected=5,
-        requires_pdb=True,
-    ),
-    "embeddings": FeatureGroup(
-        name="embeddings",
-        description="ESM-2 protein language model embeddings (future)",
+    "esm2": FeatureGroup(
+        name="esm2",
+        description="ESM-2 150M effect scores (esm2_wt_logprob, esm2_effect)",
         extractor_class="EmbeddingExtractor",
-        n_features_expected=0,  # placeholder
+        n_features_expected=2,
+    ),
+    "esm_embeddings": FeatureGroup(
+        name="esm_embeddings",
+        description="ESM-2 150M per-residue embeddings → 16 PCA dims (esm2_pc1..pc16)",
+        extractor_class="PerResidueEmbeddingExtractor",
+        n_features_expected=16,
     ),
     "alphamissense": FeatureGroup(
         name="alphamissense",
-        description="AlphaMissense pathogenicity score (0-1) — NOT in default set (Run X null)",
+        description="AlphaMissense pathogenicity (0-1) — external comparator, NOT in default set (Run X)",
         extractor_class="AlphamissenseExtractor",
         n_features_expected=1,
     ),
 }
+
+# Archived null-result groups — moved to features/experimental/, NOT in the default
+# 75-feature set (see features/orchestrator.py and experimental/README.md):
+#   structural_nachr (7, Run XII), conformational (5, Run XII/XVI).
 
 # Fill values for missing/imputed structural features
 STRUCTURAL_FILL_VALUES = {

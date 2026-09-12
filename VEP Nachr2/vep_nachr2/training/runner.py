@@ -22,7 +22,7 @@ import pandas as pd
 
 from vep_nachr2.config import (
     ALL_MODELS, CORE_MODELS, MODEL_DISPLAY_NAMES,
-    FEATURE_GROUPS, RESULTS_DIR, DEFAULT_SEEDS, PROJECT_ROOT,
+    RESULTS_DIR, DEFAULT_SEEDS, PROJECT_ROOT,
     LABEL_NAMES, Config, CVConfig, HyperoptConfig, get_config,
 )
 from vep_nachr2.data.loader import load_mutation_data

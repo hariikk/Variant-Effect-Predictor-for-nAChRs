@@ -1,0 +1,235 @@
+Survey Summary: Twenty-Two Methods for Direction-Aware Variant Eect Prediction in nAChRs
+Hari Krishna Mohan Raj
+August 30, 2026
+Abstract
+This note summarises the twenty-two papers retained in the project survey sheet. It groups them by the technology each one contributes, describes the problem each is targeting, and maps each paper onto the specic goal of this project: predicting gain-of-function versus lossof-function direction for missense variants in nicotinic acetylcholine receptors (nAChRs).
+1 Overview
+The twenty-two papers fall into eight technological clusters, summarised in Table 1. Six of them predict direction of eect directly and are the closest comparators to our model; the rest supply either the feature representations (protein language models, structure prediction, stability estimation), the benchmark infrastructure, or the structural-biology data (cryo-EM nAChR structures) that our pipeline builds on.
+2 Technologies in use
+Protein language models (dominant). Seven of the twenty-two papers are built on transformer
+language models trained on protein sequence alone. Rives et al. established the paradigm with ESM1b; Meier et al. showed a masked model can score mutations zero-shot as a log-likelihood ratio; and Lin et al. repurposed the same representation for structure prediction (ESMFold). Marquet et al. and Brandes et al. both demonstrate that embeddings are useful, cheap features, the former for conservation and the latter as the input to a logistic-regression pathogenicity head. Two papers push scale in opposite directions: Chen et al. train a 100-billion-parameter model (xTrimoPGLM), while Sledzieski et al. use parameter-ecient ne-tuning (LoRA), which matters most to us because our dataset is tiny.
+Generative and evolutionary models. Frazer et al. (EVE) train a Bayesian variational au-
+toencoder across multiple sequence alignments to score pathogenicity from evolution alone. It is the strongest pure-conservation signal in the survey but requires deep MSAs and, like all pathogenicity models, does not distinguish GOF from LOF.
+Structure prediction. AlphaFold2 (Jumper et al.) and AlphaFold3 (Abramson et al.) supply
+atomic coordinates: AlphaFold2 for single-chain structure at experimental accuracy, and AlphaFold3 for complexes that include ligands and ions. Both are directly relevant because our structural features are extracted from experimental cryo-EM maps and AlphaFold models.
+1
+
+Structure-aware eect models. Gao et al. (PrimateAI-3D) use a 3D convolutional network
+over sequence and structure, and Blaabjerg et al. (RaSP) use a graph neural network over ESM-1v embeddings to predict stability change (G). Both show that structure-aware deep networks extract signal that sequence-only models miss, which motivates the structural branch of our feature set.
+Direction-of-eect predictors. Six papers target the exact problem this project addresses. fun-
+NCion (Brunklaus et al.) classies GOF versus LOF for sodium and calcium channel variants; two related works by Boÿelmann et al. apply multi-task and multi-kernel support-vector machines to voltage-gated potassium, sodium, and calcium channels, the latter adding clinical phenotype (HPO) features; LoGoFunc (Stein et al.) predicts GOF/LOF genome-wide with a gradient-boosted ensemble; PreMode (Zhong et al.) uses an SE(3)-equivariant graph neural network; and MissION (Gies et al.) combines ESM-2 embeddings with structural, residue, and ontology features in separate channels to reach ROC-AUC 0.925.
+Pathogenicity comparator. AlphaMissense (Cheng et al.) ne-tunes AlphaFold2 on population-
+frequency data to classify the clinical signicance of every human missense variant. It is the key pathogenicity-only baseline in the survey, and its documented diculty with gain-of-function variants reinforces the case for direction-aware models.
+nAChR structural biology (experimental data). Noviello et al. solved the human 7 receptor
+in resting, activated, and desensitised states, and Mazzaferro et al. resolved calcium potentiation of 42 in two stoichiometries. These are not machine-learning methods but supply the statespecic, interface-level structural knowledge our conformational and structural features are designed to capture.
+3 How the eld is targeting the problem
+The survey reveals a clear split in targets. Most papers target pathogenicity: whether a variant is damaging, measured against ClinVar or deep-mutational-scan labels. A smaller, more recent wave targets direction of eect, motivated by the clinical fact that GOF and LOF demand opposite treatments. This second wave is where our project sits, and the six direction-aware papers are its current state of the art.
+Critically, none of the direction-aware tools is built for ligand-gated, pentameric channels specifically. funNCion and the two Boÿelmann et al. methods are limited to voltage-gated channels. LoGoFunc treats every gene uniformly and has no structural context. PreMode is binary GOF/LOF and struggles with disordered regions. MissION aggregates diverse channel families and does not encode subunit identity or pentameric assembly. This is precisely the gap our model targets: a nAChR-specic, subunit-aware, direction-aware predictor.
+4 Relevance to our project
+The papers map onto our pipeline at four levels.
+1. Direct comparators. funNCion, the two Boÿelmann et al. models, LoGoFunc, PreMode,
+and MissION dene the baseline we must beat or match. MissION in particular is the closest
+2
+
+precursor, and its channel-agnostic design is the limitation we exploit by encoding subunit identity and pentameric context.
+2. Feature sources. ESM-2 embeddings and zero-shot scores (Rives, Meier, Lin, Sledzieski),
+conservation signals (Frazer, Marquet), structural features from cryo-EM and AlphaFold models (Jumper, Abramson, Noviello, Mazzaferro), clinical phenotype terms (Boÿelmann et al. 2023), and stability estimates (Blaabjerg) are all candidate inputs to our 71-feature representation.
+3. Methodological guidance. Brandes et al. show a logistic head on PLM embeddings is a
+cheap, eective classier; Sledzieski et al. show LoRA ne-tuning works with very few trainable parameters, which is exactly the setting of a 717-variant dataset; Zhong et al. show a structure GNN transfers with few labels; and Gao et al. show structure-aware convolution outperforms sequence-only models.
+4. Evaluation. ProteinGym (Notin et al.) is the template for a shared, versioned benchmark,
+which our Future Work proposes for nAChR direction-of-eect prediction.
+One cross-cutting observation from the survey is that scaling protein language models has begun to saturate: Chen et al. report only incremental gains at 100B parameters, and our own experiments found ESM-2 650M performs no better than 150M on this task. The more promising levers for direction-of-eect prediction are structure, subunit context, and direction-labelled data, not larger language models.
+References
+The twenty-two papers below correspond one-to-one with the survey sheet entries.
+References
+[1] A. Rives et al., Biological structure and function emerge from scaling unsupervised learning to 250
+million protein sequences, PNAS 118(15), 2021. 10.1073/pnas.2016239118.
+[2] J. Meier et al., Language models enable zero-shot prediction of the eects of mutations on protein
+function, bioRxiv, 2021. 10.1101/2021.07.09.450648. [3] J. Frazer et al., Disease variant prediction with deep protein language models, Nature Genetics 53:1512,
+2021. 10.1038/s41588-021-00952-2.
+[4] J. Jumper et al., Highly accurate protein structure prediction with AlphaFold, Nature 596:583, 2021.
+10.1038/s41586-021-03819-2.
+[5] C. M. Noviello et al., Structure and gating mechanism of the 7 nicotinic acetylcholine receptor, Cell
+184:2121, 2021. 10.1016/j.cell.2021.02.049. [6] A. Brunklaus et al., Gene variant eects across sodium channelopathies predict function and guide
+precision therapy, Brain 145:4275, 2022. 10.1093/brain/awac006.
+[7] C. M. Boÿelmann et al., Predicting the functional eects of voltage-gated potassium channel missense
+variants with multi-task learning, eBioMedicine, 2022. 10.1016/j.ebiom.2022.104115.
+[8] C. Marquet et al., Embeddings from protein language models predict conservation and variant eects,
+Human Genetics 141:1629, 2022. 10.1007/s00439-021-02411-y.
+[9] N. Brandes et al., Genome-wide prediction of disease variant eects with a deep protein language model,
+Nature Genetics 55:1512, 2023. 10.1038/s41588-023-01465-w.
+3
+
+[10] Z. Lin et al., Evolutionary-scale prediction of atomic-level protein structure with a language model,
+Science 379:1123, 2023. 10.1126/science.ade2574. [11] H. Gao et al., The landscape of tolerated genetic variation in humans and primates, Science
+380:eabn8153, 2023. 10.1126/science.abn8153. [12] D. Stein et al., Genome-wide prediction of pathogenic gain- and loss-of-function variants from ensemble
+learning of a diverse feature set, Genome Medicine 15:103, 2023. 10.1186/s13073-023-01261-9. [13] L. M. Blaabjerg et al., Rapid protein stability prediction using deep learning representations, eLife
+12:e82593, 2023. 10.7554/eLife.82593.
+[14] P. Notin et al., ProteinGym: large-scale benchmarks for protein design and tness prediction, bioRxiv,
+2023. 10.1101/2023.12.07.570727. [15] C. M. Boÿelmann et al., Predicting functional eects of ion channel variants using new phenotypic
+machine learning methods, PLOS Computational Biology, 2023. 10.1371/journal.pcbi.1010959. [16] J. Cheng et al., Accurate proteome-wide missense variant eect prediction with AlphaMissense, Science
+381:eadg7492, 2023. 10.1126/science.adg7492.
+[17] J. Abramson et al., Accurate structure prediction of biomolecular interactions with AlphaFold3, Nature
+630:493, 2024. 10.1038/s41586-024-07487-w. [18] G. Zhong et al., PreMode predicts mode-of-action of missense variants by deep graph representation
+learning of protein sequence and structural context, bioRxiv, 2024. 10.1101/2024.02.20.581321.
+[19] S. Mazzaferro et al., Structural bases for stoichiometry-selective calcium potentiation of a neuronal
+nicotinic receptor, British Journal of Pharmacology 181:1584, 2024. 10.1111/bph.16321. [20] S. Sledzieski et al., Democratizing protein language models with parameter-ecient ne-tuning, PNAS
+121(39), 2024. 10.1073/pnas.2405840121. [21] B. Chen et al., xTrimoPGLM: unied 100B-scale pretrained transformer for deciphering the language
+of protein, Nature Methods 21:1506, 2024. 10.1038/s41592-024-02305-z.
+[22] S. Gies et al., Functional eect predictions for ion channel missense variants using a protein language
+model, medRxiv, 2025. 10.1101/2025.10.16.25337735.
+4
+
+Table 1: Summary of the twenty-two surveyed papers: technology, target, and relevance.
+
+Paper (year)
+
+Technology
+
+Target
+
+Relevance to our project
+
+Brunklaus 2022 (funNCion)
+Boÿelmann 2022
+Boÿelmann 2023 (SCION)
+Stein 2023 (LoGoFunc)
+Zhong 2024 (PreMode) Gies 2025 (MissION)
+
+Sequence + topology classier
+Multi-task SVM
+Multi-kernel SVM + HPO terms
+Gradient-boosted ensemble
+SE(3)-equivariant GNN ESM-2 + multi-channel features
+
+Na/Ca GOF/LOF
+
+channel
+
+Potassium-channel GOF/LOF
+
+Voltage-gated channel eects
+
+Genome-wide GOF/LOF
+
+Mode-of-action GOF/LOF Ion-channel GOF/LOF
+
+Direct comparator; proves
+
+direction-aware prediction
+
+works for ion channels
+
+Direct
+
+comparator;
+
+taxonomy-based multi-
+
+task transfer
+
+Adds clinical phenotype fea-
+
+tures (HPO) to eect predic-
+
+tion
+
+Genome-wide baseline; no
+
+receptor-specic context
+
+(our gap)
+
+Structure-GNN transfer
+
+with few labels
+
+Closest SOTA; nAChR is
+
+not a focal family (our gap)
+
+Noviello 2021 (7 nAChR) Mazzaferro 2024 (42 nAChR)
+
+Cryo-EM + electrophysiology Cryo-EM + voltage clamp
+
+nAChR gating mechanism nAChR allostery
+
+Basis of our open/closed
+
+conformational features
+
+Subunit-interface
+
+and
+
+ligand-site features
+
+Rives 2021 (ESM-1b) Meier 2021 (ESM-1v)
+
+Marquet 2022
+
+Brandes 2023
+
+Lin 2023 (ESMFold)
+
+Sledzieski
+
+2024
+
+(DPLM)
+
+Chen 2024 (xTri-
+
+moPGLM)
+
+Frazer 2021 (EVE)
+
+Masked transformer PLM (650M) Zero-shot maskedmarginal scoring
+ProtT5/ESM-1b embeddings
+ESM-1b + logistic regression ESM-2 + folding head
+LoRA ne-tuning of ESM-2 100B unied transformer Bayesian VAE over MSAs
+
+Unsupervised representation Label-free mutational eects
+Embeddings vs. conservation
+Whole-proteome pathogenicity Fast structure prediction Cheap PLM adaptation
+Protein understanding/generation Pathogenicity from evolution
+
+Precursor to the ESM-2 embeddings we use Our zero-shot ESM score; ranks magnitude, not direction Conrms embeddings carry conservation but no direction Lightweight PLM-head classier template Residue-level structure for under-studied subunits Addresses our small-data ne-tuning constraint Suggests scale saturates (we saw 650M  150M) Conservation signal; needs deep MSAs
+
+Jumper 2021 (AlphaFold2) Abramson 2024 (AlphaFold3)
+
+Evoformer + structure module Diusion model
+
+Atomic structure prediction Complexes, ligands, ions
+
+Supplies structural features and PDB mapping Ligand-bound binding-site features
+
+Gao
+
+2023
+
+(PrimateAI-3D)
+
+Blaabjerg
+
+2023
+
+(RaSP)
+
+3D-CNN on sequence + structure GNN + ESM-1v embeddings
+
+Clinical variant classication Stability G
+
+Structure-aware deep net, transferable to GOF/LOF Candidate stability feature (Future Work)
+
+Notin 2023 (ProteinGym) Cheng 2023 (AlphaMissense)
+
+Standardised DMS benchmark AlphaFold2 ne-tuned
+
+Fair eect-predictor comparison Proteome-wide pathogenicity
+
+Template for a shared nAChR benchmark Key pathogenicity comparator; struggles with GOF
+
+5
+
+

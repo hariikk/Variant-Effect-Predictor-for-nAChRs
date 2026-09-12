@@ -1,0 +1,198 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(survey_summary.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\harik\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def) (survey_summary.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+LaTeX Warning: Reference `tab:summary' on page 1 undefined on input line 29.
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 43--43
+[]|\T1/cmr/m/n/9 Sequence + topol-ogy
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[]|\T1/cmr/m/n/9 Na/Ca chan-nel
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+\T1/cmr/m/n/9 direction-aware pre-dic-tion
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]|\T1/cmr/m/n/9 Potassium-channel
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+[]|\T1/cmr/m/n/9 Direct com-para-tor;
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/cmr/m/n/9 taxonomy-based multi-
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+[]|\T1/cmr/m/n/9 Boÿelmann 2023
+
+Underfull \hbox (badness 3815) in paragraph at lines 45--45
+[]|\T1/cmr/m/n/9 Multi-kernel SVM +
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+[]|\T1/cmr/m/n/9 Voltage-gated chan-nel
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]|\T1/cmr/m/n/9 Stein 2023 (Lo-Go-
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]|\T1/cmr/m/n/9 Gradient-boosted
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+[]|\T1/cmr/m/n/9 Genome-wide
+
+Underfull \hbox (badness 1215) in paragraph at lines 46--47
+[]|\T1/cmr/m/n/9 Genome-wide base-line; no
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/cmr/m/n/9 receptor-specific con-text
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
+[]|\T1/cmr/m/n/9 Zhong 2024 (Pre-
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
+[]|\T1/cmr/m/n/9 SE(3)-equivariant
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
+[]|\T1/cmr/m/n/9 Mode-of-action
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+[]|\T1/cmr/m/n/9 Structure-GNN trans-fer
+
+Underfull \hbox (badness 1454) in paragraph at lines 48--49
+[]|\T1/cmr/m/n/9 Closest SOTA; nAChR is
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--50
+[]|\T1/cmr/m/n/9 Noviello 2021 ($\OML/cmm/m/it/9 $\T1/cmr/m/n/9 7
+
+Underfull \hbox (badness 8056) in paragraph at lines 50--50
+[]|\T1/cmr/m/n/9 Cryo-EM + elec-tro-
+
+Underfull \hbox (badness 3138) in paragraph at lines 50--51
+[]|\T1/cmr/m/n/9 Basis of our open/closed
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/cmr/m/n/9 Mazzaferro 2024
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/cmr/m/n/9 Cryo-EM + volt-age
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+[]|\T1/cmr/m/n/9 Subunit-interface and
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+[]|\T1/cmr/m/n/9 Masked trans-former
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+[]|\T1/cmr/m/n/9 Zero-shot masked-
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+[]|\T1/cmr/m/n/9 Label-free mu-ta-tional
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+[]|\T1/cmr/m/n/9 ProtT5/ESM-1b em-
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]|\T1/cmr/m/n/9 Whole-proteome
+
+Underfull \hbox (badness 2564) in paragraph at lines 57--57
+[]|\T1/cmr/m/n/9 Fast struc-ture pre-dic-
+
+Underfull \hbox (badness 1383) in paragraph at lines 57--58
+[]|\T1/cmr/m/n/9 Residue-level struc-ture for
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
+[]|\T1/cmr/m/n/9 Sledzieski 2024
+
+Underfull \hbox (badness 6608) in paragraph at lines 58--58
+[]|\T1/cmr/m/n/9 LoRA fine-tuning of
+
+Underfull \hbox (badness 6412) in paragraph at lines 58--59
+[]|\T1/cmr/m/n/9 Addresses our small-data
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/cmr/m/n/9 Chen 2024 (xT-ri-
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/cmr/m/n/9 100B uni-fied trans-
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+[]|\T1/cmr/m/n/9 Protein un-der-stand-
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
+[]|\T1/cmr/m/n/9 Bayesian VAE over
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+[]|\T1/cmr/m/n/9 Jumper 2021 (Al-
+
+Underfull \hbox (badness 2293) in paragraph at lines 62--62
+[]|\T1/cmr/m/n/9 Atomic struc-ture pre-
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\T1/cmr/m/n/9 Complexes, lig-ands,
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+[]|\T1/cmr/m/n/9 Ligand-bound binding-site
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]|\T1/cmr/m/n/9 Gao 2023
+
+Underfull \hbox (badness 2865) in paragraph at lines 65--66
+[]|\T1/cmr/m/n/9 Structure-aware deep net,
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[]|\T1/cmr/m/n/9 Blaabjerg 2023
+
+Underfull \hbox (badness 5533) in paragraph at lines 68--68
+[]|\T1/cmr/m/n/9 Notin 2023 (Pro-te-
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+[]|\T1/cmr/m/n/9 Standardised DMS
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+[]|\T1/cmr/m/n/9 Fair effect-predictor
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+[]|\T1/cmr/m/n/9 Template for a shared
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/9 Cheng 2023 (Al-
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/9 Proteome-wide
+
+! I can't write on file `survey_summary.pdf'.
+(Press Enter to retry, or Control-C to exit; default file extension is `.pdf')
+Please type another file name for output
+! Emergency stop.
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.108 
+      
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on survey_summary.log.

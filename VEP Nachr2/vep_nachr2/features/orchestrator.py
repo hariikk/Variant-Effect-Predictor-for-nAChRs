@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from vep_nachr2.features.base import FeatureExtractor
-from vep_nachr2.config import CACHE_DIR, FEATURE_GROUPS
+from vep_nachr2.config import CACHE_DIR, FEATURE_VERSION
 
 
 class FeatureOrchestrator:
@@ -163,9 +163,15 @@ class FeatureOrchestrator:
         feature_names : list[str]
             Human-readable feature names.
         """
+        # Determine which extractors to run BEFORE the cache lookup — the cache key
+        # depends on the active extractor set, so a drop set must not return a
+        # matrix that still includes the dropped extractor.
+        drop_set = set(drop_extractors or [])
+        active_extractors = [e for e in self.extractors if e.name not in drop_set]
+
         # Check cache
         if use_cache and not force_recompute:
-            cache_path = self._get_cache_path(df)
+            cache_path = self._get_cache_path(df, drop_set)
             if cache_path.exists():
                 try:
                     with open(cache_path, "rb") as f:
@@ -177,10 +183,6 @@ class FeatureOrchestrator:
                     return cached["X"], cached["feature_names"]
                 except Exception as e:
                     warnings.warn(f"Cache load failed: {e}, recomputing...")
-
-        # Determine which extractors to run
-        drop_set = set(drop_extractors or [])
-        active_extractors = [e for e in self.extractors if e.name not in drop_set]
 
         if self.verbose:
             print(f"Running {len(active_extractors)} feature extractors "
@@ -253,7 +255,7 @@ class FeatureOrchestrator:
 
         # Cache
         if use_cache:
-            cache_path = self._get_cache_path(df)
+            cache_path = self._get_cache_path(df, drop_set)
             cache_path.parent.mkdir(parents=True, exist_ok=True)
             with open(cache_path, "wb") as f:
                 pickle.dump({"X": X, "feature_names": feature_names}, f)
@@ -262,19 +264,31 @@ class FeatureOrchestrator:
 
         return X, feature_names
 
-    def _get_cache_path(self, df: pd.DataFrame) -> Path:
-        """Generate cache path from DataFrame hash."""
+    def _get_cache_path(self, df: pd.DataFrame, drop_set: Optional[set] = None) -> Path:
+        """Generate cache path from row identity + feature-set identity.
+
+        The key includes FEATURE_VERSION and the active extractor names so that
+        (a) changing an extractor's code (bump FEATURE_VERSION) and (b) requesting
+        a drop set both invalidate the cache instead of returning a stale matrix.
+        """
         import hashlib
 
-        # Hash based on row identities (species + subunit + position + wt + mt)
-        hash_str = "|".join(
+        drop_set = drop_set or set()
+
+        # Row identity (which variants)
+        row_hash = "|".join(
             df["species"].astype(str) + "|"
             + df["subunit"].astype(str) + "|"
             + df["position"].astype(str) + "|"
             + df["wildtype_aa"].astype(str) + "|"
             + df["variant_aa"].astype(str)
         )
-        df_hash = hashlib.sha1(hash_str.encode()).hexdigest()[:12]
+
+        # Feature-set identity (which extractors + their code version)
+        active_names = sorted(e.name for e in self.extractors if e.name not in drop_set)
+        key = f"{row_hash}|v{FEATURE_VERSION}|{','.join(active_names)}"
+
+        df_hash = hashlib.sha1(key.encode()).hexdigest()[:12]
         self._last_hash = df_hash
 
         return CACHE_DIR / f"feature_cache_{df_hash}.pkl"

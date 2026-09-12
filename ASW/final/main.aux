@@ -34,48 +34,51 @@
 \newlabel{tab:tools}{{1}{}{}{table.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Direction-aware predictors}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The Gap}{}{}\protected@file@percent }
+\citation{mohanraj2026}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Analytical Objective}{}{}\protected@file@percent }
 \newlabel{sec:objective}{{3}{}{}{section.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Data}{}{}\protected@file@percent }
 \newlabel{sec:data}{{4}{}{}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data Curation}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Label Assignment}{}{}\protected@file@percent }
-\citation{aaindex}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Distribution of curated variants across nAChR subunit genes. [TODO: finalise counts after curation pass.]}}{}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Distribution of curated variants across nAChR subunit genes, by functional class (LOF / GOF / no-net-effect).}}{}{}\protected@file@percent }
 \newlabel{tab:subunit_counts}{{2}{}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Distribution of curated variants by source species.}}{}{}\protected@file@percent }
+\newlabel{tab:species}{{3}{}{}{table.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Limitations of the Current Dataset}{}{}\protected@file@percent }
+\citation{aaindex}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Feature Engineering}{}{}\protected@file@percent }
 \newlabel{sec:features}{{5}{}{}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Engineered feature categories and counts for the final model. $\Delta $ denotes mutant minus wild-type value.}}{}{}\protected@file@percent }
+\newlabel{tab:features}{{4}{}{}{table.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Rationale by Category}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Residue physicochemical properties.}{}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Engineered feature categories. $\Delta $ denotes mutant minus wild-type value. [TODO: finalise feature count and add per-feature descriptions.]}}{}{}\protected@file@percent }
-\newlabel{tab:features}{{3}{}{}{table.3}{}}
 \@writefile{toc}{\contentsline {paragraph}{Evolutionary substitution scores.}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Positional features.}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Subunit identity.}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Structural features.}{}{}\protected@file@percent }
-\citation{optuna}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Algorithms and Experimental Design}{}{}\protected@file@percent }
 \newlabel{sec:algorithms}{{6}{}{}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Classifier Panel}{}{}\protected@file@percent }
+\citation{optuna}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Training and Evaluation Protocol}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Baselines}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Results}{}{}\protected@file@percent }
 \newlabel{sec:results}{{7}{}{}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Preliminary Observations}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Planned Analyses}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Model Comparison}{}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Cross-validated performance (leave-one-subunit-out). Macro-F1 and balanced accuracy (Bal.\ Acc.) for the ten classifiers on the final feature set (66 engineered features plus conservation and ESM-2). Best per column in bold.}}{}{}\protected@file@percent }
+\newlabel{tab:results}{{5}{}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Ablation Analysis}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{}{}\protected@file@percent }
 \newlabel{sec:discussion}{{8}{}{}{section.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Interpretation and Significance}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Challenges and Limitations}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Data Scarcity}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}The LOF/GOF Dichotomy}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.3}Label Noise and Assay Heterogeneity}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.4}Structural Coverage}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Future Work}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Near-term (within this project cycle):}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Medium-term (community effort):}{}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Longer-term:}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Challenges and Limitations}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.1}Data Scarcity}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.2}The LOF/GOF Dichotomy}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.3}Label Noise and Assay Heterogeneity}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.1.4}Structural Coverage}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Future Work}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stronger sequence representations.}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Network and mechanistic features.}{}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{More data.}{}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{}{}\protected@file@percent }
 \newlabel{sec:conclusion}{{9}{}{}{section.9}{}}
 \bibcite{sift}{1}
@@ -94,4 +97,114 @@
 \bibcite{optuna}{14}
 \bibcite{enac}{15}
 \bibcite{mohanraj2026}{16}
-\newlabel{eof}{{9}{}{}{enumiv.16}{}}
+\bibcite{DelbartBGNPBCBDTJLTU2018}{17}
+\bibcite{CroxenNBOCVN1997}{18}
+\bibcite{MiloneWOFPBSE1997}{19}
+\bibcite{ShenDSE2006}{20}
+\bibcite{NewlandBVN1995}{21}
+\bibcite{OhnoHMBBSE1995}{22}
+\bibcite{OhnoQMWHNBPFCSE1997}{23}
+\bibcite{EngelOBSG1996}{24}
+\bibcite{ShenOFTBDPE2002}{25}
+\bibcite{BrownlowWCBNLVNB2001}{26}
+\bibcite{GomezMGLTCLMK1996}{27}
+\bibcite{DurmusSSKPOBDE2018}{28}
+\bibcite{BEESONWECBBNSHSCV2003}{29}
+\bibcite{MasudaSIMEO2008}{30}
+\bibcite{FaberMVBVDKWBB2009}{31}
+\bibcite{KouvatsosGCPT2016}{32}
+\bibcite{AridonMDBDPPMPPCCPBGC2006}{33}
+\bibcite{ContiACBMMAMLPRBG2015}{34}
+\bibcite{DashL2014}{35}
+\bibcite{DashBCL2012}{36}
+\bibcite{HodaWBS2009}{37}
+\bibcite{DashLL2014}{38}
+\bibcite{BertrandEHTSBS2005}{39}
+\bibcite{VillaCMGMFCGBC2019}{40}
+\bibcite{LossiusSMBMSVCSPB2020}{41}
+\bibcite{MazzaferroMCMS2022}{42}
+\bibcite{FuscoBPAGQBWC2000}{43}
+\bibcite{PhillipsFKZGHSSBBM2001}{44}
+\bibcite{DashL2014a}{45}
+\bibcite{YeungGSLL2025}{46}
+\bibcite{GooneratneNMWCBGHSC2020}{47}
+\bibcite{FinstererSSF2025}{48}
+\bibcite{GuanZHZZLWZL2025}{49}
+\bibcite{HodaGFPBAGRSMPBMSB2008}{50}
+\bibcite{BoormanGS2000}{51}
+\bibcite{Groot‐KormelinkBS2001}{52}
+\bibcite{HallerDVMLASBJHSBG2011}{53}
+\bibcite{MannKHGSCNKMWKDCVITKEDSTBLBYMLEHKH2019}{54}
+\bibcite{McClureBegleyPSSLGXLP2014}{55}
+\bibcite{LenigerKHBBS2003}{56}
+\bibcite{SteinleinSMBSB2000}{57}
+\bibcite{JiangYYSSJ2018}{58}
+\bibcite{DibbensM2011}{59}
+\bibcite{MazzaferroKNHS2024}{60}
+\bibcite{TapiaKL2007}{61}
+\bibcite{JainKWKL2016}{62}
+\bibcite{CadieuxDionMVTWBSGMCCBN2020}{63}
+\bibcite{KuryatovBL2011}{64}
+\bibcite{DashCL2011}{65}
+\bibcite{MartinelliCGLPPCDRBTCFCBCPBNKCGSTSRCLDTL2020}{66}
+\bibcite{JensenHJ2013}{67}
+\bibcite{ZouridakisGZCBT2014}{68}
+\bibcite{ChaouchMGDSRLSWCNVMAAL2011}{69}
+\bibcite{OutteryckRLFZGEHVS2008}{70}
+\bibcite{ShenOMOTKGOE2016}{71}
+\bibcite{CastroMGEE2007}{72}
+\bibcite{FucilePMME2000}{73}
+\bibcite{NatarajanMCLBS2020}{74}
+\bibcite{AndersenCSB2013}{75}
+\bibcite{LeeS2005}{76}
+\bibcite{MihaylovaSGLKWSGHHAML2010}{77}
+\bibcite{KuryatovGNOL1997}{78}
+\bibcite{LiangSMBDBD2004}{79}
+\bibcite{MuellerHSJBRMTAL2006}{80}
+\bibcite{ShenBESE2012}{81}
+\bibcite{SineSWOLTBBVE2002}{82}
+\bibcite{EstephanSSTMOCSMCZAMHRATZ2018}{83}
+\bibcite{EirisPunalFGPLQBP2020}{84}
+\bibcite{GomezMVNSCSRKVWL2001}{85}
+\bibcite{ShenDSZNSSE2020}{86}
+\bibcite{ShenMWBSSE2019}{87}
+\bibcite{HallerLEHGS2014}{88}
+\bibcite{SabatelliEACMLMLTSDGDMFLMODTNZ2009}{89}
+\bibcite{ShenBSE2012}{90}
+\bibcite{NooriMVSTMBMBFUSS2018}{91}
+\bibcite{MukhtasimovaS2007}{92}
+\bibcite{MukhtasimovaFS2005}{93}
+\bibcite{LeeFS2008}{94}
+\bibcite{ShenBNSE2016}{95}
+\bibcite{WebsterMSTBSB2012}{96}
+\bibcite{WebsterLCLB2014}{97}
+\bibcite{ShenOTBGSE2003}{98}
+\bibcite{CunyKTYA2016}{99}
+\bibcite{HoneMALLWPBA2015}{100}
+\bibcite{PiccariDBGF2011}{101}
+\bibcite{ShenFOSE2008}{102}
+\bibcite{WangOMBEBMCES2000}{103}
+\bibcite{OhnoWMBBNQPSE1996}{104}
+\bibcite{NovielloGMCBBSH2021}{105}
+\bibcite{BertrandGDBC1993}{106}
+\bibcite{ZhangDZXXGHLC2015}{107}
+\bibcite{CharpantierWHOHARFBF2005}{108}
+\bibcite{TsunekiKTKTMMWKKS2007}{109}
+\bibcite{BroideSJPPDD2002}{110}
+\bibcite{EllisonGWSMO2004}{111}
+\bibcite{GillThindDDSM2015}{112}
+\bibcite{HuangZSPZ2008}{113}
+\bibcite{Engel1996}{114}
+\bibcite{MichalkSBRPMBNJYOSWFWHWBMHH2008}{115}
+\bibcite{TanMX2016}{116}
+\bibcite{AngeliniLSMV2018}{117}
+\bibcite{LorenzoniDAHFTLWKS2022}{118}
+\bibcite{BoonJWKKVEV2022}{119}
+\bibcite{WangMOSTBTBES1999}{120}
+\bibcite{Shen2004}{121}
+\bibcite{ShenBSDPYVNDSE2018}{122}
+\bibcite{ShenNMISOE2023}{123}
+\bibcite{SineOBAMPE1995}{124}
+\bibcite{MiloneWOPFSBGSE1998}{125}
+\bibcite{AzumaNTSIIONAIOMNKSO2015}{126}
+\newlabel{eof}{{9}{}{}{enumiv.126}{}}

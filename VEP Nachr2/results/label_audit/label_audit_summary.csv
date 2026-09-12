@@ -1,0 +1,5 @@
+effect,count,n_single_source,n_multi_source,single_source_pct,n_low_conf_mapping,n_wt_mismatch,mean_n_papers
+LOF,420,389,31,92.6,34,8,1.09
+GOF,213,189,24,88.7,25,4,1.15
+No net effect,194,186,8,95.9,19,18,1.06
+LOF/GOF,14,14,0,100.0,0,0,1.0

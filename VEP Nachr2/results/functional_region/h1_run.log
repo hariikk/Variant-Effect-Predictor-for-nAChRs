@@ -1,0 +1,51 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+
+Features: 82 total. Conditions: ['baseline', 'baseline_plus_region', 'baseline_swap']
+
+############################################################
+MODEL: random_forest
+############################################################
+
+--- baseline [random_forest]: 75 features ---
+
+--- baseline_plus_region [random_forest]: 82 features ---
+
+--- baseline_swap [random_forest]: 75 features ---
+
+############################################################
+MODEL: catboost
+############################################################
+
+--- baseline [catboost]: 75 features ---
+
+--- baseline_plus_region [catboost]: 82 features ---
+
+--- baseline_swap [catboost]: 75 features ---
+
+======================================================================
+random_forest: H1 functional-region | baseline F1 = 0.4849
+delta_f1 = F1(condition) - F1(baseline); positive = helps:
+
+                      n_features  macro_f1_mean  macro_f1_std  delta_f1
+baseline                    75.0         0.4849        0.0372    0.0000
+baseline_plus_region        82.0         0.4799        0.0295   -0.0050
+baseline_swap               75.0         0.4835        0.0339   -0.0014
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\functional_region\h1_random_forest.csv
+
+======================================================================
+catboost: H1 functional-region | baseline F1 = 0.4915
+delta_f1 = F1(condition) - F1(baseline); positive = helps:
+
+                      n_features  macro_f1_mean  macro_f1_std  delta_f1
+baseline                    75.0         0.4915        0.0239    0.0000
+baseline_plus_region        82.0         0.4742        0.0280   -0.0172
+baseline_swap               75.0         0.4945        0.0310    0.0031
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\functional_region\h1_catboost.csv

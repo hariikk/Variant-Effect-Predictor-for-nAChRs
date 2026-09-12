@@ -1,0 +1,49 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+
+======================================================================
+FAMILY: muscle  (n=257, genes=5)
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+  [random_forest  ] macro F1 = 0.4123 ± 0.0090  (cv=subunit/5)
+  [catboost       ] macro F1 = 0.4642 ± 0.0068  (cv=subunit/5)
+
+======================================================================
+FAMILY: neuronal_hetero  (n=303, genes=10)
+  [random_forest  ] macro F1 = 0.3934 ± 0.0559  (cv=subunit/5)
+  [catboost       ] macro F1 = 0.4247 ± 0.0898  (cv=subunit/5)
+
+======================================================================
+FAMILY: pooled  (n=760, genes=16)
+  [random_forest  ] macro F1 = 0.5030 ± 0.0343  (cv=subunit/5)
+  [catboost       ] macro F1 = 0.5044 ± 0.0211  (cv=subunit/5)
+
+======================================================================
+Within-family vs pooled macro F1 (positive = family helps):
+
+  [random_forest] pooled F1 = 0.5030
+      muscle           F1 = 0.4123  (Δ = -0.0907)
+      neuronal_hetero  F1 = 0.3934  (Δ = -0.1096)
+
+  [catboost] pooled F1 = 0.5044
+      muscle           F1 = 0.4642  (Δ = -0.0402)
+      neuronal_hetero  F1 = 0.4247  (Δ = -0.0796)
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\family\family_cv_summary.csv

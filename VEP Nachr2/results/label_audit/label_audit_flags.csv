@@ -1,0 +1,343 @@
+Species,nAChR subunit,AA position,Initial AA,New AA,Effect,Reference(PMID),DOI,n_papers,n_rows_merged,mapping_status,Measuring Technique,Pathology,Correct?,am_path,flag_reason
+,CHRNA7,,Q,E,LOF,22556416,https://doi.org/10.1074/jbc.M112.339796,1,1,no_reference,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA1,,C,shift,LOF,12588888,https://doi.org/10.1172/jci16997,1,1,ambiguous,Alpha-bgt binding,SCCMS,Yes,,low_conf_mapping
+Human,CHRNA1,147.0,Y,T,LOF,17428989; 18398509,https://doi.org/10.1523/jneurosci.0025-07.2007; https://doi.org/10.1172/JCI34527,2,2,mature,Patch-clamp; Single-channel recording,CMS,Yes,0.8515,multi_row_merged
+Human,CHRNA1,152.0,V,A,LOF,18663134; 19279256,https://doi.org/10.1085/jgp.200810014; https://doi.org/10.1523/jneurosci.6185-08.2009,2,2,mature,Patch-clamp; Single-channel recording,,Yes,0.978,multi_row_merged
+Human,CHRNA1,173.0,G,S,GOF,7619526; 9158151,https://doi.org/10.1016/0896-6273(95)90080-2; https://doi.org/10.1093/hmg/6.5.767,2,2,mature,Patch-clamp; TEVC; Patch-clamp; Patch-clamp,SCCMS,Yes,0.3007,multi_row_merged
+Human,CHRNA1,,I,S,GOF,40992289,https://doi.org/10.1016/j.clinsp.2025.100791,1,1,ambiguous,RNS,CMS,Yes,,low_conf_mapping
+Human,CHRNA1,210.0,Y,F,LOF,15955875; 19339970,https://doi.org/10.1085/jgp.200509283; https://doi.org/10.1038/nature07923,2,2,mature,Patch-clamp; Single-channel recording,,Yes,0.4133,multi_row_merged
+Human,CHRNA1,229.0,R,L,LOF,18252226,https://doi.org/10.1016/j.ajhg.2007.11.006,1,1,typo,DNA Sequencing,FADS; LMPS,Yes,0.9952,low_conf_mapping
+Human,CHRNA1,292.0,P,A,GOF,18663134; 19279256; 19339970,https://doi.org/10.1085/jgp.200810014; https://doi.org/10.1523/jneurosci.6185-08.2009; https://doi.org/10.1038/nature07923,3,3,mature,Patch-clamp; Single-channel recording,,Yes,0.9805,multi_row_merged
+Human,CHRNA1,,N,K,GOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,SCCMS,Yes,,low_conf_mapping
+Human,CHRNA1,,C,W,GOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,SCCMS,Yes,,low_conf_mapping
+Human,CHRNA10,31.0,L,H,No net effect,26395518,https://doi.org/10.1038/srep14261,1,1,mature,TEVC,,Yes,0.094,nne_single_source
+Human,CHRNA2,22.0,T,I,LOF,24467848,https://doi.org/10.1016/j.neuropharm.2014.01.021; http://dx.doi.org/10.1016/j.neuropharm.2014.01.021,1,2,precursor,TEVC,Nicotine dependence,Yes,0.0824,multi_row_merged
+Human,CHRNA2,279.0,I,N,GOF,16826524; 19383498,https://doi.org/10.1086/506459; https://doi.org/10.1016/j.febslet.2009.04.024,2,2,precursor,Patch-clamp; Whole-cell patch clamp; TEVC,Epilepsy; ADNFLE,Yes,0.9816,multi_row_merged
+Human,CHRNA3,242.0,L,M,No net effect,24085295,https://doi.org/10.1074/jbc.m113.509356,1,1,mature,FMP,,Yes,0.1808,nne_single_source
+Human,CHRNA3,,L,T,GOF,11118490,https://doi.org/10.1111/j.1469-7793.2000.00565.x,1,1,ambiguous,Voltage-clamp,,Yes,,low_conf_mapping
+Human,CHRNA3,385.0,R,H,GOF,19628475; 21486776,https://doi.org/10.1093/hmg/ddp339; https://doi.org/10.1113/jphysiol.2011.207282,2,2,precursor,Electrophysiology; Whole-cell patch clamp; Single-channel recording; Whole-cell patch clamp,sALS,Yes,0.0703,multi_row_merged
+Human,CHRNA3,388.0,S,F,GOF,19628475; 21486776,https://doi.org/10.1093/hmg/ddp339; https://doi.org/10.1113/jphysiol.2011.207282,2,2,precursor,Electrophysiology; Whole-cell patch clamp; Single-channel recording; Whole-cell patch clamp,sALS,Yes,0.1205,multi_row_merged
+Human,CHRNA4,,-,L,GOF,10487182,https://doi.org/10.1111/j.1528-1157.1999.tb00848.x,1,1,no_match,TEVC,ADNFLE,Yes,,low_conf_mapping
+Human,CHRNA4,88.0,W,A,No net effect,24190916; 24637639,https://doi.org/10.1124/jpet.113.208389; https://doi.org/10.1371/journal.pone.0091232,2,2,precursor,TEVC,,Yes,0.9674,nne_am_pathogenic;multi_row_merged
+Human,CHRNA4,,T,C,No net effect,20650284,https://doi.org/10.1016/j.neuropharm.2010.07.014,1,1,ambiguous,Voltage-clamp; TEVC,,Yes,,nne_single_source;low_conf_mapping
+Human,CHRNA4,166.0,T,R,No net effect,31221718,https://doi.org/10.1074/jbc.ra118.006253,1,1,mature,TEVC,,Yes,0.1847,nne_single_source
+Human,CHRNA4,151.0,W,A,LOF,19339660,https://doi.org/10.1124/jpet.109.151225,1,1,typo,TEVC,,Yes,0.9887,low_conf_mapping
+Human,CHRNA4,151.0,W,F,LOF,19339660,https://doi.org/10.1124/jpet.109.151225,1,1,typo,TEVC,,Yes,0.8295,low_conf_mapping
+Human,CHRNA4,151.0,W,Y,LOF,19339660,https://doi.org/10.1124/jpet.109.151225,1,1,typo,TEVC,,Yes,0.9008,low_conf_mapping
+Human,CHRNA4,182.0,W,A,LOF,23742319; 24190916,https://doi.org/10.1111/bph.12268; https://doi.org/10.1124/jpet.113.208389,2,2,precursor,TEVC,,Yes,0.9862,multi_row_merged
+Human,CHRNA4,,Y,F,GOF,17189260,https://doi.org/10.1074/jbc.M609202200,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA4,,S,F,LOF,9364050,https://doi.org/10.1523/jneurosci.17-23-09035.1997,1,1,ambiguous,TEVC; TEVC; Single-channel recording,ADNFLE,Yes,,low_conf_mapping
+Human,CHRNA4,,S,F,LOF,10487182; 10802757; 12110613; 9831911,https://doi.org/10.1111/j.1528-1157.1999.tb00848.x; https://doi.org/10.1111/j.1528-1157.2000.tb00205.x; https://doi.org/10.1038/sj.bjp.0704786; https://doi.org/10.1038/sj.bjp.0702154,4,4,ambiguous,TEVC; Patch-clamp,ADNFLE,Yes,,low_conf_mapping;multi_row_merged
+Human,CHRNA4,,S,L,GOF,10563623,https://doi.org/10.1212/wnl.53.8.1749,1,1,ambiguous,SSCA,ADNFLE,Yes,,low_conf_mapping
+Human,CHRNA4,261.0,T,I,GOF,12823585,https://doi.org/10.1046/j.1528-1157.2003.61102.x,1,1,typo,TEVC,ADNFLE,Yes,0.9459,low_conf_mapping
+Human,CHRNA4,301.0,L,D,No net effect,31221718,https://doi.org/10.1074/jbc.ra118.006253,1,1,mature,TEVC,,Yes,0.9152,nne_single_source;nne_am_pathogenic
+Human,CHRNA4,336.0,R,C,GOF,24385388; 26952864,https://doi.org/10.1124/jpet.113.209767; https://doi.org/10.1038/mp.2016.13,2,2,precursor,Voltage-clamp; Electrophysiology,Nicotine dependence,Yes,0.174,multi_row_merged
+Human,CHRNA4,451.0,P,L,LOF,24385388; 26952864,https://doi.org/10.1124/jpet.113.209767; https://doi.org/10.1038/mp.2016.13,2,2,precursor,Voltage-clamp; Electrophysiology,Nicotine dependence,Yes,0.0639,multi_row_merged
+Human,CHRNA4,487.0,R,Q,GOF,19628475; 24385388; 26952864,https://doi.org/10.1093/hmg/ddp339; https://doi.org/10.1124/jpet.113.209767; https://doi.org/10.1038/mp.2016.13,3,3,precursor,Whole-cell patch clamp; Voltage-clamp; Electrophysiology,sALS; Nicotine dependence,Yes,0.0761,multi_row_merged
+Human,CHRNA4,601.0,I,F,No net effect,31221718,https://doi.org/10.1074/jbc.ra118.006253,1,1,precursor,TEVC,,Yes,0.4542,nne_single_source
+Human,CHRNA4,601.0,I,W,No net effect,31221718,https://doi.org/10.1074/jbc.ra118.006253,1,1,precursor,TEVC,,Yes,0.9768,nne_single_source;nne_am_pathogenic
+Human,CHRNA5,191.0,W,A,No net effect,32472188,https://doi.org/10.1007/s00018-020-03558-z,1,1,mature,TEVC,,Yes,0.9846,nne_single_source;nne_am_pathogenic
+Human,CHRNA5,261.0,C,S,No net effect,32472188,https://doi.org/10.1007/s00018-020-03558-z,1,2,precursor,TEVC,,Yes,0.7684,nne_single_source;nne_am_pathogenic;multi_row_merged
+Human,CHRNA5,290.0,V,S,LOF,21873428,https://doi.org/10.1074/jbc.m111.264044,1,2,precursor,TEVC,Nicotine dependence; Nicotine dependence; Mood disorders,Yes,0.9,multi_row_merged
+Human,CHRNA5,398.0,D,N,LOF,20881005; 32472188,https://doi.org/10.1124/mol.110.066357; https://doi.org/10.1007/s00018-020-03558-z,2,2,precursor,TEVC,Nicotine dependence; Nicotine dependence; Lung cancer,Yes,0.0849,multi_row_merged
+Human,CHRNA6,36.0,R,Q,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0845,nne_single_source
+Human,CHRNA6,40.0,K,T,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0972,nne_single_source
+Human,CHRNA6,43.0,S,A,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0728,nne_single_source
+Human,CHRNA6,47.0,Q,R,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0733,nne_single_source
+Human,CHRNA6,65.0,V,L,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.2213,nne_single_source
+Human,CHRNA6,46.0,N,K,LOF,24886653,https://doi.org/10.1186/1756-6606-7-35,1,2,precursor,TEVC,Nicotine dependence,Yes,0.6493,multi_row_merged
+Human,CHRNA6,89.0,I,V,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0772,nne_single_source
+Human,CHRNA6,91.0,N,K,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1484,nne_single_source
+Human,CHRNA6,94.0,K,R,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0882,nne_single_source
+Human,CHRNA6,96.0,R,C,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1383,nne_single_source
+Human,CHRNA6,100.0,M,T,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0588,nne_single_source
+Human,CHRNA6,114.0,K,N,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.303,nne_single_source
+Human,CHRNA6,101.0,E,K,No net effect,24886653,https://doi.org/10.1186/1756-6606-7-35,1,1,precursor,TEVC,Nicotine dependence,Yes,0.1083,nne_single_source
+Human,CHRNA6,143.0,N,D,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0517,nne_single_source
+Human,CHRNA6,145.0,M,V,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0758,nne_single_source
+Human,CHRNA6,143.0,N,D,GOF,21873428; 22315221,https://doi.org/10.1074/jbc.m111.264044; https://doi.org/10.1074/jbc.M111.322610,2,2,precursor,TEVC,Nicotine dependence; Nicotine dependence; Mood disorders; Nicotine dependence,Yes,0.0517,multi_row_merged
+Human,CHRNA6,145.0,M,V,GOF,21873428; 22315221,https://doi.org/10.1074/jbc.m111.264044; https://doi.org/10.1074/jbc.M111.322610,2,2,precursor,TEVC,Nicotine dependence; Nicotine dependence; Mood disorders; Nicotine dependence,Yes,0.0758,multi_row_merged
+Human,CHRNA6,209.0,I,V,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0594,nne_single_source
+Human,CHRNA6,,I,V,No net effect,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,ambiguous,TEVC,Neuropathic Pain,Yes,,nne_single_source;low_conf_mapping
+Human,CHRNA6,203.0,N,T,No net effect,24886653,https://doi.org/10.1186/1756-6606-7-35,1,1,precursor,TEVC,Nicotine dependence,Yes,0.3025,nne_single_source
+Human,CHRNA7,,A,,LOF,33740418,https://doi.org/10.1016/j.cell.2021.02.049,1,1,ambiguous,Electrophysiology,,Yes,,low_conf_mapping
+Human,CHRNA7,,S,,No net effect,33740418,https://doi.org/10.1016/j.cell.2021.02.049,1,1,missing,Electrophysiology,,Yes,,nne_single_source
+Human,CHRNA7,58.0,S,C,No net effect,20823218,https://doi.org/10.1124/mol.110.066662,1,1,mature,TEVC,,Yes,0.4758,nne_single_source
+Human,CHRNA7,60.0,L,C,No net effect,20823218,https://doi.org/10.1124/mol.110.066662,1,1,mature,TEVC,,Yes,0.9166,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,69.0,N,D,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,Schizophrenia,Yes,0.7475,multi_row_merged
+Human,CHRNA7,77.0,W,C,LOF,20650284; 20823218,https://doi.org/10.1016/j.neuropharm.2010.07.014; https://doi.org/10.1124/mol.110.066662,2,2,mature,Voltage-clamp; TEVC; TEVC,,Yes,0.9935,multi_row_merged
+Human,CHRNA7,77.0,W,G,GOF,19339660; 26340455; 26340537,https://doi.org/10.1124/jpet.109.151225; https://doi.org/10.1371/journal.pone.0137588,3,3,mature,TEVC,Schizophrenia,Yes,0.9744,multi_row_merged
+Human,CHRNA7,115.0,Y,C,LOF,26340455; 26340537; 30348894,https://doi.org/10.1371/journal.pone.0137588; https://doi.org/10.1124/mol.118.113340,3,3,mature,TEVC,Schizophrenia,Yes,0.9711,multi_row_merged
+Human,CHRNA7,93.0,E,A,LOF,33740418,https://doi.org/10.1016/j.cell.2021.02.049,1,1,typo,Electrophysiology,,Yes,0.1164,low_conf_mapping
+Human,CHRNA7,128.0,T,A,No net effect,32690627,https://doi.org/10.1124/mol.120.119958,1,1,mature,TEVC,,Yes,0.3539,nne_single_source
+Human,CHRNA7,134.0,S,A,No net effect,15213292,https://doi.org/10.1124/mol.66.1.14,1,1,mature,TEVC,,Yes,0.1237,nne_single_source
+Human,CHRNA7,138.0,C,S,No net effect,20650284; 20823218; 21444659; 30348894,https://doi.org/10.1016/j.neuropharm.2010.07.014; https://doi.org/10.1124/mol.110.066662; https://doi.org/10.1085/jgp.201010587; https://doi.org/10.1124/mol.118.113340,4,4,mature,Voltage-clamp; TEVC; TEVC,,Yes,0.7803,nne_am_pathogenic;multi_row_merged
+Human,CHRNA7,139.0,Q,T,No net effect,28797116,https://doi.org/10.1371/journal.pone.0181936,1,1,mature,Whole-cell patch clamp,,Yes,0.207,nne_single_source
+Human,CHRNA7,140.0,Y,W,No net effect,28797116,https://doi.org/10.1371/journal.pone.0181936,1,1,mature,Whole-cell patch clamp,,Yes,0.6136,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,141.0,L,C,No net effect,20650284; 20823218; 21444659; 26742843,https://doi.org/10.1016/j.neuropharm.2010.07.014; https://doi.org/10.1124/mol.110.066662; https://doi.org/10.1085/jgp.201010587; https://doi.org/10.1074/jbc.M115.692392,4,4,mature,Voltage-clamp; TEVC; TEVC,,Yes,0.9047,nne_am_pathogenic;multi_row_merged
+Human,CHRNA7,,W,F,LOF,21436053,https://doi.org/10.1073/pnas.1017975108,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA7,175.0,G,E,No net effect,25492812,https://doi.org/10.1124/mol.114.095539,1,1,mature,Single-channel recording,,Yes,0.9597,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,,E,A,No net effect,32702089,https://doi.org/10.1085/jgp.202012606,1,1,ambiguous,Patch-clamp,,Yes,,nne_single_source;low_conf_mapping
+Human,CHRNA7,187.0,I,C,LOF,20650284; 20823218,https://doi.org/10.1016/j.neuropharm.2010.07.014; https://doi.org/10.1124/mol.110.066662,2,2,mature,Voltage-clamp; TEVC; TEVC,,Yes,0.7513,multi_row_merged
+Human,CHRNA7,193.0,N,S,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,Schizophrenia,Yes,0.1151,multi_row_merged
+Human,CHRNA7,195.0,E,K,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,Schizophrenia,Yes,0.9929,multi_row_merged
+Human,CHRNA7,188.0,S,N,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,typo,TEVC,,Yes,0.2815,nne_single_source;low_conf_mapping
+Human,CHRNA7,,R,K,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,ambiguous,TEVC,,Yes,,nne_single_source;low_conf_mapping
+Human,CHRNA7,210.0,Y,F,LOF,17189260; 18817371; 21444659,https://doi.org/10.1074/jbc.M609202200; https://doi.org/10.1021/jm800607u; https://doi.org/10.1085/jgp.201010587,3,3,mature,TEVC,,Yes,0.2291,multi_row_merged
+Human,CHRNA7,212.0,C,A,LOF,24100032; 30944209; 32690627,https://doi.org/10.1124/jpet.122.001354; https://doi.org/10.1124/mol.119.115758; https://doi.org/10.1124/mol.120.119958,3,3,mature,TEVC,,Yes,0.9867,multi_row_merged
+Human,CHRNA7,212.0,C,S,LOF,26742843; 30337385; 30348894,https://doi.org/10.1074/jbc.M115.692392; https://doi.org/10.1124/mol.118.113340,3,3,mature,TEVC,,Yes,0.9876,multi_row_merged
+Human,CHRNA7,213.0,C,Y,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,Schizophrenia,Yes,0.9963,multi_row_merged
+Human,CHRNA7,214.0,K,R,No net effect,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,,Yes,0.0808,multi_row_merged
+Human,CHRNA7,197.0,D,A,LOF,17189260; 18817371,https://doi.org/10.1074/jbc.M609202200; https://doi.org/10.1021/jm800607u,2,2,precursor,TEVC,,Yes,0.7719,multi_row_merged
+Human,CHRNA7,197.0,D,N,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,precursor,TEVC,Schizophrenia,Yes,0.5045,multi_row_merged
+Human,CHRNA7,205.0,R,C,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,precursor,TEVC,Schizophrenia,Yes,0.7479,multi_row_merged
+Human,CHRNA7,205.0,R,H,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,precursor,TEVC,Schizophrenia,Yes,0.2629,multi_row_merged
+Human,CHRNA7,233.0,Y,C,LOF,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,Schizophrenia,Yes,0.9774,multi_row_merged
+Human,CHRNA7,234.0,G,S,No net effect,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,,Yes,0.4965,multi_row_merged
+Human,CHRNA7,234.0,G,V,No net effect,26340455; 26340537,https://doi.org/10.1371/journal.pone.0137588,2,2,mature,TEVC,,Yes,0.8151,nne_am_pathogenic;multi_row_merged
+Human,CHRNA7,245.0,S,A,No net effect,21957249,https://doi.org/10.1523/JNEUROSCI.2652-11.2011,1,1,mature,Single-channel recording,,Yes,0.3591,nne_single_source
+Human,CHRNA7,245.0,S,T,LOF,21957249; 24297903,https://doi.org/10.1523/JNEUROSCI.2652-11.2011; https://doi.org/10.1073/pnas.1315775110,2,2,mature,Single-channel recording; Patch-clamp,,Yes,0.5649,multi_row_merged
+Human,CHRNA7,248.0,A,S,LOF,21957249; 24297903,https://doi.org/10.1523/JNEUROSCI.2652-11.2011; https://doi.org/10.1073/pnas.1315775110,2,2,mature,Single-channel recording; Patch-clamp,,Yes,0.3134,multi_row_merged
+Human,CHRNA7,260.0,E,A,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,isoform,Voltage-clamp,,Yes,0.9976,ambiguous_effect
+Human,CHRNA7,247.0,L,T,GOF,21436053; 25548277; 25998276; 42172892,https://doi.org/10.1073/pnas.1017975108; https://doi.org/10.1074/jbc.M114.619221; https://doi.org/10.1016/j.neuropharm.2015.05.006; https://doi.org/10.1016/j.chemosphere.2026.144955,4,4,precursor,TEVC,,Yes,0.9172,multi_row_merged
+Human,CHRNA7,270.0,L,T,GOF,10716716; 11684149; 12681375,https://doi.org/10.1073/pnas.97.7.3643; https://doi.org/10.1016/s0028-3908(01)00137-x; https://doi.org/10.1016/S0028-3908(03)00054-6,3,3,mature,Whole-cell patch clamp; TEVC; TEVC; Single-channel recording,,Yes,0.9978,multi_row_merged
+Human,CHRNA7,250.0,L,T,GOF,11877686; 11879686,https://doi.org/10.1124/mol.61.3.695,2,2,precursor,Electrophysiology; Patch-clamp,Nicotine-induced seizures; Epilepsy,Yes,0.7946,multi_row_merged
+Human,CHRNA7,,M,L,LOF,21436053; 25548277; 37023990; 42172892,https://doi.org/10.1073/pnas.1017975108; https://doi.org/10.1074/jbc.M114.619221; https://doi.org/10.1016/j.phrs.2023.106759; https://doi.org/10.1016/j.chemosphere.2026.144955,4,4,ambiguous,TEVC; Electrophysiology,,Yes,,low_conf_mapping;multi_row_merged
+Human,CHRNA7,254.0,L,G,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,precursor,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,254.0,L,Q,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,precursor,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,254.0,L,R,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,precursor,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,254.0,L,T,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,precursor,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,276.0,M,L,LOF,21957249; 24297903; 30348894,https://doi.org/10.1523/JNEUROSCI.2652-11.2011; https://doi.org/10.1073/pnas.1315775110; https://doi.org/10.1124/mol.118.113340,3,3,mature,Single-channel recording; Patch-clamp; TEVC,,Yes,0.4834,multi_row_merged
+Human,CHRNA7,277.0,L,G,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,mature,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,277.0,L,Q,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,mature,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,277.0,L,R,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,mature,Voltage-clamp,,Yes,,ambiguous_effect
+Human,CHRNA7,277.0,L,T,LOF/GOF,8346083,https://doi.org/10.1073/pnas.90.15.6971,1,1,mature,Voltage-clamp,,Yes,0.9913,ambiguous_effect
+Human,CHRNA7,260.0,E,A,No net effect,20803082,https://doi.org/10.1007/s10059-010-0117-9,1,1,precursor,TEVC,,Yes,0.9976,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,,M,L,GOF,25998276,https://doi.org/10.1016/j.neuropharm.2015.05.006,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA7,285.0,A,S,No net effect,8650229,https://doi.org/10.1073/pnas.93.12.6118,1,1,mature,TEVC,,Yes,0.3415,nne_single_source
+Human,CHRNA7,270.0,L,T,No net effect,20803082,https://doi.org/10.1007/s10059-010-0117-9,1,1,precursor,TEVC,,Yes,0.9978,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,274.0,V,T,GOF,10082212; 19845675,https://doi.org/10.1016/s0014-2999(98)00909-1; https://doi.org/10.1111/j.1476-5381.2009.00426.x,2,2,precursor,TEVC,,Yes,0.9866,multi_row_merged
+Human,CHRNA7,277.0,L,T,No net effect,20803082,https://doi.org/10.1007/s10059-010-0117-9,1,1,precursor,TEVC,,Yes,0.9913,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,303.0,I,M,LOF,21957249; 24297903,https://doi.org/10.1523/JNEUROSCI.2652-11.2011; https://doi.org/10.1073/pnas.1315775110,2,2,mature,Single-channel recording; Patch-clamp,,Yes,0.3118,multi_row_merged
+Human,CHRNA7,310.0,V,F,LOF,21957249; 24297903,https://doi.org/10.1523/JNEUROSCI.2652-11.2011; https://doi.org/10.1073/pnas.1315775110,2,2,mature,Single-channel recording; Patch-clamp,,Yes,0.3438,multi_row_merged
+Human,CHRNA7,317.0,Y,A,No net effect,20803082,https://doi.org/10.1007/s10059-010-0117-9,1,1,precursor,TEVC,,Yes,0.9691,nne_single_source;nne_am_pathogenic
+Human,CHRNA7,386.0,Y,A,GOF,16251438; 20803082,https://doi.org/10.1523/JNEUROSCI.3497-05.2005; https://doi.org/10.1007/s10059-010-0117-9,2,2,precursor,TEVC,Schizophrenia,Yes,0.6135,multi_row_merged
+Human,CHRNA7,423.0,G,S,LOF,17132684; 17158315,https://doi.org/10.1124/mol.106.030866,2,2,precursor,TEVC,Schizophrenia,Yes,0.0651,multi_row_merged
+Human,CHRNA7,,R,Q,GOF,16118362,https://doi.org/10.1124/mol.105.015438,1,1,ambiguous,Whole-cell patch clamp; Cell-attached single-channel recording; Outside-out patch clamp,,Yes,,low_conf_mapping
+Human,CHRNA7,441.0,R,D,GOF,16118362,https://doi.org/10.1124/mol.105.015438,1,1,typo,Whole-cell patch clamp; Cell-attached single-channel recording; Outside-out patch clamp,,Yes,0.5914,low_conf_mapping
+Human,CHRNA7,441.0,R,A,GOF,16118362,https://doi.org/10.1124/mol.105.015438,1,1,typo,Whole-cell patch clamp; Cell-attached single-channel recording; Outside-out patch clamp,,Yes,0.3951,low_conf_mapping
+Human,CHRNA7,442.0,Y,A,GOF,16251438; 20803082,https://doi.org/10.1523/JNEUROSCI.3497-05.2005; https://doi.org/10.1007/s10059-010-0117-9,2,2,precursor,TEVC,Schizophrenia,Yes,0.8868,multi_row_merged
+Human,CHRNA9,,I,T,LOF,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA9,72.0,E,Q,No net effect,41712615,https://doi.org/10.1021/acs.jmedchem.5c03296,1,1,precursor,TEVC,,Yes,0.7776,nne_single_source;nne_am_pathogenic
+Human,CHRNA9,,T,K,LOF,25282151,https://doi.org/10.1038/nsmb.2900,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA9,179.0,N,A,No net effect,39608712,https://doi.org/10.1016/j.jbc.2024.108017,1,1,precursor,TEVC,,Yes,0.7402,nne_single_source;nne_am_pathogenic
+Human,CHRNA9,,T,A,LOF,25282151,https://doi.org/10.1038/nsmb.2900,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNA9,213.0,N,R,No net effect,39608712,https://doi.org/10.1016/j.jbc.2024.108017,1,1,precursor,TEVC,,Yes,0.3403,nne_single_source
+Human,CHRNA9,240.0,Y,F,No net effect,41712615,https://doi.org/10.1021/acs.jmedchem.5c03296,1,1,precursor,TEVC,,Yes,0.1686,nne_single_source
+Human,CHRNB1,,F,,LOF,22382357,https://doi.org/10.1093/brain/aws016,1,1,ambiguous,Patch-clamp,,Yes,,low_conf_mapping
+Human,CHRNB1,63.0,L,P,No net effect,18398509,https://doi.org/10.1172/JCI34527; https://doi.org/10.1172/jci34527,1,2,mature,Single-channel recording; Patch-clamp,CMS,Yes,0.9687,nne_single_source;nne_am_pathogenic;multi_row_merged
+Human,CHRNB1,132.0,V,L,No net effect,12588888,https://doi.org/10.1172/jci16997,1,1,precursor,Patch-clamp,,Yes,0.1236,nne_single_source
+Human,CHRNB1,,L,M,GOF,8651643,https://doi.org/10.1002/ana.410390607,1,1,ambiguous,Patch-clamp; In vitro microelectrode recording; In vivo extracellular recording,SCCMS,Yes,,low_conf_mapping
+Human,CHRNB1,,R,C,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,AChR Deficiency,Yes,,low_conf_mapping
+Human,CHRNB2,84.0,T,K,GOF,27646000,https://doi.org/10.1074/jbc.m116.730804; https://doi.org/10.1074/jbc.M116.730804,1,2,mature,TEVC,,Yes,0.4668,multi_row_merged
+Human,CHRNB2,146.0,L,C,No net effect,20650284; 27645992,https://doi.org/10.1016/j.neuropharm.2010.07.014; https://doi.org/10.1074/jbc.m116.749150,2,2,mature,Voltage-clamp; TEVC; TEVC,,Yes,0.9759,nne_am_pathogenic;multi_row_merged
+Human,CHRNB2,136.0,V,H,LOF/GOF,26644472,https://doi.org/10.1074/jbc.M115.684373,1,1,precursor,TEVC,,Yes,,ambiguous_effect
+Human,CHRNB2,144.0,F,Q,LOF/GOF,26644472,https://doi.org/10.1074/jbc.M115.684373,1,1,precursor,TEVC,,Yes,,ambiguous_effect
+Human,CHRNB2,146.0,L,T,LOF/GOF,26644472,https://doi.org/10.1074/jbc.M115.684373,1,1,precursor,TEVC,,Yes,,ambiguous_effect
+Human,CHRNB2,,F,Y,GOF,27493220,https://doi.org/10.1073/pnas.1602619113,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNB2,218.0,D,A,No net effect,26025967,https://doi.org/10.1124/jpet.115.223933,1,1,precursor,TEVC,,Yes,0.6385,nne_single_source;nne_am_pathogenic
+Human,CHRNB2,287.0,V,M,GOF,11104662; 18456869,https://doi.org/10.1086/316946; https://doi.org/10.1124/mol.107.044545,2,2,precursor,TEVC,ADNFLE,Yes,0.875,multi_row_merged
+Human,CHRNB2,,P,L,GOF,29454195,https://doi.org/10.1016/j.seizure.2018.02.005,1,1,ambiguous,TEVC,GEFS+,Yes,,low_conf_mapping
+Human,CHRNB3,131.0,T,C,No net effect,20650284,https://doi.org/10.1016/j.neuropharm.2010.07.014,1,1,typo,TEVC,,Yes,0.8653,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Human,CHRNB3,,V,S,GOF,16822928,https://doi.org/10.1124/mol.106.026682,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNB3,273.0,V,S,GOF,22309577; 25028511,https://doi.org/10.1111/j.1471-4159.2012.07685.x; https://doi.org/10.1074/jbc.M114.566018,2,2,precursor,TEVC,Nicotine dependence,Yes,0.9138,multi_row_merged
+Human,CHRNB4,57.0,K,R,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0755,nne_single_source
+Human,CHRNB4,59.0,Q,E,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1119,nne_single_source
+Human,CHRNB4,63.0,A,S,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1166,nne_single_source
+Human,CHRNB4,79.0,V,I,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1192,nne_single_source
+Human,CHRNB4,57.0,K,T,GOF,27646000,https://doi.org/10.1074/jbc.m116.730804,1,1,typo,TEVC,,Yes,0.113,low_conf_mapping
+Human,CHRNB4,91.0,T,A,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.062,nne_single_source
+Human,CHRNB4,96.0,R,C,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.1851,nne_single_source
+Human,CHRNB4,110.0,I,V,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0927,nne_single_source
+Human,CHRNB4,91.0,T,I,LOF,15742216; 22042774,https://doi.org/10.1007/s10048-004-0199-7; https://doi.org/10.1093/hmg/ddr498,2,2,precursor,TEVC; Voltage-clamp; Whole-cell patch clamp,Nicotine dependence,Yes,0.1461,multi_row_merged
+Human,CHRNB4,133.0,L,V,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0572,nne_single_source
+Human,CHRNB4,112.0,L,V,No net effect,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,typo,TEVC,Neuropathic Pain,Yes,0.1826,nne_single_source;low_conf_mapping
+Human,CHRNB4,109.0,R,S,GOF,27646000,https://doi.org/10.1074/jbc.m116.730804,1,1,typo,TEVC,,Yes,0.3252,low_conf_mapping
+Human,CHRNB4,,N,D,GOF,27646000,https://doi.org/10.1074/jbc.m116.730804,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNB4,141.0,V,I,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0748,nne_single_source
+Human,CHRNB4,142.0,L,Q,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.105,nne_single_source
+Human,CHRNB4,,S,Y,GOF,17189260,https://doi.org/10.1074/jbc.M609202200,1,1,ambiguous,TEVC,,Yes,,low_conf_mapping
+Human,CHRNB4,116.0,V,I,No net effect,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,typo,TEVC,Neuropathic Pain,Yes,0.2191,nne_single_source;low_conf_mapping
+Human,CHRNB4,117.0,L,F,No net effect,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,typo,TEVC,Neuropathic Pain,Yes,0.9505,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Human,CHRNB4,117.0,L,M,GOF,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,typo,TEVC,Neuropathic Pain,Yes,0.6567,low_conf_mapping
+Human,CHRNB4,117.0,L,Q,GOF,30249616,https://doi.org/10.1074/jbc.ra118.005649,1,1,typo,TEVC,Neuropathic Pain,Yes,0.9777,low_conf_mapping
+Human,CHRNB4,140.0,S,G,No net effect,15742216,https://doi.org/10.1007/s10048-004-0199-7,1,1,precursor,TEVC,,Yes,0.1575,nne_single_source
+Human,CHRNB4,186.0,M,K,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0754,nne_single_source
+Human,CHRNB4,187.0,T,S,No net effect,37239959,https://doi.org/10.3390/ijms24108618,1,1,mature,TEVC,,Yes,0.0693,nne_single_source
+Human,CHRNB4,161.0,P,E,GOF,27646000,https://doi.org/10.1074/jbc.m116.730804,1,1,typo,TEVC,,Yes,0.9965,low_conf_mapping
+Human,CHRNB4,456.0,M,V,No net effect,19628475,https://doi.org/10.1093/hmg/ddp339,1,1,precursor,Whole-cell patch clamp,sALS,Yes,0.1302,nne_single_source
+Human,CHRND,,L,S,GOF,19339970,https://doi.org/10.1038/nature07923,1,1,ambiguous,Single-channel recording,,Yes,,low_conf_mapping
+Human,CHRND,43.0,R,W,LOF,25264167,https://doi.org/10.1016/j.nmd.2014.09.002,1,1,typo,Single-channel recording,CMS,Yes,0.6568,low_conf_mapping
+Human,CHRND,114.0,V,L,No net effect,18398509,https://doi.org/10.1172/JCI34527,1,1,mature,Single-channel recording; Patch-clamp,CMS,Yes,0.4817,nne_single_source
+Human,CHRND,168.0,K,Q,No net effect,15955875,https://doi.org/10.1085/jgp.200509283,1,1,mature,ACh binding,,Yes,0.2726,nne_single_source
+Human,CHRND,235.0,D,N,No net effect,15955875,https://doi.org/10.1085/jgp.200509283,1,1,mature,ACh binding,,Yes,0.4054,nne_single_source
+Human,CHRND,288.0,Q,E,No net effect,8872460,https://doi.org/10.1093/hmg/5.9.1217,1,1,mature,Patch-clamp,,Yes,0.1828,nne_single_source
+Human,CHRND,289.0,S,F,LOF/GOF,11782989,https://doi.org/10.1002/ana.10077,1,1,mature,Patch-clamp,SCCMS,Yes,,ambiguous_effect
+Human,CHRND,320.0,V,I,LOF,10195214,https://doi.org/10.1038/6326,1,2,mature,Patch-clamp; Single-channel recording,CMS,Yes,0.1597,multi_row_merged
+Human,CHRNE,,G,,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,AChR Deficiency,Yes,,low_conf_mapping
+Human,CHRNE,,G,R,LOF,8755487,https://doi.org/10.1016/s0896-6273(00)80289-5,1,1,ambiguous,Alpha-bgt binding,CMS,Yes,,low_conf_mapping
+Human,CHRNE,141.0,P,L,LOF,19339970; 8755487,https://doi.org/10.1038/nature07923; https://doi.org/10.1016/s0896-6273(00)80289-5,2,2,mature,Single-channel recording; Patch-clamp,CMS,Yes,0.7919,multi_row_merged
+Human,CHRNE,152.0,V,L,No net effect,12588888,https://doi.org/10.1172/jci16997,1,1,mature,Patch-clamp,,Yes,0.8117,nne_single_source;nne_am_pathogenic
+Human,CHRNE,167.0,R,L,LOF,9158150,https://doi.org/10.1093/hmg/6.5.753,1,2,mature,Patch-clamp; Single-channel recording,CMS,Yes,0.4376,multi_row_merged
+Human,CHRNE,265.0,P,L,GOF,12499478; 9158150,https://doi.org/10.1212/01.WNL.0000042422.87384.2F; https://doi.org/10.1093/hmg/6.5.753,2,2,mature,Patch-clamp; Patch-clamp; Single-channel recording,CMS,Yes,0.8928,multi_row_merged
+Human,CHRNE,456.0,N,D,No net effect,15615813,https://doi.org/10.1093/brain/awh364,1,1,mature,Patch-clamp,,Yes,0.1283,nne_single_source
+Human,CHRNE,456.0,N,R,No net effect,15615813,https://doi.org/10.1093/brain/awh364,1,1,mature,Patch-clamp,,Yes,0.1334,nne_single_source
+Human,CHRNE,,E,K,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,FCCMS,Yes,,low_conf_mapping
+Human,CHRNE,,R,W,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,FCCMS,Yes,,low_conf_mapping
+Human,CHRNE,,L,I,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,AChR Deficiency,Yes,,low_conf_mapping
+Human,CHRNE,,L,F,GOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,SCCMS,Yes,,low_conf_mapping
+Human,CHRNE,,C,Y,LOF,29395675,https://doi.org/10.1016/j.nmd.2017.11.013,1,1,no_match,RNS,FCCMS,Yes,,low_conf_mapping
+Human,CHRNG,,N,A,LOF,17428989,https://doi.org/10.1523/jneurosci.0025-07.2007,1,1,ambiguous,Patch-clamp,,Yes,,low_conf_mapping
+Human,CHRNG,,N,C,LOF,17428989,https://doi.org/10.1523/jneurosci.0025-07.2007,1,1,ambiguous,Patch-clamp,,Yes,,low_conf_mapping
+Mouse,CHRNA1,145.0,K,E,No net effect,18523135,https://doi.org/10.1124/mol.108.047134,1,1,mature+ortholog,Single-channel recording,,Yes,0.9372,nne_single_source;nne_am_pathogenic
+Mouse,CHRNA1,173.0,G,S,GOF,25492812; 7619526,https://doi.org/10.1124/mol.114.095539; https://doi.org/10.1016/0896-6273(95)90081-2,2,2,mature+ortholog,Single-channel recording; Patch-clamp,CMS; SCCMS,Yes,0.3007,multi_row_merged
+Mouse,CHRNA4,280.0,S,F,GOF,17146052; 18321647,https://doi.org/10.1073/pnas.0608215103; https://doi.org/10.1016/j.neulet.2007.12.061,2,2,mature+ortholog,Whole-cell patch clamp; TEVC,ADNFLE,Yes,0.979,multi_row_merged
+Mouse,CHRNA6,280.0,L,S,GOF,18940593; 22315221; 25028511,https://doi.org/10.1016/j.neuron.2008.09.009; https://doi.org/10.1074/jbc.m111.322610; https://doi.org/10.1074/jbc.M114.566018,3,3,precursor+ortholog,Whole-cell patch clamp; TEVC,ADHD; Parkinson's disease; Nicotine dependence; Hyperactivity; ADHD; Nicotine dependence,Yes,0.9604,multi_row_merged
+Mouse,CHRNA6,284.0,V,S,GOF,22315221; 25028511,https://doi.org/10.1074/jbc.m111.322610; https://doi.org/10.1074/jbc.M114.566018,2,2,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.8101,multi_row_merged
+Mouse,CHRNB2,327.0,T,S,No net effect,21555077,https://doi.org/10.1016/j.neuron.2011.04.013,1,1,precursor+ortholog,TEVC,,Yes,0.0898,nne_single_source
+Mouse,CHRNB3,88.0,Q,H,No net effect,25028511,https://doi.org/10.1074/jbc.M114.566018,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRNB3,95.0,E,D,No net effect,25028511,https://doi.org/10.1074/jbc.M114.566018,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRNB3,101.0,N,H,No net effect,25028511,https://doi.org/10.1074/jbc.M114.566018,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRNB3,215.0,E,D,GOF,25028511,https://doi.org/10.1074/jbc.M114.566018,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,wt_mismatch
+Mouse,CHRNB4,22.0,R,C,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.1473,nne_single_source
+Mouse,CHRNB4,39.0,R,C,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.3256,nne_single_source
+Mouse,CHRNB4,41.0,N,S,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.1836,nne_single_source
+Mouse,CHRNB4,91.0,A,I,GOF,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog+wt_mismatch,TEVC; TEVC; Whole-cell patch clamp,Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Mouse,CHRNB4,109.0,R,H,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.0822,nne_single_source
+Mouse,CHRNB4,136.0,R,Q,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.0857,nne_single_source
+Mouse,CHRNB4,311.0,V,I,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.0853,nne_single_source
+Mouse,CHRNB4,322.0,R,S,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC,Nicotine dependence,Yes,0.966,nne_single_source;nne_am_pathogenic
+Mouse,CHRNB4,372.0,A,V,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,joint+ortholog,TEVC,,CHECK,0.0715,nne_single_source;manual_review
+Mouse,CHRNB4,349.0,R,C,LOF,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,precursor+ortholog,TEVC; Whole-cell patch clamp,sALS,CHECK,0.2196,manual_review
+Mouse,CHRNB4,427.0,A,V,No net effect,24478678,https://doi.org/10.3389/fnhum.2014.00012,1,1,joint+ortholog,TEVC,Nicotine dependence,Yes,0.2702,nne_single_source
+Mouse,CHRND,53.0,D,Q,No net effect,25492812,https://doi.org/10.1124/mol.114.095539,1,1,joint+ortholog,Single-channel recording,,Yes,0.1539,nne_single_source
+Mouse,CHRND,178.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,joint+ortholog,TEVC,,Yes,0.7079,nne_single_source;nne_am_pathogenic
+Mouse,CHRND,186.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog+wt_mismatch,TEVC,,,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch;manual_review
+Mouse,CHRND,187.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRND,188.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRND,196.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog,TEVC,,Yes,0.2771,nne_single_source
+Mouse,CHRND,203.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog,TEVC,,Yes,0.1501,nne_single_source
+Mouse,CHRND,207.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog,TEVC,,Yes,0.2708,nne_single_source
+Mouse,CHRND,186.0,E,Q,LOF,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,wt_mismatch
+Mouse,CHRND,188.0,E,Q,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Mouse,CHRND,223.0,D,N,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog,TEVC,,Yes,0.1257,nne_single_source
+Mouse,CHRND,229.0,D,N,No net effect,8327511,https://doi.org/10.1073/pnas.90.13.6285,1,1,mature+ortholog,TEVC,,Yes,0.1054,nne_single_source
+Mouse,CHRND,289.0,S,F,LOF/GOF,11782989,https://doi.org/10.1002/ana.10077,1,1,mature+ortholog,Single-channel recording,SCCMS,Yes,,ambiguous_effect
+Mouse,CHRNE,284.0,T,P,GOF,18523135; 25492812; 7531341,https://doi.org/10.1124/mol.108.047134; https://doi.org/10.1124/mol.114.095539; https://doi.org/10.1073/pnas.92.3.758,3,3,mature+ortholog,Single-channel recording,CMS,Yes,0.8984,multi_row_merged
+Mouse,CHRNG,185.0,E,A,LOF,9876135,https://doi.org/10.1016/s0006-3495(99)77190-0,1,1,typo+ortholog,Single-channel recording,,Yes,0.2184,low_conf_mapping
+Mouse,CHRNG,185.0,E,D,LOF,9876135,https://doi.org/10.1016/s0006-3495(99)77190-0,1,1,typo+ortholog,Single-channel recording,,Yes,0.1936,low_conf_mapping
+Mouse,CHRNG,185.0,E,I,LOF,9876135,https://doi.org/10.1016/s0006-3495(99)77190-0,1,1,typo+ortholog,Single-channel recording,,Yes,0.49,low_conf_mapping
+Mouse,CHRNG,185.0,E,K,LOF,9876135,https://doi.org/10.1016/s0006-3495(99)77190-0,1,1,typo+ortholog,Single-channel recording,,Yes,0.2075,low_conf_mapping
+Mouse,CHRNG,185.0,E,Q,LOF,9876135,https://doi.org/10.1016/s0006-3495(99)77190-0,1,1,typo+ortholog,Single-channel recording,,Yes,0.1667,low_conf_mapping
+Rat,CHRNA10,81.0,W,T,No net effect,28069778,http://dx.doi.org/10.1124/mol.116.107482,1,1,joint+ortholog,TEVC,,Yes,0.9776,nne_single_source;nne_am_pathogenic
+Rat,CHRNA10,85.0,E,I,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.4712,nne_single_source
+Rat,CHRNA10,85.0,E,T,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.2717,nne_single_source
+Rat,CHRNA10,113.0,R,M,No net effect,28069778,http://dx.doi.org/10.1124/mol.116.107482,1,1,typo+ortholog,TEVC,,Yes,0.4172,nne_single_source;low_conf_mapping
+Rat,CHRNA10,145.0,D,L,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.8623,nne_single_source;nne_am_pathogenic
+Rat,CHRNA3,156.0,K,E,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,joint+ortholog,TEVC,,Yes,0.786,nne_single_source;nne_am_pathogenic
+Rat,CHRNA3,206.0,E,D,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,joint+ortholog,TEVC,,Yes,0.5482,nne_single_source
+Rat,CHRNA3,229.0,Q,T,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,isoform+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA3,229.0,Q,A,No net effect,24100032,https://doi.org/10.1074/jbc.M113.512582,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA3,213.0,P,T,No net effect,20837638,https://doi.org/10.1113/jphysiol.2010.195495,1,1,precursor+ortholog,TEVC,,Yes,0.1176,nne_single_source
+Rat,CHRNA4,354.0,R,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.3327,nne_single_source
+Rat,CHRNA4,357.0,F,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,typo+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;low_conf_mapping;wt_mismatch
+Rat,CHRNA4,356.0,L,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.9411,nne_single_source;nne_am_pathogenic
+Rat,CHRNA4,371.0,L,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,typo+ortholog,TEVC,,Yes,0.8863,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Rat,CHRNA4,390.0,G,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.0795,nne_single_source
+Rat,CHRNA4,407.0,T,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,isoform+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA4,371.0,L,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,typo+ortholog,TEVC,,Yes,0.8863,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Rat,CHRNA4,408.0,F,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,isoform+ortholog,TEVC,,Yes,0.1219,nne_single_source
+Rat,CHRNA4,406.0,P,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,mature+ortholog,TEVC,,Yes,0.0604,nne_single_source
+Rat,CHRNA4,414.0,T,A,LOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA4,414.0,T,D,LOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction; Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA4,435.0,S,A,LOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction; Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA4,435.0,S,D,GOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction; Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA4,467.0,S,A,No net effect,11352901,https://doi.org/10.1074/jbc.M011549200,1,1,mature+ortholog,TEVC,,Yes,0.0788,nne_single_source
+Rat,CHRNA4,500.0,S,A,LOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction; Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA4,500.0,S,D,LOF,25957813,http://dx.doi.org/10.1016/j.neuropharm.2015.04.022,1,1,precursor+ortholog+wt_mismatch,TEVC,Nicotine addiction; Nicotine dependence,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA6,185.0,E,K,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,isoform+ortholog,TEVC,,Yes,0.0763,nne_single_source
+Rat,CHRNA6,182.0,D,E,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,joint+ortholog,TEVC,,Yes,0.8173,nne_single_source;nne_am_pathogenic
+Rat,CHRNA6,187.0,D,E,No net effect,22751014,https://doi.org/10.1096/fj.12-204487,1,1,precursor+ortholog,TEVC,,Yes,0.5543,nne_single_source
+Rat,CHRNA6,228.0,T,Q,No net effect,18299323,https://doi.org/10.1074/jbc.M710288200,1,1,joint+ortholog,TEVC,,Yes,0.3665,nne_single_source
+Rat,CHRNA6,228.0,T,Q,No net effect,22751014,https://doi.org/10.1096/fj.12-204487,1,1,mature+ortholog,TEVC,,Yes,0.3665,nne_single_source
+Rat,CHRNA6,200.0,F,L,No net effect,22751014,https://doi.org/10.1096/fj.12-204487,1,1,typo+ortholog,TEVC,,Yes,0.8273,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Rat,CHRNA7,5.0,R,K,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA7,81.0,S,T,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.0781,nne_single_source
+Rat,CHRNA7,63.0,M,V,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,typo+ortholog,TEVC,,Yes,0.2767,nne_single_source;low_conf_mapping
+Rat,CHRNA7,75.0,N,T,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,typo+ortholog,TEVC,,Yes,0.673,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Rat,CHRNA7,134.0,A,S,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,isoform+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA7,134.0,A,S,No net effect,15213292,https://doi.org/10.1124/mol.66.1.14,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA7,141.0,L,D,No net effect,25740413; 28797116,https://doi.org/10.1124/mol.114.096511; https://doi.org/10.1371/journal.pone.0181936,2,2,mature+ortholog,TEVC,,Yes,0.9727,nne_am_pathogenic;multi_row_merged
+Rat,CHRNA7,162.0,Q,H,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,mature+ortholog,TEVC,,Yes,0.9968,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,188.0,S,G,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,mature+ortholog,TEVC,,Yes,0.1291,nne_single_source
+Rat,CHRNA7,189.0,S,A,LOF,15213292,https://doi.org/10.1124/mol.66.1.14,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA7,189.0,S,G,LOF,15213292,https://doi.org/10.1124/mol.66.1.14,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA7,199.0,M,V,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,isoform+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA7,204.0,K,L,No net effect,20837638,https://doi.org/10.1113/jphysiol.2010.195495,1,1,mature+ortholog,TEVC,,Yes,0.1967,nne_single_source
+Rat,CHRNA7,206.0,N,S,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,isoform+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA7,204.0,K,R,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,joint+ortholog,TEVC,,Yes,0.0749,nne_single_source
+Rat,CHRNA7,209.0,F,Y,No net effect,10594329,https://doi.org/10.1016/S0014-2999(99)00646-9,1,1,isoform+ortholog,TEVC,,Yes,0.1072,nne_single_source
+Rat,CHRNA7,217.0,Y,F,No net effect,30025921,https://doi.org/10.1016/j.neuropharm.2018.07.019,1,1,joint+ortholog,TEVC,,Yes,0.1489,nne_single_source
+Rat,CHRNA7,234.0,G,V,No net effect,20463059,https://doi.org/10.1124/mol.110.064295,1,1,isoform+ortholog,TEVC,,Yes,0.8151,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,231.0,L,Y,No net effect,20463059,https://doi.org/10.1124/mol.110.064295,1,1,joint+ortholog,TEVC,,Yes,0.9822,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,276.0,M,L,No net effect,20463059,https://doi.org/10.1124/mol.110.064295,1,1,joint+ortholog,TEVC,,Yes,0.4834,nne_single_source
+Rat,CHRNA7,262.0,I,D,GOF,16364316,https://doi.org/10.1016/j.febslet.2005.12.010,1,1,joint+ortholog,TEVC,,,0.9998,manual_review
+Rat,CHRNA7,265.0,G,D,GOF,16364316,https://doi.org/10.1016/j.febslet.2005.12.010,1,1,precursor+ortholog,TEVC,,,0.9984,manual_review
+Rat,CHRNA7,267.0,T,D,LOF,16364316,https://doi.org/10.1016/j.febslet.2005.12.010,1,1,typo+ortholog,TEVC,,,0.9983,low_conf_mapping;manual_review
+Rat,CHRNA7,271.0,S,V,LOF,20463059,https://doi.org/10.1124/mol.110.064295,1,1,typo+ortholog,TEVC,,Yes,0.9978,low_conf_mapping
+Rat,CHRNA7,447.0,F,A,No net effect,20463059,https://doi.org/10.1124/mol.110.064295,1,1,typo+ortholog,TEVC,,Yes,0.973,nne_single_source;nne_am_pathogenic;low_conf_mapping
+Rat,CHRNA7,468.0,D,N,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9956,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,469.0,R,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9982,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,470.0,L,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.812,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,449.0,C,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,precursor+ortholog,TEVC,,Yes,0.1043,nne_single_source
+Rat,CHRNA7,475.0,F,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9891,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,476.0,S,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.1338,nne_single_source
+Rat,CHRNA7,455.0,V,A,GOF,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,precursor+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,wt_mismatch
+Rat,CHRNA7,478.0,F,Y,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.7664,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,457.0,C,Y,LOF,20463059,https://doi.org/10.1124/mol.110.064295,1,1,typo+ortholog,TEVC,,Yes,0.3307,low_conf_mapping
+Rat,CHRNA7,482.0,C,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.6926,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,482.0,C,W,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9807,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,482.0,C,Y,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9809,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,485.0,G,D,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9704,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,485.0,G,Q,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.935,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,486.0,I,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9782,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,487.0,L,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9624,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,489.0,S,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.0897,nne_single_source
+Rat,CHRNA7,490.0,A,F,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9827,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,491.0,P,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9774,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,492.0,N,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.5806,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,493.0,F,A,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.9298,nne_single_source;nne_am_pathogenic
+Rat,CHRNA7,493.0,F,Y,No net effect,32364364,https://doi.org/10.1021/acschemneuro.0c00027,1,1,mature+ortholog,TEVC,,Yes,0.7873,nne_single_source;nne_am_pathogenic
+Rat,CHRNA9,6.0,S,N,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,precursor+ortholog,TEVC,,Yes,0.1214,nne_single_source
+Rat,CHRNA9,18.0,S,N,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,joint+ortholog,TEVC,,Yes,0.1146,nne_single_source
+Rat,CHRNA9,22.0,A,K,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,joint+ortholog,TEVC,,Yes,0.1826,nne_single_source
+Rat,CHRNA9,86.0,T,E,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA9,86.0,T,I,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog+wt_mismatch,TEVC,,Yes,0.6065908219178082,nne_single_source;nne_am_pathogenic;wt_mismatch
+Rat,CHRNA9,96.0,R,G,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,mature+ortholog,TEVC,,Yes,0.2527,nne_single_source
+Rat,CHRNA9,153.0,S,A,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,joint+ortholog,TEVC,,Yes,0.3866,nne_single_source
+Rat,CHRNA9,153.0,S,N,No net effect,22774872,https://doi.org/10.1111/j.1471-4159.2012.07867.x,1,1,joint+ortholog,TEVC,,Yes,0.9319,nne_single_source;nne_am_pathogenic
+Rat,CHRNA9,176.0,W,T,LOF,18295795,https://doi.org/10.1016/j.jmb.2008.01.082,1,1,precursor+ortholog,TEVC,,,0.9961,manual_review
+Rat,CHRNA9,222.0,E,Q,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.4416,nne_single_source
+Rat,CHRNA9,225.0,P,Q,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.7861,nne_single_source;nne_am_pathogenic
+Rat,CHRNA9,226.0,D,N,No net effect,25740413,https://doi.org/10.1124/mol.114.096511,1,1,mature+ortholog,TEVC,,Yes,0.7542,nne_single_source;nne_am_pathogenic
+Rat,CHRNB2,353.0,R,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.1423,nne_single_source
+Rat,CHRNB2,378.0,F,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,mature+ortholog,TEVC,,Yes,0.1182,nne_single_source
+Rat,CHRNB2,376.0,L,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,isoform+ortholog,TEVC,,Yes,0.0593,nne_single_source
+Rat,CHRNB2,390.0,F,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.4105,nne_single_source
+Rat,CHRNB2,398.0,G,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.083,nne_single_source
+Rat,CHRNB2,388.0,T,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,isoform+ortholog,TEVC,,Yes,0.0637,nne_single_source
+Rat,CHRNB2,,M,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,no_match,TEVC,,Yes,,nne_single_source;low_conf_mapping
+Rat,CHRNB2,390.0,F,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,joint+ortholog,TEVC,,Yes,0.4105,nne_single_source
+Rat,CHRNB2,367.0,Q,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,typo+ortholog,TEVC,,Yes,0.0888,nne_single_source;low_conf_mapping
+Rat,CHRNB2,392.0,N,A,No net effect,35600303,https://doi.org/10.3389/fphys.2022.850782,1,1,isoform+ortholog,TEVC,,Yes,0.3695,nne_single_source
+Rat,CHRNB4,82.0,K,A,No net effect,24100032,https://doi.org/10.1074/jbc.M113.512582,1,1,mature+ortholog,TEVC,,Yes,0.5265,nne_single_source

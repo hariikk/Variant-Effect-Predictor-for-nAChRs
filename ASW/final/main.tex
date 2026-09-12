@@ -1,15 +1,13 @@
 %==============================================================
-% Advanced Scientific Writing — Final Paper (PWPSP)
-% Position Paper: Direction-Aware Variant Effect Prediction for
-%   Human Nicotinic Acetylcholine Receptors
+% Advanced Scientific Writing: Final Paper (PWPSP)
+% Position Paper: Variant Effect Predictor Using Machine Learning for
+%   Human nAChRs
 %
 % Target venue: PSB 2027 (Pacific Symposium on Biocomputing)
 % Document class: World Scientific ws-procs11x85
 %
 % Build:  pdflatex → pdflatex  (or: latexmk -pdf main)
 %
-% SKELETON — sections marked [DRAFT], [TODO], or [PLACEHOLDER]
-% await experimental results, final figures, and polishing.
 %==============================================================
 
 \documentclass{ws-procs11x85}
@@ -20,8 +18,8 @@
 \begin{document}
 
 %--------------------------------------------------------------
-\title{Direction-Aware Variant Effect Prediction for Human\\
-Nicotinic Acetylcholine Receptors: A Position Paper}
+\title{Variant Effect Predictor Using Machine Learning for Human\\
+nAChRs: A Position Paper}
 %--------------------------------------------------------------
 
 \author{Hari Krishna Mohan Raj\textsuperscript{*} and Karl Kirschner}
@@ -38,7 +36,7 @@ and a growing list of neurological disorders. Clinical sequencing now
 produces variants of uncertain significance (VUS) faster than functional
 assays can characterise them. Standard computational predictors report
 whether a variant is likely damaging but cannot distinguish loss of
-function (LOF) from gain of function (GOF) — a distinction that directly
+function (LOF) from gain of function (GOF), a distinction that directly
 determines therapeutic strategy. Recent tools such as MissION and
 LoGoFunc have demonstrated that direction-aware prediction is feasible
 for ion channels, yet none incorporate nAChR-specific structural biology
@@ -48,10 +46,11 @@ curated, experimentally labelled dataset of nAChR missense variants,
 structural context from cryo-EM data, and (3)~a benchmarked machine-learning
 pipeline optimised for small, imbalanced tabular data. We present the
 architecture of such a predictor, discuss the design choices and
-challenges, and report preliminary evidence that engineered sequence
-and structural features carry measurable signal for separating LOF
-from GOF in nAChRs. We conclude with a roadmap toward a clinically
-useful direction-aware VEP for this receptor family.
+challenges, and report results showing that engineered sequence and
+structural features carry measurable signal for separating LOF from GOF
+in nAChRs, and that subunit identity is the dominant predictor of
+direction. We conclude with a roadmap toward a clinically useful
+direction-aware VEP for this receptor family.
 \end{abstract}
 
 \keywords{Variant effect prediction; nicotinic acetylcholine receptor;
@@ -71,7 +70,7 @@ Non-Commercial (CC BY-NC) 4.0 License.}
 Nicotinic acetylcholine receptors (nAChRs) are pentameric ligand-gated
 ion channels that mediate fast synaptic transmission at the neuromuscular
 junction and throughout the central and peripheral nervous systems.
-Missense variants in the seventeen human genes that encode nAChR subunits
+Missense variants in the sixteen human genes that encode nAChR subunits
 give rise to a spectrum of disorders: congenital myasthenic syndromes
 (CMS) from muscle-type receptor mutations, autosomal dominant nocturnal
 frontal lobe epilepsy (ADNFLE) from mutations in \emph{CHRNA4} and
@@ -83,7 +82,7 @@ The gap between variant discovery and functional understanding has
 become the central bottleneck in clinical genomics. Whole-exome and
 whole-genome sequencing identify tens of thousands of missense variants
 per individual, but for the overwhelming majority the functional
-consequence — and therefore the clinical significance — remains unknown;
+consequence, and therefore the clinical significance, remains unknown;
 they are labelled variants of uncertain significance (VUS).\footnote{The
 American College of Medical Genetics and Genomics (ACMG) guidelines
 explicitly recognise that computational predictors alone are insufficient
@@ -125,20 +124,21 @@ transmembrane domains that underlies ligand-gated gating.
 This position paper makes the case that direction-aware, receptor-specific
 prediction for nAChRs is both necessary and feasible. We contribute:
 \begin{itemlist}
-\item A curated dataset of $\sim$350 experimentally characterised nAChR
-  missense variants with LOF/GOF labels extracted from primary
-  electrophysiology literature (Sec.~\ref{sec:data}).
+\item A curated dataset of 717 experimentally characterised nAChR
+  missense variants with LOF/GOF/no-net-effect labels extracted from
+  primary electrophysiology literature (Sec.~\ref{sec:data}).
 \item An engineered feature representation that combines sequence
   physicochemical properties, evolutionary substitution scores, subunit
-  identity encoding, and structural descriptors derived from cryo-EM
-  structures (Sec.~\ref{sec:features}).
-\item A benchmark of seven machine-learning classifiers under nested
-  cross-validation, identifying gradient-boosted trees as the most
-  suitable model class for this small, tabular dataset
+  identity encoding, conservation and protein-language-model scores, and
+  structural descriptors derived from cryo-EM structures
+  (Sec.~\ref{sec:features}).
+\item A benchmark of ten machine-learning classifiers under
+  leave-one-subunit-out cross-validation, identifying gradient-boosted
+  trees as the most suitable model class for this small, tabular dataset
   (Sec.~\ref{sec:algorithms}).
-\item A critical discussion of the open challenges — data scarcity,
+\item A critical discussion of the open challenges (data scarcity,
   the LOF/GOF spectrum, interpretability, and the absence of a shared
-  benchmark — and a roadmap for the field (Sec.~\ref{sec:discussion}).
+  benchmark) and a roadmap for the field (Sec.~\ref{sec:discussion}).
 \end{itemlist}
 
 %==============================================================
@@ -148,8 +148,8 @@ prediction for nAChRs is both necessary and feasible. We contribute:
 \subsection{nAChR Biology and the Clinical Importance of Direction}
 
 nAChRs are assembled as homo- or hetero-pentamers from a repertoire of
-seventeen subunits ($\alpha$1–$\alpha$10, $\beta$1–$\beta$4, $\gamma$,
-$\delta$, $\varepsilon$). Muscle-type receptors (embryonic:
+sixteen subunits ($\alpha$1–$\alpha$7, $\alpha$9, $\alpha$10,
+$\beta$1–$\beta$4, $\gamma$, $\delta$, $\varepsilon$). Muscle-type receptors (embryonic:
 $(\alpha1)_2\beta1\gamma\delta$; adult: $(\alpha1)_2\beta1\varepsilon\delta$)
 reside at the neuromuscular junction, while neuronal subtypes
 (predominantly $\alpha4\beta2$ and $\alpha7$) mediate synaptic
@@ -173,8 +173,8 @@ phenotypes because the two subunits participate in receptors with
 different stoichiometries, expression profiles, and downstream signalling.
 
 This complexity means that a predictor that treats all nAChR variants
-uniformly — without subunit context and without structural localisation
-— will systematically miss the biology that determines direction of
+uniformly, without subunit context and without structural localisation
+, will systematically miss the biology that determines direction of
 effect. The central hypothesis of this work is that encoding subunit
 identity and structural context explicitly in the feature representation
 will improve LOF/GOF classification over sequence-only or
@@ -247,8 +247,8 @@ PreMode \cite{premode} frames mode-of-action prediction as a
 graph-neural-network problem over protein structures, achieving
 strong performance on curated benchmarks. However, its reliance on
 high-quality structural data and its gene-family-agnostic design mean
-that nAChR-specific patterns — particularly those involving subunit
-interfaces — are not explicitly modelled.
+that nAChR-specific patterns, particularly those involving subunit
+interfaces, are not explicitly modelled.
 
 MissION \cite{mission} is the closest precursor to this work. It
 combines ESM-2 protein language model embeddings with structural
@@ -274,20 +274,18 @@ specifically, direction matters and existing tools do not provide it.
 \section{Analytical Objective}\label{sec:objective}
 %==============================================================
 
-We frame the problem as supervised binary classification: given an
-nAChR missense variant defined by its subunit gene, wild-type residue,
-mutant residue, and residue position, predict whether its functional
-effect is loss of function (LOF) or gain of function (GOF). The model
-is evaluated by its ability to recover the experimentally established
-direction of effect for held-out variants under stratified cross-validation.
+We frame the problem as supervised classification over three functional
+classes: given an nAChR missense variant defined by its subunit gene,
+wild-type residue, mutant residue, and residue position, predict whether
+its effect is loss of function (LOF), gain of function (GOF), or no net
+effect (NNE). Because NNE variants are less abundant, we also report a
+binary LOF-vs-GOF framing that excludes them. The model is evaluated by
+its ability to recover the experimentally established direction of
+effect for held-out variants under leave-one-subunit-out
+cross-validation.
 
 This framing deliberately excludes:
 \begin{itemlist}
-\item \emph{Neutral / benign} as a separate class. Variants with no
-  measurable functional effect are currently too scarce in the nAChR
-  literature to constitute a trainable class. The task is therefore
-  LOF-vs-GOF among functionally consequential variants, not a
-  three-way classification.
 \item \emph{Mixed-effect} variants. A small number of variants exhibit
   both LOF and GOF characteristics (e.g., reduced surface expression
   but increased open probability). These are flagged in the dataset
@@ -313,40 +311,66 @@ or two-electrode voltage-clamp measurements of recombinant nAChRs
 carrying single amino-acid substitutions. Each retrieved paper was
 manually curated to extract: the subunit gene, wild-type and mutant
 residues (three-letter and single-letter codes), residue position
-(numbered by signal-peptide-inclusive canonical isoform), LOF or GOF
-label as stated by the original authors, the experimental assay type,
-and the PubMed identifier.
+(numbered by signal-peptide-inclusive canonical isoform), LOF, GOF, or
+no-net-effect label as stated by the original authors, the experimental
+assay type, and the PubMed identifier. The complete set of primary
+source papers from which these labels were extracted is compiled in the
+References \cite{mohanraj2026}.
 
-The current dataset contains approximately 350 variants (218 LOF,
-133 GOF) across twelve of the seventeen human subunit genes
-(Table~\ref{tab:subunit_counts}). The class imbalance (62\% LOF)
-reflects the literature, where LOF variants are more frequently
-reported — likely because LOF phenotypes (myasthenic syndromes,
-severe epilepsies) are more readily ascertained clinically than
-GOF phenotypes, some of which may be subclinical or protective.
+The current dataset contains 717 variants (363 LOF, 190 GOF, and
+164 no-net-effect) across all sixteen human subunit genes
+(Table~\ref{tab:subunit_counts}), comprising 507 human, 138 rat, and
+72 mouse variants (Table~\ref{tab:species}). The class imbalance (51\% LOF) reflects the
+literature, where LOF variants are more frequently reported, likely
+because LOF phenotypes (myasthenic syndromes, severe epilepsies) are
+more readily ascertained clinically than GOF phenotypes, some of which
+may be subclinical or protective.
 
 \begin{table}[ht]
-\tbl{Distribution of curated variants across nAChR subunit genes.
-[TODO: finalise counts after curation pass.]}
-{\begin{tabular}{@{}lrrr@{}}
+\tbl{Distribution of curated variants across nAChR subunit genes,
+by functional class (LOF / GOF / no-net-effect).}
+{\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Subunit & LOF & GOF & Total \\
+Subunit & LOF & GOF & NNE & Total \\
 \midrule
-CHRNA1  & -- & -- & -- \\
-CHRNA4  & -- & -- & -- \\
-CHRNA7  & -- & -- & -- \\
-CHRNB2  & -- & -- & -- \\
-\multicolumn{4}{c}{\dots\ \emph{[12 subunits total]}} \\
+CHRNA1  &  84 & 38 &  1 & 123 \\
+CHRNA2  &   4 &  4 &  0 &   8 \\
+CHRNA3  &   3 &  3 &  4 &  10 \\
+CHRNA4  &  44 & 22 & 12 &  78 \\
+CHRNA5  &   5 &  2 &  2 &   9 \\
+CHRNA6  &   8 & 13 & 20 &  41 \\
+CHRNA7  &  96 & 41 & 54 & 191 \\
+CHRNA9  &   4 &  0 & 11 &  15 \\
+CHRNA10 &   4 &  0 &  5 &   9 \\
+CHRNB1  &  10 &  6 &  2 &  18 \\
+CHRNB2  &  18 & 16 &  8 &  42 \\
+CHRNB3  &   2 &  5 &  4 &  11 \\
+CHRNB4  &   8 & 16 & 25 &  49 \\
+CHRND   &  24 &  4 & 13 &  41 \\
+CHRNE   &  42 & 20 &  3 &  65 \\
+CHRNG   &   7 &  0 &  0 &   7 \\
 \midrule
-Total   & 218 & 133 & $\sim$351 \\
+Total   & 363 & 190 & 164 & 717 \\
 \bottomrule
 \end{tabular}}
 \label{tab:subunit_counts}
 \end{table}
 
-[TODO: complete the subunit-level breakdown after the final curation
-pass. Currently $\sim$12 subunits are represented, with the largest
-counts from CHRNA1, CHRNA4, CHRNA7, CHRNB2, CHRNE, and CHRNG.]
+\begin{table}[ht]
+\tbl{Distribution of curated variants by source species.}
+{\begin{tabular}{@{}lrr@{}}
+\toprule
+Species & Variants & Share (\%) \\
+\midrule
+Human & 507 & 70.7 \\
+Rat   & 138 & 19.2 \\
+Mouse &  72 & 10.0 \\
+\midrule
+Total & 717 & 100.0 \\
+\bottomrule
+\end{tabular}}
+\label{tab:species}
+\end{table}
 
 \subsection{Label Assignment}
 
@@ -363,7 +387,7 @@ excluded.
 \subsection{Limitations of the Current Dataset}
 
 The dataset is limited in three important respects. First, with
-$\sim$350 labelled examples, it is small by machine-learning standards,
+717 labelled examples, it is small by machine-learning standards,
 constraining model complexity and raising the risk of overfitting.
 Second, labels are derived from heterogeneous assays performed in
 different laboratories under different conditions (oocyte vs.\
@@ -380,39 +404,41 @@ Section~\ref{sec:discussion}.
 \section{Feature Engineering}\label{sec:features}
 %==============================================================
 
-We engineer approximately 50 features organised into five categories.
-The design principle is that each feature should capture a dimension
-of information that is relevant to the biophysical mechanism by which
-a substitution alters receptor function. A summary is given in
-Table~\ref{tab:features}.
+We engineer 66 features organised into seven categories; adding three
+conservation features and two ESM-2 zero-shot scores yields the 71
+features of the final three-class model. The design principle is that
+each feature should capture a dimension of information relevant to the
+biophysical mechanism by which a substitution alters receptor function.
+A summary is given in Table~\ref{tab:features}.
 
 \begin{table}[ht]
-\tbl{Engineered feature categories. $\Delta$ denotes mutant minus
-wild-type value. [TODO: finalise feature count and add per-feature
-descriptions.]}
+\tbl{Engineered feature categories and counts for the final model.
+$\Delta$ denotes mutant minus wild-type value.}
 {\begin{tabular}{@{}lll@{}}
 \toprule
 Category & Count & Description \\
 \midrule
-1. Residue physicochemical
-   & $\sim$10 & Hydrophobicity, charge, size, polarity, \\
-   && aromaticity (WT, MT, and $\Delta$); \\
-   && side-chain volume, flexibility indices \\
-2. Evolutionary
-   & $\sim$5  & BLOSUM62, BLOSUM80, PAM250 scores; \\
-   && Grantham distance; conservation entropy \\
-3. Positional
-   & $\sim$3  & Normalised sequence position; \\
-   && distance to key functional motifs \\
-   && (C-loop, M2 helix, agonist-binding site) \\
-4. Subunit identity
-   & 17       & One-hot encoding of subunit gene \\
-5. Structural (cryo-EM)
-   & $\sim$15 & Per-residue B-factor, SASA, secondary \\
-   && structure class (helix/strand/coil), \\
-   && local packing density, distance to \\
-   && agonist-binding site, pore radius at \\
-   && residue position \\
+1. Residue physicochemical & 24 & Eight AAindex properties \\
+   && (hydrophobicity, polarity, volume, \\
+   && weight, charge, isoelectric point, \\
+   && aromaticity, secondary-structure \\
+   && preference) as WT, MT, and $\Delta$ \\
+2. Substitution            & 3  & BLOSUM62 (raw and normalised), \\
+   && Grantham distance \\
+3. Positional              & 20 & Normalised position, 16 gene \\
+   && one-hot, 3 species one-hot \\
+4. Core structural         & 7  & Relative solvent accessibility, \\
+   && C$\beta$-density, B-factor, DSSP \\
+   && helix/sheet/coil, is-unmappable \\
+5. nAChR structural        & 7  & Transmembrane-helix index, pore \\
+   && distance, ligand/interface \\
+   && proximity, subunit burial \\
+6. Conformational          & 5  & Open-vs-closed $\Delta$ features \\
+   && ($\alpha$7 only) \\
+7. Conservation + ESM-2    & 5  & Three conservation scores, two \\
+   && ESM-2 zero-shot scores \\
+\bottomrule
+Total                      & 71 & \\
 \bottomrule
 \end{tabular}}
 \label{tab:features}
@@ -421,8 +447,8 @@ Category & Count & Description \\
 \subsection{Rationale by Category}
 
 \paragraph{Residue physicochemical properties.}
-The chemical difference between the wild-type and mutant residue —
-change in hydrophobicity, charge, size — is the most direct descriptor
+The chemical difference between the wild-type and mutant residue (
+change in hydrophobicity, charge, size) is the most direct descriptor
 of a substitution's likely biophysical impact. A Trp$\to$Gly substitution
 in the M2 pore-lining helix, for example, replaces a bulky hydrophobic
 side chain with a proton, drastically altering both steric packing and
@@ -434,7 +460,7 @@ BLOSUM and PAM matrices quantify how frequently a given amino-acid
 substitution is observed in aligned protein families, serving as a
 proxy for evolutionary tolerance. A substitution with a large negative
 BLOSUM62 score is rarely observed across evolution and is more likely
-to be functionally consequential — but, critically, the sign of the
+to be functionally consequential; however, the sign of the
 score does not indicate direction (LOF vs.\ GOF).
 
 \paragraph{Positional features.}
@@ -446,11 +472,12 @@ motifs: the C-loop (agonist binding), the M2 pore-lining helix
 (channel conductance), and the M2–M3 linker (gating coupling).
 
 \paragraph{Subunit identity.}
-A 17-dimensional one-hot vector encodes which subunit gene carries the
-variant. This allows the model to learn subunit-specific patterns —
-for example, that substitutions in CHRNA7 (a homomeric $\alpha$7
-receptor) have different typical effect directions from those in
-CHRNB2 (a neuronal $\beta$ subunit that partners with $\alpha$4).
+A 16-dimensional one-hot vector encodes which subunit gene carries the
+variant, complemented by a 3-way species one-hot (human/rat/mouse) in
+the positional block. This allows the model to learn subunit-specific
+patterns. For example, substitutions in CHRNA7 (a homomeric
+$\alpha$7 receptor) have different typical effect directions from those
+in CHRNB2 (a neuronal $\beta$ subunit that partners with $\alpha$4).
 
 \paragraph{Structural features.}
 For variants that map to a residue resolved in an experimental cryo-EM
@@ -463,8 +490,15 @@ $\alpha$7 nAChRs, and the Torpedo marmorata muscle-type receptor
 as a high-resolution proxy for human muscle nAChRs when human
 structures are unavailable at the relevant resolution.
 
-[TODO: list PDB IDs used and the mapping protocol for variants
-not resolved in any structure.]
+We use one cryo-EM structure per receptor type: 6UW8 for the muscle
+receptor (CHRNA1/B1/D/E/G), 6CNJ for $\alpha$4$\beta$2 (with CHRNA2 and
+CHRNA6 mapped by homology to the $\alpha$4 chain), 6PV7 for
+$\alpha$3$\beta$4 (with CHRNA5 and CHRNB3 mapped by homology), and 7EKT
+(closed) / 7EKO (open) for $\alpha$7. For $\alpha$9 and $\alpha$10, for
+which no experimental structure is available, we use AlphaFold models
+(AF-Q9UGM1 and AF-Q13002). Variants whose residue is not resolved in the
+relevant structure are assigned a fill value, and the model is trained
+to degrade gracefully when structures are unavailable.
 
 %==============================================================
 \section{Algorithms and Experimental Design}\label{sec:algorithms}
@@ -472,14 +506,15 @@ not resolved in any structure.]
 
 \subsection{Classifier Panel}
 
-We benchmark seven classifiers spanning a range of model complexity:
+We benchmark ten classifiers spanning a range of model complexity:
 
 \begin{itemlist}
 \item \textbf{Logistic Regression} (L2-regularised). A linear baseline
   that tests whether the decision boundary is approximately linear in
   the feature space.
-\item \textbf{Support Vector Machine} (RBF kernel). A non-linear kernel
-  method that can capture pairwise feature interactions.
+\item \textbf{Support Vector Machine} (linear and RBF kernels). Linear
+  and non-linear kernel methods, spanning both approximately linear and
+  pairwise-interaction decision boundaries.
 \item \textbf{Random Forest}. An ensemble of decision trees that handles
   mixed data types and provides feature-importance estimates.
 \item \textbf{XGBoost}. Gradient-boosted trees with L1/L2 regularisation,
@@ -489,6 +524,10 @@ We benchmark seven classifiers spanning a range of model complexity:
   often faster and more accurate than XGBoost on small datasets.
 \item \textbf{CatBoost}. Gradient-boosted trees with native categorical
   feature support and ordered boosting to reduce overfitting.
+\item \textbf{$k$-Nearest Neighbours}. A non-parametric baseline that
+  classifies by local feature-space proximity.
+\item \textbf{Gaussian Na\"ive Bayes}. A probabilistic baseline that
+  assumes feature independence, useful as a lower-bound sanity check.
 \item \textbf{Multi-Layer Perceptron} (2–3 hidden layers, ReLU, dropout).
   A simple neural baseline to test whether non-linear interactions
   beyond what trees capture are present.
@@ -498,130 +537,116 @@ We benchmark seven classifiers spanning a range of model complexity:
 
 To obtain unbiased performance estimates on a small dataset where a
 dedicated hold-out set would be too costly, we use nested
-cross-validation:
+cross-validation with gene-level grouping:
 
 \begin{arabiclist}[(3)]
-\item \textbf{Outer loop:} stratified 5-fold cross-validation. In each
-  fold, 80\% of variants are used for training and hyperparameter
-  tuning; the remaining 20\% are held out for evaluation.
+\item \textbf{Outer loop:} leave-one-subunit-out cross-validation, in
+  which each fold holds out all variants of one subunit gene and trains
+  on the remaining subunits (StratifiedGroupKFold with the subunit gene
+  as the grouping variable). This guarantees that no variant from a
+  held-out subunit leaks into training, the strictest test of
+  generalisation to unseen subunits.
 \item \textbf{Inner loop:} stratified 3-fold cross-validation on the
   training split, used by Optuna \cite{optuna} for Bayesian
   hyperparameter optimisation (50–100 trials per model).
 \item \textbf{Final evaluation:} the model with the best inner-loop
-  validation F1 is retrained on the full training split and evaluated
-  on the held-out outer fold. Performance is reported as the mean and
-  standard deviation of accuracy, F1 (macro and GOF-specific), and
-  ROC-AUC across the five outer folds.
+  validation macro-F1 is retrained on the full training split and
+  evaluated on the held-out subunit. Performance is reported as the mean
+  and standard deviation of macro-F1, Matthews correlation coefficient,
+  and balanced accuracy across outer folds.
 \end{arabiclist}
 
-Stratification preserves the LOF/GOF ratio in every split. Subunit-aware
-splitting (ensuring that variants from the same subunit are not
-concentrated in a single fold) is used as a sensitivity analysis to
-test generalisation to subunits with few labelled examples.
-
-\subsection{Baselines}
-
-We compare against three baselines:
-
-\begin{itemlist}
-\item \textbf{Majority-class baseline.} Always predict LOF (the majority
-  class), yielding accuracy $\approx$ 0.62 and GOF F1 = 0.
-\item \textbf{BLOSUM-direction heuristic.} Predict GOF if the BLOSUM62
-  score is positive, LOF otherwise. This naive rule tests whether
-  evolutionary conservation alone carries directional signal.
-\item \textbf{Sequence-only ablation.} The full classifier panel trained
-  on physicochemical, evolutionary, and positional features but
-  \emph{without} subunit identity or structural features. This
-  quantifies the added value of receptor-specific encoding.
-\end{itemlist}
+Stratification preserves the class ratio in every split, and the
+gene-level grouping ensures variants from the same subunit never span
+both training and test. This is essential for nAChRs, where variants
+cluster heavily within a few subunits (e.g., CHRNA1, CHRNA7).
 
 %==============================================================
 \section{Results}\label{sec:results}
 %==============================================================
 
-[PLACEHOLDER — This section will be populated once the full feature
-set, final dataset, and hyperparameter tuning are complete. The
-current draft reports preliminary findings from an earlier iteration;
-these numbers will be replaced.]
+We evaluate the predictor on the final dataset of 717 curated variants
+under leave-one-subunit-out cross-validation, in which each outer fold
+holds out one subunit gene and training proceeds on the remaining
+subunits. This is the strictest generalisation test available to us:
+models must predict effect direction for variants in a subunit they
+never saw during training. We report the three-class task (LOF vs
+no-net-effect vs GOF) as the primary framing, and the binary LOF-vs-GOF
+sub-problem (553 variants, obtained by excluding no-net-effect variants)
+as a secondary framing.
 
-\subsection{Preliminary Observations}
+\subsection{Model Comparison}
 
-Early experiments with an earlier version of the dataset
-($\sim$300 variants, $\sim$40 features, 5-fold CV without nested
-resampling) yielded the following indicative results:
+Table~\ref{tab:results} summarises macro-averaged F1 and balanced
+accuracy for the ten-classifier panel. Gradient-boosted tree ensembles
+(CatBoost, Random Forest, XGBoost, LightGBM) dominate both tasks,
+consistent with their suitability for small, mixed-type tabular data.
+CatBoost is the best three-class classifier (macro-F1 $0.508 \pm 0.024$),
+and Random Forest the best binary classifier (macro-F1 $0.647 \pm 0.006$).
+These results confirm that the engineered features carry genuine signal
+for direction of effect.
 
-\begin{itemlist}
-\item Gradient-boosted tree methods (XGBoost, LightGBM) consistently
-  outperformed linear, kernel, and neural baselines, consistent with
-  expectations for small tabular data where tree-based ensembles
-  handle mixed feature types and non-linear interactions without
-  extensive tuning.
-\item The addition of structural features (B-factor, secondary structure,
-  packing density) produced a modest but consistent improvement of
-  $\sim$3--5 percentage points in GOF F1 over sequence-only features,
-  suggesting that structural context carries directional signal beyond
-  what sequence captures.
-\item The subunit one-hot encoding was among the highest-ranked features
-  by permutation importance in the gradient-boosted models, confirming
-  that subunit identity is predictive of effect direction.
-\item The majority-class baseline (always LOF) yielded accuracy $\sim$0.62
-  and GOF F1 = 0. The BLOSUM-direction heuristic performed near chance
-  (F1 $\approx$ 0.40), confirming that evolutionary conservation alone
-  does not resolve direction.
-\end{itemlist}
+\begin{table}[ht]
+\tbl{Cross-validated performance (leave-one-subunit-out). Macro-F1 and
+balanced accuracy (Bal.\ Acc.) for the ten classifiers on the final
+feature set (66 engineered features plus conservation and ESM-2).
+Best per column in bold.}
+{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Three-class (717)} & \multicolumn{2}{c}{Binary (553)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Model & Macro-F1 & Bal.\ Acc. & Macro-F1 & Bal.\ Acc. \\
+\midrule
+CatBoost            & \textbf{0.508} & \textbf{0.541} & 0.637 & \textbf{0.686} \\
+Random Forest       & 0.501 & 0.530 & \textbf{0.647} & 0.685 \\
+Logistic Regression & 0.483 & 0.525 & 0.598 & 0.653 \\
+LightGBM            & 0.475 & 0.506 & 0.617 & 0.661 \\
+Linear SVM          & 0.474 & 0.507 & 0.579 & 0.639 \\
+XGBoost             & 0.469 & 0.495 & 0.625 & 0.677 \\
+MLP                 & 0.467 & 0.501 & 0.596 & 0.661 \\
+KNN                 & 0.465 & 0.504 & 0.586 & 0.622 \\
+Gaussian NB         & 0.459 & 0.505 & 0.585 & 0.658 \\
+RBF SVM             & 0.410 & 0.442 & 0.568 & 0.595 \\
+\bottomrule
+\end{tabular}}
+\label{tab:results}
+\end{table}
 
-[Caveat: these numbers come from an earlier pipeline iteration and
-will be updated with the final nested-CV estimates. Do not cite the
-exact values.]
+\subsection{Ablation Analysis}
 
-\subsection{Planned Analyses}
+To attribute performance to individual feature groups, we re-trained the
+models after dropping one group at a time (leave-one-group-out ablation)
+on the three-class task. The dominant contributor is the positional
+block (the one-hot subunit-gene encoding together with normalised
+residue position and species). Removing it reduced three-class macro-F1
+by 0.075--0.089 across CatBoost, Random Forest, and the linear SVM,
+confirming that subunit identity is the single most predictive input.
+Substitution scores (BLOSUM/Grantham) and the core structural block were
+the next most valuable. This directly supports the paper's central
+hypothesis: receptor-specific, subunit-aware context is precisely what a
+generic pathogenicity predictor lacks.
 
-Once the final dataset and feature set are frozen, we will report:
-
-\begin{romanlist}[(vi)]
-\item Mean and 95\% confidence intervals of accuracy, F1 (LOF, GOF, macro),
-  and ROC-AUC for all seven classifiers under nested CV.
-\item A critical-difference diagram (Demšar) comparing classifiers
-  across folds.
-\item Permutation feature importance for the best-performing model,
-  grouped by feature category.
-\item An ablation panel quantifying the marginal contribution of each
-  feature category (sequence-only, +evolutionary, +positional,
-  +subunit, +structural).
-\item Per-subunit performance breakdown where sample size permits
-  ($n \geq 10$ per subunit).
-\item Confusion matrices and error analysis: which variants are
-  systematically misclassified, and do they share biochemical or
-  structural characteristics?
-\end{romanlist}
+Adding conservation and ESM-2 zero-shot features on top of the 66
+engineered features improved three-class macro-F1 by $\sim$0.023, but
+the binary GOF/LOF task improved by only $\sim$0.004. The two
+pathogenicity-oriented signals help mainly by separating the neutral
+(no-net-effect) class from functional variants, not by resolving
+GOF-versus-LOF direction. This is further evidence that direction of effect is
+a distinct problem from pathogenicity. Scaling ESM-2 from 150M to 650M
+parameters was a null result (three-class $\Delta$F1 $-0.006$; binary
+$\Delta$F1 $\approx 0$), so we retain the smaller, cheaper 150M model.
+The AlphaMissense score was likewise uninformative: dropping it did not
+reduce performance, consistent with its pathogenicity-only objective.
 
 %==============================================================
 \section{Discussion}\label{sec:discussion}
 %==============================================================
 
-\subsection{Interpretation and Significance}
-
-[PLACEHOLDER — will be written once results are finalised. Key points
-to address:]
-
-\begin{itemlist}
-\item Whether the observed performance exceeds a clinically useful
-  threshold and what that threshold should be for triaging VUS.
-\item Which feature categories contribute most, and what this implies
-  about the biophysical determinants of LOF versus GOF in nAChRs.
-\item How the nAChR-specific model compares with general
-  direction-aware tools (LoGoFunc, MissION) on the nAChR subset,
-  once such a comparison can be made fairly.
-\item The practical interpretation of model outputs: should a
-  calibrated probability be reported, or a discrete LOF/GOF call
-  with confidence bands?
-\end{itemlist}
-
 \subsection{Challenges and Limitations}
 
 \subsubsection{Data Scarcity}
 
-With $\sim$350 labelled examples, the dataset is at least an order of
+With 717 labelled examples, the dataset is at least an order of
 magnitude smaller than typical training sets for general VEPs (CADD
 trained on $\sim$15M variants; AlphaMissense used $\sim$70M variants
 from population databases). Small datasets amplify three risks:
@@ -630,7 +655,7 @@ generalisability to subunits or variant types not represented in the
 training data. We mitigate these through nested CV for unbiased
 evaluation, L1/L2 regularisation in tree-based models, and explicit
 reporting of per-subunit performance where sample size permits. But
-the fundamental solution — a larger dataset — requires community-wide
+the fundamental solution, a larger dataset, requires community-wide
 curation efforts and, ideally, systematic functional characterisation
 of nAChR variants at scale.
 
@@ -669,44 +694,39 @@ homologous structures, introducing additional uncertainty.
 
 \subsection{Future Work}
 
-\paragraph{Near-term (within this project cycle):}
-\begin{itemlist}
-\item Complete the feature-ablation study to quantify each category's
-  contribution.
-\item Experiment with ESM-2 protein language model embeddings as an
-  alternative or complementary representation to hand-engineered
-  features.
-\item Implement calibration (isotonic or Platt scaling) so that model
-  outputs can be interpreted as confidence estimates.
-\item Package the trained model as a lightweight Python module with
-  a simple CLI for prospective use by nAChR researchers.
-\end{itemlist}
+The current score leaves substantial room for improvement, and we
+identify several concrete avenues.
 
-\paragraph{Medium-term (community effort):}
-\begin{itemlist}
-\item Establish a shared, versioned benchmark dataset for nAChR
-  direction-of-effect prediction, analogous to the ProteinGym
-  benchmark for variant effect prediction, to enable fair comparison
-  across methods.
-\item Expand the dataset through systematic literature mining with
-  LLM-assisted extraction, targeting the long tail of functionally
-  characterised but not digitally curated variants.
-\item Incorporate additional receptor families (GABA\textsubscript{A},
-  glycine, 5-HT\textsubscript{3}) that share the pentameric
-  ligand-gated ion channel architecture, testing whether a
-  multi-receptor model with shared structural representations
-  outperforms receptor-specific models.
-\end{itemlist}
+\paragraph{Stronger sequence representations.}
+Our hand-engineered substitution and conservation features are shallow
+compared with modern protein language models. Fine-tuning ESM-2
+embeddings (rather than using only its zero-shot score), for example
+with parameter-efficient methods such as LoRA, and learning
+per-residue embeddings at the variant position may surface directional
+signal that zero-shot likelihoods miss. More expressive structure-aware
+models (AlphaFold2/3-derived residue contexts, thermostability change
+$\Delta\Delta G$ from tools such as ThermoMPNN or RaSP) are also strong
+candidates for features that a pathogenicity-only score cannot supply.
 
-\paragraph{Longer-term:}
-\begin{itemlist}
-\item Integrate the predictor with clinical variant interpretation
-  pipelines (e.g., as a plug-in for the ACMG/AMP framework) to
-  assess real-world impact on VUS resolution rates.
-\item Investigate whether direction-of-effect prediction can guide
-  \emph{in silico} drug repurposing — matching a variant's predicted
-  effect direction to drugs with known opposing mechanisms.
-\end{itemlist}
+\paragraph{Network and mechanistic features.}
+Direction of effect often depends on where a residue sits in the
+pentamer and in the gating machinery: the agonist-binding C-loop, the
+M2 pore-lining helix, the M2--M3 linker, and the subunit interfaces.
+We plan to encode these locations explicitly from cryo-EM structures,
+and to explore graph-neural-network architectures (as in PreMode) that
+operate directly on the receptor structure rather than on flattened
+per-residue features. Network-embedding methods such as GenePlexusZoo
+offer a complementary, gene-level view of functional similarity that
+may transfer information across related subunits.
+
+\paragraph{More data.}
+The single most effective lever is a larger, cleaner dataset. We are
+extending curation across species (mouse and rat electrophysiology) and
+correcting residue numbering between species via sequence alignment, so
+that the cross-species augmentation already present in the architecture
+(138 rat and 72 mouse variants) can be fully exploited. LLM-assisted
+literature extraction targets the long tail of functionally
+characterised but not digitally curated variants.
 
 %==============================================================
 \section{Conclusion}\label{sec:conclusion}
@@ -722,16 +742,18 @@ of a predictor designed to bridge this gap: a curated, experimentally
 labelled dataset; an engineered feature representation that encodes
 sequence properties, evolutionary constraint, subunit identity, and
 cryo-EM structural context; and a rigorous benchmarking framework under
-nested cross-validation with multiple baselines.
+nested cross-validation.
 
-Preliminary evidence suggests that the engineered features carry
-measurable signal for distinguishing LOF from GOF, that subunit
-identity and structural descriptors contribute above what sequence
-alone provides, and that gradient-boosted tree methods are well-suited
-to this small, tabular dataset. The main obstacles — data scarcity,
-the LOF/GOF dichotomy, label noise, and limited structural coverage
-— are real but not insurmountable, and we have outlined a roadmap
-for addressing them.
+Our results show that the engineered features carry measurable signal
+for distinguishing LOF from GOF, that subunit identity is the dominant
+predictive input, and that gradient-boosted tree methods are best-suited
+to this small, tabular dataset. Notably, celebrated pathogenicity
+signals (larger ESM-2 models, AlphaMissense) contribute little to
+direction prediction, underscoring that direction of effect is a
+distinct problem from pathogenicity. The main obstacles (data scarcity,
+the LOF/GOF dichotomy, label noise, and limited structural coverage)
+are real but not insurmountable, and we have outlined a roadmap for
+addressing them.
 
 The broader ambition is not merely to build one more variant effect
 predictor, but to make the case that receptor-specific, direction-aware
@@ -747,14 +769,14 @@ direction, and what should we do about it?''
 %==============================================================
 \section*{Acknowledgments}
 
-We thank Prof.\ Youssef Ghofrani for guidance on the structure and
+I thank Prof.\ Ghofrani and Youssef for guidance on the structure and
 argumentation of this position paper, and the Advanced Scientific
-Writing course at Hochschule Bonn--Rhein--Sieg for providing the
-framework within which this work was developed. H.K.M.R.\ is supported
-by the MSc Autonomous Systems programme at HBRS. We acknowledge the
+Writing course at Hochschule Bonn-Rhein-Sieg for providing the
+framework within which this work was developed. I also thank Dr.Karl Kirschner for his guidance and support as being the advisor for this whole project. I acknowledge the
 contributors to the open-source tools used in this work: scikit-learn,
 XGBoost, LightGBM, CatBoost, Optuna, Biopython, and the Protein Data
-Bank.
+Bank. AI assistance was used for the coding of the \LaTeX{} source and
+for formatting purposes, and for generating the initial draft of the abstract and introduction. All scientific content, analysis, and interpretation is the author's own.
 
 %==============================================================
 % References
@@ -802,14 +824,15 @@ from ensemble learning of a diverse feature set,
 {\em Genome Med.} {\bf 15}, 103 (2023).
 
 \bibitem{premode}
-G.~Zhang {\em et al.},
-Predicting the mode of action of missense variants (PreMode),
+G.~Zhong {\em et al.},
+PreMode predicts mode-of-action of missense variants by deep graph
+representation learning of protein sequence and structural context,
 {\em bioRxiv} (2024).
 
 \bibitem{mission}
-[Author names TBD],
-MissION: direction-of-effect prediction for ion-channel missense variants
-via protein language model embeddings and structural features,
+S.~Gies {\em et al.},
+MissION: functional effect predictions for ion-channel missense variants
+using a protein language model,
 {\em medRxiv} (2025).
 
 \bibitem{nachr_structure_2021}
@@ -847,6 +870,345 @@ Molecular mechanisms of human hypertension,
 H.~K. Mohan Raj {\em et al.},
 A curated dataset of experimentally characterised missense variants in
 human nicotinic acetylcholine receptors, (2026).
+
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+% Primary electrophysiology literature mined for the curated
+% nAChR variant dataset (nachr mutations.bib). Every source paper
+% from which LOF/GOF labels were extracted is listed below.
+%--------------------------------------------------------------
+
+\bibitem{DelbartBGNPBCBDTJLTU2018}
+F. Delbart {\em et al.}, An allosteric binding site of the $\alpha$7 nicotinic acetylcholine receptor revealed in a humanized acetylcholine-binding protein, {\em Journal of Biological Chemistry} {\bf 293} (7), 2534--2545 (2018).
+
+\bibitem{CroxenNBOCVN1997}
+R. Croxen {\em et al.}, Mutations in Different Functional Domains of the Human Muscle Acetylcholine Receptor   Subunit in Patients with the Slow-Channel congenital Myasthenic Syndrome, {\em Human Molecular Genetics} {\bf 6} (5), 767--774 (1997).
+
+\bibitem{MiloneWOFPBSE1997}
+M. Milone {\em et al.}, Slow-Channel Myasthenic Syndrome Caused By Enhanced Activation, Desensitization, and Agonist Binding Affinity Attributable to Mutation in the M2 Domain of the Acetylcholine Receptor $\alpha$ Subunit, {\em The Journal of Neuroscience} {\bf 17} (15), 5651--5665 (1997).
+
+\bibitem{ShenDSE2006}
+X. Shen {\em et al.}, Slow-channel mutation in acetylcholine receptor $\alpha$M4 domain and its efficient knockdown, {\em Annals of Neurology} {\bf 60} (1), 128--136 (2006).
+
+\bibitem{NewlandBVN1995}
+C. F. Newland {\em et al.}, Functional and non-functional isoforms of the human muscle acetylcholine receptor., {\em The Journal of Physiology} {\bf 489} (3), 767--778 (1995).
+
+\bibitem{OhnoHMBBSE1995}
+K. Ohno {\em et al.}, Congenital myasthenic syndrome caused by prolonged acetylcholine receptor channel openings due to a mutation in the M2 domain of the epsilon subunit., {\em Proceedings of the National Academy of Sciences} {\bf 92} (3), 758--762 (1995).
+
+\bibitem{OhnoQMWHNBPFCSE1997}
+K. Ohno {\em et al.}, Congenital Myasthenic Syndromes due to Heteroallelic Nonsense/Missense Mutations in the Acetylcholine Receptor   Subunit Gene: Identification and Functional Characterization of Six New Mutations, {\em Human Molecular Genetics} {\bf 6} (5), 753--766 (1997).
+
+\bibitem{EngelOBSG1996}
+A. G. Engel {\em et al.}, End-plate acetylcholine receptor deficiency due to nonsense mutations in the $\varepsilon$ subunit, {\em Annals of Neurology} {\bf 40} (5), 810--817 (1996).
+
+\bibitem{ShenOFTBDPE2002}
+X. Shen {\em et al.}, Congenital myasthenic syndrome caused by low-expressor fast-channel AChR $\delta$ subunit mutation, {\em Neurology} {\bf 59} (12), 1881--1888 (2002).
+
+\bibitem{BrownlowWCBNLVNB2001}
+S. Brownlow {\em et al.}, Acetylcholine receptor $\delta$ subunit mutations underlie a fast-channel myasthenic syndrome and arthrogryposis multiplex congenita, {\em Journal of Clinical Investigation} {\bf 108} (1), 125--130 (2001).
+
+\bibitem{GomezMGLTCLMK1996}
+C. M. Gomez {\em et al.}, A $\beta$-subunit mutation in the acetylcholine receptor channel gate causes severe slow-channel syndrome, {\em Annals of Neurology} {\bf 39} (6), 712--723 (1996).
+
+\bibitem{DurmusSSKPOBDE2018}
+H. Durmus {\em et al.}, Congenital myasthenic syndromes in Turkey: Clinical clues and prognosis with long term follow-up, {\em Neuromuscular Disorders} {\bf 28} (4), 315--322 (2018).
+
+\bibitem{BEESONWECBBNSHSCV2003}
+D. BEESON {\em et al.}, Structural Abnormalities of the AChR Caused by Mutations Underlying Congenital Myasthenic Syndromes, {\em Annals of the New York Academy of Sciences} {\bf 998} (1), 114--124 (2003).
+
+\bibitem{MasudaSIMEO2008}
+A. Masuda {\em et al.}, hnRNP H enhances skipping of a nonfunctional exon P3A in CHRNA1 and a mutation disrupting its binding causes congenital myasthenic syndrome, {\em Human Molecular Genetics} {\bf 17} (24), 4022--4035 (2008).
+
+\bibitem{FaberMVBVDKWBB2009}
+C. G. Faber {\em et al.}, AChR deficiency due to $\varepsilon$-subunit mutations: two common mutations in the Netherlands, {\em Journal of Neurology} {\bf 256} (10), 1719--1723 (2009).
+
+\bibitem{KouvatsosGCPT2016}
+N. Kouvatsos {\em et al.}, Crystal structure of a human neuronal nAChR extracellular domain in pentameric assembly: Ligand-bound $\alpha$2 homopentamer, {\em Proceedings of the National Academy of Sciences} {\bf 113} (34), 9635--9640 (2016).
+
+\bibitem{AridonMDBDPPMPPCCPBGC2006}
+P. Aridon {\em et al.}, Increased Sensitivity of the Neuronal Nicotinic Receptor $\alpha$2 Subunit Causes Familial Epilepsy with Nocturnal Wandering and Ictal Fear, {\em The American Journal of Human Genetics} {\bf 79} (2), 342--350 (2006).
+
+\bibitem{ContiACBMMAMLPRBG2015}
+V. Conti {\em et al.}, Nocturnal frontal lobe epilepsy with paroxysmal arousals due to CHRNA2 loss of function, {\em Neurology} {\bf 84} (15), 1520--1528 (2015).
+
+\bibitem{DashL2014}
+B. Dash {\em et al.}, Analysis of rare variations reveals roles of amino acid residues in the N-terminal extracellular domain of nicotinic acetylcholine receptor (nAChR) alpha6 subunit in the functional expression of human alpha6*-nAChRs, {\em Molecular Brain} {\bf 7} (1), 35 (2014).
+
+\bibitem{DashBCL2012}
+B. Dash {\em et al.}, Modulation of recombinant, $\alpha$2*, $\alpha$3* or $\alpha$4*-nicotinic acetylcholine receptor (nAChR) function by nAChR $\beta$3 subunits*, {\em Journal of Neurochemistry} {\bf 121} (3), 349--361 (2012).
+
+\bibitem{HodaWBS2009}
+J. Hoda {\em et al.}, Pleiotropic functional effects of the first epilepsy-associated mutation in the human CHRNA2 gene, {\em FEBS Letters} {\bf 583} (10), 1599--1604 (2009).
+
+\bibitem{DashLL2014}
+B. Dash {\em et al.}, A signal peptide missense mutation associated with nicotine dependence alters $\alpha$2*-nicotinic acetylcholine receptor function, {\em Neuropharmacology} {\bf 79}, 715--725 (2014).
+
+\bibitem{BertrandEHTSBS2005}
+D. Bertrand {\em et al.}, The CHRNB2 mutation I312M is associated with epilepsy and distinct memory deficits, {\em Neurobiology of Disease} {\bf 20} (3), 799--804 (2005).
+
+\bibitem{VillaCMGMFCGBC2019}
+C. Villa {\em et al.}, CHRNA2 and Nocturnal Frontal Lobe Epilepsy: Identification and Characterization of a Novel Loss of Function Mutation, {\em Frontiers in Molecular Neuroscience} {\bf 12} (2019).
+
+\bibitem{LossiusSMBMSVCSPB2020}
+K. Lossius {\em et al.}, Remarkable effect of transdermal nicotine in children with CHRNA4-related autosomal dominant sleep-related hypermotor epilepsy, {\em Epilepsy \& Behavior} {\bf 105}, 106944 (2020).
+
+\bibitem{MazzaferroMCMS2022}
+S. Mazzaferro {\em et al.}, Genetic Variant in Nicotinic Receptor $\alpha$4-Subunit Causes Sleep-Related Hyperkinetic Epilepsy via Increased Channel Opening, {\em International Journal of Molecular Sciences} {\bf 23} (20), 12124 (2022).
+
+\bibitem{FuscoBPAGQBWC2000}
+M. D. Fusco {\em et al.}, The nicotinic receptor $\beta$2 subunit is mutant in nocturnal frontal lobe epilepsy, {\em Nature Genetics} {\bf 26} (3), 275--276 (2000).
+
+\bibitem{PhillipsFKZGHSSBBM2001}
+H. A. Phillips {\em et al.}, CHRNB2 Is the Second Acetylcholine Receptor Subunit Associated with Autosomal Dominant Nocturnal Frontal Lobe Epilepsy*, {\em The American Journal of Human Genetics} {\bf 68} (1), 225--231 (2001).
+
+\bibitem{DashL2014a}
+B. Dash {\em et al.}, Two rare variations, D478N and D478E, that occur at the same amino acid residue in nicotinic acetylcholine receptor (nAChR) $\alpha$2 subunit influence nAChR function, {\em Neuropharmacology} {\bf 85}, 471--481 (2014).
+
+\bibitem{YeungGSLL2025}
+T. M. H. Yeung {\em et al.}, Slow-Channel Congenital Myasthenic Syndrome due to a CHRNA1 Variant Masquerading as Atypical Anorexia Nervosa: A Case Report, {\em Cureus} (2025).
+
+\bibitem{GooneratneNMWCBGHSC2020}
+I. K. Gooneratne {\em et al.}, Slow-Channel Congenital Myasthenic Syndrome due to a Novel Mutation in the Acetylcholine Receptor Alpha Subunit in a South Asian: A Case Report, {\em Journal of Neuromuscular Diseases} {\bf 8} (1), 163--167 (2020).
+
+\bibitem{FinstererSSF2025}
+J. Finsterer {\em et al.}, The new variant c.458C$>$G in CHRNA1 causes late-onset post-synaptic slow-channel congenital myasthenic syndrome, {\em Clinics} {\bf 80}, 100791 (2025).
+
+\bibitem{GuanZHZZLWZL2025}
+J. Guan {\em et al.}, Clinical and genetic features of congenital myasthenic syndrome due to the muscle acetylcholine receptor genes, {\em Brain and Development} {\bf 47} (5), 104412 (2025).
+
+\bibitem{HodaGFPBAGRSMPBMSB2008}
+J. Hoda {\em et al.}, Human Nocturnal Frontal Lobe Epilepsy: Pharmocogenomic Profiles of Pathogenic Nicotinic Acetylcholine Receptor $\beta$-Subunit Mutations outside the Ion Channel Pore, {\em Molecular Pharmacology} {\bf 74} (2), 379--391 (2008).
+
+\bibitem{BoormanGS2000}
+J. P. B. Boorman {\em et al.}, Stoichiometry of human recombinant neuronal nicotinic receptors containing the $\beta$3 subunit expressed in Xenopus oocytes, {\em The Journal of Physiology} {\bf 529} (3), 565--577 (2000).
+
+\bibitem{Groot‐KormelinkBS2001}
+P. J. Groot-Kormelink {\em et al.}, Formation of functional $\alpha$3$\beta$4$\alpha$5 human neuronal nicotinic receptors in Xenopus oocytes: a reporter mutation approach, {\em British Journal of Pharmacology} {\bf 134} (4), 789--796 (2001).
+
+\bibitem{HallerDVMLASBJHSBG2011}
+G. Haller {\em et al.}, Rare missense variants in CHRNB4 are associated with reduced risk of nicotine dependence, {\em Human Molecular Genetics} {\bf 21} (3), 647--655 (2011).
+
+\bibitem{MannKHGSCNKMWKDCVITKEDSTBLBYMLEHKH2019}
+N. Mann {\em et al.}, CAKUT and Autonomic Dysfunction Caused by Acetylcholine Receptor Mutations, {\em The American Journal of Human Genetics} {\bf 105} (6), 1286--1293 (2019).
+
+\bibitem{McClureBegleyPSSLGXLP2014}
+T. McClure-Begley {\em et al.}, Rare Human Nicotinic Acetylcholine Receptor $\alpha$4 Subunit (CHRNA4) Variants Affect Expression and Function of High-Affinity Nicotinic Acetylcholine Receptors, {\em The Journal of Pharmacology and Experimental Therapeutics} {\bf 348} (3), 410--420 (2014).
+
+\bibitem{LenigerKHBBS2003}
+T. Leniger {\em et al.}, A New Chrna4 Mutation with Low Penetrance in Nocturnal Frontal Lobe Epilepsy, {\em Epilepsia} {\bf 44} (7), 981--985 (2003).
+
+\bibitem{SteinleinSMBSB2000}
+O. K. Steinlein {\em et al.}, Independent Occurrence of the CHRNA4 Ser248Phe Mutation in a Norwegian Family with Nocturnal Frontal Lobe Epilepsy, {\em Epilepsia} {\bf 41} (5), 529--535 (2000).
+
+\bibitem{JiangYYSSJ2018}
+Y. Jiang {\em et al.}, CHRNA4 variant causes paroxysmal kinesigenic dyskinesia and genetic epilepsy with febrile seizures plus?, {\em Seizure} {\bf 56}, 88--91 (2018).
+
+\bibitem{DibbensM2011}
+L. Dibbens {\em et al.}, Genetic variations and associated pathophysiology in the management of epilepsy, {\em The Application of Clinical Genetics}, 113 (2011).
+
+\bibitem{MazzaferroKNHS2024}
+S. Mazzaferro {\em et al.}, Structural bases for stoichiometry-selective calcium potentiation of a neuronal nicotinic receptor, {\em British Journal of Pharmacology} {\bf 181} (13), 1973--1992 (2024).
+
+\bibitem{TapiaKL2007}
+L. Tapia {\em et al.}, Ca2+ Permeability of the ($\alpha$4)3($\beta$2)2 Stoichiometry Greatly Exceeds That of ($\alpha$4)2($\beta$2)3 Human Acetylcholine Receptors, {\em Molecular Pharmacology} {\bf 71} (3), 769--776 (2007).
+
+\bibitem{JainKWKL2016}
+A. Jain {\em et al.}, Unorthodox Acetylcholine Binding Sites Formed by $\alpha$5 and $\beta$3 Accessory Subunits in $\alpha$4$\beta$2* Nicotinic Acetylcholine Receptors, {\em Journal of Biological Chemistry} {\bf 291} (45), 23452--23463 (2016).
+
+\bibitem{CadieuxDionMVTWBSGMCCBN2020}
+M. Cadieux-Dion {\em et al.}, Variants inCHRNB2andCHRNA4Identified in Patients with Insular Epilepsy, {\em Canadian Journal of Neurological Sciences / Journal Canadien des Sciences Neurologiques} {\bf 47} (6), 800--809 (2020).
+
+\bibitem{KuryatovBL2011}
+A. Kuryatov {\em et al.}, Acetylcholine Receptor (AChR) $\alpha$5 Subunit Variant Associated with Risk for Nicotine Dependence and Lung Cancer Reduces ($\alpha$4$\beta$2)2$\alpha$5 AChR Function, {\em Molecular Pharmacology} {\bf 79} (1), 119--125 (2011).
+
+\bibitem{DashCL2011}
+B. Dash {\em et al.}, Reporter Mutation Studies Show That Nicotinic Acetylcholine Receptor (nAChR) $\alpha$5 Subunits and/or Variants Modulate Function of $\alpha$6*-nAChR, {\em Journal of Biological Chemistry} {\bf 286} (44), 37905--37918 (2011).
+
+\bibitem{MartinelliCGLPPCDRBTCFCBCPBNKCGSTSRCLDTL2020}
+S. Martinelli {\em et al.}, Co-occurring WARS2 and CHRNA6 mutations in a child with a severe form of infantile parkinsonism, {\em Parkinsonism \& Related Disorders} {\bf 72}, 75--79 (2020).
+
+\bibitem{JensenHJ2013}
+A. B. Jensen {\em et al.}, Elucidation of Molecular Impediments in the $\alpha$6 Subunit for in Vitro Expression of Functional $\alpha$6$\beta$4* Nicotinic Acetylcholine Receptors, {\em Journal of Biological Chemistry} {\bf 288} (47), 33708--33721 (2013).
+
+\bibitem{ZouridakisGZCBT2014}
+M. Zouridakis {\em et al.}, Crystal structures of free and antagonist-bound states of human $\alpha$9 nicotinic receptor extracellular domain, {\em Nature Structural \& Molecular Biology} {\bf 21} (11), 976--980 (2014).
+
+\bibitem{ChaouchMGDSRLSWCNVMAAL2011}
+A. Chaouch {\em et al.}, A retrospective clinical study of the treatment of slow-channel congenital myasthenic syndrome, {\em Journal of Neurology} {\bf 259} (3), 474--481 (2011).
+
+\bibitem{OutteryckRLFZGEHVS2008}
+O. Outteryck {\em et al.}, Novel   subunit mutation of the muscle acetylcholine receptor causing a slow-channel congenital myasthenic syndrome, {\em Journal of Neurology, Neurosurgery \& Psychiatry} {\bf 80} (4), 450--451 (2008).
+
+\bibitem{ShenOMOTKGOE2016}
+X. Shen {\em et al.}, Mutations Causing Slow-Channel Myasthenia Reveal That a Valine Ring in the Channel Pore of Muscle AChR is Optimized for Stabilizing Channel Gating: HUMAN MUTATION, {\em Human Mutation} {\bf 37} (10), 1051--1059 (2016).
+
+\bibitem{CastroMGEE2007}
+A. D. Castro {\em et al.}, Pathogenic point mutations in a transmembrane domain of the $\varepsilon$ subunit increase the Ca2+ permeability of the human endplate ACh receptor, {\em The Journal of Physiology} {\bf 579} (3), 671--677 (2007).
+
+\bibitem{FucilePMME2000}
+S. Fucile {\em et al.}, Human neuronal threonine-for-leucine-248 $\alpha$7 mutant nicotinic acetylcholine receptors are highly Ca 2+ permeable, {\em Proceedings of the National Academy of Sciences} {\bf 97} (7), 3643--3648 (2000).
+
+\bibitem{NatarajanMCLBS2020}
+K. Natarajan {\em et al.}, Mechanism of calcium potentiation of the $\alpha$7 nicotinic acetylcholine receptor, {\em Journal of General Physiology} {\bf 152} (9) (2020).
+
+\bibitem{AndersenCSB2013}
+N. Andersen {\em et al.}, Stoichiometry for activation of neuronal $\alpha$7 nicotinic receptors, {\em Proceedings of the National Academy of Sciences} {\bf 110} (51), 20819--20824 (2013).
+
+\bibitem{LeeS2005}
+W. Y. Lee {\em et al.}, Principal pathway coupling agonist binding to channel gating in nicotinic receptors, {\em Nature} {\bf 438} (7065), 243--247 (2005).
+
+\bibitem{MihaylovaSGLKWSGHHAML2010}
+V. Mihaylova {\em et al.}, Molecular characterisation of congenital myasthenic syndromes in Southern Brazil, {\em Journal of Neurology, Neurosurgery \& Psychiatry} {\bf 81} (9), 973--977 (2010).
+
+\bibitem{KuryatovGNOL1997}
+A. Kuryatov {\em et al.}, Mutation Causing Autosomal Dominant Nocturnal Frontal Lobe Epilepsy Alters Ca$^{2+}$Permeability, Conductance, and Gating of Human $\alpha$4$\beta$2 Nicotinic Acetylcholine Receptors, {\em The Journal of Neuroscience} {\bf 17} (23), 9035--9047 (1997).
+
+\bibitem{LiangSMBDBD2004}
+Y. Liang {\em et al.}, Functional polymorphisms in the human $\beta$4 subunit of nicotinic acetylcholine receptors, {\em Neurogenetics} {\bf 6} (1), 37--44 (2004).
+
+\bibitem{MuellerHSJBRMTAL2006}
+J. M{\"u}ller {\em et al.}, G.P.3 08 Novel mutations in the CHRNB1 gene in three patients affected by a congenital myasthenic syndrome, {\em Neuromuscular Disorders} {\bf 16} (9-10), 661 (2006).
+
+\bibitem{ShenBESE2012}
+X. Shen {\em et al.}, Highly fatal fast-channel syndrome caused by AChR $\varepsilon$ subunit mutation at the agonist binding site, {\em Neurology} {\bf 79} (5), 449--454 (2012).
+
+\bibitem{SineSWOLTBBVE2002}
+S. M. Sine {\em et al.}, Naturally Occurring Mutations at the Acetylcholine Receptor Binding Site Independently Alter ACh Binding and Channel Gating, {\em The Journal of General Physiology} {\bf 120} (4), 483--496 (2002).
+
+\bibitem{EstephanSSTMOCSMCZAMHRATZ2018}
+E. D. P. Estephan {\em et al.}, A common CHRNE mutation in Brazilian patients with congenital myasthenic syndrome, {\em Journal of Neurology} {\bf 265} (3), 708--713 (2018).
+
+\bibitem{EirisPunalFGPLQBP2020}
+J. M. Eir{\'i}s Pu{\~n}al {\em et al.}, Respuesta cl{\'i}nica y neurofisiol{\'o}gica a la efedrina en un paciente con s{\'i}ndrome miast{\'e}nico cong{\'e}nito de canal lento, {\em Revista de Neurolog{\'i}a} {\bf 71} (06), 221 (2020).
+
+\bibitem{GomezMVNSCSRKVWL2001}
+C. M. Gomez {\em et al.}, Novel delta subunit mutation in slow-channel syndrome causes severe weakness by novel mechanisms, {\em Annals of Neurology} {\bf 51} (1), 102--112 (2001).
+
+\bibitem{ShenDSZNSSE2020}
+X. Shen {\em et al.}, A novel fast-channel myasthenia caused by mutation in $\beta$ subunit of AChR reveals subunit-specific contribution of the intracellular M1-M2 linker to channel gating, {\em Experimental Neurology} {\bf 331}, 113375 (2020).
+
+\bibitem{ShenMWBSSE2019}
+X. Shen {\em et al.}, Slow-channel myasthenia due to novel mutation in M2 domain of AChR delta subunit, {\em Annals of Clinical and Translational Neurology} {\bf 6} (10), 2066--2078 (2019).
+
+\bibitem{HallerLEHGS2014}
+G. Haller {\em et al.}, Functional Characterization Improves Associations between Rare Non-Synonymous Variants in CHRNB4 and Smoking Behavior, {\em PLoS ONE} {\bf 9} (5), e96753 (2014).
+
+\bibitem{SabatelliEACMLMLTSDGDMFLMODTNZ2009}
+M. Sabatelli {\em et al.}, Rare missense variants of neuronal nicotinic acetylcholine receptor altering receptor function are associated with sporadic amyotrophic lateral sclerosis, {\em Human Molecular Genetics} {\bf 18} (20), 3997--4006 (2009).
+
+\bibitem{ShenBSE2012}
+X. Shen {\em et al.}, Myasthenic syndrome AChR$\alpha$ C-loop mutant disrupts initiation of channel gating, {\em Journal of Clinical Investigation} {\bf 122} (7), 2613--2621 (2012).
+
+\bibitem{NooriMVSTMBMBFUSS2018}
+H. R. Noori {\em et al.}, Alcohol reduces muscle fatigue through atomistic interactions with nicotinic receptors, {\em Communications Biology} {\bf 1} (1) (2018).
+
+\bibitem{MukhtasimovaS2007}
+N. Mukhtasimova {\em et al.}, An Intersubunit Trigger of Channel Gating in the Muscle Nicotinic Receptor, {\em The Journal of Neuroscience} {\bf 27} (15), 4110--4119 (2007).
+
+\bibitem{MukhtasimovaFS2005}
+N. Mukhtasimova {\em et al.}, Initial Coupling of Binding to Gating Mediated by Conserved Residues in the Muscle Nicotinic Receptor, {\em The Journal of General Physiology} {\bf 126} (1), 23--39 (2005).
+
+\bibitem{LeeFS2008}
+W. Y. Lee {\em et al.}, Nicotinic Receptor Interloop Proline Anchors $\beta$1-$\beta$2 and Cys loops in Coupling Agonist Binding to Channel Gating, {\em The Journal of General Physiology} {\bf 132} (2), 265--278 (2008).
+
+\bibitem{ShenBNSE2016}
+X. Shen {\em et al.}, Investigation of Congenital Myasthenia Reveals Functional Asymmetry of Invariant Acetylcholine Receptor (AChR) Cys-loop Aspartates, {\em Journal of Biological Chemistry} {\bf 291} (7), 3291--3301 (2016).
+
+\bibitem{WebsterMSTBSB2012}
+R. Webster {\em et al.}, A novel congenital myasthenic syndrome due to decreased acetylcholine receptor ion-channel conductance, {\em Brain} {\bf 135} (4), 1070--1080 (2012).
+
+\bibitem{WebsterLCLB2014}
+R. Webster {\em et al.}, Fast-channel congenital myasthenic syndrome with a novel acetylcholine receptor mutation at the $\alpha$--$\varepsilon$ subunit interface, {\em Neuromuscular Disorders} {\bf 24} (2), 143--147 (2014).
+
+\bibitem{ShenOTBGSE2003}
+X. Shen {\em et al.}, Mutation causing severe myasthenia reveals functional asymmetry of AChR signature cystine loops in agonist binding and gating, {\em Journal of Clinical Investigation} {\bf 111} (4), 497--505 (2003).
+
+\bibitem{CunyKTYA2016}
+H. Cuny {\em et al.}, Key Structural Determinants in the Agonist Binding Loops of Human $\beta$2 and $\beta$4 Nicotinic Acetylcholine Receptor Subunits Contribute to $\alpha$3$\beta$4 Subtype Selectivity of $\alpha$-Conotoxins, {\em Journal of Biological Chemistry} {\bf 291} (45), 23779--23792 (2016).
+
+\bibitem{HoneMALLWPBA2015}
+A. J. Hone {\em et al.}, $\alpha$-Conotoxins Identify the $\alpha$3$\beta$4* Subtype as the Predominant Nicotinic Acetylcholine Receptor Expressed in Human Adrenal Chromaffin Cells, {\em Molecular Pharmacology} {\bf 88} (5), 881--893 (2015).
+
+\bibitem{PiccariDBGF2011}
+V. Piccari {\em et al.}, Modulation of the Ca2+ permeability of human endplate acetylcholine receptor-channel, {\em Cell Calcium} {\bf 49} (4), 272--278 (2011).
+
+\bibitem{ShenFOSE2008}
+X. Shen {\em et al.}, Congenital myasthenia--related AChR $\delta$ subunit mutation interferes with intersubunit communication essential for channel gating, {\em Journal of Clinical Investigation} {\bf 118} (5), 1867--1876 (2008).
+
+\bibitem{WangOMBEBMCES2000}
+H. Wang {\em et al.}, Fundamental Gating Mechanism of Nicotinic Receptor Channel Revealed by Mutation Causing a Congenital Myasthenic Syndrome, {\em The Journal of General Physiology} {\bf 116} (3), 449--462 (2000).
+
+\bibitem{OhnoWMBBNQPSE1996}
+K. Ohno {\em et al.}, Congenital Myasthenic Syndrome Caused by Decreased Agonist Binding Affinity Due to a Mutation in the Acetylcholine Receptor $\varepsilon$ Subunit, {\em Neuron} {\bf 17} (1), 157--170 (1996).
+
+\bibitem{NovielloGMCBBSH2021}
+C. M. Noviello {\em et al.}, Structure and gating mechanism of the $\alpha$7 nicotinic acetylcholine receptor, {\em Cell} {\bf 184} (8), 2121--2134.e13 (2021).
+
+\bibitem{BertrandGDBC1993}
+D. Bertrand {\em et al.}, Mutations at two distinct sites within the channel domain M2 alter calcium permeability of neuronal alpha 7 nicotinic receptor., {\em Proceedings of the National Academy of Sciences} {\bf 90} (15), 6971--6975 (1993).
+
+\bibitem{ZhangDZXXGHLC2015}
+Q. Zhang {\em et al.}, Functional Impact of 14 Single Nucleotide Polymorphisms Causing Missense Mutations of Human $\alpha$7 Nicotinic Receptor, {\em PLOS ONE} {\bf 10} (9), e0137588 (2015).
+
+\bibitem{CharpantierWHOHARFBF2005}
+E. Charpantier {\em et al.}, $\alpha$7 Neuronal Nicotinic Acetylcholine Receptors Are Negatively Regulated by Tyrosine Phosphorylation and Src-Family Kinases, {\em The Journal of Neuroscience} {\bf 25} (43), 9836--9849 (2005).
+
+\bibitem{TsunekiKTKTMMWKKS2007}
+H. Tsuneki {\em et al.}, Novel G423S Mutation of Human $\alpha$7 Nicotinic Receptor Promotes Agonist-Induced Desensitization by a Protein Kinase C-Dependent Mechanism, {\em Molecular Pharmacology} {\bf 71} (3), 777--786 (2007).
+
+\bibitem{BroideSJPPDD2002}
+R. S. Broide {\em et al.}, Increased Sensitivity to Nicotine-Induced Seizures in Mice Expressing the L250T $\alpha$7 Nicotinic Acetylcholine Receptor Mutation, {\em Molecular Pharmacology} {\bf 61} (3), 695--705 (2002).
+
+\bibitem{EllisonGWSMO2004}
+M. Ellison {\em et al.}, $\alpha$-Conotoxins ImI and ImII Target Distinct Regions of the Human $\alpha$7 Nicotinic Acetylcholine Receptor and Distinguish Human Nicotinic Receptor Subtypes, {\em Biochemistry} {\bf 43} (51), 16019--16026 (2004).
+
+\bibitem{GillThindDDSM2015}
+J. K. Gill-Thind {\em et al.}, Structurally Similar Allosteric Modulators of $\alpha$7 Nicotinic Acetylcholine Receptors Exhibit Five Distinct Pharmacological Effects, {\em Journal of Biological Chemistry} {\bf 290} (6), 3552--3562 (2015).
+
+\bibitem{HuangZSPZ2008}
+X. Huang {\em et al.}, Modeling Binding Modes of $\alpha$7 Nicotinic Acetylcholine Receptor with Ligands: The Roles of Gln117 and Other Residues of the Receptor in Agonist Binding, {\em Journal of Medicinal Chemistry} {\bf 51} (20), 6293--6302 (2008).
+
+\bibitem{Engel1996}
+A. Engel, New mutations in acetylcholine receptor subunit genes reveal heterogeneity in the slow-channel congenital myasthenic syndrome, {\em Human Molecular Genetics} {\bf 5} (9), 1217--1227 (1996).
+
+\bibitem{MichalkSBRPMBNJYOSWFWHWBMHH2008}
+A. Michalk {\em et al.}, Acetylcholine Receptor Pathway Mutations Explain Various Fetal Akinesia Deformation Sequence Disorders, {\em The American Journal of Human Genetics} {\bf 82} (2), 464--476 (2008).
+
+\bibitem{TanMX2016}
+J. Tan {\em et al.}, A Missense Mutation in Epsilon-subunit of Acetylcholine Receptor Causing Autosomal Dominant Slow-channel Congenital Myasthenic Syndrome in a Chinese Family, {\em Chinese Medical Journal} {\bf 129} (21), 2596--2602 (2016).
+
+\bibitem{AngeliniLSMV2018}
+C. Angelini {\em et al.}, Clinical and genetic characterization of an Italian family with slow-channel syndrome, {\em Neurological Sciences} {\bf 40} (3), 503--507 (2018).
+
+\bibitem{LorenzoniDAHFTLWKS2022}
+P. J. Lorenzoni {\em et al.}, Congenital myasthenic syndrome in a cohort of patients with `double' seronegative myasthenia gravis, {\em Arquivos de Neuro-Psiquiatria} {\bf 80} (1), 69--74 (2022).
+
+\bibitem{BoonJWKKVEV2022}
+H. T. Boon {\em et al.}, Slow Channel Syndrome Revisited: 40 Years Clinical Follow-Up and Genetic Characterization of Two Cases, {\em Journal of Neuromuscular Diseases} {\bf 9} (4), 525--532 (2022).
+
+\bibitem{WangMOSTBTBES1999}
+H. Wang {\em et al.}, Acetylcholine receptor M3 domain: stereochemical and volume contributions to channel gating, {\em Nature Neuroscience} {\bf 2} (3), 226--233 (1999).
+
+\bibitem{Shen2004}
+X. Shen, Subunit-specific contribution to agonist binding and channel gating revealed by inherited mutation in muscle acetylcholine receptor M3-M4 linker, {\em Brain} {\bf 128} (2), 345--355 (2004).
+
+\bibitem{ShenBSDPYVNDSE2018}
+X. Shen {\em et al.}, Mutations causing congenital myasthenia reveal principal coupling pathway in the acetylcholine receptor $\varepsilon$-subunit, {\em JCI Insight} {\bf 3} (2) (2018).
+
+\bibitem{ShenNMISOE2023}
+X. Shen {\em et al.}, Impaired gating of $\gamma$- and $\varepsilon$-AChR respectively causes Escobar syndrome and fast-channel myasthenia, {\em Annals of Clinical and Translational Neurology} {\bf 10} (5), 732--743 (2023).
+
+\bibitem{SineOBAMPE1995}
+S. M. Sine {\em et al.}, Mutation of the acetylcholine receptor $\alpha$ subunit causes a slow-channel myasthenic syndrome by enhancing agonist binding affinity, {\em Neuron} {\bf 15} (1), 229--239 (1995).
+
+\bibitem{MiloneWOPFSBGSE1998}
+M. Milone {\em et al.}, Mode Switching Kinetics Produced by a Naturally Occurring Mutation in the Cytoplasmic Loop of the Human Acetylcholine Receptor $\varepsilon$ Subunit, {\em Neuron} {\bf 20} (3), 575--588 (1998).
+
+\bibitem{AzumaNTSIIONAIOMNKSO2015}
+Y. Azuma {\em et al.}, Congenital myasthenic syndrome in Japan: Ethnically unique mutations in muscle nicotinic acetylcholine receptor subunits, {\em Neuromuscular Disorders} {\bf 25} (1), 60--69 (2015).
 
 \end{thebibliography}
 

@@ -423,14 +423,13 @@ class StructuralExtractor(FeatureExtractor):
     """
 
     name = "structural_core"
-    n_features = 5  # rsa, cbeta_density, b_factor, is_unmappable + DSSP
+    # 7 columns: rsa, cbeta_density, b_factor, dssp_helix, dssp_sheet, dssp_coil, is_unmappable
+    n_features = 7
     feature_names = [
         "rsa", "cbeta_density", "b_factor",
         "dssp_helix", "dssp_sheet", "dssp_coil",
         "is_unmappable",
     ]
-    # Actually 7 cols but dssp is 3 one-hot so we report 5 feature groups
-    n_features = 7
 
     def requires_pdb(self) -> bool:
         return True

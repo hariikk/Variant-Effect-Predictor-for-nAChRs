@@ -1,0 +1,19 @@
+HEADERS: ["Title ", "DOI", "Authors", "Year", "Motivation", "Methodology", "Sample Size/Context", "Intervention/Tool Used", "Results", "Limitations", "Questions", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+ROW 2: year=2016 doi='10.1186/s13059-016-0974-4 ' title='The Ensembl Variant Effect Predictor '
+ROW 3: year=2024 doi='10.1101/cshperspect.a041467 ' title='Variant Effect Prediction in the Age of Machine Learning '
+ROW 4: year=2022 doi='10.1242/dmm.049510 ' title='Interpreting protein variant effects with computational predictors and deep mutational scanning '
+ROW 5: year=2022 doi='10.1016/j.ebiom.2022.104115 ' title='Predicting the functional effects of voltage-gated potassium channel missense variants with multi-task learning '
+ROW 6: year=2023 doi='10.1371/journal.pcbi.1010959 ' title='Predicting functional effects of ion channel variants using new phenotypic machine learning methods '
+ROW 7: year=2021 doi='10.1038/s41598-021-98693-3 ' title='An enhanced variant effect predictor based on a deep generative model and the Born-Again Networks '
+ROW 8: year=2024 doi='10.1186/s13059-024-03314-7 ' title='Benchmarking computational variant effect predictors by their ability to infer human traits '
+ROW 9: year=2025 doi='10.1007/s00439-025-02732-2 ' title='Critical assessment of missense variant effect predictors on disease-relevant variant data '
+ROW 10: year=2018 doi='10.1016/j.cels.2017.11.003 ' title='Quantitative Missense Variant Effect Prediction Using Large-Scale Mutagenesis Data '
+ROW 11: year=2024 doi='10.1038/s41397-024-00338-x ' title='APF2: an improved ensemble method for pharmacogenomic variant effect prediction '
+ROW 12: year=2025 doi='10.1186/s13059-025-03572-z ' title='Guidelines for releasing a variant effect predictor '
+ROW 13: year=2025 doi='10.1186/s13059-025-03575-w ' title='Variant effect predictor correlation with functional assays is reflective of clinical classification performance '
+ROW 14: year=2026 doi='10.1038/s41586-025-10014-0 ' title='Advancing regulatory variant effect prediction with AlphaGenome '
+ROW 15: year=2023 doi='10.1126/science.adg7492 ' title='Accurate proteome-wide missense variant effect prediction with AlphaMissense '
+ROW 16: year=2021 doi='10.1002/humu.24298 ' title='Annotating and prioritizing genomic variants using the Ensembl Variant Effect Predictor—A tutorial '
+ROW 17: year=None doi=None title=None
+ROW 18: year=None doi=None title=None
+ROW 19: year=None doi=None title=None

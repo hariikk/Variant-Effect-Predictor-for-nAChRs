@@ -1,0 +1,13 @@
+subgroup,model,condition,cv,n_features,macro_f1_mean,macro_f1_std,delta_f1
+muscle,random_forest,full,subunit/5,75,0.4002834147708011,0.0,0.0
+muscle,random_forest,drop_structural_core,subunit/5,68,0.3871161710654055,0.0,-0.01316724370539557
+muscle,catboost,full,subunit/5,75,0.4724998588701528,0.0,0.0
+muscle,catboost,drop_structural_core,subunit/5,68,0.4600114353676421,0.0,-0.01248842350251067
+neuronal_hetero,random_forest,full,subunit/5,75,0.40945775432831794,0.0,0.0
+neuronal_hetero,random_forest,drop_structural_core,subunit/5,68,0.3997802117252918,0.0,-0.009677542603026112
+neuronal_hetero,catboost,full,subunit/5,75,0.4501541710165646,0.0,0.0
+neuronal_hetero,catboost,drop_structural_core,subunit/5,68,0.4032605736552015,0.0,-0.04689359736136306
+neuronal_homo,random_forest,full,standard/5,75,0.5374897634396164,0.0,0.0
+neuronal_homo,random_forest,drop_structural_core,standard/5,68,0.5354456039556479,0.0,-0.0020441594839685218
+neuronal_homo,catboost,full,standard/5,75,0.5739397479646964,0.0,0.0
+neuronal_homo,catboost,drop_structural_core,standard/5,68,0.563207348525203,0.0,-0.010732399439493334

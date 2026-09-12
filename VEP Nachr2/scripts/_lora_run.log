@@ -1,115 +1,0 @@
-C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
-  warnings.warn(f"Dropped {dropped} rows with missing essential values")
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading data...
-Loaded 841 rows from sheet 'unique_variants'
-Dropped 14 rows with ambiguous effect (LOF/GOF)
-Filtered to substitutions: dropped 30 non-substitution rows
-Final dataset: 760 variants
-  Species: {'human': 507, 'rat': 173, 'mouse': 80}
-  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
-  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
-Loading facebook/esm2_t30_150M_UR50D (device=cuda)...
-  Seed 42 fold 1/5: train=732 test=28
-Loading weights:   0%|          | 0/486 [00:00<?, ?it/s]Loading weights:  14%|#3        | 66/486 [00:00<00:00, 659.32it/s]Loading weights: 100%|##########| 486/486 [00:00<00:00, 3210.70it/s]
-[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t30_150M_UR50D
-Key                        | Status     | 
----------------------------+------------+-
-lm_head.layer_norm.weight  | UNEXPECTED | 
-lm_head.dense.bias         | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
-lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.bias               | UNEXPECTED | 
-classifier.out_proj.bias   | MISSING    | 
-classifier.out_proj.weight | MISSING    | 
-classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
-  return t.to(
-[transformers] `use_return_dict` is deprecated! Use `return_dict` instead!
-[transformers] Caching is incompatible with gradient checkpointing in EsmLayer. Setting `use_cache=False`.
-    macro F1: 0.2326
-  Seed 42 fold 2/5: train=736 test=24
-Loading weights:   0%|          | 0/486 [00:00<?, ?it/s]Loading weights:   3%|3         | 16/486 [00:00<00:03, 150.59it/s]Loading weights: 100%|##########| 486/486 [00:00<00:00, 2759.46it/s]
-[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t30_150M_UR50D
-Key                        | Status     | 
----------------------------+------------+-
-lm_head.layer_norm.weight  | UNEXPECTED | 
-lm_head.dense.bias         | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
-lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.bias               | UNEXPECTED | 
-classifier.out_proj.bias   | MISSING    | 
-classifier.out_proj.weight | MISSING    | 
-classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-    macro F1: 0.2564
-  Seed 42 fold 3/5: train=364 test=396
-Loading weights:   0%|          | 0/486 [00:00<?, ?it/s]Loading weights: 100%|##########| 486/486 [00:00<00:00, 7031.04it/s]
-[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t30_150M_UR50D
-Key                        | Status     | 
----------------------------+------------+-
-lm_head.layer_norm.weight  | UNEXPECTED | 
-lm_head.dense.bias         | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
-lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.bias               | UNEXPECTED | 
-classifier.out_proj.bias   | MISSING    | 
-classifier.out_proj.weight | MISSING    | 
-classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-    macro F1: 0.2011
-  Seed 42 fold 4/5: train=621 test=139
-Loading weights:   0%|          | 0/486 [00:00<?, ?it/s]Loading weights:   3%|3         | 16/486 [00:00<00:03, 151.75it/s]Loading weights: 100%|##########| 486/486 [00:00<00:00, 2911.30it/s]
-[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t30_150M_UR50D
-Key                        | Status     | 
----------------------------+------------+-
-lm_head.layer_norm.weight  | UNEXPECTED | 
-lm_head.dense.bias         | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
-lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.bias               | UNEXPECTED | 
-classifier.out_proj.bias   | MISSING    | 
-classifier.out_proj.weight | MISSING    | 
-classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-    macro F1: 0.3381
-  Seed 42 fold 5/5: train=587 test=173
-Loading weights:   0%|          | 0/486 [00:00<?, ?it/s]Loading weights:  42%|####1     | 203/486 [00:00<00:00, 2028.60it/s]Loading weights: 100%|##########| 486/486 [00:00<00:00, 3818.76it/s]
-[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t30_150M_UR50D
-Key                        | Status     | 
----------------------------+------------+-
-lm_head.layer_norm.weight  | UNEXPECTED | 
-lm_head.dense.bias         | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
-lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.bias               | UNEXPECTED | 
-classifier.out_proj.bias   | MISSING    | 
-classifier.out_proj.weight | MISSING    | 
-classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-    macro F1: 0.3060
-  Seed 42 mean macro F1: 0.2668
-
-LoRA ESM-2 3-class macro F1: 0.2668 +/- 0.0000
-Total time: 56.5 min
