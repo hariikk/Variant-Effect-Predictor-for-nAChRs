@@ -1,0 +1,16 @@
+VEP Nachr:
+
+- Dataset curation(Gathered research papers which has conducted experiments on Electrophysiology on Nachr genes in Humans and adding the data from each and every paper into a excel sheet)
+- Inclusion of Rat and Mouse data after Human data seemed insufficient
+- Around 250+ papers were taken just for data curation
+- data cleaning (removing duplicates, data which are claiming different results for the same AA, naming problems with the Measurement Techniques and pathogenicity)
+- mapping rat and mouse genes to the human genes 
+- took the features(grantham, positional, AA properties) from ENaC VEP(Alex und Noah) and patched it here with VEP Nachr.
+- ran it with those features and trained the 10 ML models with 15 genes and tested on 1 hidden gene. F1 Score = 0.45
+- data was insufficient so used AI to get a ton of papers and this time used Llama Local LLM to extract data from all the open source papers, then went on to get data from the closed source papers manually(double checked the data from Llama myself)
+- ran the models again. Score = 0.55
+- Added structural features for the models, no real change in the F1 score.
+- Added AlphaMissense(Google DeepMind AI model that predicts effects of missense genetic variants) as a feature, no change in F1 score.
+- Added other  
+- removed the train with 15 and test with 1 idea obstacle and trained with 16 and tested with 16, ie, training with gene identity, which bumped the score from 0.5 to 0.63
+- 

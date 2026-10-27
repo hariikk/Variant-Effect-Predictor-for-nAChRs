@@ -1,0 +1,10 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+=== GROUP=beta  n=128  seeds=10  models=['catboost'] ===
+  [catboost       ] per-seed F1 = [0.6434, 0.6045, 0.5911, 0.6253, 0.62, 0.6359, 0.6289, 0.6369, 0.6279, 0.6253]
+  [catboost       ] mean 0.6239 ± 0.0149  -> per_seed_beta_catboost.json

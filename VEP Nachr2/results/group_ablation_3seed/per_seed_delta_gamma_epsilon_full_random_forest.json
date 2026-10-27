@@ -1,0 +1,15 @@
+{
+  "group": "delta_gamma_epsilon",
+  "drop": "full",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6750341633674967,
+    0.6803431335689399,
+    0.7082896360426949
+  ]
+}

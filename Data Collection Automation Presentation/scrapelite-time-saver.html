@@ -1,0 +1,125 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>ScrapeLite time saver</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #e9eef5;
+    --slide: #ffffff;
+    --ink: #0f1b2d;
+    --muted: #5b6b7e;
+    --line: #e3e8ef;
+    --accent: #2563eb;
+    --accent-ink: #1d4ed8;
+    --accent-soft: #eef3ff;
+    --bad: #c0392b;
+    --bad-soft: #fdf1f0;
+    --navy: #101c2e;
+    --navy-muted: #a9b6c9;
+    --sky: #7dd3fc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 24px;
+  }
+  .slide {
+    margin: auto;
+    width: 100%;
+    max-width: 1120px;
+    aspect-ratio: 16 / 9;
+    background: var(--slide);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(16, 24, 40, 0.14);
+    display: flex;
+    flex-direction: column;
+  }
+  .head { padding: 34px 44px 6px; }
+  .eyebrow {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 10px;
+  }
+  h1 {
+    margin: 0; font-size: clamp(1.6rem, 3.1vw, 2.7rem); line-height: 1.08;
+    font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; max-width: 18ch;
+  }
+  .compare {
+    flex: 1; display: flex; gap: 20px; padding: 26px 44px 30px; align-items: stretch;
+  }
+  .card {
+    flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 24px; display: flex; flex-direction: column;
+    border-top: 4px solid var(--accent);
+  }
+  .card.old { border-top-color: var(--bad); background: var(--bad-soft); }
+  .card.new { background: var(--accent-soft); }
+  .label { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; }
+  .card.old .label { color: var(--bad); }
+  .card.new .label { color: var(--accent-ink); }
+  ul { margin: 0 0 18px; padding: 0; list-style: none; }
+  li { font-size: 0.95rem; color: var(--muted); padding: 5px 0 5px 22px; position: relative; }
+  li::before { content: ""; position: absolute; left: 2px; top: 13px; width: 8px; height: 8px; border-radius: 50%; }
+  .card.old li::before { background: var(--bad); }
+  .card.new li::before { background: var(--accent); }
+  .stat { margin-top: auto; display: flex; align-items: baseline; gap: 6px; }
+  .stat b {
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .card.old .stat b { color: var(--bad); }
+  .card.new .stat b { color: var(--accent-ink); }
+  .stat span { font-size: 0.95rem; color: var(--muted); }
+  .foot {
+    background: var(--navy); color: #fff; padding: 18px 44px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .foot .big { font-size: 1.15rem; font-weight: 700; }
+  .foot s { color: var(--navy-muted); text-decoration-color: var(--sky); }
+  .foot b { color: var(--sky); font-weight: 800; }
+  .foot .steps { font-size: 0.85rem; color: var(--navy-muted); letter-spacing: 0.02em; }
+  .foot .steps b { color: #fff; font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .slide { aspect-ratio: auto; }
+    .head, .compare, .foot { padding-left: 20px; padding-right: 20px; }
+    .compare { flex-direction: column; }
+    .foot { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+<div class="slide">
+  <div class="head">
+    <p class="eyebrow">ScrapeLite</p>
+    <h1>Turn hours of reading into a few clicks</h1>
+  </div>
+  <div class="compare">
+    <div class="card old">
+      <div class="label">Without ScrapeLite</div>
+      <ul>
+        <li>Open every paper</li>
+        <li>Find each number</li>
+        <li>Type it into Excel</li>
+      </ul>
+      <div class="stat"><b>~20 min</b><span>per paper</span></div>
+    </div>
+    <div class="card new">
+      <div class="label">With ScrapeLite</div>
+      <ul>
+        <li>Search once</li>
+        <li>AI extracts your data</li>
+        <li>Double-check the highlights</li>
+      </ul>
+      <div class="stat"><b>~1 min</b><span>per paper</span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="big">50 papers · <s>~17 hours</s> → <b>under an hour</b></div>
+    <div class="steps"><b>Search</b> → <b>Extract</b> → <b>Double-check</b></div>
+  </div>
+</div>

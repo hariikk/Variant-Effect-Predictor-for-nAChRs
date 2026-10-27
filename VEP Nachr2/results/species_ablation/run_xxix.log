@@ -1,0 +1,36 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+======================================================================
+CONDITION: human_only  (n=507, class counts={0: 293, 1: 77, 2: 137})
+  [random_forest  ] macro F1 = 0.5987 ± 0.0036
+  [catboost       ] macro F1 = 0.6038 ± 0.0013
+======================================================================
+CONDITION: human_mouse  (n=587, class counts={0: 323, 1: 102, 2: 162})
+  [random_forest  ] macro F1 = 0.6150 ± 0.0071
+  [catboost       ] macro F1 = 0.6290 ± 0.0138
+======================================================================
+CONDITION: human_rat  (n=680, class counts={0: 347, 1: 163, 2: 170})
+  [random_forest  ] macro F1 = 0.6258 ± 0.0056
+  [catboost       ] macro F1 = 0.6379 ± 0.0083
+
+======================================================================
+Delta macro F1 vs human_only (positive = added species helps):
+
+[random_forest] human_only = 0.5987
+    human_mouse    0.6150  Δ=+0.0163
+    human_rat      0.6258  Δ=+0.0271
+    all_three      0.6525  Δ=+0.0538  (Run XXVIII, not re-run)
+
+[catboost] human_only = 0.6038
+    human_mouse    0.6290  Δ=+0.0253
+    human_rat      0.6379  Δ=+0.0342
+    all_three      0.6499  Δ=+0.0461  (Run XXVIII, not re-run)
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\species_ablation\species_ablation_summary.csv

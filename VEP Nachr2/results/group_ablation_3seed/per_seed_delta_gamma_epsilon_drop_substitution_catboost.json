@@ -1,0 +1,15 @@
+{
+  "group": "delta_gamma_epsilon",
+  "drop": "drop_substitution",
+  "model": "catboost",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6898660180918246,
+    0.6735040055729711,
+    0.6900674952287856
+  ]
+}

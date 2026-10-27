@@ -1,0 +1,2 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")

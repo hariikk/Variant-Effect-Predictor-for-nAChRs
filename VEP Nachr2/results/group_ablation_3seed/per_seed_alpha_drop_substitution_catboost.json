@@ -1,0 +1,15 @@
+{
+  "group": "alpha",
+  "drop": "drop_substitution",
+  "model": "catboost",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6372457443245559,
+    0.614334338184728,
+    0.5859886062597863
+  ]
+}

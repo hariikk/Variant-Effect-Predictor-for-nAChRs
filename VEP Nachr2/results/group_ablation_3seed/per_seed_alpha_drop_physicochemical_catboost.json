@@ -1,0 +1,15 @@
+{
+  "group": "alpha",
+  "drop": "drop_physicochemical",
+  "model": "catboost",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6308858753581098,
+    0.6174517730646645,
+    0.6187018259537116
+  ]
+}

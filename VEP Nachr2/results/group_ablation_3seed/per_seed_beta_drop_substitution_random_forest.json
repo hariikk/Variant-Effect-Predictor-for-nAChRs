@@ -1,0 +1,15 @@
+{
+  "group": "beta",
+  "drop": "drop_substitution",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6463231789224521,
+    0.6628150315456817,
+    0.5845957504653156
+  ]
+}

@@ -1,0 +1,38 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+========================================================================
+CHRNA7 structural-feature change (7EKT -> a7rest), n = 200
+========================================================================
+  rsa                    corr=+0.782  mean|Δ|=0.0875
+  cbeta_density          corr=+0.846  mean|Δ|=1.9200
+  b_factor               corr=+nan  mean|Δ|=82.5827
+  dssp_helix             corr=+nan  mean|Δ|=0.3550
+  dssp_sheet             corr=+nan  mean|Δ|=0.2550
+  dssp_coil              corr=+nan  mean|Δ|=0.6100
+  is_unmappable          corr=+0.574  mean|Δ|=0.0100
+  gnm_msf                corr=+0.586  mean|Δ|=0.0415
+  gnm_slowmode           corr=-0.033  mean|Δ|=0.0006
+  gnm_gate_coupling      corr=+0.623  mean|Δ|=0.0155
+  allosteric_dvol        corr=+0.954  mean|Δ|=0.0042
+  allosteric_dhydro      corr=+0.963  mean|Δ|=0.0033
+  allosteric_dcharge     corr=+0.977  mean|Δ|=0.0018
+  allosteric_dpolarity   corr=+0.965  mean|Δ|=0.0042
+
+========================================================================
+CV comparison: 7EKT vs a7rest (gene-aware standard, full 760)
+========================================================================
+  [7EKT    random_forest  ] macro 0.6478 ± 0.0092 | LOF 0.7409 | NNE 0.6214 | GOF 0.5811
+  [7EKT    catboost       ] macro 0.6479 ± 0.0097 | LOF 0.7378 | NNE 0.6231 | GOF 0.5829
+  [a7rest  random_forest  ] macro 0.6364 ± 0.0057 | LOF 0.7390 | NNE 0.6156 | GOF 0.5546
+  [a7rest  catboost       ] macro 0.6403 ± 0.0054 | LOF 0.7332 | NNE 0.6160 | GOF 0.5718
+
+  Δ = (a7rest) − (7EKT), per model (macro F1):
+    [random_forest  ] 0.6478 -> 0.6364  Δ -0.0114
+    [catboost       ] 0.6479 -> 0.6403  Δ -0.0076
+
+Saved -> C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\a7resting\comparison.json

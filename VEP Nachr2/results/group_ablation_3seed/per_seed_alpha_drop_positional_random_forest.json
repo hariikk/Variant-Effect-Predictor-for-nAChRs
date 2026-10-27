@@ -1,0 +1,15 @@
+{
+  "group": "alpha",
+  "drop": "drop_positional",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6082450454783551,
+    0.5926749743812874,
+    0.5650266024456824
+  ]
+}

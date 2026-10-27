@@ -1,0 +1,5 @@
+Functional effects of mutations in the mouse muscle nicotinic acetylcholine receptor alpha1 subunit.
+
+We introduced three missense mutations into the mouse CHRNA1 (alpha1) subunit and measured acetylcholine-evoked whole-cell currents in Xenopus oocytes using two-electrode voltage clamp.
+
+The L251T mutant increased peak current amplitude 3-fold compared to wild-type, consistent with a gain of function. The E263K mutant reduced peak current by 80%, consistent with a loss of function. The G153S mutant produced currents that were indistinguishable from wild-type, showing no net effect.

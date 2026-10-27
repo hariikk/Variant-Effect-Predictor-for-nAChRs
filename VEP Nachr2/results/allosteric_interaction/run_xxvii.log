@@ -1,0 +1,32 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+  baseline=(760, 75)  +gating=(760, 78)  +allosteric=(760, 79)
+
+======================================================================
+CONDITION: baseline  (75 feats)
+  [random_forest  ] macro F1 = 0.6320 ± 0.0067
+  [catboost       ] macro F1 = 0.6351 ± 0.0020
+======================================================================
+CONDITION: baseline_gating  (78 feats)
+  [random_forest  ] macro F1 = 0.6514 ± 0.0162
+  [catboost       ] macro F1 = 0.6476 ± 0.0020
+======================================================================
+CONDITION: baseline_allosteric  (79 feats)
+  [random_forest  ] macro F1 = 0.6404 ± 0.0022
+  [catboost       ] macro F1 = 0.6404 ± 0.0066
+
+======================================================================
+Delta macro F1 (condition − baseline; positive = helps):
+  [random_forest  ] baseline_gating        0.6514  Δ=+0.0194
+  [random_forest  ] baseline_allosteric    0.6404  Δ=+0.0084
+  [catboost       ] baseline_gating        0.6476  Δ=+0.0125
+  [catboost       ] baseline_allosteric    0.6404  Δ=+0.0053
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\allosteric_interaction\allosteric_interaction_summary.csv

@@ -1,0 +1,55 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+Full matrix (760, 82); dropping 16 subunit_* cols -> (760, 66)
+======================================================================
+FULL  with_identity  (n=760, genes=16, classes={'LOF': 377, 'No net effect': 188, 'GOF': 195}, dim=82)
+  [random_forest  ] macro F1 = 0.6451 ± 0.0096
+  [catboost       ] macro F1 = 0.6470 ± 0.0129
+======================================================================
+FULL  without_identity  (n=760, genes=16, classes={'LOF': 377, 'No net effect': 188, 'GOF': 195}, dim=66)
+  [random_forest  ] macro F1 = 0.6418 ± 0.0143
+  [catboost       ] macro F1 = 0.6383 ± 0.0039
+======================================================================
+ALPHA  with_identity  (n=517, genes=9, classes={'LOF': 265, 'No net effect': 125, 'GOF': 127}, dim=82)
+  [random_forest  ] macro F1 = 0.6262 ± 0.0126
+  [catboost       ] macro F1 = 0.6158 ± 0.0189
+======================================================================
+ALPHA  without_identity  (n=517, genes=9, classes={'LOF': 265, 'No net effect': 125, 'GOF': 127}, dim=66)
+  [random_forest  ] macro F1 = 0.6266 ± 0.0125
+  [catboost       ] macro F1 = 0.6117 ± 0.0138
+======================================================================
+BETA  with_identity  (n=128, genes=4, classes={'LOF': 39, 'No net effect': 45, 'GOF': 44}, dim=82)
+  [random_forest  ] macro F1 = 0.6310 ± 0.0407
+  [catboost       ] macro F1 = 0.6239 ± 0.0149
+======================================================================
+BETA  without_identity  (n=128, genes=4, classes={'LOF': 39, 'No net effect': 45, 'GOF': 44}, dim=66)
+  [random_forest  ] macro F1 = 0.6141 ± 0.0234
+  [catboost       ] macro F1 = 0.6165 ± 0.0327
+======================================================================
+DELTA_GAMMA_EPSILON  with_identity  (n=115, genes=3, classes={'LOF': 73, 'No net effect': 18, 'GOF': 24}, dim=82)
+  [random_forest  ] macro F1 = 0.7001 ± 0.0252
+  [catboost       ] macro F1 = 0.7046 ± 0.0282
+======================================================================
+DELTA_GAMMA_EPSILON  without_identity  (n=115, genes=3, classes={'LOF': 73, 'No net effect': 18, 'GOF': 24}, dim=66)
+  [random_forest  ] macro F1 = 0.7069 ± 0.0247
+  [catboost       ] macro F1 = 0.7094 ± 0.0291
+
+======================================================================
+Delta (with identity - without identity) macro F1:
+  full                   [random_forest  ] with=0.6451  without=0.6418  Δ=+0.0033
+  full                   [catboost       ] with=0.6470  without=0.6383  Δ=+0.0087
+  alpha                  [random_forest  ] with=0.6262  without=0.6266  Δ=-0.0003
+  alpha                  [catboost       ] with=0.6158  without=0.6117  Δ=+0.0041
+  beta                   [random_forest  ] with=0.6310  without=0.6141  Δ=+0.0168
+  beta                   [catboost       ] with=0.6239  without=0.6165  Δ=+0.0074
+  delta_gamma_epsilon    [random_forest  ] with=0.7001  without=0.7069  Δ=-0.0068
+  delta_gamma_epsilon    [catboost       ] with=0.7046  without=0.7094  Δ=-0.0048
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\gene_identity_drop\gene_identity_drop_summary.csv

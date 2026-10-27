@@ -1,0 +1,15 @@
+{
+  "group": "beta",
+  "drop": "drop_allosteric_interaction",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6621559960407719,
+    0.6591511458384524,
+    0.5955722645660726
+  ]
+}

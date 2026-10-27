@@ -1,0 +1,38 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+======================================================================
+CONDITION: full  (n=760, n_features=82)
+  [random_forest  ] macro F1 = 0.6525 ± 0.0072
+  [catboost       ] macro F1 = 0.6499 ± 0.0063
+======================================================================
+CONDITION: functional  (n=760, n_features=89)
+  [random_forest  ] macro F1 = 0.6559 ± 0.0071
+  [catboost       ] macro F1 = 0.6515 ± 0.0048
+======================================================================
+CONDITION: no_identity  (n=760, n_features=66)
+  [random_forest  ] macro F1 = 0.6441 ± 0.0057
+  [catboost       ] macro F1 = 0.6388 ± 0.0015
+======================================================================
+CONDITION: functional_no_identity  (n=760, n_features=73)
+  [random_forest  ] macro F1 = 0.6478 ± 0.0100
+  [catboost       ] macro F1 = 0.6477 ± 0.0047
+
+======================================================================
+Delta macro F1 vs full:
+
+[random_forest] full = 0.6525
+    functional                 0.6559  Δ=+0.0034
+    no_identity                0.6441  Δ=-0.0084
+    functional_no_identity     0.6478  Δ=-0.0047
+
+[catboost] full = 0.6499
+    functional                 0.6515  Δ=+0.0016
+    no_identity                0.6388  Δ=-0.0111
+    functional_no_identity     0.6477  Δ=-0.0022
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\functional\functional_summary.csv

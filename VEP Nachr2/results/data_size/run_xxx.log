@@ -1,0 +1,48 @@
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+======================================================================
+CONDITION: quarter_502525  (n=196, classes={'LOF': 95, 'No net effect': 51, 'GOF': 50})
+  [random_forest  ] macro F1 = 0.5450 ± 0.0398
+  [catboost       ] macro F1 = 0.5305 ± 0.0286
+======================================================================
+CONDITION: half_502525  (n=385, classes={'LOF': 190, 'No net effect': 97, 'GOF': 98})
+  [random_forest  ] macro F1 = 0.5614 ± 0.0298
+  [catboost       ] macro F1 = 0.5871 ± 0.0089
+======================================================================
+CONDITION: n350_502525  (n=350, classes={'LOF': 175, 'No net effect': 87, 'GOF': 88})
+  [random_forest  ] macro F1 = 0.5830 ± 0.0060
+  [catboost       ] macro F1 = 0.5857 ± 0.0236
+======================================================================
+CONDITION: n350_333333  (n=350, classes={'LOF': 117, 'No net effect': 116, 'GOF': 117})
+  [random_forest  ] macro F1 = 0.6052 ± 0.0099
+  [catboost       ] macro F1 = 0.5929 ± 0.0216
+======================================================================
+CONDITION: n350_333333_gene  (n=348, classes={'LOF': 115, 'No net effect': 116, 'GOF': 117})
+  [random_forest  ] macro F1 = 0.6106 ± 0.0064
+  [catboost       ] macro F1 = 0.6103 ± 0.0202
+
+======================================================================
+Delta macro F1 vs full (760 = 0.6525/0.6499):
+
+[random_forest]
+    half_502525            0.5614  Δ=-0.0911
+    n350_333333            0.6052  Δ=-0.0473
+    n350_333333_gene       0.6106  Δ=-0.0419
+    n350_502525            0.5830  Δ=-0.0695
+    quarter_502525         0.5450  Δ=-0.1075
+
+[catboost]
+    half_502525            0.5871  Δ=-0.0628
+    n350_333333            0.5929  Δ=-0.0570
+    n350_333333_gene       0.6103  Δ=-0.0396
+    n350_502525            0.5857  Δ=-0.0642
+    quarter_502525         0.5305  Δ=-0.1194
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\data_size\data_size_summary.csv

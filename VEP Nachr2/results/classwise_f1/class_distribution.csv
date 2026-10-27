@@ -1,0 +1,5 @@
+group,n,n_genes,n_LOF,n_No net effect,n_GOF,majority_class,majority_share
+all,760,16,377,188,195,LOF,0.4961
+alpha,517,9,265,125,127,LOF,0.5126
+beta,128,4,39,45,44,No net effect,0.3516
+delta_gamma_epsilon,115,3,73,18,24,LOF,0.6348

@@ -1,0 +1,34 @@
+[2026-10-13 20:07:30] === rerun_10seed start — 14 commands ===
+[2026-10-13 20:07:30] START xxvi_gene_aware: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxvi_gene_aware.py --n-seeds 10 --n-trials 15
+[2026-10-14 00:25:45] DONE  xxvi_gene_aware rc=0 in 258.2 min
+[2026-10-14 00:25:45] START xxvii_allosteric: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxvii_allosteric.py --n-seeds 10 --n-trials 15
+[2026-10-14 05:25:23] DONE  xxvii_allosteric rc=0 in 299.6 min
+[2026-10-14 05:25:23] START xxviii_structural: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxviii_structural_feature_ablation.py --n-seeds 10 --n-trials 15
+[2026-10-15 02:39:09] SKIP  xxvi_gene_aware (already done)
+[2026-10-15 02:39:09] SKIP  xxvii_allosteric (already done)
+[2026-10-15 02:39:09] === rerun_10seed start — 12 to run, jobs=3 ===
+[2026-10-15 02:39:09] START xxviii_structural: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxviii_structural_feature_ablation.py --n-seeds 10 --n-trials 15
+[2026-10-15 02:39:09] START xxix_species: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxix_species_ablation.py --n-seeds 10 --n-trials 15
+[2026-10-15 02:39:09] START xxx_data_size: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxx_data_size.py --n-seeds 10 --n-trials 15
+[2026-10-15 07:36:12] START xxxi_subunit: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxxi_subunit_type.py --n-seeds 10 --n-trials 15
+[2026-10-15 07:36:12] DONE  xxix_species rc=0 in 297.0 min
+[2026-10-15 10:19:35] START xxxii_gene_identity: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxxii_gene_identity.py --n-seeds 10 --n-trials 15
+[2026-10-15 10:19:35] DONE  xxx_data_size rc=0 in 460.4 min
+[2026-10-15 12:07:12] START xxxiii_group_ablation: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxxiii_group_ablation.py --n-seeds 10 --n-trials 15 --out-name group_ablation_10seed
+[2026-10-15 12:07:12] DONE  xxxi_subunit rc=0 in 271.0 min
+[2026-10-15 22:47:53] START xxxv_functional: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxxv_functional.py --n-seeds 10 --n-trials 15
+[2026-10-15 22:47:53] DONE  xxxii_gene_identity rc=0 in 748.3 min
+[2026-10-16 06:59:32] START xxxvi_structure_gating: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_xxxvi_structure_gating.py --n-seeds 10 --n-trials 15
+[2026-10-16 06:59:32] DONE  xxxv_functional rc=0 in 491.7 min
+[2026-10-16 10:45:41] START idea_a: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_alphamissense_probe.py --n-seeds 10 --n-trials 15
+[2026-10-16 10:45:41] DONE  xxviii_structural rc=0 in 1926.5 min
+[2026-10-16 15:12:08] START a7resting_probe: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_a7resting_probe.py --n-seeds 10 --n-trials 15
+[2026-10-16 15:12:08] DONE  xxxvi_structure_gating rc=0 in 492.6 min
+[2026-10-16 19:22:13] START a7resting_geomonly: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_a7resting_geomonly.py --n-seeds 10 --n-trials 15
+[2026-10-16 19:22:13] DONE  a7resting_probe rc=0 in 250.1 min
+[2026-10-16 20:30:05] START classwise_f1: C:\Users\harik\AppData\Local\Programs\Python\Python311\python.exe -u scripts/run_classwise_f1.py --n-seeds 10 --n-trials 15
+[2026-10-16 20:30:05] DONE  idea_a rc=0 in 584.4 min
+[2026-10-16 21:26:51] DONE  a7resting_geomonly rc=0 in 124.6 min
+[2026-10-17 11:34:05] DONE  xxxiii_group_ablation rc=0 in 2846.9 min
+[2026-10-17 14:21:29] DONE  classwise_f1 rc=0 in 1071.4 min
+[2026-10-17 14:21:29] === rerun_10seed finished ===

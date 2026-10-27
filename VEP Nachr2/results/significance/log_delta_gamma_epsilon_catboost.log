@@ -1,0 +1,10 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+=== GROUP=delta_gamma_epsilon  n=115  seeds=10  models=['catboost'] ===
+  [catboost       ] per-seed F1 = [0.6967, 0.6939, 0.6793, 0.6956, 0.6794, 0.7159, 0.6865, 0.7271, 0.7778, 0.6933]
+  [catboost       ] mean 0.7046 ± 0.0282  -> per_seed_delta_gamma_epsilon_catboost.json

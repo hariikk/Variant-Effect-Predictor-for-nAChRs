@@ -1,0 +1,126 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+  full=(760, 82)  (14 structural cols)
+
+======================================================================
+CONDITION: full  (82 feats)
+  [random_forest  ] macro F1 = 0.6451 ± 0.0096
+  [catboost       ] macro F1 = 0.6470 ± 0.0129
+======================================================================
+CONDITION: drop_rsa  (81 feats)
+  [random_forest  ] macro F1 = 0.6419 ± 0.0150
+  [catboost       ] macro F1 = 0.6460 ± 0.0132
+======================================================================
+CONDITION: drop_cbeta_density  (81 feats)
+  [random_forest  ] macro F1 = 0.6420 ± 0.0099
+  [catboost       ] macro F1 = 0.6442 ± 0.0096
+======================================================================
+CONDITION: drop_b_factor  (81 feats)
+  [random_forest  ] macro F1 = 0.6449 ± 0.0124
+  [catboost       ] macro F1 = 0.6467 ± 0.0092
+======================================================================
+CONDITION: drop_dssp_helix  (81 feats)
+  [random_forest  ] macro F1 = 0.6436 ± 0.0097
+  [catboost       ] macro F1 = 0.6466 ± 0.0083
+======================================================================
+CONDITION: drop_dssp_sheet  (81 feats)
+  [random_forest  ] macro F1 = 0.6406 ± 0.0120
+  [catboost       ] macro F1 = 0.6457 ± 0.0075
+======================================================================
+CONDITION: drop_dssp_coil  (81 feats)
+  [random_forest  ] macro F1 = 0.6420 ± 0.0077
+  [catboost       ] macro F1 = 0.6483 ± 0.0118
+======================================================================
+CONDITION: drop_is_unmappable  (81 feats)
+  [random_forest  ] macro F1 = 0.6428 ± 0.0122
+  [catboost       ] macro F1 = 0.6453 ± 0.0125
+======================================================================
+CONDITION: drop_gnm_msf  (81 feats)
+  [random_forest  ] macro F1 = 0.6437 ± 0.0093
+  [catboost       ] macro F1 = 0.6432 ± 0.0088
+======================================================================
+CONDITION: drop_gnm_slowmode  (81 feats)
+  [random_forest  ] macro F1 = 0.6362 ± 0.0122
+  [catboost       ] macro F1 = 0.6409 ± 0.0123
+======================================================================
+CONDITION: drop_gnm_gate_coupling  (81 feats)
+  [random_forest  ] macro F1 = 0.6444 ± 0.0122
+  [catboost       ] macro F1 = 0.6496 ± 0.0146
+======================================================================
+CONDITION: drop_allosteric_dvol  (81 feats)
+  [random_forest  ] macro F1 = 0.6453 ± 0.0104
+  [catboost       ] macro F1 = 0.6475 ± 0.0115
+======================================================================
+CONDITION: drop_allosteric_dhydro  (81 feats)
+  [random_forest  ] macro F1 = 0.6453 ± 0.0154
+  [catboost       ] macro F1 = 0.6433 ± 0.0122
+======================================================================
+CONDITION: drop_allosteric_dcharge  (81 feats)
+  [random_forest  ] macro F1 = 0.6472 ± 0.0113
+  [catboost       ] macro F1 = 0.6478 ± 0.0098
+======================================================================
+CONDITION: drop_allosteric_dpolarity  (81 feats)
+  [random_forest  ] macro F1 = 0.6479 ± 0.0091
+  [catboost       ] macro F1 = 0.6477 ± 0.0140
+======================================================================
+CONDITION: drop_group_structural_core  (75 feats)
+  [random_forest  ] macro F1 = 0.6434 ± 0.0117
+  [catboost       ] macro F1 = 0.6411 ± 0.0078
+======================================================================
+CONDITION: drop_group_gating  (79 feats)
+  [random_forest  ] macro F1 = 0.6367 ± 0.0122
+  [catboost       ] macro F1 = 0.6431 ± 0.0101
+======================================================================
+CONDITION: drop_group_allosteric  (78 feats)
+  [random_forest  ] macro F1 = 0.6480 ± 0.0152
+  [catboost       ] macro F1 = 0.6523 ± 0.0141
+
+======================================================================
+Delta macro F1 vs full (negative = feature helps):
+
+[random_forest] full = 0.6451
+    drop_gnm_slowmode            0.6362  Δ=-0.0089
+    drop_group_gating            0.6367  Δ=-0.0084
+    drop_dssp_sheet              0.6406  Δ=-0.0045
+    drop_rsa                     0.6419  Δ=-0.0032
+    drop_cbeta_density           0.6420  Δ=-0.0032
+    drop_dssp_coil               0.6420  Δ=-0.0032
+    drop_is_unmappable           0.6428  Δ=-0.0023
+    drop_group_structural_core   0.6434  Δ=-0.0017
+    drop_dssp_helix              0.6436  Δ=-0.0015
+    drop_gnm_msf                 0.6437  Δ=-0.0014
+    drop_gnm_gate_coupling       0.6444  Δ=-0.0008
+    drop_b_factor                0.6449  Δ=-0.0002
+    drop_allosteric_dhydro       0.6453  Δ=+0.0002
+    drop_allosteric_dvol         0.6453  Δ=+0.0002
+    drop_allosteric_dcharge      0.6472  Δ=+0.0021
+    drop_allosteric_dpolarity    0.6479  Δ=+0.0027
+    drop_group_allosteric        0.6480  Δ=+0.0028
+
+[catboost] full = 0.6470
+    drop_gnm_slowmode            0.6409  Δ=-0.0061
+    drop_group_structural_core   0.6411  Δ=-0.0059
+    drop_group_gating            0.6431  Δ=-0.0040
+    drop_gnm_msf                 0.6432  Δ=-0.0039
+    drop_allosteric_dhydro       0.6433  Δ=-0.0038
+    drop_cbeta_density           0.6442  Δ=-0.0028
+    drop_is_unmappable           0.6453  Δ=-0.0017
+    drop_dssp_sheet              0.6457  Δ=-0.0013
+    drop_rsa                     0.6460  Δ=-0.0011
+    drop_dssp_helix              0.6466  Δ=-0.0005
+    drop_b_factor                0.6467  Δ=-0.0003
+    drop_allosteric_dvol         0.6475  Δ=+0.0005
+    drop_allosteric_dpolarity    0.6477  Δ=+0.0006
+    drop_allosteric_dcharge      0.6478  Δ=+0.0008
+    drop_dssp_coil               0.6483  Δ=+0.0013
+    drop_gnm_gate_coupling       0.6496  Δ=+0.0026
+    drop_group_allosteric        0.6523  Δ=+0.0052
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\structural_feature_ablation\structural_feature_ablation_summary.csv

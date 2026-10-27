@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nAChR Variant Explorer</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --border: #e4e6ea;
+    --text: #1f2328;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    padding: 16px 20px 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  header h1 { font-size: 17px; margin: 0; letter-spacing: -0.01em; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  .wrap { padding: 0 20px 20px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
+
+  /* ---- controls ---- */
+  .controls { padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+  .cgroup { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .cgroup > .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; min-width: 74px; }
+  .chip {
+    border: 1px solid var(--border); background: #fff; border-radius: 999px;
+    padding: 4px 11px; font-size: 13px; cursor: pointer; user-select: none;
+    color: var(--text); transition: background .12s, border-color .12s, color .12s;
+    white-space: nowrap;
+  }
+  .chip:hover { border-color: #c9cdd4; }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip.swatch { display: inline-flex; align-items: center; gap: 6px; }
+  .chip.swatch::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--sw, #999); }
+  .chip.on.swatch::before { outline: 1px solid #fff; }
+  .divider { width: 1px; height: 20px; background: var(--border); margin: 0 4px; }
+  .range-input {
+    width: 74px; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px;
+    font-family: var(--mono); font-size: 13px;
+  }
+  .link { color: var(--accent); cursor: pointer; font-size: 12px; }
+  .link:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .layout { display: flex; gap: 12px; align-items: stretch; }
+  .plot { flex: 1 1 auto; min-width: 0; padding: 8px 8px 4px; }
+  .plot svg { display: block; width: 100%; height: 500px; }
+  .plot .legend { padding: 6px 8px 10px; display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .plot .legend .li { display: inline-flex; align-items: center; gap: 5px; }
+  .plot .legend .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .plot .hint { font-size: 12px; color: var(--muted); padding: 0 8px 8px; }
+
+  .summary { flex: 0 0 300px; max-width: 300px; padding: 12px 14px; display: flex; flex-direction: column; gap: 14px; }
+  .summary h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 8px; }
+  .big { font-size: 30px; font-weight: 650; letter-spacing: -0.02em; }
+  .big small { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .bar-row { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
+  .bar-row .name { width: 46px; font-size: 12px; color: var(--muted); text-align: right; flex: 0 0 auto; }
+  .bar-row .track { flex: 1; height: 12px; background: #f0f1f4; border-radius: 6px; overflow: hidden; display: flex; }
+  .bar-row .count { width: 34px; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; flex: 0 0 auto; }
+  .bar-row .seg { height: 100%; }
+  .gene-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .gene-bar .gname { width: 74px; font-size: 12px; color: var(--text); font-family: var(--mono); flex: 0 0 auto; }
+  .gene-bar .track { flex: 1; height: 14px; background: #f0f1f4; border-radius: 4px; overflow: hidden; display: flex; }
+  .gene-bar .gcount { width: 30px; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; flex: 0 0 auto; color: var(--muted); }
+
+  #tooltip {
+    position: fixed; pointer-events: none; z-index: 50;
+    background: #111827; color: #f9fafb; border-radius: 8px; padding: 8px 10px;
+    font-size: 12px; line-height: 1.5; display: none; max-width: 260px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.22);
+  }
+  #tooltip .tt-title { font-weight: 600; font-size: 13px; }
+  #tooltip .tt-row { display: flex; gap: 6px; }
+  #tooltip .tt-mut { color: #9ca3af; }
+  #tooltip .tt-eff { font-weight: 600; }
+  #tooltip .tt-path { color: #d1d5db; }
+  #tooltip .tt-pmid { color: #6b7280; }
+
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .summary { flex: 1 1 auto; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>nAChR Variant Explorer</h1>
+  <span class="sub">direction-of-effect · LOF / No-net-effect / GOF · 760 curated substitutions (human + rat + mouse)</span>
+</header>
+
+<div class="wrap">
+  <div class="controls card">
+    <div class="cgroup">
+      <span class="label">Family</span>
+      <span id="family-chips"></span>
+      <span class="divider"></span>
+      <span class="label">Genes</span>
+      <span id="gene-chips"></span>
+    </div>
+    <div class="cgroup">
+      <span class="label">Effect</span>
+      <span id="effect-chips"></span>
+      <span class="divider"></span>
+      <span class="label">Species</span>
+      <span id="species-chips"></span>
+      <span class="divider"></span>
+      <span class="label">Colour by</span>
+      <span id="color-chips"></span>
+    </div>
+    <div class="cgroup">
+      <span class="label">Position</span>
+      <span class="chip on" style="cursor:default;background:transparent;color:var(--muted)">from</span>
+      <input class="range-input" id="pos-min" type="number">
+      <span class="chip on" style="cursor:default;background:transparent;color:var(--muted)">to</span>
+      <input class="range-input" id="pos-max" type="number">
+      <span class="link" id="pos-reset">full range</span>
+      <span class="divider"></span>
+      <span class="link" id="view-reset">reset zoom</span>
+      <span id="view-info" style="font-size:12px;color:var(--muted)"></span>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="plot card">
+      <div id="plot"></div>
+      <div class="legend" id="legend"></div>
+      <div class="hint">Hover a point for details · wheel = zoom · drag = pan</div>
+    </div>
+    <aside class="summary card" id="summary"></aside>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<script src="variants.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var EFFECT_VAL = { "LOF": -1, "No net effect": 0, "GOF": 1 };
+  var EFFECT_BAND = function (e) { return e === "No net effect" ? 0.12 : 0.18; };
+  var YTOP = 1.45, YBOT = -1.45;
+  var MARGIN = { l: 58, r: 14, t: 16, b: 36 };
+  var H = 500;
+  var R = 3.4;
+
+  // deterministic jitter, aligned to VARIANTS index (stable across re-renders)
+  function mulberry32(a) { return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }; }
+  var rand = mulberry32(20261003);
+  var J = VARIANTS.map(function () { return rand() * 2 - 1; });
+
+  var state = {
+    family: "all",
+    genes: {},            // gene -> true (active)
+    effects: { "LOF": true, "No net effect": true, "GOF": true },
+    species: { "human": true, "rat": true, "mouse": true },
+    colorBy: "effect",
+    posMin: 0, posMax: 1, // placeholder; set from data
+    dataMin: 0, dataMax: 1,
+    viewMin: 0, viewMax: 1,
+  };
+
+  // --- element refs ---
+  var plotDiv = document.getElementById("plot");
+  var legendDiv = document.getElementById("legend");
+  var summaryDiv = document.getElementById("summary");
+  var tooltip = document.getElementById("tooltip");
+  var posMinEl = document.getElementById("pos-min");
+  var posMaxEl = document.getElementById("pos-max");
+
+  var svg = null, content = null, drawn = [];
+
+  // --- helpers ---
+  function $on(el, ev, fn) { el.addEventListener(ev, fn); }
+  function colorFor(v) {
+    if (state.colorBy === "effect") return META.colors.effect[v.e];
+    if (state.colorBy === "gene") return META.colors.gene[v.g];
+    return META.colors.species[v.s];
+  }
+
+  function filtered() {
+    var out = [];
+    for (var i = 0; i < VARIANTS.length; i++) {
+      var v = VARIANTS[i];
+      if (state.family !== "all" && v.f !== state.family) continue;
+      if (!state.genes[v.g]) continue;
+      if (!state.effects[v.e]) continue;
+      if (!state.species[v.s]) continue;
+      if (v.p < state.posMin || v.p > state.posMax) continue;
+      out.push(i);
+    }
+    return out;
+  }
+
+  // --- controls ---
+  function buildChips(container, options, selected, onToggle, single) {
+    container.innerHTML = "";
+    options.forEach(function (opt) {
+      var c = document.createElement("span");
+      c.className = "chip" + (selected(opt) ? " on" : "");
+      if (opt.color) { c.classList.add("swatch"); c.style.setProperty("--sw", opt.color); }
+      c.textContent = opt.label;
+      c.setAttribute("data-val", opt.val);
+      $on(c, "click", function () { onToggle(opt.val, c); });
+      container.appendChild(c);
+    });
+  }
+
+  function renderFamilyChips() {
+    var opts = [
+      { val: "all", label: "All" },
+      { val: "alpha", label: "α" },
+      { val: "beta", label: "β" },
+      { val: "dge", label: "δ / γ / ε" },
+    ];
+    buildChips(document.getElementById("family-chips"), opts,
+      function (o) { return state.family === o.val; },
+      function (val) {
+        state.family = val;
+        // reset genes to the whole family
+        var famGenes = META.genes.filter(function (g) { return META.familyOf[g] === val || val === "all"; });
+        state.genes = {};
+        famGenes.forEach(function (g) { state.genes[g] = true; });
+        renderFamilyChips(); renderGeneChips(); renderAll();
+      });
+  }
+
+  function renderGeneChips() {
+    var famGenes = META.genes.filter(function (g) {
+      return state.family === "all" || META.familyOf[g] === state.family;
+    });
+    var container = document.getElementById("gene-chips");
+    container.innerHTML = "";
+    famGenes.forEach(function (g) {
+      var c = document.createElement("span");
+      c.className = "chip swatch" + (state.genes[g] ? " on" : "");
+      c.style.setProperty("--sw", META.colors.gene[g]);
+      c.textContent = g;
+      $on(c, "click", function () {
+        state.genes[g] = !state.genes[g];
+        renderGeneChips(); renderAll();
+      });
+      container.appendChild(c);
+    });
+    var all = document.createElement("span");
+    all.className = "chip";
+    all.textContent = "All";
+    $on(all, "click", function () {
+      famGenes.forEach(function (g) { state.genes[g] = true; });
+      renderGeneChips(); renderAll();
+    });
+    var none = document.createElement("span");
+    none.className = "chip";
+    none.textContent = "None";
+    $on(none, "click", function () {
+      famGenes.forEach(function (g) { state.genes[g] = false; });
+      renderGeneChips(); renderAll();
+    });
+    container.appendChild(all); container.appendChild(none);
+  }
+
+  function renderEffectChips() {
+    var opts = META.effectOrder.map(function (e) {
+      return { val: e, label: e === "No net effect" ? "NNE" : e, color: META.colors.effect[e] };
+    });
+    buildChips(document.getElementById("effect-chips"), opts,
+      function (o) { return state.effects[o.val]; },
+      function (val) { state.effects[val] = !state.effects[val]; renderEffectChips(); renderAll(); });
+  }
+
+  function renderSpeciesChips() {
+    var opts = META.speciesOrder.map(function (s) {
+      return { val: s, label: s, color: META.colors.species[s] };
+    });
+    buildChips(document.getElementById("species-chips"), opts,
+      function (o) { return state.species[o.val]; },
+      function (val) { state.species[val] = !state.species[val]; renderSpeciesChips(); renderAll(); });
+  }
+
+  function renderColorChips() {
+    var opts = [
+      { val: "effect", label: "Effect" },
+      { val: "gene", label: "Gene" },
+      { val: "species", label: "Species" },
+    ];
+    buildChips(document.getElementById("color-chips"), opts,
+      function (o) { return state.colorBy === o.val; },
+      function (val) { state.colorBy = val; renderColorChips(); renderAll(); });
+  }
+
+  // --- scatter rendering ---
+  function xPix(p, W) {
+    var plotW = W - MARGIN.l - MARGIN.r;
+    return MARGIN.l + (p - state.viewMin) / (state.viewMax - state.viewMin) * plotW;
+  }
+  function yPix(yv) {
+    var plotH = H - MARGIN.t - MARGIN.b;
+    return MARGIN.t + (YTOP - yv) / (YTOP - YBOT) * plotH;
+  }
+
+  function niceTicks(lo, hi, target) {
+    var span = hi - lo;
+    if (span <= 0) return [lo];
+    var raw = span / (target || 6);
+    var mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    var norm = raw / mag, step;
+    if (norm < 1.5) step = 1; else if (norm < 3.5) step = 2; else if (norm < 7.5) step = 5; else step = 10;
+    step *= mag;
+    var t = [], s = Math.ceil(lo / step) * step;
+    for (; s <= hi + 1e-9; s += step) t.push(s);
+    return t;
+  }
+
+  function renderScatter(idxs) {
+    if (!svg) {
+      svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      content = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svg.appendChild(content);
+      plotDiv.innerHTML = "";
+      plotDiv.appendChild(svg);
+      attachPlotEvents();
+    }
+    var W = Math.max(320, plotDiv.clientWidth);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W);
+
+    var s = [];
+    s.push('<rect x="0" y="0" width="' + W + '" height="' + H + '" fill="none"/>');
+
+    // y axis + gridline
+    var plotW = W - MARGIN.l - MARGIN.r;
+    var plotH = H - MARGIN.t - MARGIN.b;
+    s.push('<line x1="' + MARGIN.l + '" y1="' + MARGIN.t + '" x2="' + MARGIN.l + '" y2="' + (MARGIN.t + plotH) + '" stroke="#c9cdd4"/>');
+    s.push('<line x1="' + MARGIN.l + '" y1="' + yPix(0) + '" x2="' + (MARGIN.l + plotW) + '" y2="' + yPix(0) + '" stroke="#9aa0a6" stroke-dasharray="4 3"/>');
+    var ylbl = { "-1": "LOF", "0": "NNE", "1": "GOF" };
+    [ -1, 0, 1 ].forEach(function (yv) {
+      s.push('<text x="' + (MARGIN.l - 8) + '" y="' + (yPix(yv) + 4) + '" text-anchor="end" font-size="11" fill="#6b7280">' + ylbl[String(yv)] + '</text>');
+    });
+
+    // x axis + ticks
+    var x0 = MARGIN.l, x1 = MARGIN.l + plotW;
+    var yb = MARGIN.t + plotH;
+    s.push('<line x1="' + x0 + '" y1="' + yb + '" x2="' + x1 + '" y2="' + yb + '" stroke="#c9cdd4"/>');
+    niceTicks(state.viewMin, state.viewMax, 7).forEach(function (t) {
+      s.push('<line x1="' + xPix(t, W) + '" y1="' + yb + '" x2="' + xPix(t, W) + '" y2="' + (yb + 4) + '" stroke="#c9cdd4"/>');
+      s.push('<text x="' + xPix(t, W) + '" y="' + (yb + 16) + '" text-anchor="middle" font-size="10.5" fill="#6b7280">' + t + '</text>');
+    });
+    s.push('<text x="' + (x0 + plotW / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="11" fill="#9aa0a6">AA position</text>');
+
+    // points
+    drawn = [];
+    idxs.forEach(function (i) {
+      var v = VARIANTS[i];
+      var base = EFFECT_VAL[v.e];
+      var band = EFFECT_BAND(v.e);
+      var yv = base + J[i] * band;
+      var cx = xPix(v.p, W), cy = yPix(yv);
+      s.push('<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + R + '" fill="' + colorFor(v) + '" fill-opacity="0.72"/>');
+      drawn.push({ i: i, v: v, x: cx, y: cy });
+    });
+
+    content.innerHTML = s.join("");
+  }
+
+  // --- summary rendering ---
+  function renderSummary(idxs) {
+    var n = idxs.length;
+    var effCount = { "LOF": 0, "No net effect": 0, "GOF": 0 };
+    var spCount = { "human": 0, "rat": 0, "mouse": 0 };
+    var geneCount = {};
+    idxs.forEach(function (i) {
+      var v = VARIANTS[i];
+      effCount[v.e]++; spCount[v.s]++;
+      geneCount[v.g] = (geneCount[v.g] || 0) + 1;
+    });
+
+    var h = [];
+    h.push('<div class="big">' + n + ' <small>variants</small></div>');
+
+    // by effect
+    h.push('<div><h2>By effect</h2>');
+    var maxE = Math.max(1, n);
+    META.effectOrder.forEach(function (e) {
+      var c = effCount[e];
+      h.push('<div class="bar-row"><span class="name">' + (e === "No net effect" ? "NNE" : e) + '</span>' +
+        '<span class="track"><span class="seg" style="width:' + (c / maxE * 100) + '%;background:' + META.colors.effect[e] + '"></span></span>' +
+        '<span class="count">' + c + '</span></div>');
+    });
+    h.push('</div>');
+
+    // by species
+    h.push('<div><h2>By species</h2>');
+    var maxS = Math.max(1, n);
+    META.speciesOrder.forEach(function (s) {
+      var c = spCount[s];
+      h.push('<div class="bar-row"><span class="name">' + s + '</span>' +
+        '<span class="track"><span class="seg" style="width:' + (c / maxS * 100) + '%;background:' + META.colors.species[s] + '"></span></span>' +
+        '<span class="count">' + c + '</span></div>');
+    });
+    h.push('</div>');
+
+    // by gene (stacked by effect)
+    var genes = Object.keys(geneCount).sort(function (a, b) { return geneCount[b] - geneCount[a]; });
+    h.push('<div><h2>By gene</h2>');
+    var maxG = Math.max(1, n);
+    genes.forEach(function (g) {
+      var tot = geneCount[g];
+      var segs = "";
+      META.effectOrder.forEach(function (e) {
+        var c = idxs.filter(function (i) { return VARIANTS[i].g === g && VARIANTS[i].e === e; }).length;
+        if (c > 0) segs += '<span class="seg" style="width:' + (c / maxG * 100) + '%;background:' + META.colors.effect[e] + '"></span>';
+      });
+      h.push('<div class="gene-bar"><span class="gname">' + g + '</span>' +
+        '<span class="track">' + segs + '</span>' +
+        '<span class="gcount">' + tot + '</span></div>');
+    });
+    h.push('</div>');
+
+    summaryDiv.innerHTML = h.join("");
+  }
+
+  // --- legend ---
+  function renderLegend(idxs) {
+    var cats = [], seen = {};
+    idxs.forEach(function (i) {
+      var v = VARIANTS[i];
+      var key = state.colorBy === "effect" ? v.e : (state.colorBy === "gene" ? v.g : v.s);
+      if (!seen[key]) { seen[key] = true; cats.push(key); }
+    });
+    var order;
+    if (state.colorBy === "effect") order = META.effectOrder;
+    else if (state.colorBy === "gene") order = META.genes;
+    else order = META.speciesOrder;
+    cats.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
+    var label = function (k) { return k === "No net effect" ? "NNE" : k; };
+    legendDiv.innerHTML = cats.map(function (k) {
+      var col = state.colorBy === "effect" ? META.colors.effect[k]
+        : (state.colorBy === "gene" ? META.colors.gene[k] : META.colors.species[k]);
+      return '<span class="li"><span class="dot" style="background:' + col + '"></span>' + label(k) + '</span>';
+    }).join("");
+  }
+
+  // --- plot events (hover / zoom / pan) ---
+  function attachPlotEvents() {
+    $on(svg, "mousemove", function (e) {
+      var rect = svg.getBoundingClientRect();
+      var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      var best = null, bd = 1e9;
+      for (var i = 0; i < drawn.length; i++) {
+        var d = drawn[i], dx = d.x - mx, dy = d.y - my, dist = dx * dx + dy * dy;
+        if (dist < bd) { bd = dist; best = d; }
+      }
+      if (best && bd < 15 * 15) showTooltip(best, e.clientX, e.clientY);
+      else hideTooltip();
+    });
+    $on(svg, "mouseleave", hideTooltip);
+
+    // wheel zoom
+    $on(svg, "wheel", function (e) {
+      e.preventDefault();
+      var rect = svg.getBoundingClientRect();
+      var W = rect.width;
+      var mx = e.clientX - rect.left;
+      var plotW = W - MARGIN.l - MARGIN.r;
+      var frac = (mx - MARGIN.l) / plotW;
+      frac = Math.min(1, Math.max(0, frac));
+      var dataX = state.viewMin + frac * (state.viewMax - state.viewMin);
+      var span = state.viewMax - state.viewMin;
+      var factor = e.deltaY < 0 ? 0.8 : 1.25;
+      var newSpan = span * factor;
+      var fullSpan = state.posMax - state.posMin;
+      newSpan = Math.min(newSpan, fullSpan);
+      if (newSpan < 1) newSpan = 1;
+      var vmin = dataX - frac * newSpan, vmax = vmin + newSpan;
+      if (vmin < state.posMin) { vmin = state.posMin; vmax = vmin + newSpan; }
+      if (vmax > state.posMax) { vmax = state.posMax; vmin = vmax - newSpan; }
+      state.viewMin = vmin; state.viewMax = vmax;
+      updateViewInfo();
+      renderAll();
+    }, { passive: false });
+
+    // drag pan
+    var dragging = false, startX = 0, sv0 = 0, sv1 = 0;
+    $on(svg, "mousedown", function (e) {
+      dragging = true; startX = e.clientX; sv0 = state.viewMin; sv1 = state.viewMax;
+    });
+    $on(window, "mousemove", function (e) {
+      if (!dragging) return;
+      var rect = svg.getBoundingClientRect();
+      var W = rect.width, plotW = W - MARGIN.l - MARGIN.r;
+      var dxData = -(e.clientX - startX) / plotW * (sv1 - sv0);
+      var span = sv1 - sv0;
+      var vmin = sv0 + dxData, vmax = sv1 + dxData;
+      if (vmin < state.posMin) { vmin = state.posMin; vmax = vmin + span; }
+      if (vmax > state.posMax) { vmax = state.posMax; vmin = vmax - span; }
+      state.viewMin = vmin; state.viewMax = vmax;
+      updateViewInfo();
+      renderAll();
+    });
+    $on(window, "mouseup", function () { dragging = false; });
+  }
+
+  function showTooltip(d, cx, cy) {
+    var v = d.v;
+    var effColor = META.colors.effect[v.e];
+    var html = '<div class="tt-title">' + v.g + '</div>' +
+      '<div class="tt-row"><span class="tt-mut">' + v.w + v.p + v.m + '</span></div>' +
+      '<div class="tt-row"><span class="tt-eff" style="color:' + effColor + '">' + v.e + '</span>' +
+      '<span style="color:#9ca3af">· ' + v.s + '</span></div>';
+    if (v.path) html += '<div class="tt-path">' + v.path + '</div>';
+    if (v.pmid) html += '<div class="tt-pmid">PMID ' + v.pmid + '</div>';
+    tooltip.innerHTML = html;
+    tooltip.style.display = "block";
+    var px = cx + 14, py = cy + 14;
+    if (px + 270 > window.innerWidth) px = cx - 14 - 270;
+    if (py + 120 > window.innerHeight) py = cy - 14 - 120;
+    tooltip.style.left = px + "px";
+    tooltip.style.top = py + "px";
+  }
+  function hideTooltip() { tooltip.style.display = "none"; }
+
+  function updateViewInfo() {
+    document.getElementById("view-info").textContent =
+      "view " + Math.round(state.viewMin) + "–" + Math.round(state.viewMax);
+  }
+
+  // --- position inputs ---
+  function onPosInput() {
+    var lo = parseInt(posMinEl.value, 10), hi = parseInt(posMaxEl.value, 10);
+    if (isNaN(lo)) lo = state.dataMin;
+    if (isNaN(hi)) hi = state.dataMax;
+    if (lo > hi) { var t = lo; lo = hi; hi = t; }
+    state.posMin = lo; state.posMax = hi;
+    state.viewMin = lo; state.viewMax = hi;
+    updateViewInfo(); renderAll();
+  }
+  $on(posMinEl, "change", onPosInput);
+  $on(posMaxEl, "change", onPosInput);
+  $on(document.getElementById("pos-reset"), "click", function () {
+    posMinEl.value = state.dataMin; posMaxEl.value = state.dataMax;
+    onPosInput();
+  });
+  $on(document.getElementById("view-reset"), "click", function () {
+    state.viewMin = state.posMin; state.viewMax = state.posMax;
+    updateViewInfo(); renderAll();
+  });
+
+  // --- orchestrate ---
+  function renderAll() {
+    var idxs = filtered();
+    renderScatter(idxs);
+    renderSummary(idxs);
+    renderLegend(idxs);
+  }
+
+  function init() {
+    // data range
+    state.dataMin = Infinity; state.dataMax = -Infinity;
+    VARIANTS.forEach(function (v) {
+      if (v.p < state.dataMin) state.dataMin = v.p;
+      if (v.p > state.dataMax) state.dataMax = v.p;
+    });
+    state.posMin = state.dataMin; state.posMax = state.dataMax;
+    state.viewMin = state.dataMin; state.viewMax = state.dataMax;
+    posMinEl.value = state.dataMin; posMaxEl.value = state.dataMax;
+
+    META.genes.forEach(function (g) { state.genes[g] = true; });
+    renderFamilyChips(); renderGeneChips(); renderEffectChips();
+    renderSpeciesChips(); renderColorChips();
+    updateViewInfo();
+    renderAll();
+  }
+
+  var resizeTimer;
+  $on(window, "resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderAll, 120);
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>

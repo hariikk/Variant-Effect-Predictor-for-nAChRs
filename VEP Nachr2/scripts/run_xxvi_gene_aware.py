@@ -31,6 +31,7 @@ Usage:
 """
 
 import argparse
+import json
 import sys
 import warnings
 
@@ -64,7 +65,7 @@ def _run_cv(X, y, df, model, cv_mode, n_trials, n_seeds):
         n_classes=3,
         label_names=LABEL_NAMES,
     )
-    return cv.get("final", {})
+    return cv.get("final", {}), [float(r["aggregate"]["macro_f1_mean"]) for r in cv.get("per_seed", [])]
 
 
 def _gene_prior(df, y):
@@ -133,6 +134,7 @@ def main():
         ("variants_only", X_variants, "standard"),
     ]
 
+    perseed = {}
     rows = [{
         "condition": "gene_prior",
         "model": "majority_class",
@@ -147,7 +149,8 @@ def main():
         print(f"\n{'=' * 70}\nCONDITION: {name}  cv_mode={cv_mode}  ({X.shape[1]} feats)",
               flush=True)
         for model in args.models:
-            res = _run_cv(X, y, df, model, cv_mode, args.n_trials, args.n_seeds)
+            res, ps = _run_cv(X, y, df, model, cv_mode, args.n_trials, args.n_seeds)
+            perseed[f"{name}|{model}"] = ps
             rows.append({
                 "condition": name,
                 "model": model,
@@ -162,6 +165,8 @@ def main():
 
     out = pd.DataFrame(rows)
     out.to_csv(out_dir / "gene_aware_summary.csv", index=False)
+    with open(out_dir / "gene_aware_perseed.json", "w") as _f:
+        json.dump(perseed, _f, indent=2)
 
     # ── Delta view ──────────────────────────────────────────────────────────
     print(f"\n{'=' * 70}\nDelta macro F1 (condition − gene_agnostic):")

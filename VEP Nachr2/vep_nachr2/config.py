@@ -49,7 +49,7 @@ for _dir in [DATA_DIR, RAW_DATA_DIR, PROCESSED_DATA_DIR, STRUCTURE_DIR,
 # RANDOM SEEDS
 # =============================================================================
 
-DEFAULT_SEEDS = [42, 123, 456, 789, 1011]
+DEFAULT_SEEDS = [42, 123, 456, 789, 1011, 2024, 3142, 4269, 5555, 6789]
 SPECIES_TRANSFER_SEEDS = [42, 123, 456, 789, 1011, 2024, 3142, 4269, 5555, 6789]
 PRIMARY_SEED = 42
 

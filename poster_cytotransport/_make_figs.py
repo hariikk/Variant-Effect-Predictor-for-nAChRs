@@ -9,6 +9,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Patch
 from matplotlib import font_manager
+import matplotlib.transforms as mtransforms
 from PIL import Image
 import numpy as np
 
@@ -116,30 +117,32 @@ def make_models():
     m1 = [model_names[i] for i in o1]; v1 = [three[i] for i in o1]
     y1 = np.arange(len(m1))
     ax1.barh(y1, v1, height=0.60, color=BLUE, zorder=3)
-    ax1.axvline(0.333, color=GRAY, ls="--", lw=1.6, alpha=0.9)
+    ax1.axvline(0.333, color=GRAY, ls="--", lw=1.6, alpha=0.9, zorder=4)
     ax1.set_yticks(y1); ax1.set_yticklabels(m1, fontsize=15)
     ax1.invert_yaxis(); ax1.set_xlim(0, 0.80)
     ax1.set_title("3-class (GOF / NNE / LOF)", loc="left", fontsize=17,
                   fontweight="bold", color=BLUE, pad=6)
     for yi, v in zip(y1, v1):
         ax1.text(v + 0.010, yi, f"{v:.2f}", va="center", fontsize=13, color=DARK)
-    ax1.text(0.99, 0.99, "chance = 0.33", transform=ax1.transAxes,
-             ha="right", va="top", fontsize=12, color=GRAY)
+    ax1.text(0.333, 1.0, "random = 0.33",
+             transform=mtransforms.blended_transform_factory(ax1.transData, ax1.transAxes),
+             ha="center", va="bottom", fontsize=12, color=GRAY)
 
     # --- panel 2: binary, sorted descending ---
     o2 = np.argsort(binary)[::-1]
     m2 = [model_names[i] for i in o2]; v2 = [binary[i] for i in o2]
     y2 = np.arange(len(m2))
     ax2.barh(y2, v2, height=0.60, color=ORANGE, zorder=3)
-    ax2.axvline(0.50, color=GRAY, ls=":", lw=1.6, alpha=0.9)
+    ax2.axvline(0.50, color=GRAY, ls=":", lw=1.6, alpha=0.9, zorder=4)
     ax2.set_yticks(y2); ax2.set_yticklabels(m2, fontsize=15)
     ax2.invert_yaxis(); ax2.set_xlim(0, 0.80)
     ax2.set_title("Binary (GOF / LOF)", loc="left", fontsize=17,
                   fontweight="bold", color=ORANGE, pad=6)
     for yi, v in zip(y2, v2):
         ax2.text(v + 0.010, yi, f"{v:.2f}", va="center", fontsize=13, color=DARK)
-    ax2.text(0.99, 0.99, "chance = 0.50", transform=ax2.transAxes,
-             ha="right", va="top", fontsize=12, color=GRAY)
+    ax2.text(0.50, 1.0, "random = 0.50",
+             transform=mtransforms.blended_transform_factory(ax2.transData, ax2.transAxes),
+             ha="center", va="bottom", fontsize=12, color=GRAY)
 
     ax2.set_xlabel("Macro F1 (gene-grouped CV)", fontsize=17)
     for ax in (ax1, ax2):
@@ -216,8 +219,9 @@ def make_ablation():
     ax.legend(handles=[Patch(color=BLUE,   label="dropping it hurts → signal"),
                        Patch(color=ORANGE, label="dropping it helps → noise")],
               loc="lower left", fontsize=15, frameon=False)
-    ax.text(0.02, 0.98, "Mean of Random Forest & CatBoost · error bars = model range",
-            transform=ax.transAxes, ha="left", va="top", fontsize=12.5, color=GRAY)
+    ax.text(0.5, 0.98, "Mean of Random Forest & CatBoost · error bars = model range",
+            transform=mtransforms.blended_transform_factory(fig.transFigure, ax.transAxes),
+            ha="center", va="top", fontsize=12.5, color=GRAY)
     plt.subplots_adjust(left=0.42, right=0.97, top=0.97, bottom=0.11)
     save_exact(fig, "fig3_ablation.png")
     print("fig3_ablation.png done")

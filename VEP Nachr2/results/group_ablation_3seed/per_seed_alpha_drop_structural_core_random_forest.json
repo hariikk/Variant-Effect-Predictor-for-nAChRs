@@ -1,0 +1,15 @@
+{
+  "group": "alpha",
+  "drop": "drop_structural_core",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6568730273148125,
+    0.626237239584053,
+    0.6258898483070412
+  ]
+}

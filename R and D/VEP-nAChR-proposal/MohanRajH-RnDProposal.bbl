@@ -1,0 +1,115 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Adzhubei et~al.(2010)Adzhubei, Schmidt, Peshkin, Ramensky, Gerasimova,
+  Bork, Kondrashov, and Sunyaev]{polyphen2}
+Ivan~A. Adzhubei, Steffen Schmidt, Leonid Peshkin, Vasily~E. Ramensky, Anna
+  Gerasimova, Peer Bork, Alexey~S. Kondrashov, and Shamil~R. Sunyaev.
+\newblock A method and server for predicting damaging missense mutations.
+\newblock \emph{Nature Methods}, 7\penalty0 (4):\penalty0 248--249, 2010.
+
+\bibitem[Akiba et~al.(2019)Akiba, Sano, Yanase, Ohta, and Koyama]{optuna}
+Takuya Akiba, Shotaro Sano, Toshihiko Yanase, Takeru Ohta, and Masanori Koyama.
+\newblock Optuna: A next-generation hyperparameter optimization framework.
+\newblock In \emph{Proceedings of the 25th ACM SIGKDD International Conference
+  on Knowledge Discovery \& Data Mining}, pages 2623--2631, 2019.
+
+\bibitem[Brandes et~al.(2023)Brandes, Goldman, Wang, Ye, and Ntranos]{esm1b}
+Nadav Brandes, Grant Goldman, Charlotte~H. Wang, Chun~Jimmie Ye, and Vasilis
+  Ntranos.
+\newblock Genome-wide prediction of disease variant effects with a deep protein
+  language model.
+\newblock \emph{Nature Genetics}, 55\penalty0 (9):\penalty0 1512--1522, 2023.
+
+\bibitem[Brunklaus et~al.(2022)Brunklaus, Feng, Brunklaus, Heyne,
+  et~al.]{funncion}
+Andreas Brunklaus, Tony Feng, Tobias Brunklaus, Henrike~O. Heyne, et~al.
+\newblock Gene variant effects across sodium channelopathies predict function
+  and guide precision therapy.
+\newblock \emph{Brain}, 145\penalty0 (12):\penalty0 4275--4286, 2022.
+
+\bibitem[Cheng et~al.(2023)Cheng, Novati, Pan, Bycroft, {\v{Z}}emgulyt{\.e},
+  Applebaum, Pritzel, Wong, Zielinski, Sargeant, et~al.]{alphamissense}
+Jun Cheng, Guido Novati, Joshua Pan, Clare Bycroft, Akvil{\.e}
+  {\v{Z}}emgulyt{\.e}, Taylor Applebaum, Alexander Pritzel, Lai~Hong Wong,
+  Michal Zielinski, Tobias Sargeant, et~al.
+\newblock Accurate proteome-wide missense variant effect prediction with
+  alphamissense.
+\newblock \emph{Science}, 381\penalty0 (6664):\penalty0 eadg7492, 2023.
+
+\bibitem[Engel et~al.(2015)Engel, Shen, Selcen, and Sine]{cms_review}
+Andrew~G. Engel, Xin-Ming Shen, Duygu Selcen, and Steven~M. Sine.
+\newblock Congenital myasthenic syndromes: pathogenesis, diagnosis, and
+  treatment.
+\newblock \emph{The Lancet Neurology}, 14\penalty0 (4):\penalty0 420--434,
+  2015.
+
+\bibitem[Gharpure et~al.(2019)Gharpure, Teng, Zhuang, Noviello, Walsh, Cabuco,
+  Howard, Zaveri, Lindahl, and Hibbs]{nachr_structure_2021}
+Anant Gharpure, Jinfeng Teng, Yuxuan Zhuang, Colleen~M. Noviello, Richard~M.
+  Walsh, Rico Cabuco, Rebecca~J. Howard, Nurulain~T. Zaveri, Erik Lindahl, and
+  Ryan~E. Hibbs.
+\newblock Agonist selectivity and ion permeation in the $\alpha$4$\beta$2
+  nicotinic acetylcholine receptor.
+\newblock \emph{Neuron}, 104\penalty0 (3):\penalty0 501--518, 2019.
+
+\bibitem[Gies et~al.(2025)]{mission}
+S.~Gies et~al.
+\newblock Mission: functional effect predictions for ion-channel missense
+  variants using a protein language model.
+\newblock \emph{medRxiv}, 2025.
+\newblock Preprint.
+
+\bibitem[Kawashima et~al.(2008)Kawashima, Pokarowski, Pokarowska, Kolinski,
+  Katayama, and Kanehisa]{aaindex}
+Shuichi Kawashima, Piotr Pokarowski, Maria Pokarowska, Andrzej Kolinski,
+  Toshiaki Katayama, and Minoru Kanehisa.
+\newblock Aaindex: amino acid index database, progress report 2008.
+\newblock \emph{Nucleic Acids Research}, 36\penalty0 (suppl\_1):\penalty0
+  D202--D205, 2008.
+
+\bibitem[Kircher et~al.(2014)Kircher, Witten, Jain, O'Roak, Cooper, and
+  Shendure]{cadd}
+Martin Kircher, Daniela~M. Witten, Preti Jain, Brian~J. O'Roak, Gregory~M.
+  Cooper, and Jay Shendure.
+\newblock A general framework for estimating the relative pathogenicity of
+  human genetic variants.
+\newblock \emph{Nature Genetics}, 46\penalty0 (3):\penalty0 310--315, 2014.
+
+\bibitem[Mohan~Raj and Kirschner(2026)]{mohanraj2026}
+Hari~Krishna Mohan~Raj and Karl Kirschner.
+\newblock A curated dataset of experimentally characterised missense variants
+  in human nicotinic acetylcholine receptors, 2026.
+\newblock In preparation.
+
+\bibitem[Ng and Henikoff(2003)]{sift}
+Pauline~C. Ng and Steven Henikoff.
+\newblock Sift: predicting amino acid changes that affect protein function.
+\newblock \emph{Nucleic Acids Research}, 31\penalty0 (13):\penalty0 3812--3814,
+  2003.
+
+\bibitem[Schaaf and Zoghbi(2011)]{schaaf2011}
+Christian~P. Schaaf and Huda~Y. Zoghbi.
+\newblock Solving the autism puzzle a few pieces at a time.
+\newblock \emph{Neuron}, 70\penalty0 (5):\penalty0 806--808, 2011.
+
+\bibitem[Stein et~al.(2023)Stein, Kars, Wu, Bayrak, Stenson, Cooper,
+  Schlessinger, and Itan]{logofunc}
+David Stein, Meltem~Ece Kars, Yinghui Wu, Cigdem~Sevim Bayrak, Peter~D.
+  Stenson, David~N. Cooper, Avner Schlessinger, and Yuval Itan.
+\newblock Genome-wide prediction of pathogenic gain- and loss-of-function
+  variants from ensemble learning of a diverse feature set.
+\newblock \emph{Genome Medicine}, 15:\penalty0 103, 2023.
+
+\bibitem[Zhong et~al.(2024)]{premode}
+G.~Zhong et~al.
+\newblock Premode predicts mode-of-action of missense variants by deep graph
+  representation learning of protein sequence and structural context.
+\newblock \emph{bioRxiv}, 2024.
+\newblock Preprint.
+
+\end{thebibliography}

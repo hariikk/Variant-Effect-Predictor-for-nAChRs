@@ -1,0 +1,18 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+  [geom-only random_forest  ] macro 0.6404 ± 0.0085 | LOF 0.7417 | NNE 0.6116 | GOF 0.5680
+  [geom-only catboost       ] macro 0.6487 ± 0.0114 | LOF 0.7436 | NNE 0.6180 | GOF 0.5845
+
+Paired t-tests (n = 10 seeds):
+model                 a7rest(naive) - 7EKT             geom-only - 7EKT
+random_forest   Δ=-0.0063 t=-1.63 p=0.137   Δ=-0.0047 t=-1.07 p=0.312
+catboost        Δ=-0.0051 t=-1.30 p=0.227   Δ=+0.0016 t=+0.52 p=0.613
+
+Saved -> C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\a7resting\geomonly.json

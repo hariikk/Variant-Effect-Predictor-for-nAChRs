@@ -1,0 +1,15 @@
+{
+  "group": "beta",
+  "drop": "drop_esm_embeddings",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6812095031444876,
+    0.648702817650186,
+    0.6451448883647026
+  ]
+}

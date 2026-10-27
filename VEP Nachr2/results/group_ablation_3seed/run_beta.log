@@ -1,0 +1,63 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+======================================================================
+GROUP=beta  full  (n=128, dim=82)
+  [random_forest  ] macro F1 = 0.6342 ± 0.0260
+  [catboost       ] macro F1 = 0.6130 ± 0.0222
+======================================================================
+GROUP=beta  drop_physicochemical  (n=128, dim=58)
+  [random_forest  ] macro F1 = 0.6147 ± 0.0081
+  [catboost       ] macro F1 = 0.6122 ± 0.0226
+======================================================================
+GROUP=beta  drop_substitution  (n=128, dim=79)
+  [random_forest  ] macro F1 = 0.6312 ± 0.0337
+  [catboost       ] macro F1 = 0.5977 ± 0.0251
+======================================================================
+GROUP=beta  drop_positional  (n=128, dim=62)
+  [random_forest  ] macro F1 = 0.6323 ± 0.0288
+  [catboost       ] macro F1 = 0.6099 ± 0.0182
+======================================================================
+GROUP=beta  drop_conservation  (n=128, dim=79)
+  [random_forest  ] macro F1 = 0.6318 ± 0.0073
+  [catboost       ] macro F1 = 0.6169 ± 0.0234
+======================================================================
+GROUP=beta  drop_structural_core  (n=128, dim=75)
+  [random_forest  ] macro F1 = 0.6379 ± 0.0139
+  [catboost       ] macro F1 = 0.6396 ± 0.0023
+======================================================================
+GROUP=beta  drop_esm2  (n=128, dim=80)
+  [random_forest  ] macro F1 = 0.6174 ± 0.0115
+  [catboost       ] macro F1 = 0.6134 ± 0.0114
+======================================================================
+GROUP=beta  drop_esm_embeddings  (n=128, dim=66)
+  [random_forest  ] macro F1 = 0.6584 ± 0.0162
+  [catboost       ] macro F1 = 0.6493 ± 0.0214
+======================================================================
+GROUP=beta  drop_gating  (n=128, dim=79)
+  [random_forest  ] macro F1 = 0.6109 ± 0.0215
+  [catboost       ] macro F1 = 0.6049 ± 0.0106
+======================================================================
+GROUP=beta  drop_allosteric_interaction  (n=128, dim=78)
+  [random_forest  ] macro F1 = 0.6390 ± 0.0307
+  [catboost       ] macro F1 = 0.6463 ± 0.0070
+
+======================================================================
+Delta macro F1 (full - dropped), per group:
+
+  beta (full: random_forest 0.6342 / catboost 0.6130)
+    drop_physicochemical           [random_forest ] 0.6147 (Δ +0.0194)  [catboost      ] 0.6122 (Δ +0.0008)
+    drop_substitution              [random_forest ] 0.6312 (Δ +0.0029)  [catboost      ] 0.5977 (Δ +0.0153)
+    drop_positional                [random_forest ] 0.6323 (Δ +0.0018)  [catboost      ] 0.6099 (Δ +0.0030)
+    drop_conservation              [random_forest ] 0.6318 (Δ +0.0024)  [catboost      ] 0.6169 (Δ -0.0040)
+    drop_structural_core           [random_forest ] 0.6379 (Δ -0.0038)  [catboost      ] 0.6396 (Δ -0.0267)
+    drop_esm2                      [random_forest ] 0.6174 (Δ +0.0168)  [catboost      ] 0.6134 (Δ -0.0004)
+    drop_esm_embeddings            [random_forest ] 0.6584 (Δ -0.0242)  [catboost      ] 0.6493 (Δ -0.0364)
+    drop_gating                    [random_forest ] 0.6109 (Δ +0.0233)  [catboost      ] 0.6049 (Δ +0.0081)
+    drop_allosteric_interaction    [random_forest ] 0.6390 (Δ -0.0048)  [catboost      ] 0.6463 (Δ -0.0334)
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\group_ablation_3seed\group_ablation_summary_beta.csv

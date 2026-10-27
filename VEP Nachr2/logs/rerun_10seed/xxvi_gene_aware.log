@@ -1,0 +1,67 @@
+Loaded 841 rows from sheet 'unique_variants'
+Dropped 14 rows with ambiguous effect (LOF/GOF)
+Filtered to substitutions: dropped 30 non-substitution rows
+C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\vep_nachr2\data\loader.py:176: UserWarning: Dropped 37 rows with missing essential values
+  warnings.warn(f"Dropped {dropped} rows with missing essential values")
+Final dataset: 760 variants
+  Species: {'human': 507, 'rat': 173, 'mouse': 80}
+  Effects: {'LOF': 377, 'GOF': 195, 'No net effect': 188}
+  Unique genes: ['CHRNA1', 'CHRNA10', 'CHRNA2', 'CHRNA3', 'CHRNA4', 'CHRNA5', 'CHRNA6', 'CHRNA7', 'CHRNA9', 'CHRNB1', 'CHRNB2', 'CHRNB3', 'CHRNB4', 'CHRND', 'CHRNE', 'CHRNG']
+  full shape=(760, 75)  variants_only shape=(760, 55)
+
+======================================================================
+gene_prior (majority-class-per-gene, in-sample):
+  macro_f1           0.4069
+  mcc                0.2420
+  balanced_accuracy  0.4437
+  accuracy           0.5566
+
+Per-gene label distribution (purity = majority share):
+effect   LOF  No net effect  GOF    n  purity
+subunit                                      
+CHRNG      7              0    0    7   1.000
+CHRNA1    84              1   38  123   0.683
+CHRNE     42              3   20   65   0.646
+CHRNA9     8             15    1   24   0.625
+CHRND     24             15    4   43   0.558
+CHRNA5     5              2    2    9   0.556
+CHRNA4    46             15   24   85   0.541
+CHRNA10    7              6    0   13   0.538
+CHRNB4     8             27   16   51   0.529
+CHRNB1    10              2    7   19   0.526
+CHRNA6     8             22   13   43   0.512
+CHRNA2     4              0    4    8   0.500
+CHRNA3     3              6    3   12   0.500
+CHRNA7   100             58   42  200   0.500
+CHRNB3     2              4    5   11   0.455
+CHRNB2    19             12   16   47   0.404
+
+======================================================================
+CONDITION: gene_agnostic  cv_mode=subunit  (75 feats)
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+  [random_forest  ] macro F1 = 0.4781 ± 0.0371
+C:\Users\harik\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2524: UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+  [catboost       ] macro F1 = 0.4887 ± 0.0403
+
+======================================================================
+CONDITION: gene_aware  cv_mode=standard  (75 feats)
+  [random_forest  ] macro F1 = 0.6359 ± 0.0072
+  [catboost       ] macro F1 = 0.6401 ± 0.0078
+
+======================================================================
+CONDITION: variants_only  cv_mode=standard  (55 feats)
+  [random_forest  ] macro F1 = 0.5967 ± 0.0134
+  [catboost       ] macro F1 = 0.6001 ± 0.0129
+
+======================================================================
+Delta macro F1 (condition − gene_agnostic):
+  [random_forest  ] gene_aware      0.6359  Δ=+0.1579
+  [random_forest  ] variants_only   0.5967  Δ=+0.1186
+  [random_forest  ] gene_prior      0.4069  Δ=+0.0711  (vs prior)
+  [catboost       ] gene_aware      0.6401  Δ=+0.1514
+  [catboost       ] variants_only   0.6001  Δ=+0.1114
+  [catboost       ] gene_prior      0.4069  Δ=+0.0818  (vs prior)
+
+Saved C:\Users\harik\Downloads\Computational Chemistry\Variant-Effect-Predictor-for-nAChRs\VEP Nachr2\results\gene_aware\gene_aware_summary.csv

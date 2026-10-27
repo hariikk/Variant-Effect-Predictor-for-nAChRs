@@ -1,0 +1,15 @@
+{
+  "group": "beta",
+  "drop": "drop_physicochemical",
+  "model": "random_forest",
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_f1": [
+    0.6040391852156557,
+    0.6236673457261693,
+    0.6164286388992272
+  ]
+}

@@ -9,6 +9,7 @@ Each model has a hyperparameter search space defined for Optuna.
 Tree models have aggressively capped complexity for small datasets (~51 samples in inner folds).
 """
 
+import os
 from typing import Any, Callable, Optional
 
 import numpy as np
@@ -23,6 +24,17 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import RobustScaler
 
 from vep_nachr2.config import MODEL_DISPLAY_NAMES
+
+
+def _job_limit() -> int:
+    """Thread cap for tree models, overridable via the VEP_N_JOBS env var.
+
+    Default ``-1`` (use all cores). Setting ``VEP_N_JOBS`` lets independent CV
+    processes each take a slice of the machine so they can run in parallel
+    without oversubscribing (maps to RF/LightGBM ``n_jobs`` and CatBoost
+    ``thread_count``).
+    """
+    return int(os.environ.get("VEP_N_JOBS", "-1"))
 
 
 # =============================================================================
@@ -48,7 +60,7 @@ def make_svm_linear(**params) -> SVC:
 
 
 def make_random_forest(**params) -> RandomForestClassifier:
-    defaults = {"random_state": 42, "n_jobs": -1}
+    defaults = {"random_state": 42, "n_jobs": _job_limit()}
     defaults.update(params)
     return RandomForestClassifier(**defaults)
 
@@ -326,7 +338,7 @@ def build_model(model_name: str, params: Optional[dict] = None, n_classes: int =
             "num_class": n_classes,
             "verbosity": -1,
             "random_state": 42,
-            "n_jobs": -1,
+            "n_jobs": _job_limit(),
         }
         defaults.update(params)
         return lgb.LGBMClassifier(**defaults)
@@ -364,7 +376,7 @@ def build_model(model_name: str, params: Optional[dict] = None, n_classes: int =
                 "loss_function": "Logloss",
                 "verbose": 0,
                 "random_seed": 42,
-                "thread_count": -1,
+                "thread_count": _job_limit(),
                 "allow_writing_files": False,
             }
         else:
@@ -373,7 +385,7 @@ def build_model(model_name: str, params: Optional[dict] = None, n_classes: int =
                 "classes_count": n_classes,
                 "verbose": 0,
                 "random_seed": 42,
-                "thread_count": -1,
+                "thread_count": _job_limit(),
                 "allow_writing_files": False,
             }
         # CatBoost GPU is *slower* than CPU on this dataset (~760 samples): the
