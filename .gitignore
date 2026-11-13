@@ -4,3 +4,8 @@ __pycache__/
 *.pyc
 *.pdf
 ~$*
+
+# Logs and generated run artifacts (never commit these)
+logs/
+*.log
+*.err

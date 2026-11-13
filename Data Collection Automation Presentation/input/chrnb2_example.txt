@@ -1,3 +1,0 @@
-A rare gain-of-function mutation in the CHRNB2 subunit.
-
-We expressed the human beta2 (CHRNB2) subunit carrying the V287L substitution together with alpha4 in HEK293 cells and measured responses using calcium imaging. The V287L mutant showed a marked increase in agonist sensitivity, indicating a gain of function.

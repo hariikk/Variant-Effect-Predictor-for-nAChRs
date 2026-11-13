@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.6)  25 SEP 2026 16:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.6)  8 NOV 2026 02:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,11 +676,11 @@ L3 programming layer <2025-09-02>
 Here is how much of TeX's memory you used:
  9984 strings out of 468130
  159761 string characters out of 5430633
- 701704 words of memory out of 5000000
+ 701762 words of memory out of 5000000
  38310 multiletter control sequences out of 15000+600000
  638902 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,12n,91p,1020b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,12n,91p,1020b,484s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\harik\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/harik/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/harik/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -691,7 +691,7 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/harik/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/harik/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/har
 ik/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on MohanRajH-RnDProposal.pdf (13 pages, 280099 bytes).
+Output written on MohanRajH-RnDProposal.pdf (13 pages, 280110 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

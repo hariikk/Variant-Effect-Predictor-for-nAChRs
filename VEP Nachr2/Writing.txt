@@ -14,3 +14,12 @@ VEP Nachr:
 - Added other  
 - removed the train with 15 and test with 1 idea obstacle and trained with 16 and tested with 16, ie, training with gene identity, which bumped the score from 0.5 to 0.63
 - 
+
+
+"ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_API_KEY": "REDACTED",
+    "DEEPSEEK_API_KEY": "REDACTED",
+    "ANTHROPIC_MODEL": "deepseek-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-flash",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-flash"

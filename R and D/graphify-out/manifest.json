@@ -1,0 +1,47 @@
+{
+  "VEP-nAChR-proposal/make_gantt.py": {
+    "mtime": 1790339091.402396,
+    "ast_hash": "1b433fceaeea3677aa5ba0610ba3947f",
+    "semantic_hash": "1b433fceaeea3677aa5ba0610ba3947f"
+  },
+  "VEP-nAChR-proposal/mas_proposal.cls": {
+    "mtime": 1789586174.4521868,
+    "ast_hash": "3062e2ffb42f6862bdf566f773a3d01b",
+    "semantic_hash": "3062e2ffb42f6862bdf566f773a3d01b"
+  },
+  "project-proposal-master/mas_proposal.cls": {
+    "mtime": 1652668076.0,
+    "ast_hash": "3062e2ffb42f6862bdf566f773a3d01b",
+    "semantic_hash": "3062e2ffb42f6862bdf566f773a3d01b"
+  },
+  "project-proposal-master/.travis.yml": {
+    "mtime": 1652668076.0,
+    "ast_hash": "34291bef7384922e82a182ff6f30c5fa",
+    "semantic_hash": "34291bef7384922e82a182ff6f30c5fa"
+  },
+  "project-proposal-master/README.md": {
+    "mtime": 1652668076.0,
+    "ast_hash": "897107902da29b9a7d075fa764182070",
+    "semantic_hash": "897107902da29b9a7d075fa764182070"
+  },
+  "VEP-nAChR-proposal/images/Logo-HBRS-cyan.png": {
+    "mtime": 1789586174.5026217,
+    "ast_hash": "ab61051273743be84a482bc8d97ffad4",
+    "semantic_hash": "ab61051273743be84a482bc8d97ffad4"
+  },
+  "VEP-nAChR-proposal/images/gantt.png": {
+    "mtime": 1790339097.89456,
+    "ast_hash": "e44c9b48fad57e104d1da6b9b3ecf62a",
+    "semantic_hash": "e44c9b48fad57e104d1da6b9b3ecf62a"
+  },
+  "project-proposal-master/images/Logo-HBRS-cyan.png": {
+    "mtime": 1652668076.0,
+    "ast_hash": "ab61051273743be84a482bc8d97ffad4",
+    "semantic_hash": "ab61051273743be84a482bc8d97ffad4"
+  },
+  "project-proposal-master/images/rnd_deliverable_timeline.png": {
+    "mtime": 1652668076.0,
+    "ast_hash": "0bdbb2f9a37556f77c4fc8e523a61b3b",
+    "semantic_hash": "0bdbb2f9a37556f77c4fc8e523a61b3b"
+  }
+}

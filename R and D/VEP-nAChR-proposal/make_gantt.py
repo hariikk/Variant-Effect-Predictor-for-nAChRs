@@ -22,7 +22,7 @@ milestones = [
     ("M6", 6.0, 4),
 ]
 
-months = ["Oct 2026", "Nov", "Dec", "Jan 2027", "Feb", "Mar 2027"]
+months = ["Sep 2026", "Oct", "Nov", "Dec", "Jan 2027", "Feb 2027"]
 
 fig, ax = plt.subplots(figsize=(10, 4.0), dpi=160)
 
